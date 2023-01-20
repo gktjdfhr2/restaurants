@@ -1,13 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import Restaurants from './components/Restaurants.js';
 import './styles/style.css';
 
-ReactDOM.render(
+const root =
+  ReactDOM.createRoot(
+    document.getElementById(
+      'restaurants',
+    ),
+  );
+
+root.render(
   <Restaurants />,
-  document.querySelector(
-    '#restaurants',
-  ),
 );
 console.log(
   'a',
