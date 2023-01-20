@@ -1,0 +1,16 @@
+header {
+  background-color: royalblue;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  color: white;
+}
+header
+  section {
+  position: relative;
+  width: 1024px;
+  height: 64px;
+  background: none;
+}

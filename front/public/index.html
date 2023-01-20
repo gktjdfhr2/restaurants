@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+>
+  <head>
+    <meta
+      charset="UTF-8"
+    />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>
+      testaurant
+      map
+    </title>
+  </head>
+  <body>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <!--React 라이브러리-->
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <!--React 가상 DOM 라이브러리-->
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!--최신 자바스크립트 문법을 브라우저에서 사용하기 위한 도구, 대부분의 브라우저를 지원할 수 있는 코드로 변환-->
+    <script
+      type="text/babel"
+      src="../src/index.js"
+      data-type="module"
+      data-presets="react"
+    ></script>
+    <!-- module : main.js에서 다른 파일을 import 할 수 있게 설정-->
+    <!-- presets : babel이 presets정보를 보고 컴파일 -->
+    <div
+      id="restaurants"
+    ></div>
+  </body>
+</html>
