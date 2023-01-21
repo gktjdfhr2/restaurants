@@ -1,3 +1,6 @@
+* {
+  outline: 0;
+}
 header {
   background-color: cornflowerblue;
   position: fixed;
@@ -9,24 +12,74 @@ header {
 }
 a {
   text-decoration: none;
+  cursor: pointer;
   color: white;
 }
-header
-  section {
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 0em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+ul ol li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+header section {
   position: relative;
   width: 1024px;
   height: 64px;
   background: none;
 }
-header
-  section
-  h2 {
+header section h2 {
   position: absolute;
   top: 20px;
   left: 31px;
   width: 96px;
   height: 20px;
   margin: 0;
-  background-size: 96px
-    auto;
+  background-size: 96px auto;
+}
+header section .btn_srch {
+  position: absolute;
+  border: none;
+  text-indent: -9999px px;
+  top: 20px;
+  right: 396px;
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  background-size: 24px auto;
+  cursor: pointer;
+}
+.pc_header {
+  position: absolute;
+  top: 27px;
+  right: 31px;
+  display: block;
+  width: auto;
+  text-align: right;
+}
+.pc_header li {
+  display: inline-block;
+  position: relative;
+  min-width: 53px;
+  min-height: 35px;
+  margin-left: 30px;
+  vertical-align: top;
+}
+.pc_header li a {
+  display: inline-block;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0;
+}
+@media screen and (max-width: 1024px) {
+  /*mobile*/
 }
