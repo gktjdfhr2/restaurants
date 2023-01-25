@@ -47,19 +47,15 @@ header section h2 {
   margin: 0;
   background-size: 96px auto;
 }
-header section .btn_srch {
-  position: absolute;
+header section ul li .btn_srch {
   border: none;
-  text-indent: -9999px px;
-  top: 20px;
-  right: 396px;
+  text-indent: -9999px;
   z-index: 10;
-  width: 30px;
-  height: 30px;
-  background-size: 24px auto;
+  background-size: auto;
   cursor: pointer;
+  font-size: 18px;
 }
-.pc_header {
+.ul_header {
   position: absolute;
   top: 27px;
   right: 31px;
@@ -67,7 +63,7 @@ header section .btn_srch {
   width: auto;
   text-align: right;
 }
-.pc_header li {
+.ul_header li {
   display: inline-block;
   position: relative;
   min-width: 53px;
@@ -75,14 +71,14 @@ header section .btn_srch {
   margin-left: 30px;
   vertical-align: top;
 }
-.pc_header li a {
+.ul_header li a {
   display: inline-block;
   font-size: 18px;
   color: rgba(255, 255, 255, 0.8);
   letter-spacing: 0;
 }
 #react-kakao-maps-sdk-map-container {
-  width: 900px;
+  width: 90vw;
   height: 360px;
   position: relative;
   margin-top: 100px;
@@ -91,8 +87,72 @@ header section .btn_srch {
 }
 @media screen and (max-width: 1024px) {
   /*mobile*/
+  body {
+    margin: 0;
+  }
+
+  a {
+    color: cornflowerblue;
+  }
   #react-kakao-maps-sdk-map-container {
-    margin-left: 54px;
-    margin-right: 54px;
+    height: 30vh;
+    width: 100vw;
+    margin: 0;
+  }
+  header {
+    position: relative;
+    display: block;
+    top: 0%;
+    background-color: white;
+    color: cornflowerblue;
+  }
+  header section {
+    width: 100%;
+    height: 44px;
+  }
+  header section h2 {
+    position: absolute;
+    top: 1.5rem;
+    left: 3vw;
+    width: 96px;
+    height: 20px;
+    margin: 0;
+    background-size: 96px auto;
+  }
+  .ul_header {
+    position: absolute;
+    top: 1.5rem;
+    right: 3vw;
+    display: block;
+    width: auto;
+    text-align: right;
+  }
+  .ul_header li {
+    display: inline-block;
+    position: relative;
+    min-width: 1px;
+    min-height: 3px;
+    margin-left: 3vw;
+    vertical-align: top;
+  }
+  .ul_header li a {
+    display: inline-block;
+    font-size: 3vw;
+    color: cornflowerblue;
+    letter-spacing: 0;
+  }
+  header section ul li .btn_srch {
+    font-size: 3vw;
+  }
+}
+@media screen and (max-width: 375px) {
+  h2 {
+    font-size: 6vw;
+  }
+  .ul_header li a {
+    font-size: 0.8vw;
+  }
+  header section ul li .btn_srch {
+    font-size: 0.8vw;
   }
 }
