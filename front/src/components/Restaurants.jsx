@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import KakaoMap from '../pages/KakaoMap';
 
 export default class Restaurants extends React.Component {
   constructor() {
@@ -9,6 +10,11 @@ export default class Restaurants extends React.Component {
   }
 
   render() {
-    return <Header />;
+    return (
+      <>
+        <Header />
+        <KakaoMap />
+      </>
+    );
   }
 }

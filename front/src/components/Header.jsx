@@ -1,26 +1,29 @@
 import React from 'react';
+import { BrowserRouter, Link } from 'react-router-dom';
 
 function Header() {
   return (
     <header>
       <section>
-        <h2>
-          <a href="../index.jsx">맛집지도</a>
-        </h2>
-        <button type="button" className="btn_srch">
-          검색
-        </button>
-        <ul className="pc_header">
-          <li>
-            <a href="../index.jsx">원격 줄서기</a>
-          </li>
-          <li>
-            <a href="../index.jsx">즉시 예약</a>
-          </li>
-          <li>
-            <a href="../index.jsx">내정보</a>
-          </li>
-        </ul>
+        <BrowserRouter>
+          <h2>
+            <Link to="../index.jsx">맛집지도</Link>
+          </h2>
+          <button type="button" className="btn_srch">
+            검색
+          </button>
+          <ul className="pc_header">
+            <li>
+              <Link to="../index.jsx">원격 줄서기</Link>
+            </li>
+            <li>
+              <Link to="../index.jsx">즉시 예약</Link>
+            </li>
+            <li>
+              <Link to="../index.jsx">내정보</Link>
+            </li>
+          </ul>
+        </BrowserRouter>
       </section>
     </header>
   );

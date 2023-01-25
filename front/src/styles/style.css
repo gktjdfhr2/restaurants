@@ -36,6 +36,7 @@ header section {
   width: 1024px;
   height: 64px;
   background: none;
+  margin: 0 auto;
 }
 header section h2 {
   position: absolute;
@@ -80,6 +81,18 @@ header section .btn_srch {
   color: rgba(255, 255, 255, 0.8);
   letter-spacing: 0;
 }
+#react-kakao-maps-sdk-map-container {
+  width: 900px;
+  height: 360px;
+  position: relative;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
 @media screen and (max-width: 1024px) {
   /*mobile*/
+  #react-kakao-maps-sdk-map-container {
+    margin-left: 54px;
+    margin-right: 54px;
+  }
 }
