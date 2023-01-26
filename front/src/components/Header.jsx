@@ -1,13 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
+import ImgLogo from '../assets/placeholder.png';
 
 function Header() {
+  console.log('Header');
   return (
     <header>
       <section>
         <BrowserRouter>
           <h2>
-            <Link to="../index.jsx">맛집지도</Link>
+            <Link to="../index.jsx">
+              <img id="Logo" src={ImgLogo} alt="맛집지도" />
+              <div>맛집지도</div>
+            </Link>
           </h2>
           <ul className="ul_header">
             <li>

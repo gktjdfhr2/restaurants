@@ -10,6 +10,7 @@ export default class Restaurants extends React.Component {
   }
 
   render() {
+    console.log('Restaurants');
     return (
       <>
         <Header />

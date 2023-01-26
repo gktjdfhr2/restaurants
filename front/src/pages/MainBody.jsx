@@ -2,6 +2,7 @@ import React from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
 function MainBody() {
+  console.log('mainBody');
   return (
     <>
       <Map center={{ lat: 33.5563, lng: 126.79581 }}>

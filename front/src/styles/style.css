@@ -40,21 +40,35 @@ header section {
 }
 header section h2 {
   position: absolute;
-  top: 24px;
   left: 31px;
-  width: 96px;
-  height: 20px;
   margin: 0;
   font-size: 20px;
   background-size: 96px auto;
+}
+header section #Logo {
+  display: inline-block;
+  height: 48px;
+  margin: 12px 0;
+}
+header section h2 div {
+  position: absolute;
+  display: inline-block;
+  font-size: 20px;
+  height: 20px;
+  width: 86px;
+  margin: 26px 2px;
 }
 header section ul li .btn_srch {
   border: none;
   text-indent: -9999px;
   z-index: 10;
-  background-size: auto;
   cursor: pointer;
-  font-size: 18px;
+  background-image: url(../assets/magnifying-glass.png);
+  background-size: 22px;
+  background-repeat: no-repeat;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  background-color: cornflowerblue;
 }
 .ul_header {
   position: absolute;
@@ -113,12 +127,16 @@ header section ul li .btn_srch {
   }
   header section h2 {
     position: absolute;
-    top: 1.5rem;
     left: 3vw;
-    width: 96px;
-    height: 20px;
     margin: 0;
-    background-size: 96px auto;
+  }
+  header section h2 div {
+    position: absolute;
+    display: inline-block;
+    font-size: 20px;
+    height: 20px;
+    width: 86px;
+    margin: 26px 2px;
   }
   .ul_header {
     position: absolute;
@@ -144,6 +162,11 @@ header section ul li .btn_srch {
   }
   header section ul li .btn_srch {
     font-size: 13px;
+    background: url(../assets/mobile-magnifying-glass.png);
+    background-size: 22px;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+    padding-left: 20px;
   }
 }
 @media screen and (max-width: 375px) {
@@ -152,5 +175,8 @@ header section ul li .btn_srch {
   }
   header section ul li .btn_srch {
     font-size: 13px;
+  }
+  header section h2 div {
+    display: none;
   }
 }
