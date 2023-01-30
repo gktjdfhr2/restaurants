@@ -1,6 +1,9 @@
 import React from 'react';
-import Header from './Header';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import UserHeader from './UserHeader';
 import MainBody from '../pages/MainBody';
+import UserInfo from '../pages/UserInfo';
+import UserSearch from '../pages/UserSearch';
 
 export default class Restaurants extends React.Component {
   constructor() {
@@ -12,10 +15,14 @@ export default class Restaurants extends React.Component {
   render() {
     console.log('Restaurants');
     return (
-      <>
-        <Header />
-        <MainBody />
-      </>
+      <BrowserRouter>
+        <UserHeader />
+        <Routes>
+          <Route path="/" element={<MainBody />} />
+          <Route path="/UserInfo" element={<UserInfo />} />
+          <Route path="/UserSearch" element={<UserSearch />} />
+        </Routes>
+      </BrowserRouter>
     );
   }
 }

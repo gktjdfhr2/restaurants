@@ -78,6 +78,12 @@ header section ul li .btn_srch {
   width: auto;
   text-align: right;
 }
+#dummy {
+  width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
 .ul_header li {
   display: inline-block;
   position: relative;
