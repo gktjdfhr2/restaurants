@@ -5,7 +5,7 @@ function UserInfo() {
   console.log('userInfo');
   return (
     <section id="info">
-      <Link to="/Login" id="userInfo">
+      <Link to="/SignIn" id="userInfo">
         <div>로그인 및 회원가입하기 &gt;</div>
       </Link>
       <ul>

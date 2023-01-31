@@ -134,6 +134,64 @@ header section ul li .btn_srch {
   margin-left: auto;
   margin-right: auto;
 }
+#SignInInfo {
+  width: 425px;
+  margin: 50px auto;
+}
+#SignInInfo input {
+  width: 360px;
+  height: 40px;
+  margin: 10px auto;
+  padding: 0;
+}
+#SignInInfo div {
+  width: 360px;
+  height: 144px;
+  margin: 0 auto;
+  border-bottom: 1px solid gainsboro;
+}
+#SignInInfo #SignInSubmitForm {
+  width: 360px;
+  height: 144px;
+  margin: 0 auto;
+  border: none;
+}
+#SignInInfo #SignInSubmit {
+  width: 364px;
+  height: 40px;
+  margin: 20px auto;
+  padding: 0;
+}
+#SignInInfo a {
+  color: black;
+  text-decoration: underline;
+  font-weight: bold;
+  text-align: center;
+}
+#SignInInfo #signUp {
+  text-align: center;
+}
+#SignInSection {
+  width: 425px;
+  margin-top: 120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#SignInSection #Logo {
+  width: 200px;
+}
+#SignInSection div {
+  position: absolute;
+  display: inline-block;
+  font-size: 20px;
+  height: 40px;
+  width: 160px;
+  margin-top: 80px;
+  text-align: center;
+  color: cornflowerblue;
+  font-weight: bolder;
+  font-size: 40px;
+}
 @media screen and (max-width: 1024px) {
   /*mobile*/
   body {
@@ -142,6 +200,14 @@ header section ul li .btn_srch {
 
   a {
     color: cornflowerblue;
+  }
+  #SignInSection {
+    width: 375px;
+    margin: 0 auto;
+  }
+  #SignInInfo {
+    width: 375px;
+    margin: 50px auto;
   }
   #react-kakao-maps-sdk-map-container {
     height: 360px;
