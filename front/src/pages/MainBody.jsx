@@ -12,7 +12,7 @@ function MainBody() {
       </Map>
 
       <section>
-        <div>주변 맛집 추천이 들어올 섹션</div>
+        <div id="dummy">주변 맛집 추천이 들어올 섹션</div>
       </section>
     </>
   );
