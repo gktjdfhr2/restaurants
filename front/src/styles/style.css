@@ -143,6 +143,7 @@ header section ul li .btn_srch {
   height: 40px;
   margin: 10px auto;
   padding: 0;
+  text-align: center;
 }
 #SignInInfo div {
   width: 360px;
@@ -229,7 +230,7 @@ header section ul li .btn_srch {
 }
 #idState {
   margin-bottom: 24px;
-  color: white;
+  color: black;
 }
 #pwState {
   margin-bottom: 24px;
