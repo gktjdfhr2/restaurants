@@ -12,5 +12,6 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'no-console': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };

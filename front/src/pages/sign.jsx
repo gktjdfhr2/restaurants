@@ -5,9 +5,11 @@ function SignUp() {
 
   const idState = useRef(null);
   const pwState = useRef(null);
-  const [userId, setUserID] = useState('');
-  const [userPw1, setUserpw1] = useState('');
-  const [userPw2, setUserpw2] = useState('');
+  const [signUpInfo, setSignUpInfo] = useState({
+    userId: '',
+    userPw1: '',
+    userPw2: '',
+  });
 
   /** 아이디 입력 확인 */
   const idHandleChange = (event) => {
@@ -16,36 +18,36 @@ function SignUp() {
     } else {
       idState.current.style.color = 'black';
     }
-    setUserID(event.target.value);
+    setSignUpInfo({ ...signUpInfo, userId: event.target.value });
   };
   /** 비밀번호 입력 확인 */
   const pwHandleChange = (event) => {
-    const pw1 = event.target;
+    const pw1 = event.target.value;
 
-    if (pw1.value === userPw2) {
+    if (pw1 === signUpInfo.userPw2) {
       pwState.current.style.color = 'white';
     } else {
       pwState.current.style.color = 'red';
     }
-    setUserpw1(event.target.value);
+    setSignUpInfo({ ...signUpInfo, userpw1: pw1 });
   };
   /** 비밀번호 일치 확인 */
   const pwCheckHandle = (event) => {
-    const pw2 = event.target;
+    const pw2 = event.target.value;
 
-    if (pw2.value === userPw1) {
+    if (pw2 === signUpInfo.userPw1) {
       pwState.current.style.color = 'white';
     } else {
       pwState.current.style.color = 'red';
     }
-    setUserpw2(event.target.value);
+    setSignUpInfo({ ...signUpInfo, userpw2: pw2 });
   };
 
   /** 로그인 버튼 클릭 */
   const signIn = (event) => {
     event.preventDefault();
-    if (userPw1 !== userPw2) {
-      setUserpw2('');
+    if (signUpInfo.userPw1 !== signUpInfo.userPw2) {
+      setSignUpInfo({ ...signUpInfo, userpw2: '' });
     }
     console.log('submit');
   };
@@ -61,7 +63,7 @@ function SignUp() {
             id="userId"
             placeholder="아이디"
             required
-            value={userId}
+            value={signUpInfo.userId}
             onChange={idHandleChange}
           />
           <div id="idState" ref={idState}>
@@ -72,7 +74,7 @@ function SignUp() {
             type="password"
             id="pw1"
             placeholder="비밀번호"
-            value={userPw1}
+            value={signUpInfo.userPw1}
             onChange={pwHandleChange}
             required
           />
@@ -81,7 +83,7 @@ function SignUp() {
             id="pw2"
             placeholder="비밀번호 확인"
             required
-            value={userPw2}
+            value={signUpInfo.userPw2}
             onChange={pwCheckHandle}
           />
           <div id="pwState" ref={pwState}>
