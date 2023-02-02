@@ -1,13 +1,21 @@
 import React, { useState, useRef } from 'react';
+import axios from 'axios';
 
 function SignUp() {
   console.log('siginUp');
 
   const idState = useRef(null);
   const pwState = useRef(null);
-  const [userId, setUserID] = useState('');
-  const [userPw1, setUserpw1] = useState('');
-  const [userPw2, setUserpw2] = useState('');
+
+  const [signUpInfo, setSignUpInfo] = useState({
+    userId: '',
+    userPw1: '',
+    userPw2: '',
+    userName: '',
+    userAddress: '',
+    userPhoneNum: '',
+    userType: '고객',
+  });
 
   /** 아이디 입력 확인 */
   const idHandleChange = (event) => {
@@ -16,38 +24,72 @@ function SignUp() {
     } else {
       idState.current.style.color = 'black';
     }
-    setUserID(event.target.value);
+    setSignUpInfo({ ...signUpInfo, userId: event.target.value });
   };
+
   /** 비밀번호 입력 확인 */
   const pwHandleChange = (event) => {
-    const pw1 = event.target;
+    const pw1 = event.target.value;
 
-    if (pw1.value === userPw2) {
+    if (pw1 === signUpInfo.userPw2) {
       pwState.current.style.color = 'white';
     } else {
       pwState.current.style.color = 'red';
     }
-    setUserpw1(event.target.value);
+    setSignUpInfo({ ...signUpInfo, userPw1: pw1 });
   };
+
   /** 비밀번호 일치 확인 */
   const pwCheckHandle = (event) => {
-    const pw2 = event.target;
+    const pw2 = event.target.value;
 
-    if (pw2.value === userPw1) {
+    if (pw2 === signUpInfo.userPw1) {
       pwState.current.style.color = 'white';
     } else {
       pwState.current.style.color = 'red';
     }
-    setUserpw2(event.target.value);
+    setSignUpInfo({ ...signUpInfo, userPw2: pw2 });
+  };
+
+  /** 이름 입력 확인 */
+  const userNameHandle = (event) => {
+    setSignUpInfo({ ...signUpInfo, userName: event.target.value });
+  };
+
+  /** 주소 입력 확인 */
+  const userAddressHandle = (event) => {
+    setSignUpInfo({ ...signUpInfo, userAddress: event.target.value });
+  };
+
+  /** 핸드폰번호 입력 확인 */
+  const userPhoneNumHandle = (event) => {
+    setSignUpInfo({ ...signUpInfo, userPhoneNum: event.target.value });
+  };
+
+  /** 회원 유형 확인 */
+  const userTypeHandle = (event) => {
+    setSignUpInfo({ ...signUpInfo, userType: event.target.value });
+  };
+
+  const register = () => {
+    axios
+      .post('path', signUpInfo)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   /** 로그인 버튼 클릭 */
   const signIn = (event) => {
     event.preventDefault();
-    if (userPw1 !== userPw2) {
-      setUserpw2('');
+    if (signUpInfo.userPw1 !== signUpInfo.userPw2) {
+      setSignUpInfo({ ...signUpInfo, userPw2: '' });
+    } else {
+      register();
     }
-    console.log('submit');
   };
 
   return (
@@ -59,10 +101,11 @@ function SignUp() {
           <input
             type="text"
             id="userId"
-            placeholder="아이디"
+            placeholder="아이디 숫자 + 영문 6자이상"
             required
-            value={userId}
+            value={signUpInfo.userId}
             onChange={idHandleChange}
+            pattern="[a-zA-Z0-9]{6,}"
           />
           <div id="idState" ref={idState}>
             아이디를 입력해주세요
@@ -71,35 +114,49 @@ function SignUp() {
           <input
             type="password"
             id="pw1"
-            placeholder="비밀번호"
-            value={userPw1}
+            placeholder="비밀번호 숫자 + 영문 4자이상"
+            value={signUpInfo.userPw1}
             onChange={pwHandleChange}
             required
+            pattern="[a-zA-Z0-9]{4,}"
           />
           <input
             type="password"
             id="pw2"
             placeholder="비밀번호 확인"
             required
-            value={userPw2}
+            value={signUpInfo.userPw2}
             onChange={pwCheckHandle}
+            pattern="[a-zA-Z0-9]{4,}"
           />
           <div id="pwState" ref={pwState}>
             비밀번호를 확인해주세요
           </div>
           <div>이름</div>
-          <input type="text" placeholder="예) 홍길동" required />
+          <input
+            type="text"
+            placeholder="예) 홍길동"
+            required
+            pattern="[가-힣]{2,}"
+            onChange={userNameHandle}
+          />
           <div>주소</div>
-          <input type="text" required />
+          <input
+            type="text"
+            required
+            pattern="[가-힣]{6,}"
+            onChange={userAddressHandle}
+          />
           <div>전화번호</div>
           <input
             type="text"
             placeholder="-을 제거해서 입력해주세요 예)01012345678"
             required
             pattern="[0]+[1]+[0-9]{9}"
+            onChange={userPhoneNumHandle}
           />
           <div>회원 유형</div>
-          <select defaultValue="고객">
+          <select defaultValue="고객" onChange={userTypeHandle}>
             <option value="고객">고객</option>
             <option value="사업자">사업자</option>
           </select>

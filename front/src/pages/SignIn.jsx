@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ImgLogo from '../assets/placeholder.png';
 
 function SignIn() {
+  console.log('signIn');
   return (
     <>
       <section id="SignInSection">
