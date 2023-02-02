@@ -16,9 +16,11 @@ function SignIn() {
             <input type="password" id="SignInPw" />
           </div>
           <div id="SignInSubmitForm">
-            <input type="button" id="SignInSubmit" value="로그인" />
+            <button type="submit" id="SignInSubmit">
+              로그인
+            </button>
             <div id="signUp">
-              회원이 아니신가요?
+              회원이 아니신가요? &nbsp;
               <Link to="/SignUp">회원가입하기</Link>
             </div>
           </div>

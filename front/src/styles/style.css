@@ -144,6 +144,8 @@ header section ul li .btn_srch {
   margin: 10px auto;
   padding: 0;
   text-align: center;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
 }
 #SignInInfo div {
   width: 360px;
@@ -162,6 +164,9 @@ header section ul li .btn_srch {
   height: 40px;
   margin: 20px auto;
   padding: 0;
+  background-color: white;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
 }
 #SignInInfo a {
   color: black;
@@ -212,12 +217,17 @@ header section ul li .btn_srch {
   width: 100%;
   height: 36px;
   margin: 5px auto;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  padding-left: 10px;
 }
 #SignUpSection #SignUpItemContainer select {
-  width: 101%;
+  width: 350px;
   height: 37px;
   margin: 5px auto;
   padding: 0;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
 }
 #SignUpSection #SignUpItemContainer #infoSubmit {
   width: 180px;
@@ -335,6 +345,9 @@ header section ul li .btn_srch {
     width: 100%;
     margin: 0;
     margin-top: 20px;
+  }
+  #SignUpSection #SignUpItemContainer select {
+    width: 101%;
   }
 }
 @media screen and (max-width: 375px) {
