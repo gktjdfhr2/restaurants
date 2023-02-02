@@ -76,6 +76,8 @@ function SignUp() {
       .post('path', signUpInfo)
       .then((response) => {
         console.log(response);
+        console.log('data:', response.data.user);
+        console.log('tocken', response.data.jwt);
       })
       .catch((error) => {
         console.log(error);

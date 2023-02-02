@@ -4,6 +4,12 @@ import ImgLogo from '../assets/placeholder.png';
 
 function SignIn() {
   console.log('signIn');
+
+  const loginSubmit = (event) => {
+    event.preventDefault();
+    console.log('submit');
+  };
+
   return (
     <>
       <section id="SignInSection">
@@ -11,7 +17,7 @@ function SignIn() {
         <div>맛집지도</div>
       </section>
       <section id="SignInInfo">
-        <form>
+        <form onSubmit={loginSubmit}>
           <div>
             <input type="text" id="SignInId" />
             <input type="password" id="SignInPw" />
