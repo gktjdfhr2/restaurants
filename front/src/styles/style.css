@@ -299,6 +299,61 @@ header section ul li .btn_srch {
   right: -20px;
   top: 12px;
 }
+#recentSearch {
+  list-style: none;
+  padding-left: 10px;
+}
+
+#recentSearch li {
+  display: inline-block;
+  position: relative;
+  margin-right: 20px;
+}
+#recentSearchItems {
+  background-color: gainsboro;
+  padding: 7px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+#recentSearchItems button {
+  background-color: gainsboro;
+  border: none;
+}
+
+#recommendStoreList {
+  width: 728px;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#recommendStoreListTitle {
+  margin: auto;
+  font-weight: bold;
+}
+
+#mostSearched {
+  padding: 0;
+}
+#mostSearchedItems {
+  list-style: none;
+  padding: 20px 0;
+}
+#recentSearchList {
+  width: 728px;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#recentSearchTitle {
+  margin: auto;
+  font-weight: bold;
+}
+#mostSearchedList {
+  width: 728px;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
 @media screen and (max-width: 1024px) {
   /*mobile*/
   body {
@@ -424,6 +479,12 @@ header section ul li .btn_srch {
     width: 90vw;
     left: -20px;
   }
+  #recentSearchList {
+    width: 95vw;
+  }
+  #mostSearchedList {
+    width: 95vw;
+  }
 }
 @media screen and (max-width: 375px) {
   .ul_header li a {
@@ -433,6 +494,12 @@ header section ul li .btn_srch {
     font-size: 13px;
   }
   header section h2 div {
+    display: none;
+  }
+  #recentSearch {
+    display: none;
+  }
+  #recentSearchList {
     display: none;
   }
 }

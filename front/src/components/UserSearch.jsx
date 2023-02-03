@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import RecommendStoreList from '../pages/RecommendStoreList';
+import MostSearched from '../pages/MostSearched';
 
 function UserSearch() {
   console.log('userSearch');
@@ -30,10 +31,35 @@ function UserSearch() {
               검색
             </button>
           </form>
+          <ul id="recentSearch">
+            <li id="recentSearchItems">
+              서버에서 아이템 불러오기
+              <button type="button">X</button>
+            </li>
+            <li id="recentSearchItems">
+              검색어2
+              <button type="button">X</button>
+            </li>
+            <li id="recentSearchItems">
+              검색어3
+              <button type="button">X</button>
+            </li>
+            <li id="recentSearchItems">
+              검색어4
+              <button type="button">X</button>
+            </li>
+            <li id="recentSearchItems">
+              검색어5
+              <button type="button">X</button>
+            </li>
+          </ul>
         </div>
       </section>
       <section>
         <RecommendStoreList />
+      </section>
+      <section>
+        <MostSearched />
       </section>
     </>
   );
