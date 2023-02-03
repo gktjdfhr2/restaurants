@@ -6,7 +6,7 @@ function ReservationHist() {
   return (
     <section id="info">
       <Link to="/SignIn" id="userInfo">
-        <div>로그인 해주세요 &gt;</div>
+        <div>로그인하기 &gt;</div>
       </Link>
     </section>
   );

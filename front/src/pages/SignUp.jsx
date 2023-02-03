@@ -73,7 +73,7 @@ function SignUp() {
 
   const register = () => {
     axios
-      .post('path', signUpInfo)
+      .post('localhost:3000/account/signUp', signUpInfo)
       .then((response) => {
         console.log(response);
         console.log('data:', response.data.user);
@@ -84,7 +84,6 @@ function SignUp() {
       });
   };
 
-  /** 로그인 버튼 클릭 */
   const signIn = (event) => {
     event.preventDefault();
     if (signUpInfo.userPw1 !== signUpInfo.userPw2) {
