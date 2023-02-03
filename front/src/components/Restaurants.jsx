@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import UserHeader from './UserHeader';
 import MainBody from '../pages/MainBody';
 import UserInfo from '../pages/UserInfo';
-import UserSearch from '../pages/UserSearch';
+import UserSearch from './UserSearch';
 import SignIn from '../pages/SignIn';
 import RecentViewedHist from '../pages/RecentViewedHist';
 import RemoteLineHist from '../pages/RemoteLineHist';
