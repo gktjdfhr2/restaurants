@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import UserHeader from './UserHeader';
-import MainBody from '../pages/MainBody';
+import MainBody from './MainBody';
 import UserInfo from '../pages/UserInfo';
 import UserSearch from './UserSearch';
 import SignIn from '../pages/SignIn';
