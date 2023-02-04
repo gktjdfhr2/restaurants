@@ -4,11 +4,11 @@ import UserHeader from './UserHeader';
 import MainBody from './MainBody';
 import UserInfo from '../pages/UserInfo';
 import UserSearch from './UserSearch';
-import SignIn from '../pages/SignIn';
+import SignIn from './SignIn';
 import RecentViewedHist from '../pages/RecentViewedHist';
 import RemoteLineHist from '../pages/RemoteLineHist';
 import ReservationHist from '../pages/ReservationHist';
-import SignUp from '../pages/SignUp';
+import SignUp from './SignUp';
 
 export default class Restaurants extends React.Component {
   constructor() {

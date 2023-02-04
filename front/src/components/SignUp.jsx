@@ -1,11 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import SignUpId from '../pages/SignUpId';
+import SignUpPassword from '../pages/SignUpPassword';
 
 function SignUp() {
   console.log('siginUp');
-
-  const idState = useRef(null);
-  const pwState = useRef(null);
 
   const [signUpInfo, setSignUpInfo] = useState({
     userId: '',
@@ -16,39 +15,22 @@ function SignUp() {
     userPhoneNum: '',
     userType: '고객',
   });
-
-  /** 아이디 입력 확인 */
-  const idHandleChange = (event) => {
-    if (event.target.value.length > 0) {
-      idState.current.style.color = 'white';
-    } else {
-      idState.current.style.color = 'black';
-    }
-    setSignUpInfo({ ...signUpInfo, userId: event.target.value });
+  /** 아이디 입력 */
+  const userIdHandle = (inputId) => {
+    setSignUpInfo({ ...signUpInfo, userId: inputId });
   };
 
   /** 비밀번호 입력 확인 */
-  const pwHandleChange = (event) => {
-    const pw1 = event.target.value;
+  const pwHandleChange = (inputPw1) => {
+    console.log(inputPw1);
 
-    if (pw1 === signUpInfo.userPw2) {
-      pwState.current.style.color = 'white';
-    } else {
-      pwState.current.style.color = 'red';
-    }
-    setSignUpInfo({ ...signUpInfo, userPw1: pw1 });
+    setSignUpInfo({ ...signUpInfo, userPw1: inputPw1 });
   };
 
   /** 비밀번호 일치 확인 */
-  const pwCheckHandle = (event) => {
-    const pw2 = event.target.value;
-
-    if (pw2 === signUpInfo.userPw1) {
-      pwState.current.style.color = 'white';
-    } else {
-      pwState.current.style.color = 'red';
-    }
-    setSignUpInfo({ ...signUpInfo, userPw2: pw2 });
+  const pwCheckHandle = (inputPw2) => {
+    console.log(inputPw2);
+    setSignUpInfo({ ...signUpInfo, userPw2: inputPw2 });
   };
 
   /** 이름 입력 확인 */
@@ -88,8 +70,10 @@ function SignUp() {
     event.preventDefault();
     if (signUpInfo.userPw1 !== signUpInfo.userPw2) {
       setSignUpInfo({ ...signUpInfo, userPw2: '' });
+      console.log(signUpInfo.userId);
     } else {
       register();
+      console.log(signUpInfo.userId);
     }
   };
 
@@ -98,41 +82,13 @@ function SignUp() {
       <div id="SignUpTitle">회원가입</div>
       <div id="SignUpItemContainer">
         <form onSubmit={signIn}>
-          <div>아이디</div>
-          <input
-            type="text"
-            id="userId"
-            placeholder="아이디 숫자 + 영문 6자이상"
-            required
-            value={signUpInfo.userId}
-            onChange={idHandleChange}
-            pattern="[a-zA-Z0-9]{6,}"
+          <SignUpId userId={signUpInfo.userId} userIdHandle={userIdHandle} />
+          <SignUpPassword
+            userPw1={signUpInfo.userPw1}
+            userPw2={signUpInfo.userPw2}
+            userPwHandle={pwHandleChange}
+            pwCheckHandle={pwCheckHandle}
           />
-          <div id="idState" ref={idState}>
-            아이디를 입력해주세요
-          </div>
-          <div>비밀번호</div>
-          <input
-            type="password"
-            id="pw1"
-            placeholder="비밀번호 숫자 + 영문 4자이상"
-            value={signUpInfo.userPw1}
-            onChange={pwHandleChange}
-            required
-            pattern="[a-zA-Z0-9]{4,}"
-          />
-          <input
-            type="password"
-            id="pw2"
-            placeholder="비밀번호 확인"
-            required
-            value={signUpInfo.userPw2}
-            onChange={pwCheckHandle}
-            pattern="[a-zA-Z0-9]{4,}"
-          />
-          <div id="pwState" ref={pwState}>
-            비밀번호를 확인해주세요
-          </div>
           <div>이름</div>
           <input
             type="text"

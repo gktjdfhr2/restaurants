@@ -147,7 +147,7 @@ header section ul li .btn_srch {
   border: 1px solid gainsboro;
   border-radius: 10px;
 }
-#SignInInfo div {
+#SignInInfo #signInDiv {
   width: 360px;
   height: 144px;
   margin: 0 auto;
