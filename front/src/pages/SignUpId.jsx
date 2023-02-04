@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function SignUpId({ userId, userIdHandle }) {
+  console.log('SignUpId');
   return (
-    <>
+    <form>
       <div>아이디</div>
       <input
         type="text"
@@ -16,7 +17,7 @@ function SignUpId({ userId, userIdHandle }) {
         }}
         pattern="[a-zA-Z0-9]{6,}"
       />
-    </>
+    </form>
   );
 }
 
@@ -24,9 +25,8 @@ SignUpId.propTypes = {
   userId: PropTypes.string.isRequired,
   userIdHandle: PropTypes.func.isRequired,
 };
-function areEqual(prevProps, nextProps) {
-  console.log(prevProps, nextProps);
-  return prevProps.userId === nextProps.userId;
-}
-const SignUpIdMemo = React.memo(SignUpId, areEqual);
-export default SignUpIdMemo;
+// function areEqual(prevProps, nextProps) {
+//   console.log(prevProps, nextProps);
+//   return prevProps.userId === nextProps.userId;
+// }
+export default React.memo(SignUpId);
