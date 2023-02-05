@@ -1,12 +1,17 @@
-use rrp;
+CREATE DATABASE restaurant DEFAULT CHARACTER SET utf8 COLLATE ntf8mb4_unicode_ci;
+
 create table tb_users_info(
-    user_id varchar(50) primary key,
+--     user_id varchar(50) primary key,
+    user_id int primary key,
+    user_name varchar(50) not null,
     user_type int not null,
     user_email varchar(30) unique ,
     user_passwd varchar(50) not null,
     user_phone varchar(13) not null,
     user_addr varchar(100),
-    user_withDrawal int not null
+    user_role varchar(20) not null,
+    user_withdrawal int not null
+
 );
 
 create table tb_restaurants_info(
