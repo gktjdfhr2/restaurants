@@ -9,6 +9,7 @@ import RecentViewedHist from '../pages/RecentViewedHist';
 import RemoteLineHist from '../pages/RemoteLineHist';
 import ReservationHist from '../pages/ReservationHist';
 import SignUp from './SignUp';
+import UserInfoModify from './UserInfoModify';
 
 export default class Restaurants extends React.Component {
   constructor() {
@@ -31,6 +32,7 @@ export default class Restaurants extends React.Component {
           <Route path="/RemoteLineHist" element={<RemoteLineHist />} />
           <Route path="/ReservationHist" element={<ReservationHist />} />
           <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/UserInfoModify" element={<UserInfoModify />} />
         </Routes>
       </BrowserRouter>
     );
