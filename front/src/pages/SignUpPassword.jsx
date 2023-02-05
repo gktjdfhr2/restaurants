@@ -39,10 +39,10 @@ SignUpPassword.propTypes = {
   pwCheckHandle: PropTypes.func.isRequired,
 };
 function areEqual(prevProps, nextProps) {
-  // console.log('pw1', prevProps.userPw1 === nextProps.userPw1);
-  // console.log('pw2', prevProps.userPw2 === nextProps.userPw2);
-  // console.log('핸들1', prevProps.userPwHandle === nextProps.userPwHandle);
-  // console.log('핸들2', prevProps.pwCheckHandle === nextProps.pwCheckHandle);
+  console.log('pw1', prevProps.userPw1 === nextProps.userPw1);
+  console.log('pw2', prevProps.userPw2 === nextProps.userPw2);
+  console.log('핸들1', prevProps.userPwHandle === nextProps.userPwHandle);
+  console.log('핸들2', prevProps.pwCheckHandle === nextProps.pwCheckHandle);
   return (
     // eslint-disable-next-line operator-linebreak
     prevProps.userPw1 === nextProps.userPw1 &&

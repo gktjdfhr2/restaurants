@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import SignUpId from '../pages/SignUpId';
 import SignUpPassword from '../pages/SignUpPassword';
 
@@ -18,17 +18,15 @@ function SignUp() {
   /** 아이디 입력 */
   const userIdHandle = useCallback(
     (inputId) => {
-      setSignUpInfo({ ...signUpInfo, userId: inputId });
+      setSignUpInfo((prev) => ({ ...prev, userId: inputId }));
     },
-    [inputId],
+    [signUpInfo.userId],
   );
 
   /** 비밀번호 입력 확인 */
   const pwHandleChange = useCallback(
     (inputPw1) => {
-      console.log(inputPw1);
-
-      setSignUpInfo({ ...signUpInfo, userPw1: inputPw1 });
+      setSignUpInfo((prev) => ({ ...prev, userPw1: inputPw1 }));
     },
     [signUpInfo.userPw1],
   );
@@ -36,8 +34,7 @@ function SignUp() {
   /** 비밀번호 일치 확인 */
   const pwCheckHandle = useCallback(
     (inputPw2) => {
-      console.log(inputPw2);
-      setSignUpInfo({ ...signUpInfo, userPw2: inputPw2 });
+      setSignUpInfo((prev) => ({ ...prev, userPw2: inputPw2 }));
     },
     [signUpInfo.userPw2],
   );
@@ -62,29 +59,30 @@ function SignUp() {
     setSignUpInfo({ ...signUpInfo, userType: event.target.value });
   };
 
-  // const register = () => {
-  //   axios
-  //     .post('localhost:3000/account/signUp', signUpInfo)
-  //     .then((response) => {
-  //       console.log(response);
-  //       console.log('data:', response.data.user);
-  //       console.log('tocken', response.data.jwt);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+  const register = () => {
+    axios
+      .post('localhost:3000/account/signUp', signUpInfo)
+      .then((response) => {
+        console.log(response);
+        console.log('data:', response.data.user);
+        console.log('tocken', response.data.jwt);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-  // const signIn = (event) => {
-  //   event.preventDefault();
-  //   if (signUpInfo.userPw1 !== signUpInfo.userPw2) {
-  //     setSignUpInfo({ ...signUpInfo, userPw2: '' });
-  //     console.log(signUpInfo.userId);
-  //   } else {
-  //     register();
-  //     console.log(signUpInfo.userId);
-  //   }
-  // };
+  const signIn = (event) => {
+    event.preventDefault();
+    // if (signUpInfo.userPw1 !== signUpInfo.userPw2) {
+    //   setSignUpInfo({ ...signUpInfo, userPw2: '' });
+    //   console.log(signUpInfo.userId);
+    // } else {
+    //   register();
+    //   console.log(signUpInfo.userId);
+    // }
+    register();
+  };
 
   return (
     <section id="SignUpSection">
@@ -126,9 +124,11 @@ function SignUp() {
           <option value="고객">고객</option>
           <option value="사업자">사업자</option>
         </select>
-        <button type="submit" id="infoSubmit">
-          가입하기
-        </button>
+        <form onSubmit={signIn}>
+          <button type="submit" id="infoSubmit">
+            가입하기
+          </button>
+        </form>
       </div>
     </section>
   );

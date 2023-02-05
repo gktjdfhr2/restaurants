@@ -25,8 +25,9 @@ SignUpId.propTypes = {
   userId: PropTypes.string.isRequired,
   userIdHandle: PropTypes.func.isRequired,
 };
-// function areEqual(prevProps, nextProps) {
-//   console.log(prevProps, nextProps);
-//   return prevProps.userId === nextProps.userId;
-// }
-export default React.memo(SignUpId);
+function areEqual(prevProps, nextProps) {
+  console.log('idValue', prevProps.userId === nextProps.userId);
+  console.log('idHandle', prevProps.userIdHandle === nextProps.userIdHandle);
+  return prevProps.userId === nextProps.userId;
+}
+export default React.memo(SignUpId, areEqual);
