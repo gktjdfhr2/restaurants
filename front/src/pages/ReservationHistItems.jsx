@@ -24,13 +24,21 @@ function ReservationHistItems() {
                 <div className="storeInfoTitle">가게명</div>
                 <div className="storeInfoReview">리뷰 별점</div>
                 <div className="storeInfoState">상태</div>
-                <button type="button" className="storeInfoCancle">
+                <button
+                  type="button"
+                  className="storeInfoCancle"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+
+                    alert('예약취소');
+                  }}
+                >
                   예약 취소하기
                 </button>
               </div>
             </Link>
           </li>
-          <li className="histItem">2</li>
         </ul>
       </section>
     </>

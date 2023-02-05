@@ -72,7 +72,7 @@ header section ul li .btn_srch {
 }
 #info {
   position: relative;
-  margin-top: 100px;
+  margin-top: 120px;
   width: 1024px;
   margin-left: auto;
   margin-right: auto;
@@ -85,11 +85,11 @@ header section ul li .btn_srch {
 #info a {
   color: black;
 }
-#info #infoUl {
+#info .infoUl {
   list-style: none;
   padding: 50px 24px;
 }
-#info #infoUl li {
+#info .infoUl li {
   line-height: 100px;
   border-bottom: 1px solid gainsboro;
 }
@@ -515,7 +515,7 @@ header section ul li .btn_srch {
   #info ul {
     padding: 50px 10px;
   }
-  #info div {
+  #info #gogo {
     margin: 20px 10px;
   }
   #SignUpSection {
