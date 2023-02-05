@@ -1,13 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ReservationHistItems from './ReservationHistItems';
 
 function ReservationHist() {
   console.log('ReservationHist');
+  const loginState = true;
   return (
     <section id="info">
-      <Link to="/SignIn" id="userInfo">
-        <div>로그인하기 &gt;</div>
-      </Link>
+      {!loginState && (
+        <Link to="/SignIn" id="userInfo">
+          <div>로그인하기 &gt;</div>
+        </Link>
+      )}
+      {loginState && <ReservationHistItems />}
     </section>
   );
 }

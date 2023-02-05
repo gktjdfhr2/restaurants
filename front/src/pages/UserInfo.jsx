@@ -6,9 +6,9 @@ function UserInfo() {
   return (
     <section id="info">
       <Link to="/SignIn" id="userInfo">
-        <div>로그인 및 회원가입하기 &gt;</div>
+        <div id="gogo">로그인 및 회원가입하기 &gt;</div>
       </Link>
-      <ul>
+      <ul className="infoUl">
         <li>
           <Link to="/ReservationHist">예약 내역 &gt;</Link>
         </li>

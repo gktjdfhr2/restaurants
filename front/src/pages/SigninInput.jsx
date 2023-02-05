@@ -1,21 +1,35 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function SigninInput() {
   console.log('signInInput');
-  const [loginIdCheck, setLoginIdCheck] = useState('');
-  const [loginPwCheck, setLoginPwCheck] = useState('');
+  const [signInCheck, setSignInCheck] = useState({ idCheck: '', pwCheck: '' });
 
   const loginIdHandle = (event) => {
-    setLoginIdCheck(event.target.value);
+    setSignInCheck({ ...signInCheck, idCheck: event.target.value });
   };
   const loginPwHandle = (event) => {
-    setLoginPwCheck(event.target.value);
+    setSignInCheck({ ...signInCheck, pwCheck: event.target.value });
+  };
+
+  const register = () => {
+    axios
+      .post('localhost:3000/account/login', signInCheck)
+      .then((response) => {
+        console.log(response);
+        console.log('data:', response.data.user);
+        console.log('tocken', response.data.jwt);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const loginSubmit = (event) => {
     event.preventDefault();
     console.log('submit');
+    register();
   };
 
   return (
@@ -24,20 +38,20 @@ function SigninInput() {
         <input
           type="text"
           id="SignInId"
-          value={loginIdCheck}
+          value={signInCheck.idCheck}
           onChange={loginIdHandle}
           placeholder="아이디"
         />
         <input
           type="password"
           id="SignInPw"
-          value={loginPwCheck}
+          value={signInCheck.pwCheck}
           onChange={loginPwHandle}
           placeholder="비밀번호"
         />
       </div>
       <div id="SignInSubmitForm">
-        <button type="submit" id="SignInSubmit">
+        <button type="submit" id="SignInSubmit" onSubmit={register}>
           로그인
         </button>
         <div id="signUp">

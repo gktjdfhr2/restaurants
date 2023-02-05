@@ -72,7 +72,7 @@ header section ul li .btn_srch {
 }
 #info {
   position: relative;
-  margin-top: 150px;
+  margin-top: 120px;
   width: 1024px;
   margin-left: auto;
   margin-right: auto;
@@ -85,15 +85,15 @@ header section ul li .btn_srch {
 #info a {
   color: black;
 }
-#info ul {
+#info .infoUl {
   list-style: none;
   padding: 50px 24px;
 }
-#info ul li {
+#info .infoUl li {
   line-height: 100px;
   border-bottom: 1px solid gainsboro;
 }
-#info div {
+#info #gogo {
   position: relative;
   margin: 50px 24px;
 }
@@ -206,7 +206,7 @@ header section ul li .btn_srch {
 #SignUpTitle {
   padding-top: 20px;
   text-align: center;
-  font-size: 20px;
+  font-size: 30px;
 }
 #SignUpSection #SignUpItemContainer {
   padding-top: 20px;
@@ -354,6 +354,84 @@ header section ul li .btn_srch {
   margin-left: auto;
   margin-right: auto;
 }
+#userInfoModifyContainer {
+  padding-top: 50px;
+  width: 612px;
+  margin: 0 auto;
+}
+#userInfoModifyContainer .infoTitle {
+  font-size: 25px;
+  color: gray;
+}
+.infoFlex {
+  display: flex;
+  justify-content: space-between;
+}
+#userInfoModifyContainer .infoValue {
+  font-size: 25px;
+  margin-top: 20px;
+}
+#userInfoModifyContainer .infoModify {
+  margin-top: 20px;
+  font-size: 25px;
+  padding: 5px 20px;
+  background-color: white;
+  border: 1px solid gainsboro;
+  border-radius: 20px;
+}
+#selectTagFlex {
+  display: flex;
+}
+#selectTagFlex .selectTag {
+  font-size: 25px;
+  margin-top: 20px;
+  text-underline-offset: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: white;
+}
+#selectTagFlex .selected {
+  text-decoration: underline;
+}
+.histItems ul {
+  list-style: none;
+  padding: 10px 24px;
+}
+.histItems .histItem {
+  padding: 30px 0;
+  line-height: 10px;
+  border: none;
+  display: flex;
+}
+.storeImg {
+  width: 150px;
+  height: 150px;
+  border: 1px solid gainsboro;
+  border-radius: 20px;
+}
+.storeInfo .storeInfoTitle {
+  font-size: 30px;
+  padding: 15px;
+  font-weight: bold;
+}
+.storeInfo .storeInfoReview {
+  font-size: 20px;
+  padding: 10px 15px;
+}
+.storeInfo .storeInfoState {
+  font-size: 20px;
+  padding: 10px 15px;
+  color: red;
+}
+.storeInfo .storeInfoCancle {
+  margin-left: 10px;
+  padding: 10px 15px;
+  font-size: 20px;
+  color: dodgerblue;
+  border: none;
+  background-color: lightskyblue;
+  border-radius: 10px;
+}
 @media screen and (max-width: 1024px) {
   /*mobile*/
   body {
@@ -437,7 +515,7 @@ header section ul li .btn_srch {
   #info ul {
     padding: 50px 10px;
   }
-  #info div {
+  #info #gogo {
     margin: 20px 10px;
   }
   #SignUpSection {
@@ -484,6 +562,11 @@ header section ul li .btn_srch {
   }
   #mostSearchedList {
     width: 95vw;
+  }
+  #userInfoModifyContainer {
+    padding-top: 50px;
+    width: auto;
+    margin: 0;
   }
 }
 @media screen and (max-width: 375px) {
