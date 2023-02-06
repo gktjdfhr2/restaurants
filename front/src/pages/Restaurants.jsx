@@ -2,12 +2,12 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import UserHeader from './UserHeader';
 import MainBody from './MainBody';
-import UserInfo from '../pages/UserInfo';
+import UserInfo from '../components/UserInfo';
 import UserSearch from './UserSearch';
 import SignIn from './SignIn';
-import RecentViewedHist from '../pages/RecentViewedHist';
-import RemoteLineHist from '../pages/RemoteLineHist';
-import ReservationHist from '../pages/ReservationHist';
+import RecentViewedHist from '../components/RecentViewedHist';
+import RemoteLineHist from '../components/RemoteLineHist';
+import ReservationHist from './ReservationHist';
 import SignUp from './SignUp';
 import UserInfoModify from './UserInfoModify';
 

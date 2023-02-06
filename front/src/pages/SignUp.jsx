@@ -1,42 +1,45 @@
 import React, { useState, useCallback } from 'react';
 import axios from 'axios';
-import SignUpId from '../pages/SignUpId';
-import SignUpPassword from '../pages/SignUpPassword';
+import SignUpId from '../components/SignUpId';
+import SignUpPassword from '../components/SignUpPassword';
 
 function SignUp() {
   console.log('siginUp');
 
   const [signUpInfo, setSignUpInfo] = useState({
     userId: '',
-    userPw1: '',
-    userPw2: '',
+    userPassword: '',
     userName: '',
     userAddress: '',
     userPhoneNum: '',
     userType: '고객',
   });
+  const [checkPassword, setCheckPassword] = useState('');
+
   /** 아이디 입력 */
   const userIdHandle = useCallback(
     (inputId) => {
       setSignUpInfo((prev) => ({ ...prev, userId: inputId }));
+      console.log(signUpInfo.userId);
     },
     [signUpInfo.userId],
   );
 
   /** 비밀번호 입력 확인 */
   const pwHandleChange = useCallback(
-    (inputPw1) => {
-      setSignUpInfo((prev) => ({ ...prev, userPw1: inputPw1 }));
+    (inputPassword) => {
+      setSignUpInfo((prev) => ({ ...prev, userPassword: inputPassword }));
+      console.log(signUpInfo.userPassword);
     },
-    [signUpInfo.userPw1],
+    [signUpInfo.userPassword],
   );
 
   /** 비밀번호 일치 확인 */
   const pwCheckHandle = useCallback(
     (inputPw2) => {
-      setSignUpInfo((prev) => ({ ...prev, userPw2: inputPw2 }));
+      setCheckPassword(inputPw2);
     },
-    [signUpInfo.userPw2],
+    [checkPassword],
   );
 
   /** 이름 입력 확인 */
@@ -91,8 +94,8 @@ function SignUp() {
         <SignUpId userId={signUpInfo.userId} userIdHandle={userIdHandle} />
 
         <SignUpPassword
-          userPw1={signUpInfo.userPw1}
-          userPw2={signUpInfo.userPw2}
+          userPw1={signUpInfo.userPassword}
+          userPw2={checkPassword}
           userPwHandle={pwHandleChange}
           pwCheckHandle={pwCheckHandle}
         />

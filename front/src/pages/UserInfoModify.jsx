@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UserInfoModifyItems from '../pages/UserInfoModifyItems';
+import UserInfoModifyItems from '../components/UserInfoModifyItems';
 
 function UserInfoModify() {
   const [userInfo] = useState({
