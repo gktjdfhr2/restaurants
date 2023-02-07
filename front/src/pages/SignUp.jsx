@@ -43,24 +43,36 @@ function SignUp() {
   );
 
   /** 이름 입력 확인 */
-  const userNameHandle = (event) => {
-    setSignUpInfo({ ...signUpInfo, userName: event.target.value });
-  };
+  const userNameHandle = useCallback(
+    (event) => {
+      setSignUpInfo({ ...signUpInfo, userName: event.target.value });
+    },
+    [signUpInfo.userName],
+  );
 
   /** 주소 입력 확인 */
-  const userAddressHandle = (event) => {
-    setSignUpInfo({ ...signUpInfo, userAddress: event.target.value });
-  };
+  const userAddressHandle = useCallback(
+    (event) => {
+      setSignUpInfo({ ...signUpInfo, userAddress: event.target.value });
+    },
+    [signUpInfo.userAddress],
+  );
 
   /** 핸드폰번호 입력 확인 */
-  const userPhoneNumHandle = (event) => {
-    setSignUpInfo({ ...signUpInfo, userPhoneNum: event.target.value });
-  };
+  const userPhoneNumHandle = useCallback(
+    (event) => {
+      setSignUpInfo({ ...signUpInfo, userPhoneNum: event.target.value });
+    },
+    [signUpInfo.userPhoneNum],
+  );
 
   /** 회원 유형 확인 */
-  const userTypeHandle = (event) => {
-    setSignUpInfo({ ...signUpInfo, userType: event.target.value });
-  };
+  const userTypeHandle = useCallback(
+    (event) => {
+      setSignUpInfo({ ...signUpInfo, userType: event.target.value });
+    },
+    [signUpInfo.userType],
+  );
 
   const register = () => {
     axios
