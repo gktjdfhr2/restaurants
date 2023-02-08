@@ -4,18 +4,21 @@ import axios from 'axios';
 
 function SigninInput() {
   console.log('signInInput');
-  const [signInCheck, setSignInCheck] = useState({ idCheck: '', pwCheck: '' });
+  const [signInCheck, setSignInCheck] = useState({
+    userEmail: '',
+    userPasswd: '',
+  });
 
   const loginIdHandle = (event) => {
-    setSignInCheck({ ...signInCheck, idCheck: event.target.value });
+    setSignInCheck({ ...signInCheck, userEmail: event.target.value });
   };
   const loginPwHandle = (event) => {
-    setSignInCheck({ ...signInCheck, pwCheck: event.target.value });
+    setSignInCheck({ ...signInCheck, userPasswd: event.target.value });
   };
 
   const register = () => {
     axios
-      .post('localhost:3000/api/auth/login', signInCheck)
+      .post('localhost:8080/api/auth/signIn', signInCheck)
       .then((response) => {
         console.log(response);
         console.log('data:', response.data.user);
@@ -38,14 +41,14 @@ function SigninInput() {
         <input
           type="text"
           id="SignInId"
-          value={signInCheck.idCheck}
+          value={signInCheck.userEmail}
           onChange={loginIdHandle}
           placeholder="아이디"
         />
         <input
           type="password"
           id="SignInPw"
-          value={signInCheck.pwCheck}
+          value={signInCheck.userPasswd}
           onChange={loginPwHandle}
           placeholder="비밀번호"
         />
