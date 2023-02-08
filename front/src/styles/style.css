@@ -481,13 +481,49 @@ ul ol li {
   background-color: lightskyblue;
   border-radius: 10px;
 }
+.proprietorSection {
+  margin-top: 100px;
+}
+.proprietorSection ul {
+  list-style: none;
+  padding: 0;
+}
+.flexUl {
+  display: flex;
+  width: 100vw;
+}
+.flexUl .flexLi {
+  width: 100vw;
+  height: 96px;
+  display: flex;
+  justify-content: space-between;
+}
+.flexUl li ul {
+  margin: 0 10px;
+}
+.flexUl .flexLi ul:nth-of-type(1) {
+  flex-grow: 0;
+  text-align: center;
+}
+.flexUl .flexLi ul:nth-of-type(2) {
+  flex-grow: 3;
+  text-align: left;
+}
+.flexUl .flexLi ul:nth-of-type(3) {
+  flex-grow: 0;
+  text-align: center;
+}
+.flexUl .flexLi ul:nth-of-type(4) {
+  flex-grow: 0;
+  text-align: center;
+}
 @media screen and (max-width: 1024px) {
   /*mobile*/
   body {
     margin: 0;
   }
 
-  .userHeader > a {
+  .userHeader a {
     color: cornflowerblue;
   }
   #SignInSection {
@@ -617,8 +653,11 @@ ul ol li {
     width: auto;
     margin: 0;
   }
-  .proprietorHeader > a {
+  .proprietorHeader a {
     color: white;
+  }
+  .userHeader a {
+    color: cornflowerblue;
   }
 }
 @media screen and (max-width: 375px) {
@@ -637,7 +676,10 @@ ul ol li {
   #recentSearchList {
     display: none;
   }
-  .proprietorHeader > a {
+  .proprietorHeader a {
     color: white;
+  }
+  .userHeader a {
+    color: cornflowerblue;
   }
 }
