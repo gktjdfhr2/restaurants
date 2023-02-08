@@ -1,7 +1,16 @@
 * {
   outline: 0;
 }
-header {
+.userHeader {
+  background-color: cornflowerblue;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  color: white;
+}
+.proprietorHeader {
   background-color: cornflowerblue;
   position: fixed;
   top: 0;
@@ -31,26 +40,29 @@ ul ol li {
   border: 0;
   box-sizing: border-box;
 }
-header section {
+.marginAuto {
+  margin: auto;
+}
+.userHeader section {
   position: relative;
   width: 1024px;
-  height: 64px;
+  height: 72px;
   background: none;
   margin: 0 auto;
 }
-header section h2 {
+.userHeader section h2 {
   position: absolute;
   left: 31px;
   margin: 0;
   font-size: 20px;
   background-size: 96px auto;
 }
-header section #Logo {
+.userHeader section #Logo {
   display: inline-block;
   height: 48px;
   margin: 12px 0;
 }
-header section h2 div {
+.userHeader section h2 div {
   position: absolute;
   display: inline-block;
   font-size: 20px;
@@ -58,7 +70,7 @@ header section h2 div {
   width: 86px;
   margin: 26px 2px;
 }
-header section ul li .btn_srch {
+.userHeader section ul li .btn_srch {
   border: none;
   text-indent: -9999px;
   z-index: 10;
@@ -69,6 +81,51 @@ header section ul li .btn_srch {
   padding-bottom: 20px;
   padding-left: 20px;
   background-color: cornflowerblue;
+}
+.proprietorHeader section {
+  display: flex;
+  justify-content: space-between;
+  height: 72px;
+}
+.proprietorHeader section h2 {
+  left: 31px;
+  margin-left: 10px;
+  margin-right: auto;
+  margin-top: auto;
+  font-size: 20px;
+  background-size: 96px auto;
+}
+.proprietorHeader section #Logo {
+  display: inline-block;
+  height: 48px;
+  margin: 12px 0;
+}
+.proprietorHeader section h2 div {
+  position: absolute;
+  display: inline-block;
+  font-size: 20px;
+  height: 20px;
+  width: 86px;
+  margin: 26px 2px;
+}
+.proprietorHeader section #proprietorHeaderDate {
+  width: 128px;
+  height: 30px;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  padding: 10px;
+}
+.proprietorHeaderSpan {
+  text-align: right;
+  margin: auto 10px;
+}
+#react-kakao-maps-sdk-map-container {
+  width: 1024px;
+  height: 360px;
+  position: relative;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 #info {
   position: relative;
@@ -125,14 +182,6 @@ header section ul li .btn_srch {
   font-size: 18px;
   color: rgba(255, 255, 255, 0.8);
   letter-spacing: 0;
-}
-#react-kakao-maps-sdk-map-container {
-  width: 1025px;
-  height: 360px;
-  position: relative;
-  margin-top: 100px;
-  margin-left: auto;
-  margin-right: auto;
 }
 #SignInInfo {
   width: 425px;
@@ -432,13 +481,49 @@ header section ul li .btn_srch {
   background-color: lightskyblue;
   border-radius: 10px;
 }
+.proprietorSection {
+  margin-top: 100px;
+}
+.proprietorSection ul {
+  list-style: none;
+  padding: 0;
+}
+.flexUl {
+  display: flex;
+  width: 100vw;
+}
+.flexUl .flexLi {
+  width: 100vw;
+  height: 96px;
+  display: flex;
+  justify-content: space-between;
+}
+.flexUl li ul {
+  margin: 0 10px;
+}
+.flexUl .flexLi ul:nth-of-type(1) {
+  flex-grow: 0;
+  text-align: center;
+}
+.flexUl .flexLi ul:nth-of-type(2) {
+  flex-grow: 3;
+  text-align: left;
+}
+.flexUl .flexLi ul:nth-of-type(3) {
+  flex-grow: 0;
+  text-align: center;
+}
+.flexUl .flexLi ul:nth-of-type(4) {
+  flex-grow: 0;
+  text-align: center;
+}
 @media screen and (max-width: 1024px) {
   /*mobile*/
   body {
     margin: 0;
   }
 
-  a {
+  .userHeader a {
     color: cornflowerblue;
   }
   #SignInSection {
@@ -454,23 +539,23 @@ header section ul li .btn_srch {
     width: 100vw;
     margin: 0;
   }
-  header {
+  .userHeader {
     position: relative;
     display: block;
     top: 0%;
     background-color: white;
     color: cornflowerblue;
   }
-  header section {
+  .userHeader section {
     width: 100%;
     height: 44px;
   }
-  header section h2 {
+  .userHeader section h2 {
     position: absolute;
     left: 3vw;
     margin: 0;
   }
-  header section h2 div {
+  .userHeader section h2 div {
     position: absolute;
     display: inline-block;
     font-size: 20px;
@@ -500,7 +585,7 @@ header section ul li .btn_srch {
     color: cornflowerblue;
     letter-spacing: 0;
   }
-  header section ul li .btn_srch {
+  .userHeader section ul li .btn_srch {
     font-size: 13px;
     background: url(../assets/mobile-magnifying-glass.png);
     background-size: 22px;
@@ -568,15 +653,21 @@ header section ul li .btn_srch {
     width: auto;
     margin: 0;
   }
+  .proprietorHeader a {
+    color: white;
+  }
+  .userHeader a {
+    color: cornflowerblue;
+  }
 }
 @media screen and (max-width: 375px) {
   .ul_header li a {
     font-size: 13px;
   }
-  header section ul li .btn_srch {
+  .userHeader section ul li .btn_srch {
     font-size: 13px;
   }
-  header section h2 div {
+  .userHeader section h2 div {
     display: none;
   }
   #recentSearch {
@@ -584,5 +675,11 @@ header section ul li .btn_srch {
   }
   #recentSearchList {
     display: none;
+  }
+  .proprietorHeader a {
+    color: white;
+  }
+  .userHeader a {
+    color: cornflowerblue;
   }
 }

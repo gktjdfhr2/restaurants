@@ -5,9 +5,9 @@ import ImgLogo from '../assets/placeholder.png';
 function Header() {
   console.log('Header');
   return (
-    <header>
+    <header className="userHeader">
       <section>
-        <h2>
+        <h2 id="userH2">
           <Link to="/">
             <img id="Logo" src={ImgLogo} alt="맛집지도" />
             <div>맛집지도</div>

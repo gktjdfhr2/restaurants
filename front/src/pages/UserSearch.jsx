@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import RecommendStoreList from '../components/RecommendStoreList';
 import MostSearched from '../components/MostSearched';
 
@@ -6,9 +6,12 @@ function UserSearch() {
   console.log('userSearch');
   const [searchKeyword, setSearchKeyword] = useState('');
 
-  const searchKeywordHandle = (event) => {
-    setSearchKeyword(event.target.value);
-  };
+  const searchKeywordHandle = useCallback(
+    (event) => {
+      setSearchKeyword(event.target.value);
+    },
+    [searchKeyword],
+  );
   const searchSubmitHandle = (event) => {
     event.preventDefault();
     console.log(searchKeyword);
@@ -16,7 +19,6 @@ function UserSearch() {
 
   return (
     <>
-      {' '}
       <section id="searchForm">
         <div id="searchTextWrap">
           <form onSubmit={searchSubmitHandle}>

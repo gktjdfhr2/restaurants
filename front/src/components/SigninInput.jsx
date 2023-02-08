@@ -15,7 +15,7 @@ function SigninInput() {
 
   const register = () => {
     axios
-      .post('localhost:3000/account/login', signInCheck)
+      .post('localhost:3000/api/auth/login', signInCheck)
       .then((response) => {
         console.log(response);
         console.log('data:', response.data.user);
