@@ -8,20 +8,20 @@ function ProprietorMainBody() {
         <ul className="flexUl">
           <li className="flexLi">
             <ul>
-              <li>47</li>
-              <li>18 : 20</li>
+              <li className="topLi stayNum">47</li>
+              <li className="bottomLi stayStart">18 : 20</li>
             </ul>
             <ul>
-              <li>정한결</li>
-              <li>성인 03 유아 00 | 4782</li>
+              <li className="topLi stayName">정한결</li>
+              <li className="bottomLi stayPersonnel">성인 03 유아 00 | 4782</li>
             </ul>
             <ul>
-              <li>호출 아이콘</li>
-              <li>18 : 39</li>
+              <li className="topLi">호출 아이콘</li>
+              <li className="bottomLi">18 : 39</li>
             </ul>
             <ul>
-              <li>대기 아이콘</li>
-              <li>대기중</li>
+              <li className="topLi">대기 아이콘</li>
+              <li className="bottomLi">대기중</li>
             </ul>
           </li>
         </ul>
