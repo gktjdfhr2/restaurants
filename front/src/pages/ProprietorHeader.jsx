@@ -8,13 +8,13 @@ function ProprietorHeader() {
   const mm = `0${now.getMonth() + 1}`.slice(-2);
   const dd = `0${now.getDate()}`.slice(-2);
   const formatDate = `${yyyy}-${mm}-${dd}`;
-  console.log(formatDate);
 
   const [nowDate, setNowDate] = useState(formatDate);
 
   function changeDate(event) {
     setNowDate(event.target.value);
   }
+  console.log(nowDate);
   return (
     <header className="proprietorHeader">
       <section>

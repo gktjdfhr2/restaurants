@@ -491,14 +491,15 @@ ul ol li {
   padding: 0;
 }
 .flexUl {
-  display: flex;
+  margin: 0;
+  border-top: 1px solid gainsboro;
 }
 .flexUl .flexLi {
-  width: 100vw;
   height: 96px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid gainsboro;
 }
 .flexUl li ul {
   margin: 0 10px;
@@ -562,6 +563,32 @@ ul ol li {
 }
 .flexUl .flexLi ul:nth-of-type(4) .stayState {
   line-height: 35px;
+}
+.stayMoreInfo {
+  display: flex;
+  height: 80px;
+  background-color: gainsboro;
+  margin: 0;
+}
+.stayMoreInfo li {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5px;
+}
+.stayMoreInfo li ul:nth-of-type(3) {
+  position: absolute;
+  right: 25px;
+}
+.stayCancle {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: url(../assets/stop-button.png);
+  background-size: 40px;
+  background-repeat: no-repeat;
+  text-indent: -9999px;
+  margin-left: 7px;
 }
 @media screen and (max-width: 1024px) {
   /*mobile*/
