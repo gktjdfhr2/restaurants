@@ -1,8 +1,10 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React, { useState } from 'react';
 import StayMoreInfo from './StayMoreInfo';
 
 function ProprietorStayList() {
-  //   const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState(false);
 
   function callClick() {
     console.log('call');
@@ -10,14 +12,13 @@ function ProprietorStayList() {
   function stayingClick() {
     console.log('staying');
   }
-  //   function checkClicked() {
-  //     //   setClicked(true);
-  //     //   onClick={checkClicked}
-  //     console.log('click');
-  //   }
+  function checkClicked() {
+    setClicked(!clicked);
+    console.log('click');
+  }
   return (
     <ul className="flexUl">
-      <li className="flexLi">
+      <li className="flexLi" onClick={checkClicked}>
         <ul>
           <li className="topLi stayNum">47</li>
           <li className="bottomLi stayStart">18 : 20</li>
@@ -47,7 +48,7 @@ function ProprietorStayList() {
           <li className="bottomLi stayState">대기중</li>
         </ul>
       </li>
-      <StayMoreInfo />
+      {clicked && <StayMoreInfo />}
     </ul>
   );
 }
