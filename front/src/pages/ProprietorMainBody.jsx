@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropritorStayList from '../components/PropritorStayList';
+import ProprietorHistList from '../components/ProprietorHistList';
 
 function ProprietorMainBody() {
   const [showState, setShowState] = useState({
@@ -51,8 +52,8 @@ function ProprietorMainBody() {
         </div>
         {showState.histListShow && (
           <>
-            <div>hist</div>
-            <div>items</div>
+            <ProprietorHistList />
+            <ProprietorHistList />
           </>
         )}
       </div>

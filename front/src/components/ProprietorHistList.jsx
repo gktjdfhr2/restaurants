@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
-import StayMoreInfo from './StayMoreInfo';
+import HistMoreInfo from './HistMoreInfo';
 
-function ProprietorStayList() {
+function ProprietorHistList() {
   const [clicked, setClicked] = useState(false);
 
   function callClick(event) {
@@ -12,7 +12,7 @@ function ProprietorStayList() {
   }
   function stayingClick(event) {
     event.stopPropagation();
-    console.log('staying');
+    console.log('stayCheck');
   }
   function checkClicked() {
     setClicked(!clicked);
@@ -41,18 +41,18 @@ function ProprietorStayList() {
           <li className="topLi">
             <button
               type="button"
-              className="stayingButton"
+              className="stayCheckButton"
               onClick={stayingClick}
             >
               대기
             </button>
           </li>
-          <li className="bottomLi stayState">대기중</li>
+          <li className="bottomLi stayState">18 : 40</li>
         </ul>
       </li>
-      {clicked && <StayMoreInfo />}
+      {clicked && <HistMoreInfo />}
     </ul>
   );
 }
 
-export default ProprietorStayList;
+export default ProprietorHistList;
