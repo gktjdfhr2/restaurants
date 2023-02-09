@@ -529,15 +529,39 @@ ul ol li {
   line-height: 50px;
 }
 .flexUl .flexLi ul:nth-of-type(2) .stayPersonnel {
-  line-height: 30px;
+  line-height: 35px;
 }
 .flexUl .flexLi ul:nth-of-type(3) {
   flex-grow: 0;
   text-align: center;
 }
+.flexUl .flexLi ul:nth-of-type(3) .callButton {
+  width: 50px;
+  height: 50px;
+  border: none;
+  background: url(../assets/volume.png);
+  background-size: 50px;
+  background-repeat: no-repeat;
+  text-indent: -9999px;
+}
+.flexUl .flexLi ul:nth-of-type(3) .recentCall {
+  line-height: 35px;
+}
 .flexUl .flexLi ul:nth-of-type(4) {
   flex-grow: 0;
   text-align: center;
+}
+.flexUl .flexLi ul:nth-of-type(4) .stayingButton {
+  width: 50px;
+  height: 50px;
+  border: none;
+  background: url(../assets/hourglass.png);
+  background-size: 50px;
+  background-repeat: no-repeat;
+  text-indent: -9999px;
+}
+.flexUl .flexLi ul:nth-of-type(4) .stayState {
+  line-height: 35px;
 }
 @media screen and (max-width: 1024px) {
   /*mobile*/
