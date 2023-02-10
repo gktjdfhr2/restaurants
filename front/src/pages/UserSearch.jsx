@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import RecommendStoreList from '../components/RecommendStoreList';
-import MostSearched from '../components/MostSearched';
+import RecommendStoreList from '../components/UserSearch/RecommendStoreList';
+import MostSearched from '../components/UserSearch/MostSearched';
 
 function UserSearch() {
   console.log('userSearch');

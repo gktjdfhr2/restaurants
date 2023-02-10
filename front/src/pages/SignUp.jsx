@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import axios from 'axios';
-import SignUpId from '../components/SignUpId';
-import SignUpPassword from '../components/SignUpPassword';
+import SignUpId from '../components/SignUp/SignUpId';
+import SignUpPassword from '../components/SignUp/SignUpPassword';
 
 function SignUp() {
   console.log('siginUp');

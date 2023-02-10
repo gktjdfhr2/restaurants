@@ -19,6 +19,10 @@ function ProprietorHistList({ histListShow, showHistButton }) {
         <>
           <ProprietorHistListItems />
           <ProprietorHistListItems />
+          <ProprietorHistListItems />
+          <ProprietorHistListItems />
+          <ProprietorHistListItems />
+          <ProprietorHistListItems />
         </>
       )}
     </>

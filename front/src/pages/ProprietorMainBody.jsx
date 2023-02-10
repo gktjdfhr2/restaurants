@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import ProprietorStayList from '../components/ProprietorStayList';
-import ProprietorHistList from '../components/ProprietorHistList';
+import ProprietorStayList from '../components/ProprietorMainBody/ProprietorStayList';
+import ProprietorHistList from '../components/ProprietorMainBody/ProprietorHistList';
 
 function ProprietorMainBody() {
   const [showState, setShowState] = useState({
@@ -25,7 +25,7 @@ function ProprietorMainBody() {
 
   return (
     <section className="proprietorSection">
-      <div>
+      <div className="ProprietorListBox">
         <ProprietorStayList
           stayListShow={showState.stayListShow}
           showStayButton={showStayButton}

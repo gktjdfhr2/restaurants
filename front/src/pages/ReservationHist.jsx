@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ReservationHistItems from '../components/ReservationHistItems';
+import ReservationHistItems from '../components/ReservationHist/ReservationHistItems';
 
 function ReservationHist() {
   console.log('ReservationHist');

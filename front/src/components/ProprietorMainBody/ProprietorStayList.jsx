@@ -19,6 +19,10 @@ function ProprietorStayList({ stayListShow, showStayButton }) {
         <>
           <PropritorStayListItems />
           <PropritorStayListItems />
+          <PropritorStayListItems />
+          <PropritorStayListItems />
+          <PropritorStayListItems />
+          <PropritorStayListItems />
         </>
       )}
     </>

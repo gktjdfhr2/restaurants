@@ -1,6 +1,6 @@
 import React from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
-import RecommendRestaurants from '../components/RecommendRestaurants';
+import RecommendRestaurants from '../components/mainBody/RecommendRestaurants';
 
 function MainBody() {
   return (
