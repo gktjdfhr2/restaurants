@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 function HistMoreInfo() {
-  function stayback() {
-    console.log('stayCancle');
-  }
+  const stayback = useCallback(() => {
+    console.log('stayReturn');
+  });
+
   return (
     <ul className="stayMoreInfo">
       <li>

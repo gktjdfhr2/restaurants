@@ -1,23 +1,16 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import HistMoreInfo from './HistMoreInfo';
 
 function ProprietorHistList() {
   const [clicked, setClicked] = useState(false);
 
-  function callClick(event) {
-    event.stopPropagation();
-    console.log('call');
-  }
-  function stayingClick(event) {
-    event.stopPropagation();
-    console.log('stayCheck');
-  }
-  function checkClicked() {
+  const checkClicked = useCallback(() => {
     setClicked(!clicked);
-    console.log('click');
-  }
+    console.log('clicked');
+  }, [clicked]);
+
   return (
     <ul className="flexUl">
       <li className="flexLi" onClick={checkClicked}>
@@ -31,21 +24,13 @@ function ProprietorHistList() {
         </ul>
         <ul>
           <li className="topLi">
-            <button type="button" className="callButton" onClick={callClick}>
-              호출
-            </button>
+            <div className="callButton">호출</div>
           </li>
           <li className="bottomLi recentCall">18 : 39</li>
         </ul>
         <ul>
           <li className="topLi">
-            <button
-              type="button"
-              className="stayCheckButton"
-              onClick={stayingClick}
-            >
-              대기
-            </button>
+            <div className="stayCheckButton">대기</div>
           </li>
           <li className="bottomLi stayState">18 : 40</li>
         </ul>

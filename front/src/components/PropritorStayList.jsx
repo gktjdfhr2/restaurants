@@ -1,23 +1,26 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import StayMoreInfo from './StayMoreInfo';
 
 function ProprietorStayList() {
   const [clicked, setClicked] = useState(false);
 
-  function callClick(event) {
+  const callClick = useCallback((event) => {
     event.stopPropagation();
     console.log('call');
-  }
-  function stayingClick(event) {
+  }, []);
+
+  const stayingClick = useCallback((event) => {
     event.stopPropagation();
     console.log('staying');
-  }
-  function checkClicked() {
+  }, []);
+
+  const checkClicked = useCallback(() => {
     setClicked(!clicked);
     console.log('click');
-  }
+  }, [clicked]);
+
   return (
     <ul className="flexUl">
       <li className="flexLi" onClick={checkClicked}>

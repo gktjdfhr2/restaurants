@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 function StayMoreInfo() {
-  function stayCancle() {
+  const stayCancle = useCallback(() => {
     console.log('stayCancle');
-  }
+  }, []);
   return (
     <ul className="stayMoreInfo">
       <li>
