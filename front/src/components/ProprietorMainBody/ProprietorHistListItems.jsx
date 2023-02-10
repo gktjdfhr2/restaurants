@@ -16,7 +16,7 @@ function ProprietorHistList() {
       <li className="flexLi" onClick={checkClicked}>
         <ul>
           <li className="topLi stayNum">47</li>
-          <li className="bottomLi stayStart">18 : 20</li>
+          <li className="bottomLi stayStart">18 : 21</li>
         </ul>
         <ul>
           <li className="topLi stayName">정한결</li>
