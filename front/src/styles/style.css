@@ -616,12 +616,33 @@ ul ol li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
+}
+.stayListTitleShow {
+  height: 30px;
+  border: 1px solid gainsboro;
+  border-radius: 10px 10px 0 0;
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.openButton {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: url(../assets/up-arrow.png);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  text-indent: -9999px;
+  margin-right: 10px;
 }
 .closeButton {
   width: 20px;
   height: 20px;
   border: none;
-  background: url(../assets/up-arrow.png);
+  background: url(../assets/down-arrow.png);
   background-size: 20px;
   background-repeat: no-repeat;
   text-indent: -9999px;

@@ -13,24 +13,28 @@ function ProprietorMainBody() {
       stayListShow: !showState.stayListShow,
       histListShow: !showState.histListShow,
     });
-  }, [showState.histListShow, showState.stayListShow]);
+  }, [showState.stayListShow]);
 
-  const showHisyButton = useState(() => {
+  const showHistButton = useCallback(() => {
     console.log('showHistButton');
     setShowState({
       histListShow: !showState.histListShow,
       stayListShow: !showState.stayListShow,
     });
-  }, [showState.histListShow, showState.stayListShow]);
+  }, [showState.histListShow]);
 
   return (
     <section className="proprietorSection">
       <div>
-        <div className="stayListTitle">
+        <div
+          className={
+            showState.stayListShow ? 'stayListTitleShow' : 'stayListTitle'
+          }
+        >
           대기 목록
           <button
             type="button"
-            className="closeButton"
+            className={showState.stayListShow ? 'openButton' : 'closeButton'}
             onClick={showStayButton}
           >
             show
@@ -42,12 +46,16 @@ function ProprietorMainBody() {
             <PropritorStayList />
           </>
         )}
-        <div className="stayListTitle">
+        <div
+          className={
+            showState.histListShow ? 'stayListTitleShow' : 'stayListTitle'
+          }
+        >
           히스토리
           <button
             type="button"
-            className="closeButton"
-            onClick={showHisyButton}
+            className={showState.histListShow ? 'openButton' : 'closeButton'}
+            onClick={showHistButton}
           >
             show
           </button>
