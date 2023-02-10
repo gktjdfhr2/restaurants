@@ -9,18 +9,18 @@ function ProprietorMainBody() {
   });
   const showStayButton = useCallback(() => {
     console.log('showStayButton');
-    setShowState({
+    setShowState((prev) => ({
+      ...prev,
       stayListShow: !showState.stayListShow,
-      histListShow: !showState.histListShow,
-    });
+    }));
   }, [showState.stayListShow]);
 
   const showHistButton = useCallback(() => {
     console.log('showHistButton');
-    setShowState({
+    setShowState((prev) => ({
+      ...prev,
       histListShow: !showState.histListShow,
-      stayListShow: !showState.stayListShow,
-    });
+    }));
   }, [showState.histListShow]);
 
   return (
@@ -35,6 +35,19 @@ function ProprietorMainBody() {
           showHistButton={showHistButton}
         />
       </div>
+      <footer className="proprietorFooter">
+        <ul className="footerUl">
+          <li>
+            <ul className="autoDeadLine">
+              <li>대기 자동 마감 시간</li>
+              <li>21 : 30</li>
+              <li>해당 시간이 되면 자동으로 마감됩니다.</li>
+            </ul>
+          </li>
+          <li>2</li>
+          <li>3</li>
+        </ul>
+      </footer>
     </section>
   );
 }

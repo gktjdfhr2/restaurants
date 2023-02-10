@@ -32,4 +32,17 @@ ProprietorStayList.propTypes = {
   stayListShow: PropTypes.bool.isRequired,
   showStayButton: PropTypes.func.isRequired,
 };
-export default ProprietorStayList;
+
+function areEqual(prevProps, nextProps) {
+  // console.log('boolValue', prevProps.stayListShow === nextProps.stayListShow);
+  // console.log(
+  //   'funcHandle',
+  //   prevProps.showStayButton === nextProps.showStayButton,
+  // );
+  return (
+    // eslint-disable-next-line operator-linebreak
+    prevProps.stayListShow === nextProps.stayListShow &&
+    prevProps.showStayButton === nextProps.showStayButton
+  );
+}
+export default React.memo(ProprietorStayList, areEqual);

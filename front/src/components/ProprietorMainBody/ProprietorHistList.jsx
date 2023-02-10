@@ -32,4 +32,16 @@ ProprietorHistList.propTypes = {
   histListShow: propTypes.bool.isRequired,
   showHistButton: propTypes.func.isRequired,
 };
-export default ProprietorHistList;
+function areEqual(prevProps, nextProps) {
+  // console.log('boolValue', prevProps.histListShow === nextProps.histListShow);
+  // console.log(
+  //   'funcHandle',
+  //   prevProps.showHistButton === nextProps.showHistButton,
+  // );
+  return (
+    // eslint-disable-next-line operator-linebreak
+    prevProps.histListShow === nextProps.histListShow &&
+    prevProps.showHistButton === nextProps.showHistButton
+  );
+}
+export default React.memo(ProprietorHistList, areEqual);

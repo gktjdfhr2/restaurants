@@ -618,6 +618,7 @@ ul ol li {
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
+  padding: 5px;
 }
 .stayListTitleShow {
   height: 30px;
@@ -628,6 +629,7 @@ ul ol li {
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
+  padding: 10px;
 }
 .openButton {
   width: 20px;
@@ -651,8 +653,32 @@ ul ol li {
 }
 .ProprietorListBox {
   padding: 10px;
-  height: 50vh;
+  height: 57vh;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.proprietorFooter {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 25vh;
+  background-color: cornflowerblue;
+}
+.footerUl {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 5px;
+  height: 20vh;
+}
+.footerUl .autoDeadLine {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  flex-direction: column;
 }
 @media screen and (max-width: 1024px) {
   /*mobile*/
