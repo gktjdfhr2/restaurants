@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 function RecommendRestaurants() {
   console.log('RecommendRestaurants');
   // eslint-disable-next-line operator-linebreak
   const [restaurantsClassification, setRestaurantsClassification] =
     useState('가까운 거리순');
-  const recommendRestaurantsClassification = (event) => {
+  const recommendRestaurantsClassification = useCallback((event) => {
     setRestaurantsClassification(event.target.value);
-  };
+  }, []);
   return (
     <section id="recommendRestaurants">
       <div id="recommendRestaurantsTitle">주변 맛집 다 모여라!</div>

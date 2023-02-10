@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -9,14 +9,22 @@ function SigninInput() {
     userPasswd: '',
   });
 
-  const loginIdHandle = (event) => {
-    setSignInCheck({ ...signInCheck, userEmail: event.target.value });
-  };
-  const loginPwHandle = (event) => {
-    setSignInCheck({ ...signInCheck, userPasswd: event.target.value });
-  };
+  const loginIdHandle = useCallback(
+    (event) => {
+      setSignInCheck({ ...signInCheck, userEmail: event.target.value });
+    },
+    [signInCheck.userEmail],
+  );
+
+  const loginPwHandle = useCallback(
+    (event) => {
+      setSignInCheck({ ...signInCheck, userPasswd: event.target.value });
+    },
+    [signInCheck.userPasswd],
+  );
 
   const register = () => {
+    // TODO callback사용하기
     console.log(signInCheck);
     axios
       .post('localhost:8080/api/auth/signIn', signInCheck)
@@ -30,11 +38,11 @@ function SigninInput() {
       });
   };
 
-  const loginSubmit = (event) => {
+  const loginSubmit = useCallback((event) => {
     event.preventDefault();
     console.log('submit');
     register();
-  };
+  }, []);
 
   return (
     <form onSubmit={loginSubmit}>

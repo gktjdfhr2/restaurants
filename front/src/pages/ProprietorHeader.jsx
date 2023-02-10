@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import ImgLogo from '../assets/placeholder.png';
 
@@ -11,10 +11,13 @@ function ProprietorHeader() {
 
   const [nowDate, setNowDate] = useState(formatDate);
 
-  function changeDate(event) {
-    setNowDate(event.target.value);
-  }
-  console.log(nowDate);
+  const changeDate = useCallback(
+    (event) => {
+      setNowDate(event.target.value);
+      console.log(event.target.value);
+    },
+    [nowDate],
+  );
   return (
     <header className="proprietorHeader">
       <section>

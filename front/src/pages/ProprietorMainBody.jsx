@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropritorStayList from '../components/PropritorStayList';
 import ProprietorHistList from '../components/ProprietorHistList';
 
@@ -7,20 +7,22 @@ function ProprietorMainBody() {
     stayListShow: true,
     histListShow: false,
   });
-  function showStayButton() {
+  const showStayButton = useCallback(() => {
     console.log('showStayButton');
     setShowState({
       stayListShow: !showState.stayListShow,
       histListShow: !showState.histListShow,
     });
-  }
-  function showHisyButton() {
+  }, [showState.histListShow, showState.stayListShow]);
+
+  const showHisyButton = useState(() => {
     console.log('showHistButton');
     setShowState({
       histListShow: !showState.histListShow,
       stayListShow: !showState.stayListShow,
     });
-  }
+  }, [showState.histListShow, showState.stayListShow]);
+
   return (
     <section className="proprietorSection">
       <div>

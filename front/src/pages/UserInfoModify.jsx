@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import UserInfoModifyItems from '../components/UserInfoModifyItems';
 
 function UserInfoModify() {
@@ -8,9 +8,9 @@ function UserInfoModify() {
     phoneNum: '01012345678',
     password: 'qlalfqjsgh',
   });
-  const modifyButtonAction = (event) => {
+  const modifyButtonAction = useCallback((event) => {
     console.log(event.target);
-  };
+  }, []);
 
   return (
     <section id="SignUpSection">
