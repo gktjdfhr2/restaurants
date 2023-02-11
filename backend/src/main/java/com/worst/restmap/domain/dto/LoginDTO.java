@@ -1,11 +1,16 @@
 package com.worst.restmap.domain.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class LoginDTO {
+    @NotNull
     private String userEmail;
+    @NotNull
     private String userPasswd;
 }
