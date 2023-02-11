@@ -1,11 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ImgLogo from '../assets/placeholder.png';
+import ImgLogo from '../../../assets/placeholder.png';
+import HeaderLayout from '../../../components/Layouts/Header';
 
 function Header() {
-  console.log('Header');
+  console.log('user-header component rendered');
   return (
-    <header className="userHeader">
+    <HeaderLayout>
+      {/* <div className="logo">
+        <Link to="/">
+          <img id="Logo" src={ImgLogo} alt="맛집지도" />
+          <div>맛집지도</div>
+        </Link>
+      </div> */}
+      {/* <nav className="header-navigation"></nav> */}
+      {/* <div className="header-search"></div> */}
       <section>
         <h2 id="userH2">
           <Link to="/">
@@ -32,7 +41,7 @@ function Header() {
           </li>
         </ul>
       </section>
-    </header>
+    </HeaderLayout>
   );
 }
 

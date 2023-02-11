@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import storeImg from '../../assets/parked-car.png';
+import storeImg from '../../../assets/parked-car.png';
 
 function ReservationHistItems() {
   return (

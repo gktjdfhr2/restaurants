@@ -1,5 +1,5 @@
 import React from 'react';
-import ImgLogo from '../assets/placeholder.png';
+import ImgLogo from '../../assets/placeholder.png';
 import SigninInput from '../components/SignIn/SigninInput';
 
 function SignIn() {

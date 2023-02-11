@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import ImgLogo from '../assets/placeholder.png';
+import ImgLogo from '../../assets/placeholder.png';
 
 function ProprietorHeader() {
   const now = new Date();

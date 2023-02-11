@@ -1,0 +1,167 @@
+@media screen and (max-width: 1024px) {
+  /*mobile*/
+  body {
+    margin: 0;
+  }
+
+  .header-layout a {
+    color: cornflowerblue;
+  }
+  #SignInSection {
+    width: 375px;
+    margin: 0 auto;
+  }
+  #SignInInfo {
+    width: 375px;
+    margin: 50px auto;
+  }
+  #react-kakao-maps-sdk-map-container {
+    height: 360px;
+    width: 100vw;
+    margin: 0;
+  }
+  .header-layout {
+    position: relative;
+    display: block;
+    top: 0%;
+    background-color: white;
+    color: cornflowerblue;
+  }
+  .header-layout section {
+    width: 100%;
+    height: 44px;
+  }
+  .header-layout section h2 {
+    position: absolute;
+    left: 3vw;
+    margin: 0;
+  }
+  .header-layout section h2 div {
+    position: absolute;
+    display: inline-block;
+    font-size: 20px;
+    height: 20px;
+    width: 86px;
+    margin: 26px 2px;
+  }
+  .ul_header {
+    position: absolute;
+    top: 1.5rem;
+    right: 3vw;
+    display: block;
+    width: auto;
+    text-align: right;
+  }
+  .ul_header li {
+    display: inline-block;
+    position: relative;
+    min-width: 1px;
+    min-height: 3px;
+    margin-left: 3vw;
+    vertical-align: top;
+  }
+  .ul_header li a {
+    display: inline-block;
+    font-size: 13px;
+    color: cornflowerblue;
+    letter-spacing: 0;
+  }
+  .header-layout section ul li .btn_srch {
+    font-size: 13px;
+    background: url(../assets/mobile-magnifying-glass.png);
+    background-size: 22px;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+    padding-left: 20px;
+  }
+  #info {
+    width: 100vw;
+    margin-top: 50px;
+  }
+  #info ul {
+    padding: 50px 10px;
+  }
+  #info #gogo {
+    margin: 20px 10px;
+  }
+  #SignUpSection {
+    width: 90vw;
+    margin: 0 auto;
+  }
+  #SignUpSection #SignUpItemContainer {
+    padding-top: 20px;
+    width: 90vw;
+    margin: 0 auto;
+  }
+  #SignUpSection #SignUpItemContainer #infoSubmit {
+    width: 100%;
+    margin: 0;
+    margin-top: 20px;
+  }
+  #SignUpSection #SignUpItemContainer select {
+    width: 101%;
+  }
+  #recommendRestaurantsTitle {
+    display: inline-block;
+    position: absolute;
+    padding-top: 5px;
+  }
+  #restaurantsClassificationTag {
+    display: inline-block;
+    position: absolute;
+    margin: 0;
+    right: 3vw;
+  }
+  #recommendRestaurants {
+    width: 100vw;
+  }
+  #searchForm {
+    width: 100vw;
+    margin: 0;
+  }
+  #searchTextWrap {
+    width: 90vw;
+    left: -20px;
+  }
+  #recentSearchList {
+    width: 95vw;
+  }
+  #mostSearchedList {
+    width: 95vw;
+  }
+  #userInfoModifyContainer {
+    padding-top: 50px;
+    width: auto;
+    margin: 0;
+  }
+  .proprietorHeader a {
+    color: white;
+  }
+  .header-layout a {
+    color: cornflowerblue;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .ul_header li a {
+    font-size: 13px;
+  }
+  .header-layout section ul li .btn_srch {
+    font-size: 13px;
+  }
+  .header-layout section h2 div {
+    display: none;
+  }
+  #recentSearch {
+    display: none;
+  }
+  #recentSearchList {
+    display: none;
+  }
+  .proprietorHeader a {
+    color: white;
+  }
+  .header-layout a {
+    color: cornflowerblue;
+  }
+}
