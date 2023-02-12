@@ -1,8 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import ProprietorHistListItems from './ProprietorHistListItems';
+import BusinessHistListItems from './BusinessHistListItems';
 
-function ProprietorHistList({ histListShow, showHistButton }) {
+function BusinessHistList({ histListShow, showHistButton }) {
   return (
     <>
       <div className={histListShow ? 'stayListTitleShow' : 'stayListTitle'}>
@@ -17,18 +17,18 @@ function ProprietorHistList({ histListShow, showHistButton }) {
       </div>
       {histListShow && (
         <>
-          <ProprietorHistListItems />
-          <ProprietorHistListItems />
-          <ProprietorHistListItems />
-          <ProprietorHistListItems />
-          <ProprietorHistListItems />
-          <ProprietorHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
         </>
       )}
     </>
   );
 }
-ProprietorHistList.propTypes = {
+BusinessHistList.propTypes = {
   histListShow: propTypes.bool.isRequired,
   showHistButton: propTypes.func.isRequired,
 };
@@ -44,4 +44,4 @@ function areEqual(prevProps, nextProps) {
     prevProps.showHistButton === nextProps.showHistButton
   );
 }
-export default React.memo(ProprietorHistList, areEqual);
+export default React.memo(BusinessHistList, areEqual);

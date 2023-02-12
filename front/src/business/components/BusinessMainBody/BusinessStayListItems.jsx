@@ -3,7 +3,7 @@
 import React, { useState, useCallback } from 'react';
 import StayMoreInfo from './StayMoreInfo';
 
-function ProprietorStayList() {
+function BusinessStayList() {
   const [clicked, setClicked] = useState(false);
 
   const callClick = useCallback((event) => {
@@ -58,4 +58,4 @@ function ProprietorStayList() {
   );
 }
 
-export default ProprietorStayList;
+export default BusinessStayList;

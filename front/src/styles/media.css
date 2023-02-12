@@ -44,7 +44,7 @@
     width: 86px;
     margin: 26px 2px;
   }
-  .ul_header {
+  .user-header-ul {
     position: absolute;
     top: 1.5rem;
     right: 3vw;
@@ -52,7 +52,7 @@
     width: auto;
     text-align: right;
   }
-  .ul_header li {
+  .user-header-ul li {
     display: inline-block;
     position: relative;
     min-width: 1px;
@@ -60,7 +60,7 @@
     margin-left: 3vw;
     vertical-align: top;
   }
-  .ul_header li a {
+  .user-header-ul li a {
     display: inline-block;
     font-size: 13px;
     color: cornflowerblue;
@@ -134,7 +134,7 @@
     width: auto;
     margin: 0;
   }
-  .proprietorHeader a {
+  .businessHeader a {
     color: white;
   }
   .header-layout a {
@@ -143,7 +143,7 @@
 }
 
 @media screen and (max-width: 375px) {
-  .ul_header li a {
+  .user-header-ul li a {
     font-size: 13px;
   }
   .header-layout section ul li .btn_srch {
@@ -158,7 +158,7 @@
   #recentSearchList {
     display: none;
   }
-  .proprietorHeader a {
+  .businessHeader a {
     color: white;
   }
   .header-layout a {

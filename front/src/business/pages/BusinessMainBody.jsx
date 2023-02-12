@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
-import ProprietorStayList from '../components/ProprietorMainBody/ProprietorStayList';
-import ProprietorHistList from '../components/ProprietorMainBody/ProprietorHistList';
+import BusinessStayList from '../components/BusinessMainBody/BusinessStayList';
+import BusinessHistList from '../components/BusinessMainBody/BusinessHistList';
 
-function ProprietorMainBody() {
+function BusinessMainBody() {
   const [showState, setShowState] = useState({
     stayListShow: true,
     histListShow: false,
@@ -24,18 +24,18 @@ function ProprietorMainBody() {
   }, [showState.histListShow]);
 
   return (
-    <section className="proprietorSection">
-      <div className="ProprietorListBox">
-        <ProprietorStayList
+    <section className="businessSection">
+      <div className="BusinessListBox">
+        <BusinessStayList
           stayListShow={showState.stayListShow}
           showStayButton={showStayButton}
         />
-        <ProprietorHistList
+        <BusinessHistList
           histListShow={showState.histListShow}
           showHistButton={showHistButton}
         />
       </div>
-      <footer className="proprietorFooter">
+      <footer className="businessFooter">
         <ul className="footerUl">
           <li>
             <ul className="autoDeadLine">
@@ -52,4 +52,4 @@ function ProprietorMainBody() {
   );
 }
 
-export default ProprietorMainBody;
+export default BusinessMainBody;

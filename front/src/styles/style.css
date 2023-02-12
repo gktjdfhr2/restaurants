@@ -2,15 +2,6 @@
   outline: 0;
 }
 
-.proprietorHeader {
-  background-color: cornflowerblue;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 72px;
-  color: white;
-}
 a {
   text-decoration: none;
   cursor: pointer;
@@ -36,43 +27,6 @@ ul ol li {
   margin: auto;
 }
 
-.proprietorHeader section {
-  display: flex;
-  justify-content: space-between;
-  height: 72px;
-}
-.proprietorHeader section h2 {
-  left: 31px;
-  margin-left: 10px;
-  margin-right: auto;
-  margin-top: auto;
-  font-size: 20px;
-  background-size: 96px auto;
-}
-.proprietorHeader section #Logo {
-  display: inline-block;
-  height: 48px;
-  margin: 12px 0;
-}
-.proprietorHeader section h2 div {
-  position: absolute;
-  display: inline-block;
-  font-size: 20px;
-  height: 20px;
-  width: 86px;
-  margin: 26px 2px;
-}
-.proprietorHeader section #proprietorHeaderDate {
-  width: 128px;
-  height: 30px;
-  border: 1px solid gainsboro;
-  border-radius: 10px;
-  padding: 10px;
-}
-.proprietorHeaderSpan {
-  text-align: right;
-  margin: auto 10px;
-}
 #react-kakao-maps-sdk-map-container {
   width: 1024px;
   height: 360px;
@@ -88,7 +42,7 @@ ul ol li {
   margin-left: auto;
   margin-right: auto;
 }
-#info #userInfo {
+#info #customerInfo {
   color: black;
   font-weight: bold;
   font-size: larger;
@@ -109,34 +63,13 @@ ul ol li {
   margin: 50px 24px;
 }
 
-.ul_header {
-  position: absolute;
-  top: 27px;
-  right: 31px;
-  display: block;
-  width: auto;
-  text-align: right;
-}
 #dummy {
   width: 1024px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
 }
-.ul_header li {
-  display: inline-block;
-  position: relative;
-  min-width: 53px;
-  min-height: 35px;
-  margin-left: 30px;
-  vertical-align: top;
-}
-.ul_header li a {
-  display: inline-block;
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.8);
-  letter-spacing: 0;
-}
+
 #SignInInfo {
   width: 425px;
   margin: 50px auto;
@@ -357,12 +290,12 @@ ul ol li {
   margin-left: auto;
   margin-right: auto;
 }
-#userInfoModifyContainer {
+#customerInfoModifyContainer {
   padding-top: 50px;
   width: 612px;
   margin: 0 auto;
 }
-#userInfoModifyContainer .infoTitle {
+#customerInfoModifyContainer .infoTitle {
   font-size: 25px;
   color: gray;
 }
@@ -370,11 +303,11 @@ ul ol li {
   display: flex;
   justify-content: space-between;
 }
-#userInfoModifyContainer .infoValue {
+#customerInfoModifyContainer .infoValue {
   font-size: 25px;
   margin-top: 20px;
 }
-#userInfoModifyContainer .infoModify {
+#customerInfoModifyContainer .infoModify {
   margin-top: 20px;
   font-size: 25px;
   padding: 5px 20px;
@@ -435,12 +368,12 @@ ul ol li {
   background-color: lightskyblue;
   border-radius: 10px;
 }
-.proprietorSection {
+.businessSection {
   margin-top: 100px;
   margin-left: 20px;
   margin-right: 20px;
 }
-.proprietorSection ul {
+.businessSection ul {
   list-style: none;
   padding: 0;
 }
@@ -613,7 +546,7 @@ ul ol li {
   flex-direction: column;
   justify-content: space-between;
 }
-.proprietorFooter {
+.businessFooter {
   position: fixed;
   left: 0;
   right: 0;

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PropritorStayListItems from './ProprietorStayListItems';
+import BusinessStayListItems from './BusinessStayListItems';
 
-function ProprietorStayList({ stayListShow, showStayButton }) {
+function BusinessStayList({ stayListShow, showStayButton }) {
   return (
     <>
       <div className={stayListShow ? 'stayListTitleShow' : 'stayListTitle'}>
@@ -17,18 +17,18 @@ function ProprietorStayList({ stayListShow, showStayButton }) {
       </div>
       {stayListShow && (
         <>
-          <PropritorStayListItems />
-          <PropritorStayListItems />
-          <PropritorStayListItems />
-          <PropritorStayListItems />
-          <PropritorStayListItems />
-          <PropritorStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
         </>
       )}
     </>
   );
 }
-ProprietorStayList.propTypes = {
+BusinessStayList.propTypes = {
   stayListShow: PropTypes.bool.isRequired,
   showStayButton: PropTypes.func.isRequired,
 };
@@ -45,4 +45,4 @@ function areEqual(prevProps, nextProps) {
     prevProps.showStayButton === nextProps.showStayButton
   );
 }
-export default React.memo(ProprietorStayList, areEqual);
+export default React.memo(BusinessStayList, areEqual);
