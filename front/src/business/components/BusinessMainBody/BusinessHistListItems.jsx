@@ -4,11 +4,11 @@ import HistMoreInfo from './HistMoreInfo';
 function ProprietorHistList() {
   const [clicked, setClicked] = useState(false);
 
-  const checkClicked = useCallback(() => {
+  const showMoreInformation = useCallback(() => {
     setClicked(!clicked);
     console.log('clicked');
   }, [clicked]);
-  console.log(checkClicked);
+  console.log(showMoreInformation);
 
   return (
     <div>

@@ -29,13 +29,25 @@ function BusinessMainBody() {
   return (
     <section className="business-show-customer-section">
       <div className="business-show-customer-container">
-        <div className="customer-stay-information">
+        <div
+          className={
+            showState.stayListShow
+              ? 'customer-stay-information'
+              : 'customer-stay-information-show'
+          }
+        >
           <BusinessStayList
             stayListShow={showState.stayListShow}
             showStayButton={showStayButton}
           />
         </div>
-        <div className="customer-history-information">
+        <div
+          className={
+            showState.histListShow
+              ? 'customer-history-information'
+              : 'customer-history-information-show'
+          }
+        >
           <BusinessHistList
             histListShow={showState.histListShow}
             showHistButton={showHistButton}

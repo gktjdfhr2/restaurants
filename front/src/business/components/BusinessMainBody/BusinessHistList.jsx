@@ -5,7 +5,7 @@ import BusinessHistListItems from './BusinessHistListItems';
 function BusinessHistList({ histListShow, showHistButton }) {
   return (
     <>
-      <div className={histListShow ? 'stayListTitleShow' : 'stayListTitle'}>
+      <div className="history-title">
         히스토리
         <button
           type="button"

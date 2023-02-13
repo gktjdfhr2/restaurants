@@ -373,6 +373,74 @@ ul ol li {
   flex-direction: column;
   justify-content: space-between;
 }
+.history-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.customer-stay-information {
+  border: 1px solid gainsboro;
+  margin-bottom: 10px;
+  border-radius: 10px 10px 0 0;
+}
+.customer-stay-information-show {
+  border: 1px solid gainsboro;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+.customer-history-information {
+  border: 1px solid gainsboro;
+  border-radius: 10px 10px 0 0;
+}
+.customer-history-information-show {
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+}
+.information-items-container {
+  overflow: scroll;
+  max-height: 50vh;
+}
+.business-customer-information-container {
+  border-top: 1px solid gainsboro;
+  height: 72px;
+  display: flex;
+}
+.stay-time {
+  flex-grow: 1;
+}
+.more-information-button {
+  flex-grow: 10;
+  background-color: white;
+  border: none;
+}
+.customer-call-button {
+  /* flex-grow: 1.5; */
+  display: flex;
+  width: 50px;
+  height: 70px;
+  margin: 0 10px 0 10px;
+  border: none;
+  background: url(../assets/volume.png);
+  background-size: 50px;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: flex-end;
+  /* text-indent: -9999px; */
+}
+.customer-stay-state-change-button {
+  /* flex-grow: 1; */
+  display: flex;
+  width: 50px;
+  height: 72px;
+  margin: 0 10px 0 10px;
+  border: none;
+  background: url(../assets/hourglass.png);
+  background-size: 50px;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: flex-end;
+  /* text-indent: -9999px; */
+}
 .callButton {
   /* 호출 버튼 */
   width: 50px;
@@ -434,7 +502,6 @@ ul ol li {
   background-size: 20px;
   background-repeat: no-repeat;
   text-indent: -9999px;
-  margin-right: 10px;
 }
 .open-button {
   /* 열기 버튼 */
@@ -445,15 +512,4 @@ ul ol li {
   background-size: 20px;
   background-repeat: no-repeat;
   text-indent: -9999px;
-  margin-right: 10px;
-}
-.customer-stay-information {
-  border: 1px solid black;
-}
-.customer-history-information {
-  border: 1px solid black;
-}
-.information-items-container {
-  overflow: scroll;
-  max-height: 50vh;
 }

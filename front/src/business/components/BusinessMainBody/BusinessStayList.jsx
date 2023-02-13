@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import BusinessStayListItems from './BusinessStayListItems';
 
 function BusinessStayList({ stayListShow, showStayButton }) {
+  const [stayCustomerInformation] = useState({
+    stayNumber: 47,
+    stayStartTime: '18 : 20',
+    customerName: '정한결',
+    customerPersonnelAdult: 3,
+    customerPersonnelkid: 0,
+    lastPhoneNumber: 4782,
+  });
   return (
     <>
-      <div className={stayListShow ? 'stayListTitleShow' : 'stayListTitle'}>
+      <div className="history-title">
         대기 목록
         <button
           type="button"
@@ -17,34 +25,16 @@ function BusinessStayList({ stayListShow, showStayButton }) {
       </div>
       {stayListShow && (
         <div className="information-items-container">
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
+          <BusinessStayListItems
+            stayNumber={stayCustomerInformation.stayNumber}
+            stayStartTime={stayCustomerInformation.stayStartTime}
+            customerName={stayCustomerInformation.customerName}
+            customerPersonnelAdult={
+              stayCustomerInformation.customerPersonnelAdult
+            }
+            customerPersonnelkid={stayCustomerInformation.customerPersonnelkid}
+            lastPhoneNumber={stayCustomerInformation.lastPhoneNumber}
+          />
         </div>
       )}
     </>
