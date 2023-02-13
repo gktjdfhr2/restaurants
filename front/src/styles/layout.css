@@ -122,3 +122,12 @@ header.header-layout section {
   text-align: right;
   margin: auto 10px;
 }
+
+.footer-layout {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 25vh;
+  background-color: cornflowerblue;
+}

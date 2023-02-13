@@ -6,7 +6,7 @@ function ReservationHist() {
   console.log('ReservationHist');
   const loginState = true;
   return (
-    <section id="info">
+    <section id="sign-in-nav">
       {!loginState && (
         <Link to="/SignIn" id="userInfo">
           <div>로그인하기 &gt;</div>

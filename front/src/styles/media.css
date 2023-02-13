@@ -4,14 +4,46 @@
     margin: 0;
   }
 
-  .header-layout a {
+  header.header-layout a {
     color: cornflowerblue;
+  }
+  header.header-layout {
+    position: relative;
+    display: block;
+    top: 0%;
+    background-color: white;
+    color: cornflowerblue;
+  }
+  header.header-layout section {
+    width: 100%;
+    height: 44px;
+  }
+  header.header-layout section h2 {
+    position: absolute;
+    left: 3vw;
+    margin: 0;
+  }
+  header.header-layout section h2 div {
+    position: absolute;
+    display: inline-block;
+    font-size: 20px;
+    height: 20px;
+    width: 86px;
+    margin: 26px 2px;
+  }
+  header.header-layout section ul li .btn_srch {
+    font-size: 13px;
+    background: url(../assets/mobile-magnifying-glass.png);
+    background-size: 22px;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+    padding-left: 20px;
   }
   #SignInSection {
     width: 375px;
     margin: 0 auto;
   }
-  #SignInInfo {
+  #SignIninformation {
     width: 375px;
     margin: 50px auto;
   }
@@ -20,31 +52,7 @@
     width: 100vw;
     margin: 0;
   }
-  .header-layout {
-    position: relative;
-    display: block;
-    top: 0%;
-    background-color: white;
-    color: cornflowerblue;
-  }
-  .header-layout section {
-    width: 100%;
-    height: 44px;
-  }
-  .header-layout section h2 {
-    position: absolute;
-    left: 3vw;
-    margin: 0;
-  }
-  .header-layout section h2 div {
-    position: absolute;
-    display: inline-block;
-    font-size: 20px;
-    height: 20px;
-    width: 86px;
-    margin: 26px 2px;
-  }
-  .user-header-ul {
+  .customer-header-ul {
     position: absolute;
     top: 1.5rem;
     right: 3vw;
@@ -52,7 +60,7 @@
     width: auto;
     text-align: right;
   }
-  .user-header-ul li {
+  .customer-header-ul li {
     display: inline-block;
     position: relative;
     min-width: 1px;
@@ -60,29 +68,19 @@
     margin-left: 3vw;
     vertical-align: top;
   }
-  .user-header-ul li a {
+  .customer-header-ul li a {
     display: inline-block;
     font-size: 13px;
     color: cornflowerblue;
     letter-spacing: 0;
   }
-  .header-layout section ul li .btn_srch {
-    font-size: 13px;
-    background: url(../assets/mobile-magnifying-glass.png);
-    background-size: 22px;
-    background-repeat: no-repeat;
-    padding-top: 20px;
-    padding-left: 20px;
-  }
-  #info {
+
+  #sign-in-nav {
     width: 100vw;
     margin-top: 50px;
   }
-  #info ul {
+  #sign-in-nav ul {
     padding: 50px 10px;
-  }
-  #info #gogo {
-    margin: 20px 10px;
   }
   #SignUpSection {
     width: 90vw;
@@ -93,7 +91,7 @@
     width: 90vw;
     margin: 0 auto;
   }
-  #SignUpSection #SignUpItemContainer #infoSubmit {
+  #SignUpSection #SignUpItemContainer #informationSubmit {
     width: 100%;
     margin: 0;
     margin-top: 20px;
@@ -129,7 +127,7 @@
   #mostSearchedList {
     width: 95vw;
   }
-  #userInfoModifyContainer {
+  #customerinformationModifyContainer {
     padding-top: 50px;
     width: auto;
     margin: 0;
@@ -143,14 +141,17 @@
 }
 
 @media screen and (max-width: 375px) {
-  .user-header-ul li a {
+  .customer-header-ul li a {
     font-size: 13px;
   }
-  .header-layout section ul li .btn_srch {
+  header.header-layout section ul li .btn_srch {
     font-size: 13px;
   }
-  .header-layout section h2 div {
+  header.header-layout section h2 div {
     display: none;
+  }
+  header.header-layout a {
+    color: cornflowerblue;
   }
   #recentSearch {
     display: none;
@@ -160,8 +161,5 @@
   }
   .businessHeader a {
     color: white;
-  }
-  .header-layout a {
-    color: cornflowerblue;
   }
 }

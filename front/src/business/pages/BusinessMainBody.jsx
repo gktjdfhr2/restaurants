@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import BusinessStayList from '../components/BusinessMainBody/BusinessStayList';
 import BusinessHistList from '../components/BusinessMainBody/BusinessHistList';
+import BusinessFooter from '../components/BusinessMainBody/BusinessFooter';
 
 function BusinessMainBody() {
   const [showState, setShowState] = useState({
@@ -35,19 +36,7 @@ function BusinessMainBody() {
           showHistButton={showHistButton}
         />
       </div>
-      <footer className="businessFooter">
-        <ul className="footerUl">
-          <li>
-            <ul className="autoDeadLine">
-              <li>대기 자동 마감 시간</li>
-              <li>21 : 30</li>
-              <li>해당 시간이 되면 자동으로 마감됩니다.</li>
-            </ul>
-          </li>
-          <li>2</li>
-          <li>3</li>
-        </ul>
-      </footer>
+      <BusinessFooter />
     </section>
   );
 }

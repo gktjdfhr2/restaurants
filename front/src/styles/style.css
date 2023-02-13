@@ -35,30 +35,30 @@ ul ol li {
   margin-left: auto;
   margin-right: auto;
 }
-#info {
+#sign-in-nav {
   position: relative;
   margin-top: 120px;
   width: 1024px;
   margin-left: auto;
   margin-right: auto;
 }
-#info #customerInfo {
+#sign-in-nav #customerinformation {
   color: black;
   font-weight: bold;
   font-size: larger;
 }
-#info a {
+#sign-in-nav a {
   color: black;
 }
-#info .infoUl {
+#sign-in-nav .customer-information-menu {
   list-style: none;
   padding: 50px 24px;
 }
-#info .infoUl li {
+#sign-in-nav .customer-information-menu li {
   line-height: 100px;
   border-bottom: 1px solid gainsboro;
 }
-#info #gogo {
+#sign-in-nav #gogo {
   position: relative;
   margin: 50px 24px;
 }
@@ -70,11 +70,11 @@ ul ol li {
   position: relative;
 }
 
-#SignInInfo {
+#SignIninformation {
   width: 425px;
   margin: 50px auto;
 }
-#SignInInfo input {
+#SignIninformation input {
   width: 360px;
   height: 40px;
   margin: 10px auto;
@@ -83,19 +83,19 @@ ul ol li {
   border: 1px solid gainsboro;
   border-radius: 10px;
 }
-#SignInInfo #signInDiv {
+#SignIninformation #signInDiv {
   width: 360px;
   height: 144px;
   margin: 0 auto;
   border-bottom: 1px solid gainsboro;
 }
-#SignInInfo #SignInSubmitForm {
+#SignIninformation #SignInSubmitForm {
   width: 360px;
   height: 144px;
   margin: 0 auto;
   border: none;
 }
-#SignInInfo #SignInSubmit {
+#SignIninformation #SignInSubmit {
   width: 364px;
   height: 40px;
   margin: 20px auto;
@@ -104,13 +104,13 @@ ul ol li {
   border: 1px solid gainsboro;
   border-radius: 10px;
 }
-#SignInInfo a {
+#SignIninformation a {
   color: black;
   text-decoration: underline;
   font-weight: bold;
   text-align: center;
 }
-#SignInInfo #signUp {
+#SignIninformation #signUp {
   text-align: center;
 }
 #SignInSection {
@@ -165,7 +165,7 @@ ul ol li {
   border: 1px solid gainsboro;
   border-radius: 10px;
 }
-#SignUpSection #SignUpItemContainer #infoSubmit {
+#SignUpSection #SignUpItemContainer #informationSubmit {
   width: 180px;
   height: 36px;
   margin: 40px 81px;
@@ -290,24 +290,24 @@ ul ol li {
   margin-left: auto;
   margin-right: auto;
 }
-#customerInfoModifyContainer {
+#customerinformationModifyContainer {
   padding-top: 50px;
   width: 612px;
   margin: 0 auto;
 }
-#customerInfoModifyContainer .infoTitle {
+#customerinformationModifyContainer .informationTitle {
   font-size: 25px;
   color: gray;
 }
-.infoFlex {
+.informationFlex {
   display: flex;
   justify-content: space-between;
 }
-#customerInfoModifyContainer .infoValue {
+#customerinformationModifyContainer .informationValue {
   font-size: 25px;
   margin-top: 20px;
 }
-#customerInfoModifyContainer .infoModify {
+#customerinformationModifyContainer .informationModify {
   margin-top: 20px;
   font-size: 25px;
   padding: 5px 20px;
@@ -345,21 +345,21 @@ ul ol li {
   border: 1px solid gainsboro;
   border-radius: 20px;
 }
-.storeInfo .storeInfoTitle {
+.storeinformation .storeinformationTitle {
   font-size: 30px;
   padding: 15px;
   font-weight: bold;
 }
-.storeInfo .storeInfoReview {
+.storeinformation .storeinformationReview {
   font-size: 20px;
   padding: 10px 15px;
 }
-.storeInfo .storeInfoState {
+.storeinformation .storeinformationState {
   font-size: 20px;
   padding: 10px 15px;
   color: red;
 }
-.storeInfo .storeInfoCancle {
+.storeinformation .storeinformationCancle {
   margin-left: 10px;
   padding: 10px 15px;
   font-size: 20px;
@@ -459,7 +459,7 @@ ul ol li {
 .flexUl .flexLi ul:nth-of-type(4) .stayState {
   line-height: 35px;
 }
-.stayMoreInfo {
+.stayMoreinformation {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -467,13 +467,13 @@ ul ol li {
   background-color: gainsboro;
   margin: 0;
 }
-.stayMoreInfo li {
+.stayMoreinformation li {
   height: 40px;
   display: flex;
   justify-content: space-between;
   padding-top: 5px;
 }
-.stayMoreInfo li ul:nth-of-type(2) {
+.stayMoreinformation li ul:nth-of-type(2) {
   flex-grow: 1;
 }
 .stayCancle {
@@ -545,14 +545,6 @@ ul ol li {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-.businessFooter {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 25vh;
-  background-color: cornflowerblue;
 }
 .footerUl {
   list-style: none;
