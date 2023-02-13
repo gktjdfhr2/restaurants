@@ -13,8 +13,8 @@ function UserInfoModify() {
   }, []);
 
   return (
-    <section id="SignUpSection">
-      <div id="SignUpTitle">개인정보 수정</div>
+    <section id="signup-section">
+      <div id="signup-title">개인정보 수정</div>
       <UserInfoModifyItems
         infoTitle="이름"
         infoValue={userInfo.name}

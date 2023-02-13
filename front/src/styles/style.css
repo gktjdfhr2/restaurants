@@ -58,7 +58,7 @@ ul ol li {
   line-height: 100px;
   border-bottom: 1px solid gainsboro;
 }
-#sign-in-nav #gogo {
+#sign-in-nav #customer-information-navigator {
   position: relative;
   margin: 50px 24px;
 }
@@ -70,11 +70,11 @@ ul ol li {
   position: relative;
 }
 
-#SignIninformation {
+#signin-information {
   width: 425px;
   margin: 50px auto;
 }
-#SignIninformation input {
+#signin-information input {
   width: 360px;
   height: 40px;
   margin: 10px auto;
@@ -83,19 +83,19 @@ ul ol li {
   border: 1px solid gainsboro;
   border-radius: 10px;
 }
-#SignIninformation #signInDiv {
+#signin-information #signin-container {
   width: 360px;
   height: 144px;
   margin: 0 auto;
   border-bottom: 1px solid gainsboro;
 }
-#SignIninformation #SignInSubmitForm {
+#signin-information #signin-submit-container {
   width: 360px;
   height: 144px;
   margin: 0 auto;
   border: none;
 }
-#SignIninformation #SignInSubmit {
+#signin-information #signin-submit-button {
   width: 364px;
   height: 40px;
   margin: 20px auto;
@@ -104,25 +104,25 @@ ul ol li {
   border: 1px solid gainsboro;
   border-radius: 10px;
 }
-#SignIninformation a {
+#signin-information a {
   color: black;
   text-decoration: underline;
   font-weight: bold;
   text-align: center;
 }
-#SignIninformation #signUp {
+#signin-information #signup {
   text-align: center;
 }
-#SignInSection {
+#signin-section {
   width: 425px;
   margin-top: 120px;
   margin-left: auto;
   margin-right: auto;
 }
-#SignInSection #Logo {
+#signin-section #Logo {
   width: 200px;
 }
-#SignInSection div {
+#signin-section div {
   position: absolute;
   display: inline-block;
   height: 40px;
@@ -133,23 +133,23 @@ ul ol li {
   font-weight: bolder;
   font-size: 40px;
 }
-#SignUpSection {
+#signup-section {
   width: 1024px;
   margin-top: 80px;
   margin-left: auto;
   margin-right: auto;
 }
-#SignUpTitle {
+#signup-title {
   padding-top: 20px;
   text-align: center;
   font-size: 30px;
 }
-#SignUpSection #SignUpItemContainer {
+#signup-section #SignUpItemContainer {
   padding-top: 20px;
   width: 336px;
   margin: 0 auto;
 }
-#SignUpSection #SignUpItemContainer input {
+#signup-section #SignUpItemContainer input {
   width: 100%;
   height: 36px;
   margin: 5px auto;
@@ -157,7 +157,7 @@ ul ol li {
   border-radius: 10px;
   padding-left: 10px;
 }
-#SignUpSection #SignUpItemContainer select {
+#signup-section #SignUpItemContainer select {
   width: 350px;
   height: 37px;
   margin: 5px auto;
@@ -165,7 +165,7 @@ ul ol li {
   border: 1px solid gainsboro;
   border-radius: 10px;
 }
-#SignUpSection #SignUpItemContainer #informationSubmit {
+#signup-section #SignUpItemContainer #informationSubmit {
   width: 180px;
   height: 36px;
   margin: 40px 81px;
@@ -182,17 +182,17 @@ ul ol li {
   margin-bottom: 24px;
   color: white;
 }
-#recommendRestaurants {
+#recommend-restaurants-section {
   width: 1024px;
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
 }
-#recommendRestaurantsTitle {
+#recommend-restaurants-title {
   font-size: larger;
   font-weight: bold;
 }
-#restaurantsClassificationTag {
+#restaurants-classification-tag {
   width: 124px;
   height: 36px;
   margin-top: 30px;
@@ -201,19 +201,19 @@ ul ol li {
   border-radius: 10px;
   text-align: center;
 }
-#searchForm {
+#search-container {
   width: 1024px;
   height: 64px;
   margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
 }
-#searchTextWrap {
+#search-form-wrap {
   position: relative;
   width: 728px;
   margin: auto;
 }
-#searchText {
+#search-keyword {
   width: 100%;
   height: 36px;
   border: 1px solid gainsboro;
@@ -222,7 +222,7 @@ ul ol li {
   padding: 5px 20px;
   border-radius: 10px;
 }
-#searchSubmitBtn {
+#search-submit-button {
   position: absolute;
   font-size: 13px;
   background: url(../assets/mobile-magnifying-glass.png);
@@ -235,23 +235,23 @@ ul ol li {
   right: -20px;
   top: 12px;
 }
-#recentSearch {
+#recent-search-container {
   list-style: none;
   padding-left: 10px;
 }
 
-#recentSearch li {
+#recent-search-container li {
   display: inline-block;
   position: relative;
   margin-right: 20px;
 }
-#recentSearchItems {
+#recent-search-keywords {
   background-color: gainsboro;
   padding: 7px;
   margin-top: 10px;
   border-radius: 5px;
 }
-#recentSearchItems button {
+#recent-search-keywords button {
   background-color: gainsboro;
   border: none;
 }
@@ -262,29 +262,29 @@ ul ol li {
   margin-left: auto;
   margin-right: auto;
 }
-#recommendStoreListTitle {
+#most-searched-keywords-title {
   margin: auto;
   font-weight: bold;
 }
 
-#mostSearched {
+#most-searched-keywords-container {
   padding: 0;
 }
-#mostSearchedItems {
+#most-searched-keywords {
   list-style: none;
   padding: 20px 0;
 }
-#recentSearchList {
+#recent-search-section {
   width: 728px;
   margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
 }
-#recentSearchTitle {
+#recent-search-title {
   margin: auto;
   font-weight: bold;
 }
-#mostSearchedList {
+#most-searched-keywords-section {
   width: 728px;
   margin-top: 100px;
   margin-left: auto;
@@ -315,10 +315,10 @@ ul ol li {
   border: 1px solid gainsboro;
   border-radius: 20px;
 }
-#selectTagFlex {
+#history-menu-type-container {
   display: flex;
 }
-#selectTagFlex .selectTag {
+#history-menu-type-container .history-menu-type {
   font-size: 25px;
   margin-top: 20px;
   text-underline-offset: 10px;
@@ -326,40 +326,40 @@ ul ol li {
   border: none;
   background-color: white;
 }
-#selectTagFlex .selected {
+#history-menu-type-container .menu-selected {
   text-decoration: underline;
 }
-.histItems ul {
+.history-store-container ul {
   list-style: none;
   padding: 10px 24px;
 }
-.histItems .histItem {
+.history-store-container .history-store-information-container {
   padding: 30px 0;
   line-height: 10px;
   border: none;
   display: flex;
 }
-.storeImg {
+.store-image {
   width: 150px;
   height: 150px;
   border: 1px solid gainsboro;
   border-radius: 20px;
 }
-.storeinformation .storeinformation-title {
+.store-more-information .store-more-information-title {
   font-size: 30px;
   padding: 15px;
   font-weight: bold;
 }
-.storeinformation .storeinformationReview {
+.store-more-information .store-more-information-reviews {
   font-size: 20px;
   padding: 10px 15px;
 }
-.storeinformation .storeinformationState {
+.store-more-information .store-more-information-reservation-state {
   font-size: 20px;
   padding: 10px 15px;
   color: red;
 }
-.storeinformation .storeinformationCancle {
+.store-more-information .store-more-information-reservation-cancle {
   margin-left: 10px;
   padding: 10px 15px;
   font-size: 20px;

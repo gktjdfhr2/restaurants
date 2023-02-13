@@ -9,7 +9,6 @@ function SignUpPassword({ userPw1, userPw2, userPwHandle, pwCheckHandle }) {
       <div>비밀번호</div>
       <input
         type="password"
-        id="pw1"
         placeholder="비밀번호 숫자 + 영문 4자이상"
         value={userPw1}
         onChange={(event) => {
@@ -20,7 +19,6 @@ function SignUpPassword({ userPw1, userPw2, userPwHandle, pwCheckHandle }) {
       />
       <input
         type="password"
-        id="pw2"
         placeholder="비밀번호 확인"
         required
         value={userPw2}

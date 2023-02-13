@@ -46,27 +46,25 @@ function SigninInput() {
 
   return (
     <form onSubmit={loginSubmit}>
-      <div id="signInDiv">
+      <div id="signin-container">
         <input
           type="text"
-          id="SignInId"
           value={signInCheck.userEmail}
           onChange={loginIdHandle}
           placeholder="아이디"
         />
         <input
           type="password"
-          id="SignInPw"
           value={signInCheck.userPasswd}
           onChange={loginPwHandle}
           placeholder="비밀번호"
         />
       </div>
-      <div id="SignInSubmitForm">
-        <button type="submit" id="SignInSubmit" onSubmit={register}>
+      <div id="signin-submit-container">
+        <button type="submit" id="signin-submit-button" onSubmit={register}>
           로그인
         </button>
-        <div id="signUp">
+        <div id="signup">
           회원이 아니신가요? &nbsp;
           <Link to="/SignUp">회원가입하기</Link>
         </div>

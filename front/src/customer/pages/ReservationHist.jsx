@@ -4,7 +4,7 @@ import ReservationHistItems from '../components/ReservationHist/ReservationHistI
 
 function ReservationHist() {
   console.log('ReservationHist');
-  const loginState = true;
+  const loginState = false;
   return (
     <section id="sign-in-nav">
       {!loginState && (

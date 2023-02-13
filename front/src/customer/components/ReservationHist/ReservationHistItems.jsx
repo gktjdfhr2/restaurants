@@ -5,28 +5,30 @@ import storeImg from '../../../assets/parked-car.png';
 function ReservationHistItems() {
   return (
     <>
-      <div id="SignUpTitle">예약 내역</div>
-      <div id="selectTagFlex">
-        <button type="button" className="selectTag selected">
+      <div id="signup-title">예약 내역</div>
+      <div id="history-menu-type-container">
+        <button type="button" className="history-menu-type menu-selected">
           이용 내역
         </button>
-        <button type="button" className="selectTag">
+        <button type="button" className="history-menu-type">
           취소/노쇼
         </button>
       </div>
 
-      <section className="histItems">
+      <section className="history-store-container">
         <ul>
           <li>
-            <Link to="./store" className="histItem">
-              <img className="storeImg" src={storeImg} alt="가게이름" />
-              <div className="storeinformation">
-                <div className="storeinformation-title">가게명</div>
-                <div className="storeinformationReview">리뷰 별점</div>
-                <div className="storeinformationState">상태</div>
+            <Link to="./store" className="history-store-information-container">
+              <img className="store-image" src={storeImg} alt="가게이름" />
+              <div className="store-more-information">
+                <div className="store-more-information-title">가게명</div>
+                <div className="store-more-information-reviews">리뷰 별점</div>
+                <div className="store-more-information-reservation-state">
+                  상태
+                </div>
                 <button
                   type="button"
-                  className="storeinformationCancle"
+                  className="store-more-information-reservation-cancle"
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();

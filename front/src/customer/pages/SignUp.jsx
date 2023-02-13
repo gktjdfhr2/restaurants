@@ -100,8 +100,8 @@ function SignUp() {
   };
 
   return (
-    <section id="SignUpSection">
-      <div id="SignUpTitle">회원가입</div>
+    <section id="signup-section">
+      <div id="signup-title">회원가입</div>
       <div id="SignUpItemContainer">
         <SignUpId userId={signUpInfo.userId} userIdHandle={userIdHandle} />
 

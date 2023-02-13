@@ -19,38 +19,38 @@ function UserSearch() {
 
   return (
     <>
-      <section id="searchForm">
-        <div id="searchTextWrap">
+      <section id="search-container">
+        <div id="search-form-wrap">
           <form onSubmit={searchSubmitHandle}>
             <input
               type="text"
-              id="searchText"
+              id="search-keyword"
               placeholder="가게명 검색"
               value={searchKeyword}
               onChange={searchKeywordHandle}
             />
-            <button type="submit" id="searchSubmitBtn">
+            <button type="submit" id="search-submit-button">
               검색
             </button>
           </form>
-          <ul id="recentSearch">
-            <li id="recentSearchItems">
+          <ul id="recent-search-container">
+            <li id="recent-search-keywords">
               서버에서 아이템 불러오기
               <button type="button">X</button>
             </li>
-            <li id="recentSearchItems">
+            <li id="recent-search-keywords">
               검색어2
               <button type="button">X</button>
             </li>
-            <li id="recentSearchItems">
+            <li id="recent-search-keywords">
               검색어3
               <button type="button">X</button>
             </li>
-            <li id="recentSearchItems">
+            <li id="recent-search-keywords">
               검색어4
               <button type="button">X</button>
             </li>
-            <li id="recentSearchItems">
+            <li id="recent-search-keywords">
               검색어5
               <button type="button">X</button>
             </li>

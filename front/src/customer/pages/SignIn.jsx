@@ -5,11 +5,11 @@ import SigninInput from '../components/SignIn/SigninInput';
 function SignIn() {
   return (
     <>
-      <section id="SignInSection" className="c">
+      <section id="signin-section">
         <img id="Logo" src={ImgLogo} alt="맛집지도" />
         <div>맛집지도</div>
       </section>
-      <section id="SignIninformation">
+      <section id="signin-information">
         <SigninInput />
       </section>
     </>

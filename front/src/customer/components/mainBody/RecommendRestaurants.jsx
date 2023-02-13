@@ -9,11 +9,11 @@ function RecommendRestaurants() {
     setRestaurantsClassification(event.target.value);
   }, []);
   return (
-    <section id="recommendRestaurants">
-      <div id="recommendRestaurantsTitle">주변 맛집 다 모여라!</div>
+    <section id="recommend-restaurants-section">
+      <div id="recommend-restaurants-title">주변 맛집 다 모여라!</div>
       <form>
         <select
-          id="restaurantsClassificationTag"
+          id="restaurants-classification-tag"
           defaultValue={restaurantsClassification}
           onChange={recommendRestaurantsClassification}
         >

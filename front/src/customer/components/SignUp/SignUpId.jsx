@@ -8,7 +8,6 @@ function SignUpId({ userId, userIdHandle }) {
       <div>아이디</div>
       <input
         type="text"
-        id="userId"
         placeholder="아이디 숫자 + 영문 6자이상"
         required
         value={userId}

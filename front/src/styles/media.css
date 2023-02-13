@@ -39,11 +39,11 @@
     padding-top: 20px;
     padding-left: 20px;
   }
-  #SignInSection {
+  #signin-section {
     width: 375px;
     margin: 0 auto;
   }
-  #SignIninformation {
+  #signin-information {
     width: 375px;
     margin: 50px auto;
   }
@@ -82,49 +82,49 @@
   #sign-in-nav ul {
     padding: 50px 10px;
   }
-  #SignUpSection {
+  #signup-section {
     width: 90vw;
     margin: 0 auto;
   }
-  #SignUpSection #SignUpItemContainer {
+  #signup-section #SignUpItemContainer {
     padding-top: 20px;
     width: 90vw;
     margin: 0 auto;
   }
-  #SignUpSection #SignUpItemContainer #informationSubmit {
+  #signup-section #SignUpItemContainer #informationSubmit {
     width: 100%;
     margin: 0;
     margin-top: 20px;
   }
-  #SignUpSection #SignUpItemContainer select {
+  #signup-section #SignUpItemContainer select {
     width: 101%;
   }
-  #recommendRestaurantsTitle {
+  #recommend-restaurants-title {
     display: inline-block;
     position: absolute;
     padding-top: 5px;
   }
-  #restaurantsClassificationTag {
+  #restaurants-classification-tag {
     display: inline-block;
     position: absolute;
     margin: 0;
     right: 3vw;
   }
-  #recommendRestaurants {
+  #recommend-restaurants-section {
     width: 100vw;
   }
-  #searchForm {
+  #search-container {
     width: 100vw;
     margin: 0;
   }
-  #searchTextWrap {
+  #search-form-wrap {
     width: 90vw;
     left: -20px;
   }
-  #recentSearchList {
+  #recent-search-section {
     width: 95vw;
   }
-  #mostSearchedList {
+  #most-searched-keywords-section {
     width: 95vw;
   }
   #customer-information-modify-container {
@@ -153,10 +153,10 @@
   header.header-layout a {
     color: cornflowerblue;
   }
-  #recentSearch {
+  #recent-search-container {
     display: none;
   }
-  #recentSearchList {
+  #recent-search-section {
     display: none;
   }
   .businessHeader a {
