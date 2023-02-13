@@ -43,36 +43,23 @@ function SignUp() {
   );
 
   /** 이름 입력 확인 */
-  const userNameHandle = useCallback(
-    (event) => {
-      setSignUpInfo({ ...signUpInfo, userName: event.target.value });
-    },
-    [signUpInfo.userName],
-  );
+  const userNameHandle = (event) => {
+    setSignUpInfo({ ...signUpInfo, userName: event.target.value });
+  };
 
   /** 주소 입력 확인 */
-  const userAddressHandle = useCallback(
-    (event) => {
-      setSignUpInfo({ ...signUpInfo, userAddress: event.target.value });
-    },
-    [signUpInfo.userAddress],
-  );
-
+  const userAddressHandle = (event) => {
+    setSignUpInfo({ ...signUpInfo, userAddress: event.target.value });
+  };
   /** 핸드폰번호 입력 확인 */
-  const userPhoneNumHandle = useCallback(
-    (event) => {
-      setSignUpInfo({ ...signUpInfo, userPhoneNum: event.target.value });
-    },
-    [signUpInfo.userPhoneNum],
-  );
+  const userPhoneNumHandle = (event) => {
+    setSignUpInfo({ ...signUpInfo, userPhoneNum: event.target.value });
+  };
 
   /** 회원 유형 확인 */
-  const userTypeHandle = useCallback(
-    (event) => {
-      setSignUpInfo({ ...signUpInfo, userType: event.target.value });
-    },
-    [signUpInfo.userType],
-  );
+  const userTypeHandle = (event) => {
+    setSignUpInfo({ ...signUpInfo, userType: event.target.value });
+  };
 
   const register = () => {
     axios
@@ -89,6 +76,7 @@ function SignUp() {
 
   const signIn = (event) => {
     event.preventDefault();
+    console.log(signUpInfo);
     // if (signUpInfo.userPw1 !== signUpInfo.userPw2) {
     //   setSignUpInfo({ ...signUpInfo, userPw2: '' });
     //   console.log(signUpInfo.userId);

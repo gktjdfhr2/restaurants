@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -9,22 +9,16 @@ function SigninInput() {
     userPasswd: '',
   });
 
-  const loginIdHandle = useCallback(
-    (event) => {
-      setSignInCheck({ ...signInCheck, userEmail: event.target.value });
-    },
-    [signInCheck.userEmail],
-  );
+  const loginIdHandle = (event) => {
+    console.log('idinput', event.target.value);
+    setSignInCheck({ ...signInCheck, userEmail: event.target.value });
+  };
 
-  const loginPwHandle = useCallback(
-    (event) => {
-      setSignInCheck({ ...signInCheck, userPasswd: event.target.value });
-    },
-    [signInCheck.userPasswd],
-  );
+  const loginPwHandle = (event) => {
+    setSignInCheck({ ...signInCheck, userPasswd: event.target.value });
+  };
 
   const register = () => {
-    // TODO callback사용하기
     console.log(signInCheck);
     axios
       .post('localhost:8080/api/auth/signIn', signInCheck)
@@ -38,11 +32,12 @@ function SigninInput() {
       });
   };
 
-  const loginSubmit = useCallback((event) => {
+  const loginSubmit = (event) => {
     event.preventDefault();
     console.log('submit');
+    console.log(signInCheck);
     register();
-  }, []);
+  };
 
   return (
     <form onSubmit={loginSubmit}>
@@ -61,7 +56,7 @@ function SigninInput() {
         />
       </div>
       <div id="signin-submit-container">
-        <button type="submit" id="signin-submit-button" onSubmit={register}>
+        <button type="submit" id="signin-submit-button">
           로그인
         </button>
         <div id="signup">
