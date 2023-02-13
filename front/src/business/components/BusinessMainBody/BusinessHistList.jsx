@@ -16,10 +16,68 @@ function BusinessHistList({ histListShow, showHistButton }) {
         </button>
       </div>
       {histListShow && (
-        <>
+        <div className="information-items-container">
           <BusinessHistListItems />
           <BusinessHistListItems />
-        </>
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+          <BusinessHistListItems />
+        </div>
       )}
     </>
   );

@@ -362,14 +362,16 @@ ul ol li {
   border-radius: 10px;
 }
 .business-show-customer-section {
-  margin-top: 100px;
+  margin-top: 72px;
   margin-left: 20px;
   margin-right: 20px;
 }
 .business-show-customer-container {
   padding: 10px;
   height: 57vh;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .callButton {
   /* 호출 버튼 */
@@ -444,4 +446,14 @@ ul ol li {
   background-repeat: no-repeat;
   text-indent: -9999px;
   margin-right: 10px;
+}
+.customer-stay-information {
+  border: 1px solid black;
+}
+.customer-history-information {
+  border: 1px solid black;
+}
+.information-items-container {
+  overflow: scroll;
+  max-height: 50vh;
 }

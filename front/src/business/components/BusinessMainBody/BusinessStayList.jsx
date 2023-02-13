@@ -16,10 +16,36 @@ function BusinessStayList({ stayListShow, showStayButton }) {
         </button>
       </div>
       {stayListShow && (
-        <>
+        <div className="information-items-container">
           <BusinessStayListItems />
           <BusinessStayListItems />
-        </>
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+          <BusinessStayListItems />
+        </div>
       )}
     </>
   );

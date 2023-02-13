@@ -13,6 +13,7 @@ function BusinessMainBody() {
     setShowState((prev) => ({
       ...prev,
       stayListShow: !showState.stayListShow,
+      histListShow: !showState.histListShow,
     }));
   }, [showState.stayListShow]);
 
@@ -21,20 +22,25 @@ function BusinessMainBody() {
     setShowState((prev) => ({
       ...prev,
       histListShow: !showState.histListShow,
+      stayListShow: !showState.stayListShow,
     }));
   }, [showState.histListShow]);
 
   return (
     <section className="business-show-customer-section">
       <div className="business-show-customer-container">
-        <BusinessStayList
-          stayListShow={showState.stayListShow}
-          showStayButton={showStayButton}
-        />
-        <BusinessHistList
-          histListShow={showState.histListShow}
-          showHistButton={showHistButton}
-        />
+        <div className="customer-stay-information">
+          <BusinessStayList
+            stayListShow={showState.stayListShow}
+            showStayButton={showStayButton}
+          />
+        </div>
+        <div className="customer-history-information">
+          <BusinessHistList
+            histListShow={showState.histListShow}
+            showHistButton={showHistButton}
+          />
+        </div>
       </div>
       <BusinessFooter />
     </section>
