@@ -20,13 +20,13 @@ function ReservationHistItems() {
           <li>
             <Link to="./store" className="histItem">
               <img className="storeImg" src={storeImg} alt="가게이름" />
-              <div className="storeInfo">
-                <div className="storeInfoTitle">가게명</div>
-                <div className="storeInfoReview">리뷰 별점</div>
-                <div className="storeInfoState">상태</div>
+              <div className="storeinformation">
+                <div className="storeinformation-title">가게명</div>
+                <div className="storeinformationReview">리뷰 별점</div>
+                <div className="storeinformationState">상태</div>
                 <button
                   type="button"
-                  className="storeInfoCancle"
+                  className="storeinformationCancle"
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();

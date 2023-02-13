@@ -290,24 +290,24 @@ ul ol li {
   margin-left: auto;
   margin-right: auto;
 }
-#customerinformationModifyContainer {
+#customer-information-modify-container {
   padding-top: 50px;
   width: 612px;
   margin: 0 auto;
 }
-#customerinformationModifyContainer .informationTitle {
+#customer-information-modify-container .information-title {
   font-size: 25px;
   color: gray;
 }
-.informationFlex {
+.information-value-container {
   display: flex;
   justify-content: space-between;
 }
-#customerinformationModifyContainer .informationValue {
+#customer-information-modify-container .information-value {
   font-size: 25px;
   margin-top: 20px;
 }
-#customerinformationModifyContainer .informationModify {
+#customer-information-modify-container .information-modify-button {
   margin-top: 20px;
   font-size: 25px;
   padding: 5px 20px;
@@ -345,7 +345,7 @@ ul ol li {
   border: 1px solid gainsboro;
   border-radius: 20px;
 }
-.storeinformation .storeinformationTitle {
+.storeinformation .storeinformation-title {
   font-size: 30px;
   padding: 15px;
   font-weight: bold;

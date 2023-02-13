@@ -7,7 +7,7 @@ function Userinformation() {
   return (
     <section id="sign-in-nav">
       {loginTest ? (
-        <Link to="/CustomerinformationModify">
+        <Link to="/CustomerInformationModify">
           <div id="gogo">하성록</div>
         </Link>
       ) : (

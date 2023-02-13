@@ -140,7 +140,7 @@ function SignUp() {
           <option value="사업자">사업자</option>
         </select>
         <form onSubmit={signIn}>
-          <button type="submit" id="infoSubmit">
+          <button type="submit" id="informationSubmit">
             가입하기
           </button>
         </form>

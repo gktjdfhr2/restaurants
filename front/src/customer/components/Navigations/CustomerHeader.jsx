@@ -16,16 +16,16 @@ function Header() {
         </h2>
         <ul className="customer-header-ul">
           <li>
-            <Link to="customerSearch">원격 줄서기</Link>
+            <Link to="/CustomerSearch">원격 줄서기</Link>
           </li>
           <li>
-            <Link to="customerSearch">즉시 예약</Link>
+            <Link to="/CustomerSearch">즉시 예약</Link>
           </li>
           <li>
-            <Link to="/customerInfo">내정보</Link>
+            <Link to="/CustomerInformation">내정보</Link>
           </li>
           <li>
-            <Link to="/customerSearch">
+            <Link to="/CustomerSearch">
               <button type="button" className="btn_srch">
                 검색
               </button>

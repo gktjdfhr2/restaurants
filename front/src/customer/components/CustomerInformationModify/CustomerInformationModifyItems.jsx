@@ -3,11 +3,15 @@ import PropTypes from 'prop-types';
 
 function UserInfoModifyItems({ infoTitle, infoValue, onClick }) {
   return (
-    <div id="userInfoModifyContainer">
-      <div className="infoTitle">{infoTitle}</div>
-      <div className="infoFlex">
-        <div className="infoValue">{infoValue}</div>
-        <button className="infoModify" type="button" onClick={onClick}>
+    <div id="customer-information-modify-container">
+      <div className="information-title">{infoTitle}</div>
+      <div className="information-value-container">
+        <div className="information-value">{infoValue}</div>
+        <button
+          className="information-modify-button"
+          type="button"
+          onClick={onClick}
+        >
           수정
         </button>
       </div>

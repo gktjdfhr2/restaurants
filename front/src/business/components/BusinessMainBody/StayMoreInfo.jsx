@@ -5,7 +5,7 @@ function StayMoreInfo() {
     console.log('stayCancle');
   }, []);
   return (
-    <ul className="stayMoreInfo">
+    <ul className="stayMoreinformation">
       <li>
         <ul>
           <li>현재 21분 웨이팅</li>

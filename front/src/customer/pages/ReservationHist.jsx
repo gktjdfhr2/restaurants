@@ -8,7 +8,7 @@ function ReservationHist() {
   return (
     <section id="sign-in-nav">
       {!loginState && (
-        <Link to="/SignIn" id="userInfo">
+        <Link to="/SignIn">
           <div>로그인하기 &gt;</div>
         </Link>
       )}

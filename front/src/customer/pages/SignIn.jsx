@@ -9,7 +9,7 @@ function SignIn() {
         <img id="Logo" src={ImgLogo} alt="맛집지도" />
         <div>맛집지도</div>
       </section>
-      <section id="SignInInfo">
+      <section id="SignIninformation">
         <SigninInput />
       </section>
     </>
