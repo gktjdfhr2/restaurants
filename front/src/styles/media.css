@@ -132,7 +132,7 @@
     width: auto;
     margin: 0;
   }
-  .businessHeader a {
+  .business-header a {
     color: white;
   }
   .header-layout a {
@@ -159,7 +159,7 @@
   #recent-search-section {
     display: none;
   }
-  .businessHeader a {
+  .business-header a {
     color: white;
   }
 }

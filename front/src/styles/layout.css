@@ -75,7 +75,7 @@ header.header-layout section {
   letter-spacing: 0;
 }
 
-.businessHeader {
+.business-header {
   background-color: cornflowerblue;
   position: fixed;
   top: 0;
@@ -84,12 +84,12 @@ header.header-layout section {
   height: 72px;
   color: white;
 }
-.businessHeader section {
+.business-header section {
   display: flex;
   justify-content: space-between;
   height: 72px;
 }
-.businessHeader section h2 {
+.business-header section h2 {
   left: 31px;
   margin-left: 10px;
   margin-right: auto;
@@ -97,12 +97,12 @@ header.header-layout section {
   font-size: 20px;
   background-size: 96px auto;
 }
-.businessHeader section #Logo {
+.business-header section #Logo {
   display: inline-block;
   height: 48px;
   margin: 12px 0;
 }
-.businessHeader section h2 div {
+.business-header section h2 div {
   position: absolute;
   display: inline-block;
   font-size: 20px;
@@ -110,7 +110,7 @@ header.header-layout section {
   width: 86px;
   margin: 26px 2px;
 }
-.businessHeader section #businessHeaderDate {
+.business-header section #businessHeaderDate {
   width: 128px;
   height: 30px;
   border: 1px solid gainsboro;
@@ -118,7 +118,7 @@ header.header-layout section {
   padding: 10px;
 }
 
-.businessHeaderSpan {
+.business-header-container {
   text-align: right;
   margin: auto 10px;
 }

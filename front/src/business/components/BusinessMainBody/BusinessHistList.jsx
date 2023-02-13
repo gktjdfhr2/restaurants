@@ -9,7 +9,7 @@ function BusinessHistList({ histListShow, showHistButton }) {
         히스토리
         <button
           type="button"
-          className={histListShow ? 'openButton' : 'closeButton'}
+          className={histListShow ? 'close-button' : 'open-button'}
           onClick={showHistButton}
         >
           show
@@ -17,10 +17,6 @@ function BusinessHistList({ histListShow, showHistButton }) {
       </div>
       {histListShow && (
         <>
-          <BusinessHistListItems />
-          <BusinessHistListItems />
-          <BusinessHistListItems />
-          <BusinessHistListItems />
           <BusinessHistListItems />
           <BusinessHistListItems />
         </>

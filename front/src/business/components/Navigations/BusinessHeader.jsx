@@ -19,7 +19,7 @@ function BusinessHeader() {
     [nowDate],
   );
   return (
-    <header className="businessHeader">
+    <header className="business-header">
       <section>
         <span>
           <h2>
@@ -29,7 +29,7 @@ function BusinessHeader() {
             </Link>
           </h2>
         </span>
-        <span className="businessHeaderSpan ">
+        <span className="business-header-container ">
           <input
             type="date"
             id="businessHeaderDate"
@@ -37,7 +37,7 @@ function BusinessHeader() {
             onChange={changeDate}
           />
         </span>
-        <span className="businessHeaderSpan">
+        <span className="business-header-container">
           <Link to="/Business/GuestBook">게스트북</Link>
         </span>
       </section>

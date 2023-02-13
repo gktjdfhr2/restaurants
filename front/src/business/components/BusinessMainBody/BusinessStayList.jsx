@@ -9,7 +9,7 @@ function BusinessStayList({ stayListShow, showStayButton }) {
         대기 목록
         <button
           type="button"
-          className={stayListShow ? 'openButton' : 'closeButton'}
+          className={stayListShow ? 'close-button' : 'open-button'}
           onClick={showStayButton}
         >
           show
@@ -17,10 +17,6 @@ function BusinessStayList({ stayListShow, showStayButton }) {
       </div>
       {stayListShow && (
         <>
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
-          <BusinessStayListItems />
           <BusinessStayListItems />
           <BusinessStayListItems />
         </>

@@ -25,8 +25,8 @@ function BusinessMainBody() {
   }, [showState.histListShow]);
 
   return (
-    <section className="businessSection">
-      <div className="BusinessListBox">
+    <section className="business-show-customer-section">
+      <div className="business-show-customer-container">
         <BusinessStayList
           stayListShow={showState.stayListShow}
           showStayButton={showStayButton}

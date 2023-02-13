@@ -1,10 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-// import BusinessHeader from '../components/Headers/BusinessHeader';
-// import BusinessMainBody from './BusinessMainBody';
-// import GuestBook from './GuestBook';
-
 import AppForUser from '../customer';
 import AppForBusiness from '../business';
 
@@ -13,7 +9,7 @@ export default class Restaurants extends React.Component {
     super();
 
     this.state = {
-      userType: '고객',
+      userType: '사업자',
     };
   }
 
