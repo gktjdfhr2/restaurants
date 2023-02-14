@@ -407,6 +407,29 @@ ul ol li {
 }
 .stay-time {
   flex-grow: 1;
+  text-align: center;
+}
+.stay-number {
+  height: 70%;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.stay-start-time {
+  height: 30%;
+}
+.customer-name {
+  display: flex;
+  align-items: center;
+  height: 50%;
+  font-weight: bold;
+}
+.customer-personnel-information {
+  display: flex;
+  align-items: center;
+  height: 50%;
 }
 .more-information-button {
   flex-grow: 10;

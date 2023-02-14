@@ -1,30 +1,23 @@
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 
-function StayMoreInfo() {
+function StayMoreInfo({ wating, visit, lastVisited }) {
   const stayCancle = useCallback(() => {
     console.log('stayCancle');
   }, []);
+  console.log(stayCancle);
+
   return (
-    <ul className="stayMoreinformation">
-      <li>
-        <ul>
-          <li>현재 21분 웨이팅</li>
-          <li>방문 03회</li>
-        </ul>
-        <ul>
-          <li>최근 방문일</li>
-          <li>2022.01.01</li>
-        </ul>
-        <ul>
-          <li>
-            <button type="button" className="stayCancle" onClick={stayCancle}>
-              대기취소
-            </button>
-          </li>
-          <li>대기취소</li>
-        </ul>
-      </li>
-    </ul>
+    <div className="business-customer-information-container">
+      <div>
+        {wating} {visit} {lastVisited}
+      </div>
+    </div>
   );
 }
+StayMoreInfo.propTypes = {
+  wating: PropTypes.number.isRequired,
+  visit: PropTypes.number.isRequired,
+  lastVisited: PropTypes.string.isRequired,
+};
 export default StayMoreInfo;

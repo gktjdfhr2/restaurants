@@ -9,9 +9,12 @@ function BusinessStayList({
   customerPersonnelAdult,
   customerPersonnelkid,
   lastPhoneNumber,
+  wating,
+  visit,
+  lastVisited,
 }) {
   const [clicked, setClicked] = useState(false);
-
+  console.log(typeof stayNumber);
   const callClick = useCallback((event) => {
     event.stopPropagation();
     console.log('call');
@@ -40,13 +43,11 @@ function BusinessStayList({
           onClick={showMoreInformation}
           className="more-information-button"
         >
-          <div>{customerName}</div>
-          <div>
-            성인
-            {customerPersonnelAdult}
-            {customerPersonnelkid}
-            ||
-            {lastPhoneNumber}
+          <div className="customer-name">{customerName}</div>
+          <div className="customer-personnel-information">
+            성인 {customerPersonnelAdult}
+            &nbsp; 유아 {customerPersonnelkid}
+            &nbsp; | &nbsp;{lastPhoneNumber}
           </div>
         </button>
         <button type="button" className="customer-call-button">
@@ -56,18 +57,29 @@ function BusinessStayList({
           대기중
         </button>
       </div>
-      <div>{clicked && <StayMoreInfo />}</div>
+      <div>
+        {clicked && (
+          <StayMoreInfo
+            wating={wating}
+            visit={visit}
+            lastVisited={lastVisited}
+          />
+        )}
+      </div>
     </>
   );
 }
 
 BusinessStayList.propTypes = {
   stayNumber: PropTypes.number.isRequired,
-  stayStartTime: PropTypes.number.isRequired,
+  stayStartTime: PropTypes.string.isRequired,
   customerName: PropTypes.string.isRequired,
-  customerPersonnelAdult: PropTypes.string.isRequired,
+  customerPersonnelAdult: PropTypes.number.isRequired,
   customerPersonnelkid: PropTypes.number.isRequired,
   lastPhoneNumber: PropTypes.number.isRequired,
+  wating: PropTypes.number.isRequired,
+  visit: PropTypes.number.isRequired,
+  lastVisited: PropTypes.string.isRequired,
 };
 
 export default BusinessStayList;

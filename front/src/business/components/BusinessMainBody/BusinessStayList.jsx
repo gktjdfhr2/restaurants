@@ -10,6 +10,9 @@ function BusinessStayList({ stayListShow, showStayButton }) {
     customerPersonnelAdult: 3,
     customerPersonnelkid: 0,
     lastPhoneNumber: 4782,
+    wating: 21,
+    visit: 3,
+    lastVisited: '2023-01-02',
   });
   return (
     <>
@@ -23,6 +26,7 @@ function BusinessStayList({ stayListShow, showStayButton }) {
           show
         </button>
       </div>
+
       {stayListShow && (
         <div className="information-items-container">
           <BusinessStayListItems
@@ -34,6 +38,9 @@ function BusinessStayList({ stayListShow, showStayButton }) {
             }
             customerPersonnelkid={stayCustomerInformation.customerPersonnelkid}
             lastPhoneNumber={stayCustomerInformation.lastPhoneNumber}
+            wating={stayCustomerInformation.wating}
+            visit={stayCustomerInformation.visit}
+            lastVisited={stayCustomerInformation.lastVisited}
           />
         </div>
       )}
