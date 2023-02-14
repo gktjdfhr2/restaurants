@@ -398,7 +398,7 @@ ul ol li {
 }
 .information-items-container {
   overflow: scroll;
-  max-height: 50vh;
+  max-height: 48vh;
 }
 .business-customer-information-container {
   border-top: 1px solid gainsboro;
@@ -436,88 +436,89 @@ ul ol li {
   background-color: white;
   border: none;
 }
-.customer-call-button {
-  /* flex-grow: 1.5; */
+.waiting-more-information {
   display: flex;
-  width: 50px;
-  height: 70px;
-  margin: 0 10px 0 10px;
+  flex-direction: column;
+  flex-grow: 2;
+}
+.waiting-more-information div {
+  height: 50%;
+}
+.wating-last-visited {
+  flex-grow: 10;
+}
+.wating-last-visited div {
+  height: 50%;
+}
+.more-information {
+  background-color: gainsboro;
+  padding: 10px;
+}
+.yellow-point {
+  color: orange;
+  font-weight: bolder;
+}
+.customer-stay-cancle-button {
+  display: flex;
+  width: 60px;
+  height: 100%;
   border: none;
-  background: url(../assets/volume.png);
-  background-size: 50px;
+  margin: 3px 10px 0 10px;
+  background: url(../assets/stop-button.png);
+  background-size: 60px 50px;
   background-repeat: no-repeat;
   justify-content: center;
   align-items: flex-end;
-  /* text-indent: -9999px; */
+}
+.customer-call-button {
+  display: flex;
+  width: 60px;
+  height: 100%;
+  margin: 0 10px 0 10px;
+  border: none;
+  background: url(../assets/volume.png);
+  background-size: 60px 50px;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: flex-end;
 }
 .customer-stay-state-change-button {
-  /* flex-grow: 1; */
   display: flex;
-  width: 50px;
-  height: 72px;
-  margin: 0 10px 0 10px;
+  width: 60px;
+  height: 100%;
+  margin: 3px 10px 0 10px;
   border: none;
   background: url(../assets/hourglass.png);
-  background-size: 50px;
+  background-size: 60px 50px;
   background-repeat: no-repeat;
   justify-content: center;
   align-items: flex-end;
-  /* text-indent: -9999px; */
 }
-.callButton {
-  /* 호출 버튼 */
-  width: 50px;
-  height: 50px;
+.customer-join {
+  display: flex;
+  width: 60px;
+  height: 100%;
   border: none;
-  background: url(../assets/volume.png);
-  background-size: 50px;
-  background-repeat: no-repeat;
-  text-indent: -9999px;
-}
-.stayCheckButton {
-  /* 입장완료 버튼*/
-  width: 50px;
-  height: 50px;
-  border: none;
+  margin: 3px 10px 0 10px;
   background: url(../assets/checked.png);
-  background-size: 50px;
+  background-size: 60px 50px;
   background-repeat: no-repeat;
-  text-indent: -9999px;
+  justify-content: center;
+  align-items: flex-end;
 }
-.stayingButton {
-  /* 대기중 버튼 */
-  width: 50px;
-  height: 50px;
+.customer-stay-back-button {
+  display: flex;
+  width: 60px;
+  height: 100%;
   border: none;
-  background: url(../assets/hourglass.png);
-  background-size: 50px;
-  background-repeat: no-repeat;
-  text-indent: -9999px;
-}
-.stayBack {
-  /* 대기복귀 버튼 */
-  width: 40px;
-  height: 40px;
-  border: none;
+  margin: 3px 10px 0 10px;
   background: url(../assets/return.png);
-  background-size: 40px;
+  background-size: 60px 50px;
   background-repeat: no-repeat;
-  text-indent: -9999px;
-  margin-left: 7px;
-}
-.stayCancle {
-  /* 대기취소 버튼 */
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: url(../assets/stop-button.png);
-  background-size: 40px;
-  background-repeat: no-repeat;
-  text-indent: -9999px;
-  margin-left: 7px;
+  justify-content: center;
+  align-items: flex-end;
 }
 .close-button {
-  /* 닫기 버튼 */
   width: 20px;
   height: 20px;
   border: none;
@@ -527,7 +528,6 @@ ul ol li {
   text-indent: -9999px;
 }
 .open-button {
-  /* 열기 버튼 */
   width: 20px;
   height: 20px;
   border: none;

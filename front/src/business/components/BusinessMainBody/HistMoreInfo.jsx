@@ -1,31 +1,38 @@
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 
-function HistMoreInfo() {
-  const stayback = useCallback(() => {
+function HistMoreInfo({ wating, visit, lastVisited }) {
+  const stayBack = useCallback(() => {
     console.log('stayReturn');
   });
 
   return (
-    <ul className="stayMoreinformation">
-      <li>
-        <ul>
-          <li>현재 21분 웨이팅</li>
-          <li>방문 03회</li>
-        </ul>
-        <ul>
-          <li>최근 방문일</li>
-          <li>2022.01.01</li>
-        </ul>
-        <ul>
-          <li>
-            <button type="button" className="stayBack" onClick={stayback}>
-              대기복귀
-            </button>
-          </li>
-          <li>대기복귀</li>
-        </ul>
-      </li>
-    </ul>
+    <div className="business-customer-information-container more-information">
+      <div className="waiting-more-information">
+        <div>
+          기다린 시간 <span className="yellow-point">{wating}분</span>
+        </div>
+        <div>
+          방문 <span className="yellow-point">{visit}회</span>
+        </div>
+      </div>
+      <div className="wating-last-visited">
+        <div>최근 방문일</div>
+        <div>{lastVisited}</div>
+      </div>
+      <button
+        type="button"
+        onClick={stayBack}
+        className="customer-stay-back-button"
+      >
+        대기취소
+      </button>
+    </div>
   );
 }
+HistMoreInfo.propTypes = {
+  wating: PropTypes.number.isRequired,
+  visit: PropTypes.number.isRequired,
+  lastVisited: PropTypes.string.isRequired,
+};
 export default HistMoreInfo;

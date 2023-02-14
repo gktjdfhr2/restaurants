@@ -57,15 +57,9 @@ function BusinessStayList({
           대기중
         </button>
       </div>
-      <div>
-        {clicked && (
-          <StayMoreInfo
-            wating={wating}
-            visit={visit}
-            lastVisited={lastVisited}
-          />
-        )}
-      </div>
+      {clicked && (
+        <StayMoreInfo wating={wating} visit={visit} lastVisited={lastVisited} />
+      )}
     </>
   );
 }

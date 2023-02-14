@@ -42,6 +42,58 @@ function BusinessStayList({ stayListShow, showStayButton }) {
             visit={stayCustomerInformation.visit}
             lastVisited={stayCustomerInformation.lastVisited}
           />
+          <BusinessStayListItems
+            stayNumber={stayCustomerInformation.stayNumber}
+            stayStartTime={stayCustomerInformation.stayStartTime}
+            customerName={stayCustomerInformation.customerName}
+            customerPersonnelAdult={
+              stayCustomerInformation.customerPersonnelAdult
+            }
+            customerPersonnelkid={stayCustomerInformation.customerPersonnelkid}
+            lastPhoneNumber={stayCustomerInformation.lastPhoneNumber}
+            wating={stayCustomerInformation.wating}
+            visit={stayCustomerInformation.visit}
+            lastVisited={stayCustomerInformation.lastVisited}
+          />
+          <BusinessStayListItems
+            stayNumber={stayCustomerInformation.stayNumber}
+            stayStartTime={stayCustomerInformation.stayStartTime}
+            customerName={stayCustomerInformation.customerName}
+            customerPersonnelAdult={
+              stayCustomerInformation.customerPersonnelAdult
+            }
+            customerPersonnelkid={stayCustomerInformation.customerPersonnelkid}
+            lastPhoneNumber={stayCustomerInformation.lastPhoneNumber}
+            wating={stayCustomerInformation.wating}
+            visit={stayCustomerInformation.visit}
+            lastVisited={stayCustomerInformation.lastVisited}
+          />
+          <BusinessStayListItems
+            stayNumber={stayCustomerInformation.stayNumber}
+            stayStartTime={stayCustomerInformation.stayStartTime}
+            customerName={stayCustomerInformation.customerName}
+            customerPersonnelAdult={
+              stayCustomerInformation.customerPersonnelAdult
+            }
+            customerPersonnelkid={stayCustomerInformation.customerPersonnelkid}
+            lastPhoneNumber={stayCustomerInformation.lastPhoneNumber}
+            wating={stayCustomerInformation.wating}
+            visit={stayCustomerInformation.visit}
+            lastVisited={stayCustomerInformation.lastVisited}
+          />
+          <BusinessStayListItems
+            stayNumber={stayCustomerInformation.stayNumber}
+            stayStartTime={stayCustomerInformation.stayStartTime}
+            customerName={stayCustomerInformation.customerName}
+            customerPersonnelAdult={
+              stayCustomerInformation.customerPersonnelAdult
+            }
+            customerPersonnelkid={stayCustomerInformation.customerPersonnelkid}
+            lastPhoneNumber={stayCustomerInformation.lastPhoneNumber}
+            wating={stayCustomerInformation.wating}
+            visit={stayCustomerInformation.visit}
+            lastVisited={stayCustomerInformation.lastVisited}
+          />
         </div>
       )}
     </>
