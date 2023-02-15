@@ -1,24 +1,7 @@
 * {
   outline: 0;
 }
-.userHeader {
-  background-color: cornflowerblue;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 72px;
-  color: white;
-}
-.proprietorHeader {
-  background-color: cornflowerblue;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 72px;
-  color: white;
-}
+
 a {
   text-decoration: none;
   cursor: pointer;
@@ -43,82 +26,7 @@ ul ol li {
 .marginAuto {
   margin: auto;
 }
-.userHeader section {
-  position: relative;
-  width: 1024px;
-  height: 72px;
-  background: none;
-  margin: 0 auto;
-}
-.userHeader section h2 {
-  position: absolute;
-  left: 31px;
-  margin: 0;
-  font-size: 20px;
-  background-size: 96px auto;
-}
-.userHeader section #Logo {
-  display: inline-block;
-  height: 48px;
-  margin: 12px 0;
-}
-.userHeader section h2 div {
-  position: absolute;
-  display: inline-block;
-  font-size: 20px;
-  height: 20px;
-  width: 86px;
-  margin: 26px 2px;
-}
-.userHeader section ul li .btn_srch {
-  border: none;
-  text-indent: -9999px;
-  z-index: 10;
-  cursor: pointer;
-  background-image: url(../assets/magnifying-glass.png);
-  background-size: 22px;
-  background-repeat: no-repeat;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  background-color: cornflowerblue;
-}
-.proprietorHeader section {
-  display: flex;
-  justify-content: space-between;
-  height: 72px;
-}
-.proprietorHeader section h2 {
-  left: 31px;
-  margin-left: 10px;
-  margin-right: auto;
-  margin-top: auto;
-  font-size: 20px;
-  background-size: 96px auto;
-}
-.proprietorHeader section #Logo {
-  display: inline-block;
-  height: 48px;
-  margin: 12px 0;
-}
-.proprietorHeader section h2 div {
-  position: absolute;
-  display: inline-block;
-  font-size: 20px;
-  height: 20px;
-  width: 86px;
-  margin: 26px 2px;
-}
-.proprietorHeader section #proprietorHeaderDate {
-  width: 128px;
-  height: 30px;
-  border: 1px solid gainsboro;
-  border-radius: 10px;
-  padding: 10px;
-}
-.proprietorHeaderSpan {
-  text-align: right;
-  margin: auto 10px;
-}
+
 #react-kakao-maps-sdk-map-container {
   width: 1024px;
   height: 360px;
@@ -127,67 +35,46 @@ ul ol li {
   margin-left: auto;
   margin-right: auto;
 }
-#info {
+#sign-in-nav {
   position: relative;
   margin-top: 120px;
   width: 1024px;
   margin-left: auto;
   margin-right: auto;
 }
-#info #userInfo {
+#sign-in-nav #customerinformation {
   color: black;
   font-weight: bold;
   font-size: larger;
 }
-#info a {
+#sign-in-nav a {
   color: black;
 }
-#info .infoUl {
+#sign-in-nav .customer-information-menu {
   list-style: none;
   padding: 50px 24px;
 }
-#info .infoUl li {
+#sign-in-nav .customer-information-menu li {
   line-height: 100px;
   border-bottom: 1px solid gainsboro;
 }
-#info #gogo {
+#sign-in-nav #customer-information-navigator {
   position: relative;
   margin: 50px 24px;
 }
 
-.ul_header {
-  position: absolute;
-  top: 27px;
-  right: 31px;
-  display: block;
-  width: auto;
-  text-align: right;
-}
 #dummy {
   width: 1024px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
 }
-.ul_header li {
-  display: inline-block;
-  position: relative;
-  min-width: 53px;
-  min-height: 35px;
-  margin-left: 30px;
-  vertical-align: top;
-}
-.ul_header li a {
-  display: inline-block;
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.8);
-  letter-spacing: 0;
-}
-#SignInInfo {
+
+#signin-information {
   width: 425px;
   margin: 50px auto;
 }
-#SignInInfo input {
+#signin-information input {
   width: 360px;
   height: 40px;
   margin: 10px auto;
@@ -196,19 +83,19 @@ ul ol li {
   border: 1px solid gainsboro;
   border-radius: 10px;
 }
-#SignInInfo #signInDiv {
+#signin-information #signin-container {
   width: 360px;
   height: 144px;
   margin: 0 auto;
   border-bottom: 1px solid gainsboro;
 }
-#SignInInfo #SignInSubmitForm {
+#signin-information #signin-submit-container {
   width: 360px;
   height: 144px;
   margin: 0 auto;
   border: none;
 }
-#SignInInfo #SignInSubmit {
+#signin-information #signin-submit-button {
   width: 364px;
   height: 40px;
   margin: 20px auto;
@@ -217,25 +104,25 @@ ul ol li {
   border: 1px solid gainsboro;
   border-radius: 10px;
 }
-#SignInInfo a {
+#signin-information a {
   color: black;
   text-decoration: underline;
   font-weight: bold;
   text-align: center;
 }
-#SignInInfo #signUp {
+#signin-information #signup {
   text-align: center;
 }
-#SignInSection {
+#signin-section {
   width: 425px;
   margin-top: 120px;
   margin-left: auto;
   margin-right: auto;
 }
-#SignInSection #Logo {
+#signin-section #Logo {
   width: 200px;
 }
-#SignInSection div {
+#signin-section div {
   position: absolute;
   display: inline-block;
   height: 40px;
@@ -246,23 +133,23 @@ ul ol li {
   font-weight: bolder;
   font-size: 40px;
 }
-#SignUpSection {
+#signup-section {
   width: 1024px;
   margin-top: 80px;
   margin-left: auto;
   margin-right: auto;
 }
-#SignUpTitle {
+#signup-title {
   padding-top: 20px;
   text-align: center;
   font-size: 30px;
 }
-#SignUpSection #SignUpItemContainer {
+#signup-section #SignUpItemContainer {
   padding-top: 20px;
   width: 336px;
   margin: 0 auto;
 }
-#SignUpSection #SignUpItemContainer input {
+#signup-section #SignUpItemContainer input {
   width: 100%;
   height: 36px;
   margin: 5px auto;
@@ -270,7 +157,7 @@ ul ol li {
   border-radius: 10px;
   padding-left: 10px;
 }
-#SignUpSection #SignUpItemContainer select {
+#signup-section #SignUpItemContainer select {
   width: 350px;
   height: 37px;
   margin: 5px auto;
@@ -278,7 +165,7 @@ ul ol li {
   border: 1px solid gainsboro;
   border-radius: 10px;
 }
-#SignUpSection #SignUpItemContainer #infoSubmit {
+#signup-section #SignUpItemContainer #informationSubmit {
   width: 180px;
   height: 36px;
   margin: 40px 81px;
@@ -287,25 +174,18 @@ ul ol li {
   border: 1px solid cornflowerblue;
   border-radius: 20px;
 }
-#idState {
-  margin-bottom: 24px;
-  color: black;
-}
-#pwState {
-  margin-bottom: 24px;
-  color: white;
-}
-#recommendRestaurants {
+
+#recommend-restaurants-section {
   width: 1024px;
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
 }
-#recommendRestaurantsTitle {
+#recommend-restaurants-title {
   font-size: larger;
   font-weight: bold;
 }
-#restaurantsClassificationTag {
+#restaurants-classification-tag {
   width: 124px;
   height: 36px;
   margin-top: 30px;
@@ -314,19 +194,19 @@ ul ol li {
   border-radius: 10px;
   text-align: center;
 }
-#searchForm {
+#search-container {
   width: 1024px;
   height: 64px;
   margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
 }
-#searchTextWrap {
+#search-form-wrap {
   position: relative;
   width: 728px;
   margin: auto;
 }
-#searchText {
+#search-keyword {
   width: 100%;
   height: 36px;
   border: 1px solid gainsboro;
@@ -335,7 +215,7 @@ ul ol li {
   padding: 5px 20px;
   border-radius: 10px;
 }
-#searchSubmitBtn {
+#search-submit-button {
   position: absolute;
   font-size: 13px;
   background: url(../assets/mobile-magnifying-glass.png);
@@ -348,23 +228,23 @@ ul ol li {
   right: -20px;
   top: 12px;
 }
-#recentSearch {
+#recent-search-container {
   list-style: none;
   padding-left: 10px;
 }
 
-#recentSearch li {
+#recent-search-container li {
   display: inline-block;
   position: relative;
   margin-right: 20px;
 }
-#recentSearchItems {
+#recent-search-keywords {
   background-color: gainsboro;
   padding: 7px;
   margin-top: 10px;
   border-radius: 5px;
 }
-#recentSearchItems button {
+#recent-search-keywords button {
   background-color: gainsboro;
   border: none;
 }
@@ -375,52 +255,52 @@ ul ol li {
   margin-left: auto;
   margin-right: auto;
 }
-#recommendStoreListTitle {
+#most-searched-keywords-title {
   margin: auto;
   font-weight: bold;
 }
 
-#mostSearched {
+#most-searched-keywords-container {
   padding: 0;
 }
-#mostSearchedItems {
+#most-searched-keywords {
   list-style: none;
   padding: 20px 0;
 }
-#recentSearchList {
+#recent-search-section {
   width: 728px;
   margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
 }
-#recentSearchTitle {
+#recent-search-title {
   margin: auto;
   font-weight: bold;
 }
-#mostSearchedList {
+#most-searched-keywords-section {
   width: 728px;
   margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
 }
-#userInfoModifyContainer {
+#customer-information-modify-container {
   padding-top: 50px;
   width: 612px;
   margin: 0 auto;
 }
-#userInfoModifyContainer .infoTitle {
+#customer-information-modify-container .information-title {
   font-size: 25px;
   color: gray;
 }
-.infoFlex {
+.information-value-container {
   display: flex;
   justify-content: space-between;
 }
-#userInfoModifyContainer .infoValue {
+#customer-information-modify-container .information-value {
   font-size: 25px;
   margin-top: 20px;
 }
-#userInfoModifyContainer .infoModify {
+#customer-information-modify-container .information-modify-button {
   margin-top: 20px;
   font-size: 25px;
   padding: 5px 20px;
@@ -428,10 +308,10 @@ ul ol li {
   border: 1px solid gainsboro;
   border-radius: 20px;
 }
-#selectTagFlex {
+#history-menu-type-container {
   display: flex;
 }
-#selectTagFlex .selectTag {
+#history-menu-type-container .history-menu-type {
   font-size: 25px;
   margin-top: 20px;
   text-underline-offset: 10px;
@@ -439,40 +319,40 @@ ul ol li {
   border: none;
   background-color: white;
 }
-#selectTagFlex .selected {
+#history-menu-type-container .menu-selected {
   text-decoration: underline;
 }
-.histItems ul {
+.history-store-container ul {
   list-style: none;
   padding: 10px 24px;
 }
-.histItems .histItem {
+.history-store-container .history-store-information-container {
   padding: 30px 0;
   line-height: 10px;
   border: none;
   display: flex;
 }
-.storeImg {
+.store-image {
   width: 150px;
   height: 150px;
   border: 1px solid gainsboro;
   border-radius: 20px;
 }
-.storeInfo .storeInfoTitle {
+.store-more-information .store-more-information-title {
   font-size: 30px;
   padding: 15px;
   font-weight: bold;
 }
-.storeInfo .storeInfoReview {
+.store-more-information .store-more-information-reviews {
   font-size: 20px;
   padding: 10px 15px;
 }
-.storeInfo .storeInfoState {
+.store-more-information .store-more-information-reservation-state {
   font-size: 20px;
   padding: 10px 15px;
   color: red;
 }
-.storeInfo .storeInfoCancle {
+.store-more-information .store-more-information-reservation-cancle {
   margin-left: 10px;
   padding: 10px 15px;
   font-size: 20px;
@@ -481,157 +361,164 @@ ul ol li {
   background-color: lightskyblue;
   border-radius: 10px;
 }
-.proprietorSection {
-  margin-top: 100px;
+.business-show-customer-section {
+  margin-top: 72px;
   margin-left: 20px;
   margin-right: 20px;
 }
-.proprietorSection ul {
-  list-style: none;
-  padding: 0;
-}
-.flexUl {
-  margin: 0;
-  border: 1px solid gainsboro;
-}
-.flexUl .flexLi {
-  height: 96px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.flexUl li ul {
-  margin: 0 10px;
-}
-.flexUl li ul .topLi {
-  height: 50px;
-}
-.flexUl li ul .bottomLi {
-  height: 30px;
-}
-.flexUl .flexLi ul:nth-of-type(1) {
-  flex-grow: 0;
-}
-.flexUl .flexLi ul:nth-of-type(1) .stayNum {
-  font-size: 40px;
-  font-weight: bold;
-  padding: 10px 2px 0 7px;
-}
-.flexUl .flexLi ul:nth-of-type(1) .stayStart {
-  font-size: 20px;
-  font-weight: bold;
-}
-.flexUl .flexLi ul:nth-of-type(2) {
-  flex-grow: 3;
-  text-align: left;
-}
-.flexUl .flexLi ul:nth-of-type(2) .stayName {
-  line-height: 50px;
-}
-.flexUl .flexLi ul:nth-of-type(2) .stayPersonnel {
-  line-height: 35px;
-}
-.flexUl .flexLi ul:nth-of-type(3) {
-  flex-grow: 0;
-  text-align: center;
-}
-.flexUl .flexLi ul:nth-of-type(3) .callButton {
-  width: 50px;
-  height: 50px;
-  border: none;
-  background: url(../assets/volume.png);
-  background-size: 50px;
-  background-repeat: no-repeat;
-  text-indent: -9999px;
-}
-.flexUl .flexLi ul:nth-of-type(3) .recentCall {
-  line-height: 35px;
-}
-.flexUl .flexLi ul:nth-of-type(4) {
-  flex-grow: 0;
-  text-align: center;
-}
-.flexUl .flexLi ul:nth-of-type(4) .stayingButton {
-  width: 50px;
-  height: 50px;
-  border: none;
-  background: url(../assets/hourglass.png);
-  background-size: 50px;
-  background-repeat: no-repeat;
-  text-indent: -9999px;
-}
-.flexUl .flexLi ul:nth-of-type(4) .stayCheckButton {
-  width: 50px;
-  height: 50px;
-  border: none;
-  background: url(../assets/checked.png);
-  background-size: 50px;
-  background-repeat: no-repeat;
-  text-indent: -9999px;
-}
-.flexUl .flexLi ul:nth-of-type(4) .stayState {
-  line-height: 35px;
-}
-.stayMoreInfo {
+.business-show-customer-container {
+  padding: 10px;
+  height: 57vh;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 80px;
-  background-color: gainsboro;
-  margin: 0;
+  justify-content: space-between;
 }
-.stayMoreInfo li {
-  height: 40px;
+.history-title {
   display: flex;
   justify-content: space-between;
-  padding-top: 5px;
-}
-.stayMoreInfo li ul:nth-of-type(2) {
-  flex-grow: 1;
-}
-.stayCancle {
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: url(../assets/stop-button.png);
-  background-size: 40px;
-  background-repeat: no-repeat;
-  text-indent: -9999px;
-  margin-left: 7px;
-}
-.stayBack {
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: url(../assets/return.png);
-  background-size: 40px;
-  background-repeat: no-repeat;
-  text-indent: -9999px;
-  margin-left: 7px;
-}
-.stayListTitle {
-  height: 30px;
-  border: 1px solid gainsboro;
-  border-radius: 10px;
-  padding-left: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  padding: 5px;
-}
-.stayListTitleShow {
-  height: 30px;
-  border: 1px solid gainsboro;
-  border-radius: 10px 10px 0 0;
-  padding-left: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
   padding: 10px;
 }
-.openButton {
+.customer-stay-information {
+  border: 1px solid gainsboro;
+  margin-bottom: 10px;
+  border-radius: 10px 10px 0 0;
+}
+.customer-stay-information-show {
+  border: 1px solid gainsboro;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+.customer-history-information {
+  border: 1px solid gainsboro;
+  border-radius: 10px 10px 0 0;
+}
+.customer-history-information-show {
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+}
+.information-items-container {
+  overflow: scroll;
+  max-height: 48vh;
+}
+.business-customer-information-container {
+  border-top: 1px solid gainsboro;
+  height: 72px;
+  display: flex;
+}
+.stay-time {
+  flex-grow: 1;
+  text-align: center;
+}
+.stay-number {
+  height: 70%;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.stay-start-time {
+  height: 30%;
+}
+.customer-name {
+  display: flex;
+  align-items: center;
+  height: 50%;
+  font-weight: bold;
+}
+.customer-personnel-information {
+  display: flex;
+  align-items: center;
+  height: 50%;
+}
+.more-information-button {
+  flex-grow: 10;
+  background-color: white;
+  border: none;
+}
+.waiting-more-information {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+}
+.waiting-more-information div {
+  height: 50%;
+}
+.waiting-last-visited {
+  flex-grow: 10;
+}
+.waiting-last-visited div {
+  height: 50%;
+}
+.more-information {
+  background-color: gainsboro;
+  padding: 10px;
+}
+.yellow-point {
+  color: orange;
+  font-weight: bolder;
+}
+.customer-stay-cancle-button {
+  display: flex;
+  width: 60px;
+  height: 100%;
+  border: none;
+  margin: 3px 10px 0 10px;
+  background: url(../assets/stop-button.png);
+  background-size: 60px 50px;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: flex-end;
+}
+.customer-call-button {
+  display: flex;
+  width: 60px;
+  height: 100%;
+  margin: 0 10px 0 10px;
+  border: none;
+  background: url(../assets/volume.png);
+  background-size: 60px 50px;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: flex-end;
+}
+.customer-stay-state-change-button {
+  display: flex;
+  width: 60px;
+  height: 100%;
+  margin: 3px 10px 0 10px;
+  border: none;
+  background: url(../assets/hourglass.png);
+  background-size: 60px 50px;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: flex-end;
+}
+.customer-join {
+  display: flex;
+  width: 60px;
+  height: 100%;
+  border: none;
+  margin: 3px 10px 0 10px;
+  background: url(../assets/checked.png);
+  background-size: 60px 50px;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: flex-end;
+}
+.customer-stay-back-button {
+  display: flex;
+  width: 60px;
+  height: 100%;
+  border: none;
+  margin: 3px 10px 0 10px;
+  background: url(../assets/return.png);
+  background-size: 60px 50px;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: flex-end;
+}
+.close-button {
   width: 20px;
   height: 20px;
   border: none;
@@ -639,9 +526,8 @@ ul ol li {
   background-size: 20px;
   background-repeat: no-repeat;
   text-indent: -9999px;
-  margin-right: 10px;
 }
-.closeButton {
+.open-button {
   width: 20px;
   height: 20px;
   border: none;
@@ -649,200 +535,4 @@ ul ol li {
   background-size: 20px;
   background-repeat: no-repeat;
   text-indent: -9999px;
-  margin-right: 10px;
-}
-.ProprietorListBox {
-  padding: 10px;
-  height: 57vh;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.proprietorFooter {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 25vh;
-  background-color: cornflowerblue;
-}
-.footerUl {
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 5px;
-  height: 20vh;
-}
-.footerUl .autoDeadLine {
-  display: flex;
-  height: 100%;
-  justify-content: space-between;
-  flex-direction: column;
-}
-@media screen and (max-width: 1024px) {
-  /*mobile*/
-  body {
-    margin: 0;
-  }
-
-  .userHeader a {
-    color: cornflowerblue;
-  }
-  #SignInSection {
-    width: 375px;
-    margin: 0 auto;
-  }
-  #SignInInfo {
-    width: 375px;
-    margin: 50px auto;
-  }
-  #react-kakao-maps-sdk-map-container {
-    height: 360px;
-    width: 100vw;
-    margin: 0;
-  }
-  .userHeader {
-    position: relative;
-    display: block;
-    top: 0%;
-    background-color: white;
-    color: cornflowerblue;
-  }
-  .userHeader section {
-    width: 100%;
-    height: 44px;
-  }
-  .userHeader section h2 {
-    position: absolute;
-    left: 3vw;
-    margin: 0;
-  }
-  .userHeader section h2 div {
-    position: absolute;
-    display: inline-block;
-    font-size: 20px;
-    height: 20px;
-    width: 86px;
-    margin: 26px 2px;
-  }
-  .ul_header {
-    position: absolute;
-    top: 1.5rem;
-    right: 3vw;
-    display: block;
-    width: auto;
-    text-align: right;
-  }
-  .ul_header li {
-    display: inline-block;
-    position: relative;
-    min-width: 1px;
-    min-height: 3px;
-    margin-left: 3vw;
-    vertical-align: top;
-  }
-  .ul_header li a {
-    display: inline-block;
-    font-size: 13px;
-    color: cornflowerblue;
-    letter-spacing: 0;
-  }
-  .userHeader section ul li .btn_srch {
-    font-size: 13px;
-    background: url(../assets/mobile-magnifying-glass.png);
-    background-size: 22px;
-    background-repeat: no-repeat;
-    padding-top: 20px;
-    padding-left: 20px;
-  }
-  #info {
-    width: 100vw;
-    margin-top: 50px;
-  }
-  #info ul {
-    padding: 50px 10px;
-  }
-  #info #gogo {
-    margin: 20px 10px;
-  }
-  #SignUpSection {
-    width: 90vw;
-    margin: 0 auto;
-  }
-  #SignUpSection #SignUpItemContainer {
-    padding-top: 20px;
-    width: 90vw;
-    margin: 0 auto;
-  }
-  #SignUpSection #SignUpItemContainer #infoSubmit {
-    width: 100%;
-    margin: 0;
-    margin-top: 20px;
-  }
-  #SignUpSection #SignUpItemContainer select {
-    width: 101%;
-  }
-  #recommendRestaurantsTitle {
-    display: inline-block;
-    position: absolute;
-    padding-top: 5px;
-  }
-  #restaurantsClassificationTag {
-    display: inline-block;
-    position: absolute;
-    margin: 0;
-    right: 3vw;
-  }
-  #recommendRestaurants {
-    width: 100vw;
-  }
-  #searchForm {
-    width: 100vw;
-    margin: 0;
-  }
-  #searchTextWrap {
-    width: 90vw;
-    left: -20px;
-  }
-  #recentSearchList {
-    width: 95vw;
-  }
-  #mostSearchedList {
-    width: 95vw;
-  }
-  #userInfoModifyContainer {
-    padding-top: 50px;
-    width: auto;
-    margin: 0;
-  }
-  .proprietorHeader a {
-    color: white;
-  }
-  .userHeader a {
-    color: cornflowerblue;
-  }
-}
-@media screen and (max-width: 375px) {
-  .ul_header li a {
-    font-size: 13px;
-  }
-  .userHeader section ul li .btn_srch {
-    font-size: 13px;
-  }
-  .userHeader section h2 div {
-    display: none;
-  }
-  #recentSearch {
-    display: none;
-  }
-  #recentSearchList {
-    display: none;
-  }
-  .proprietorHeader a {
-    color: white;
-  }
-  .userHeader a {
-    color: cornflowerblue;
-  }
 }
