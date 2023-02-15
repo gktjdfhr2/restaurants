@@ -1,0 +1,165 @@
+@media screen and (max-width: 1024px) {
+  /*mobile*/
+  body {
+    margin: 0;
+  }
+
+  header.header-layout a {
+    color: cornflowerblue;
+  }
+  header.header-layout {
+    position: relative;
+    display: block;
+    top: 0%;
+    background-color: white;
+    color: cornflowerblue;
+  }
+  header.header-layout section {
+    width: 100%;
+    height: 44px;
+  }
+  header.header-layout section h2 {
+    position: absolute;
+    left: 3vw;
+    margin: 0;
+  }
+  header.header-layout section h2 div {
+    position: absolute;
+    display: inline-block;
+    font-size: 20px;
+    height: 20px;
+    width: 86px;
+    margin: 26px 2px;
+  }
+  header.header-layout section ul li .btn_srch {
+    font-size: 13px;
+    background: url(../assets/mobile-magnifying-glass.png);
+    background-size: 22px;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+    padding-left: 20px;
+  }
+  #signin-section {
+    width: 375px;
+    margin: 0 auto;
+  }
+  #signin-information {
+    width: 375px;
+    margin: 50px auto;
+  }
+  #react-kakao-maps-sdk-map-container {
+    height: 360px;
+    width: 100vw;
+    margin: 0;
+  }
+  .customer-header-ul {
+    position: absolute;
+    top: 1.5rem;
+    right: 3vw;
+    display: block;
+    width: auto;
+    text-align: right;
+  }
+  .customer-header-ul li {
+    display: inline-block;
+    position: relative;
+    min-width: 1px;
+    min-height: 3px;
+    margin-left: 3vw;
+    vertical-align: top;
+  }
+  .customer-header-ul li a {
+    display: inline-block;
+    font-size: 13px;
+    color: cornflowerblue;
+    letter-spacing: 0;
+  }
+
+  #sign-in-nav {
+    width: 100vw;
+    margin-top: 50px;
+  }
+  #sign-in-nav ul {
+    padding: 50px 10px;
+  }
+  #signup-section {
+    width: 90vw;
+    margin: 0 auto;
+  }
+  #signup-section #SignUpItemContainer {
+    padding-top: 20px;
+    width: 90vw;
+    margin: 0 auto;
+  }
+  #signup-section #SignUpItemContainer #informationSubmit {
+    width: 100%;
+    margin: 0;
+    margin-top: 20px;
+  }
+  #signup-section #SignUpItemContainer select {
+    width: 101%;
+  }
+  #recommend-restaurants-title {
+    display: inline-block;
+    position: absolute;
+    padding-top: 5px;
+  }
+  #restaurants-classification-tag {
+    display: inline-block;
+    position: absolute;
+    margin: 0;
+    right: 3vw;
+  }
+  #recommend-restaurants-section {
+    width: 100vw;
+  }
+  #search-container {
+    width: 100vw;
+    margin: 0;
+  }
+  #search-form-wrap {
+    width: 90vw;
+    left: -20px;
+  }
+  #recent-search-section {
+    width: 95vw;
+  }
+  #most-searched-keywords-section {
+    width: 95vw;
+  }
+  #customer-information-modify-container {
+    padding-top: 50px;
+    width: auto;
+    margin: 0;
+  }
+  .business-header a {
+    color: white;
+  }
+  .header-layout a {
+    color: cornflowerblue;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .customer-header-ul li a {
+    font-size: 13px;
+  }
+  header.header-layout section ul li .btn_srch {
+    font-size: 13px;
+  }
+  header.header-layout section h2 div {
+    display: none;
+  }
+  header.header-layout a {
+    color: cornflowerblue;
+  }
+  #recent-search-container {
+    display: none;
+  }
+  #recent-search-section {
+    display: none;
+  }
+  .business-header a {
+    color: white;
+  }
+}

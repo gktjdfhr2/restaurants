@@ -13,5 +13,6 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'react/jsx-one-expression-per-line': 'off',
   },
 };
