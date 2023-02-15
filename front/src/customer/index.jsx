@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import CustomerHeader from './components/Navigations/CustomerHeader';
-import MainBody from './pages/MainBody';
+import CustomertRestaurantsMap from './pages/CustomertRestaurantsMap';
 import CustomerInformation from './pages/CustomerInformation';
 import CustomerSearch from './pages/CustomerSearch';
 import SignIn from './pages/SignIn';
@@ -19,7 +19,7 @@ function Restaurants() {
     <>
       <CustomerHeader />
       <Routes>
-        <Route path="/" element={<MainBody />} />
+        <Route path="/" element={<CustomertRestaurantsMap />} />
         <Route path="/CustomerInformation" element={<CustomerInformation />} />
         <Route path="/CustomerSearch" element={<CustomerSearch />} />
         <Route path="/SignIn" element={<SignIn />} />
