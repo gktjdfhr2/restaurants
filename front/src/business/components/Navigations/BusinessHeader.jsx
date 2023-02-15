@@ -11,7 +11,7 @@ function BusinessHeader() {
 
   const [nowDate, setNowDate] = useState(formatDate);
 
-  const changeDate = useCallback(
+  const changeCalendarDate = useCallback(
     (event) => {
       setNowDate(event.target.value);
       console.log(event.target.value);
@@ -34,7 +34,7 @@ function BusinessHeader() {
             type="date"
             id="business-header-date"
             value={nowDate}
-            onChange={changeDate}
+            onChange={changeCalendarDate}
           />
         </span>
         <span className="business-header-container">

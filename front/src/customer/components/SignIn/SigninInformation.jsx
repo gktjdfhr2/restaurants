@@ -14,7 +14,7 @@ function SigninInput() {
     setSignInCheck({ ...signInCheck, userEmail: event.target.value });
   };
 
-  const loginPwHandle = (event) => {
+  const loginPasswordHandle = (event) => {
     setSignInCheck({ ...signInCheck, userPasswd: event.target.value });
   };
 
@@ -51,7 +51,7 @@ function SigninInput() {
         <input
           type="password"
           value={signInCheck.userPasswd}
-          onChange={loginPwHandle}
+          onChange={loginPasswordHandle}
           placeholder="비밀번호"
         />
       </div>

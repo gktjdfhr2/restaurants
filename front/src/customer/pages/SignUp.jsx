@@ -11,10 +11,10 @@ function SignUp() {
     userPassword: '',
     userName: '',
     userAddress: '',
-    userPhoneNum: '',
+    userPhoneNumber: '',
     userType: '고객',
   });
-  const [checkPassword, setCheckPassword] = useState('');
+  const [passwordCheck, setCheckPassword] = useState('');
 
   /** 아이디 입력 */
   const userIdHandle = useCallback(
@@ -26,7 +26,7 @@ function SignUp() {
   );
 
   /** 비밀번호 입력 확인 */
-  const pwHandleChange = useCallback(
+  const passwordHandle = useCallback(
     (inputPassword) => {
       setSignUpInfo((prev) => ({ ...prev, userPassword: inputPassword }));
       console.log(signUpInfo.userPassword);
@@ -35,11 +35,11 @@ function SignUp() {
   );
 
   /** 비밀번호 일치 확인 */
-  const pwCheckHandle = useCallback(
-    (inputPw2) => {
-      setCheckPassword(inputPw2);
+  const passwordCheckHandle = useCallback(
+    (inputPasswordCheck) => {
+      setCheckPassword(inputPasswordCheck);
     },
-    [checkPassword],
+    [passwordCheck],
   );
 
   /** 이름 입력 확인 */
@@ -52,8 +52,8 @@ function SignUp() {
     setSignUpInfo({ ...signUpInfo, userAddress: event.target.value });
   };
   /** 핸드폰번호 입력 확인 */
-  const userPhoneNumHandle = (event) => {
-    setSignUpInfo({ ...signUpInfo, userPhoneNum: event.target.value });
+  const userPhoneNumberHandle = (event) => {
+    setSignUpInfo({ ...signUpInfo, userPhoneNumber: event.target.value });
   };
 
   /** 회원 유형 확인 */
@@ -77,8 +77,8 @@ function SignUp() {
   const signIn = (event) => {
     event.preventDefault();
     console.log(signUpInfo);
-    // if (signUpInfo.userPw1 !== signUpInfo.userPw2) {
-    //   setSignUpInfo({ ...signUpInfo, userPw2: '' });
+    // if (signUpInfo.userPassword !== signUpInfo.passwordCheck) {
+    //   setSignUpInfo({ ...signUpInfo, passwordCheck: '' });
     //   console.log(signUpInfo.userId);
     // } else {
     //   register();
@@ -94,10 +94,10 @@ function SignUp() {
         <SignUpId userId={signUpInfo.userId} userIdHandle={userIdHandle} />
 
         <SignUpPassword
-          userPw1={signUpInfo.userPassword}
-          userPw2={checkPassword}
-          userPwHandle={pwHandleChange}
-          pwCheckHandle={pwCheckHandle}
+          userPassword={signUpInfo.userPassword}
+          passwordCheck={passwordCheck}
+          passwordHandle={passwordHandle}
+          passwordCheckHandle={passwordCheckHandle}
         />
         <div>이름</div>
         <input
@@ -120,7 +120,7 @@ function SignUp() {
           placeholder="-을 제거해서 입력해주세요 예)01012345678"
           required
           pattern="[0]+[1]+[0-9]{9}"
-          onChange={userPhoneNumHandle}
+          onChange={userPhoneNumberHandle}
         />
         <div>회원 유형</div>
         <select defaultValue="고객" onChange={userTypeHandle}>

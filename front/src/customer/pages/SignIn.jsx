@@ -1,6 +1,6 @@
 import React from 'react';
 import ImgLogo from '../../assets/placeholder.png';
-import SigninInput from '../components/SignIn/SigninInput';
+import SigninInformation from '../components/SignIn/SigninInformation';
 
 function SignIn() {
   return (
@@ -10,7 +10,7 @@ function SignIn() {
         <div>맛집지도</div>
       </section>
       <section id="signin-information">
-        <SigninInput />
+        <SigninInformation />
       </section>
     </>
   );

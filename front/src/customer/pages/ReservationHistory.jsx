@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ReservationHistoryItems from '../components/ReservationHistory/ReservationHistoryItems';
 
-function ReservationHist() {
+function ReservationHistory() {
   console.log('ReservationHist');
   const loginState = false;
   return (
@@ -16,4 +16,4 @@ function ReservationHist() {
     </section>
   );
 }
-export default ReservationHist;
+export default ReservationHistory;

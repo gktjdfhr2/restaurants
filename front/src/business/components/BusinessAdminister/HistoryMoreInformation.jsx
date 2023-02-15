@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 function HistoryMoreInformation({ waitingTime, visit, lastVisited }) {
-  const stayBack = useCallback(() => {
+  const stayRollBack = useCallback(() => {
     console.log('stayReturn');
   });
 
@@ -24,7 +24,7 @@ function HistoryMoreInformation({ waitingTime, visit, lastVisited }) {
       </div>
       <button
         type="button"
-        onClick={stayBack}
+        onClick={stayRollBack}
         className="customer-stay-back-button"
       >
         대기취소

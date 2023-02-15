@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
-import RecommendStoreList from '../components/CustomerSearch/RecommendStoreList';
-import MostSearched from '../components/CustomerSearch/MostSearched';
+import RecommendKeywords from '../components/CustomerSearch/RecommendKeywords';
+import MostSearchedKeywords from '../components/CustomerSearch/MostSearchedKeywords';
 
-function UserSearch() {
+function CustomerSearch() {
   console.log('userSearch');
   const [searchKeyword, setSearchKeyword] = useState('');
 
@@ -58,13 +58,13 @@ function UserSearch() {
         </div>
       </section>
       <section>
-        <RecommendStoreList />
+        <RecommendKeywords />
       </section>
       <section>
-        <MostSearched />
+        <MostSearchedKeywords />
       </section>
     </>
   );
 }
 
-export default UserSearch;
+export default CustomerSearch;

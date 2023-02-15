@@ -15,12 +15,12 @@ function BusinessStayItems({
 }) {
   const [moreInformationToggle, setMoreInformationToggle] = useState(false);
   console.log(typeof stayNumber);
-  const callClick = useCallback((event) => {
+  const callCustomer = useCallback((event) => {
     event.stopPropagation();
     console.log('call');
   }, []);
 
-  const stayingClick = useCallback((event) => {
+  const changeStayState = useCallback((event) => {
     event.stopPropagation();
     console.log('staying');
   }, []);
@@ -52,14 +52,14 @@ function BusinessStayItems({
         <button
           type="button"
           className="customer-call-button"
-          onClick={callClick}
+          onClick={callCustomer}
         >
           호출
         </button>
         <button
           type="button"
           className="customer-stay-state-change-button"
-          onClick={stayingClick}
+          onClick={changeStayState}
         >
           대기중
         </button>

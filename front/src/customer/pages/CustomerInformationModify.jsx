@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import UserInfoModifyItems from '../components/CustomerInformationModify/CustomerInformationModifyItems';
 
-function UserInfoModify() {
+function CustomerInformationModify() {
   const [userInfo] = useState({
     name: '하성록',
     emailAddress: '0.0@naver.com',
@@ -16,23 +16,23 @@ function UserInfoModify() {
     <section id="signup-section">
       <div id="signup-title">개인정보 수정</div>
       <UserInfoModifyItems
-        infoTitle="이름"
-        infoValue={userInfo.name}
-        onClick={modifyButtonAction}
+        informationTitle="이름"
+        informationValue={userInfo.name}
+        modifyButtonAction={modifyButtonAction}
       />
       <UserInfoModifyItems
-        infoTitle="이메일 주소"
-        infoValue={userInfo.emailAddress}
+        informationTitle="이메일 주소"
+        informationValue={userInfo.emailAddress}
       />
       <UserInfoModifyItems
-        infoTitle="휴대폰 번호"
-        infoValue={userInfo.phoneNum}
+        informationTitle="휴대폰 번호"
+        informationValue={userInfo.phoneNum}
       />
       <UserInfoModifyItems
-        infoTitle="비밀번호"
-        infoValue={'*'.repeat(userInfo.password.length)}
+        informationTitle="비밀번호"
+        informationValue={'*'.repeat(userInfo.password.length)}
       />
     </section>
   );
 }
-export default UserInfoModify;
+export default CustomerInformationModify;

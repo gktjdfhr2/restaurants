@@ -1,7 +1,7 @@
 import React from 'react';
 
-function MostSearched() {
-  console.log('MostSearched');
+function MostSearchedKeywords() {
+  console.log('MostSearchedKeywords');
   return (
     <section id="most-searched-keywords-section">
       <div id="most-searched-keywords-title">인기 검색어</div>
@@ -14,4 +14,4 @@ function MostSearched() {
     </section>
   );
 }
-export default MostSearched;
+export default MostSearchedKeywords;

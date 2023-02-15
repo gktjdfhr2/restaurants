@@ -1,7 +1,7 @@
 import React from 'react';
 
-function RecommendStoreList() {
-  console.log('RecommendStoreList');
+function RecommendKeywords() {
+  console.log('RecommendKeywords');
   return (
     <section id="recent-search-section">
       <div id="recent-search-title">추천 키워드</div>
@@ -14,4 +14,4 @@ function RecommendStoreList() {
     </section>
   );
 }
-export default RecommendStoreList;
+export default RecommendKeywords;
