@@ -110,7 +110,7 @@ header.header-layout section {
   width: 86px;
   margin: 26px 2px;
 }
-.business-header section #businessHeaderDate {
+.business-header section #business-header-date {
   width: 128px;
   height: 30px;
   border: 1px solid gainsboro;

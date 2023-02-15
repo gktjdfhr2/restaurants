@@ -444,10 +444,10 @@ ul ol li {
 .waiting-more-information div {
   height: 50%;
 }
-.wating-last-visited {
+.waiting-last-visited {
   flex-grow: 10;
 }
-.wating-last-visited div {
+.waiting-last-visited div {
   height: 50%;
 }
 .more-information {

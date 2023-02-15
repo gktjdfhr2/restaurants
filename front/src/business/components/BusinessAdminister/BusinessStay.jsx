@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import BusinessStayListItems from './BusinessStayListItems';
+import BusinessStayItems from './BusinessStayItems';
 
-function BusinessStayList({ stayListShow, showStayButton }) {
+function BusinessStay({ stayShowToggle, showStayButton }) {
   const [stayCustomerInformation] = useState({
     stayNumber: 47,
     stayStartTime: '18 : 20',
@@ -10,7 +10,7 @@ function BusinessStayList({ stayListShow, showStayButton }) {
     customerPersonnelAdult: 3,
     customerPersonnelkid: 0,
     lastPhoneNumber: 4782,
-    wating: 21,
+    waitingTime: 21,
     visit: 3,
     lastVisited: '2023-01-02',
   });
@@ -20,16 +20,16 @@ function BusinessStayList({ stayListShow, showStayButton }) {
         대기 목록
         <button
           type="button"
-          className={stayListShow ? 'close-button' : 'open-button'}
+          className={stayShowToggle ? 'close-button' : 'open-button'}
           onClick={showStayButton}
         >
           show
         </button>
       </div>
 
-      {stayListShow && (
+      {stayShowToggle && (
         <div className="information-items-container">
-          <BusinessStayListItems
+          <BusinessStayItems
             stayNumber={stayCustomerInformation.stayNumber}
             stayStartTime={stayCustomerInformation.stayStartTime}
             customerName={stayCustomerInformation.customerName}
@@ -38,11 +38,11 @@ function BusinessStayList({ stayListShow, showStayButton }) {
             }
             customerPersonnelkid={stayCustomerInformation.customerPersonnelkid}
             lastPhoneNumber={stayCustomerInformation.lastPhoneNumber}
-            wating={stayCustomerInformation.wating}
+            waitingTime={stayCustomerInformation.waitingTime}
             visit={stayCustomerInformation.visit}
             lastVisited={stayCustomerInformation.lastVisited}
           />
-          <BusinessStayListItems
+          <BusinessStayItems
             stayNumber={stayCustomerInformation.stayNumber}
             stayStartTime={stayCustomerInformation.stayStartTime}
             customerName={stayCustomerInformation.customerName}
@@ -51,11 +51,11 @@ function BusinessStayList({ stayListShow, showStayButton }) {
             }
             customerPersonnelkid={stayCustomerInformation.customerPersonnelkid}
             lastPhoneNumber={stayCustomerInformation.lastPhoneNumber}
-            wating={stayCustomerInformation.wating}
+            waitingTime={stayCustomerInformation.waitingTime}
             visit={stayCustomerInformation.visit}
             lastVisited={stayCustomerInformation.lastVisited}
           />
-          <BusinessStayListItems
+          <BusinessStayItems
             stayNumber={stayCustomerInformation.stayNumber}
             stayStartTime={stayCustomerInformation.stayStartTime}
             customerName={stayCustomerInformation.customerName}
@@ -64,11 +64,11 @@ function BusinessStayList({ stayListShow, showStayButton }) {
             }
             customerPersonnelkid={stayCustomerInformation.customerPersonnelkid}
             lastPhoneNumber={stayCustomerInformation.lastPhoneNumber}
-            wating={stayCustomerInformation.wating}
+            waitingTime={stayCustomerInformation.waitingTime}
             visit={stayCustomerInformation.visit}
             lastVisited={stayCustomerInformation.lastVisited}
           />
-          <BusinessStayListItems
+          <BusinessStayItems
             stayNumber={stayCustomerInformation.stayNumber}
             stayStartTime={stayCustomerInformation.stayStartTime}
             customerName={stayCustomerInformation.customerName}
@@ -77,11 +77,11 @@ function BusinessStayList({ stayListShow, showStayButton }) {
             }
             customerPersonnelkid={stayCustomerInformation.customerPersonnelkid}
             lastPhoneNumber={stayCustomerInformation.lastPhoneNumber}
-            wating={stayCustomerInformation.wating}
+            waitingTime={stayCustomerInformation.waitingTime}
             visit={stayCustomerInformation.visit}
             lastVisited={stayCustomerInformation.lastVisited}
           />
-          <BusinessStayListItems
+          <BusinessStayItems
             stayNumber={stayCustomerInformation.stayNumber}
             stayStartTime={stayCustomerInformation.stayStartTime}
             customerName={stayCustomerInformation.customerName}
@@ -90,7 +90,7 @@ function BusinessStayList({ stayListShow, showStayButton }) {
             }
             customerPersonnelkid={stayCustomerInformation.customerPersonnelkid}
             lastPhoneNumber={stayCustomerInformation.lastPhoneNumber}
-            wating={stayCustomerInformation.wating}
+            waitingTime={stayCustomerInformation.waitingTime}
             visit={stayCustomerInformation.visit}
             lastVisited={stayCustomerInformation.lastVisited}
           />
@@ -99,21 +99,21 @@ function BusinessStayList({ stayListShow, showStayButton }) {
     </>
   );
 }
-BusinessStayList.propTypes = {
-  stayListShow: PropTypes.bool.isRequired,
+BusinessStay.propTypes = {
+  stayShowToggle: PropTypes.bool.isRequired,
   showStayButton: PropTypes.func.isRequired,
 };
 
 function areEqual(prevProps, nextProps) {
-  // console.log('boolValue', prevProps.stayListShow === nextProps.stayListShow);
+  // console.log('boolValue', prevProps.stayShowToggle === nextProps.stayShowToggle);
   // console.log(
   //   'funcHandle',
   //   prevProps.showStayButton === nextProps.showStayButton,
   // );
   return (
     // eslint-disable-next-line operator-linebreak
-    prevProps.stayListShow === nextProps.stayListShow &&
+    prevProps.stayShowToggle === nextProps.stayShowToggle &&
     prevProps.showStayButton === nextProps.showStayButton
   );
 }
-export default React.memo(BusinessStayList, areEqual);
+export default React.memo(BusinessStay, areEqual);

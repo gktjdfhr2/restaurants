@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function RecentViewedHist() {
+function RecentViewedHistory() {
   console.log('RecentViewedHist');
   return (
     <section id="sign-in-nav">
@@ -11,4 +11,4 @@ function RecentViewedHist() {
     </section>
   );
 }
-export default RecentViewedHist;
+export default RecentViewedHistory;

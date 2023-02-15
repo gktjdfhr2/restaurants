@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-function StayMoreInfo({ wating, visit, lastVisited }) {
+function StayMoreInformation({ waitingTime, visit, lastVisited }) {
   const stayCancle = useCallback(() => {
     console.log('stayCancle');
   }, []);
@@ -9,13 +9,16 @@ function StayMoreInfo({ wating, visit, lastVisited }) {
     <div className="business-customer-information-container more-information">
       <div className="waiting-more-information">
         <div>
-          현재 <span className="yellow-point">{wating}분</span> 웨이팅 중
+          현재 &nbsp;
+          <span className="yellow-point">{waitingTime}분</span>
+          &nbsp; 웨이팅 중
         </div>
         <div>
-          방문 <span className="yellow-point">{visit}회</span>
+          방문 &nbsp;
+          <span className="yellow-point">{visit}회</span>
         </div>
       </div>
-      <div className="wating-last-visited">
+      <div className="waiting-last-visited">
         <div>최근 방문일</div>
         <div>{lastVisited}</div>
       </div>
@@ -29,9 +32,9 @@ function StayMoreInfo({ wating, visit, lastVisited }) {
     </div>
   );
 }
-StayMoreInfo.propTypes = {
-  wating: PropTypes.number.isRequired,
+StayMoreInformation.propTypes = {
+  waitingTime: PropTypes.number.isRequired,
   visit: PropTypes.number.isRequired,
   lastVisited: PropTypes.string.isRequired,
 };
-export default StayMoreInfo;
+export default StayMoreInformation;

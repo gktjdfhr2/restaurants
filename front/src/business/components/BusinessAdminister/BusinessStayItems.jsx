@@ -1,19 +1,19 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import StayMoreInfo from './StayMoreInfo';
+import StayMoreInformation from './StayMoreInformation';
 
-function BusinessStayList({
+function BusinessStayItems({
   stayNumber,
   stayStartTime,
   customerName,
   customerPersonnelAdult,
   customerPersonnelkid,
   lastPhoneNumber,
-  wating,
+  waitingTime,
   visit,
   lastVisited,
 }) {
-  const [clicked, setClicked] = useState(false);
+  const [moreInformationToggle, setMoreInformationToggle] = useState(false);
   console.log(typeof stayNumber);
   const callClick = useCallback((event) => {
     event.stopPropagation();
@@ -26,10 +26,9 @@ function BusinessStayList({
   }, []);
 
   const showMoreInformation = useCallback(() => {
-    setClicked(!clicked);
+    setMoreInformationToggle(!moreInformationToggle);
     console.log('click');
-  }, [clicked]);
-  console.log(showMoreInformation, stayingClick, callClick);
+  }, [moreInformationToggle]);
 
   return (
     <>
@@ -50,30 +49,42 @@ function BusinessStayList({
             &nbsp; | &nbsp;{lastPhoneNumber}
           </div>
         </button>
-        <button type="button" className="customer-call-button">
+        <button
+          type="button"
+          className="customer-call-button"
+          onClick={callClick}
+        >
           호출
         </button>
-        <button type="button" className="customer-stay-state-change-button">
+        <button
+          type="button"
+          className="customer-stay-state-change-button"
+          onClick={stayingClick}
+        >
           대기중
         </button>
       </div>
-      {clicked && (
-        <StayMoreInfo wating={wating} visit={visit} lastVisited={lastVisited} />
+      {moreInformationToggle && (
+        <StayMoreInformation
+          waitingTime={waitingTime}
+          visit={visit}
+          lastVisited={lastVisited}
+        />
       )}
     </>
   );
 }
 
-BusinessStayList.propTypes = {
+BusinessStayItems.propTypes = {
   stayNumber: PropTypes.number.isRequired,
   stayStartTime: PropTypes.string.isRequired,
   customerName: PropTypes.string.isRequired,
   customerPersonnelAdult: PropTypes.number.isRequired,
   customerPersonnelkid: PropTypes.number.isRequired,
   lastPhoneNumber: PropTypes.number.isRequired,
-  wating: PropTypes.number.isRequired,
+  waitingTime: PropTypes.number.isRequired,
   visit: PropTypes.number.isRequired,
   lastVisited: PropTypes.string.isRequired,
 };
 
-export default BusinessStayList;
+export default BusinessStayItems;

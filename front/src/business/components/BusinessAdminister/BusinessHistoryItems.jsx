@@ -1,27 +1,26 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import HistMoreInfo from './HistMoreInfo';
+import HistoryMoreInformation from './HistoryMoreInformation';
 
-function BusinessHistList({
+function BusinessHistoryItems({
   stayNumber,
   stayStartTime,
   customerName,
   customerPersonnelAdult,
   customerPersonnelkid,
   lastPhoneNumber,
-  wating,
+  waitingTime,
   visit,
   lastVisited,
   lastCallTime,
   joinTime,
 }) {
-  const [clicked, setClicked] = useState(false);
+  const [moreInformationToggle, setMoreInformationToggle] = useState(false);
 
   const showMoreInformation = useCallback(() => {
-    setClicked(!clicked);
-    console.log('clicked');
-  }, [clicked]);
-  console.log(showMoreInformation);
+    setMoreInformationToggle(!moreInformationToggle);
+    console.log('moreInformationToggle');
+  }, [moreInformationToggle]);
 
   return (
     <>
@@ -49,23 +48,27 @@ function BusinessHistList({
           {joinTime}
         </button>
       </div>
-      {clicked && (
-        <HistMoreInfo wating={wating} visit={visit} lastVisited={lastVisited} />
+      {moreInformationToggle && (
+        <HistoryMoreInformation
+          waitingTime={waitingTime}
+          visit={visit}
+          lastVisited={lastVisited}
+        />
       )}
     </>
   );
 }
-BusinessHistList.propTypes = {
+BusinessHistoryItems.propTypes = {
   stayNumber: PropTypes.number.isRequired,
   stayStartTime: PropTypes.string.isRequired,
   customerName: PropTypes.string.isRequired,
   customerPersonnelAdult: PropTypes.number.isRequired,
   customerPersonnelkid: PropTypes.number.isRequired,
   lastPhoneNumber: PropTypes.number.isRequired,
-  wating: PropTypes.number.isRequired,
+  waitingTime: PropTypes.number.isRequired,
   visit: PropTypes.number.isRequired,
   lastVisited: PropTypes.string.isRequired,
   lastCallTime: PropTypes.string.isRequired,
   joinTime: PropTypes.string.isRequired,
 };
-export default BusinessHistList;
+export default BusinessHistoryItems;

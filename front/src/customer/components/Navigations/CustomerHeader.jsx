@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ImgLogo from '../../../assets/placeholder.png';
 import HeaderLayout from '../../../components/Layouts/Header';
 
-function Header() {
+function CustomerHeader() {
   console.log('customer-header component rendered');
   return (
     <HeaderLayout>
@@ -37,4 +37,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default CustomerHeader;

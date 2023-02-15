@@ -32,7 +32,7 @@ function BusinessHeader() {
         <span className="business-header-container ">
           <input
             type="date"
-            id="businessHeaderDate"
+            id="business-header-date"
             value={nowDate}
             onChange={changeDate}
           />

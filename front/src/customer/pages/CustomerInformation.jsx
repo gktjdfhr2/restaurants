@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Userinformation() {
+function CustomerInformation() {
   console.log('customerinformation');
   const [loginTest] = useState(false);
   return (
@@ -32,4 +32,4 @@ function Userinformation() {
     </section>
   );
 }
-export default Userinformation;
+export default CustomerInformation;

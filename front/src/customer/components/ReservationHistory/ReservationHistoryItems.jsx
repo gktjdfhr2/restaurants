@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import storeImg from '../../../assets/parked-car.png';
 
-function ReservationHistItems() {
+function ReservationHistoryItems() {
   return (
     <>
       <div id="signup-title">예약 내역</div>
@@ -46,4 +46,4 @@ function ReservationHistItems() {
     </>
   );
 }
-export default ReservationHistItems;
+export default ReservationHistoryItems;

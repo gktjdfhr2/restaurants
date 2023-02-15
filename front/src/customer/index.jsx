@@ -6,9 +6,9 @@ import MainBody from './pages/MainBody';
 import CustomerInformation from './pages/CustomerInformation';
 import CustomerSearch from './pages/CustomerSearch';
 import SignIn from './pages/SignIn';
-import RecentViewedHist from './components/CustomerInformation/RecentViewedHist';
-import RemoteLineHist from './components/CustomerInformation/RemoteLineHist';
-import ReservationHist from './pages/ReservationHist';
+import RecentViewedHistory from './components/CustomerInformation/RecentViewedHistory';
+import RemoteLineHistory from './components/CustomerInformation/RemoteLineHistory';
+import ReservationHistory from './pages/ReservationHistory';
 import SignUp from './pages/SignUp';
 import CustomerInformationModify from './pages/CustomerInformationModify';
 
@@ -23,9 +23,9 @@ function Restaurants() {
         <Route path="/CustomerInformation" element={<CustomerInformation />} />
         <Route path="/CustomerSearch" element={<CustomerSearch />} />
         <Route path="/SignIn" element={<SignIn />} />
-        <Route path="/RecentViewedHist" element={<RecentViewedHist />} />
-        <Route path="/RemoteLineHist" element={<RemoteLineHist />} />
-        <Route path="/ReservationHist" element={<ReservationHist />} />
+        <Route path="/RecentViewedHist" element={<RecentViewedHistory />} />
+        <Route path="/RemoteLineHist" element={<RemoteLineHistory />} />
+        <Route path="/ReservationHist" element={<ReservationHistory />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route
           path="/CustomerInformationModify"

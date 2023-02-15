@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ReservationHistItems from '../components/ReservationHist/ReservationHistItems';
+import ReservationHistoryItems from '../components/ReservationHistory/ReservationHistoryItems';
 
 function ReservationHist() {
   console.log('ReservationHist');
@@ -12,7 +12,7 @@ function ReservationHist() {
           <div>로그인하기 &gt;</div>
         </Link>
       )}
-      {loginState && <ReservationHistItems />}
+      {loginState && <ReservationHistoryItems />}
     </section>
   );
 }

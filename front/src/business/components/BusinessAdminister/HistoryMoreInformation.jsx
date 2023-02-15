@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-function HistMoreInfo({ wating, visit, lastVisited }) {
+function HistoryMoreInformation({ waitingTime, visit, lastVisited }) {
   const stayBack = useCallback(() => {
     console.log('stayReturn');
   });
@@ -10,13 +10,15 @@ function HistMoreInfo({ wating, visit, lastVisited }) {
     <div className="business-customer-information-container more-information">
       <div className="waiting-more-information">
         <div>
-          기다린 시간 <span className="yellow-point">{wating}분</span>
+          기다린 시간&nbsp;
+          <span className="yellow-point">{waitingTime}분</span>
         </div>
         <div>
-          방문 <span className="yellow-point">{visit}회</span>
+          방문&nbsp;
+          <span className="yellow-point">{visit}회</span>
         </div>
       </div>
-      <div className="wating-last-visited">
+      <div className="waiting-last-visited">
         <div>최근 방문일</div>
         <div>{lastVisited}</div>
       </div>
@@ -30,9 +32,9 @@ function HistMoreInfo({ wating, visit, lastVisited }) {
     </div>
   );
 }
-HistMoreInfo.propTypes = {
-  wating: PropTypes.number.isRequired,
+HistoryMoreInformation.propTypes = {
+  waitingTime: PropTypes.number.isRequired,
   visit: PropTypes.number.isRequired,
   lastVisited: PropTypes.string.isRequired,
 };
-export default HistMoreInfo;
+export default HistoryMoreInformation;

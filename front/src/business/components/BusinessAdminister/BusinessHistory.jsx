@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
-import BusinessHistListItems from './BusinessHistListItems';
+import BusinessHistoryItems from './BusinessHistoryItems';
 
-function BusinessHistList({ histListShow, showHistButton }) {
+function BusinessHistory({ historyShowToggle, showHistoryButton }) {
   const [historyCustomerInformation] = useState({
     stayNumber: 47,
     stayStartTime: '18 : 20',
@@ -10,7 +10,7 @@ function BusinessHistList({ histListShow, showHistButton }) {
     customerPersonnelAdult: 3,
     customerPersonnelkid: 0,
     lastPhoneNumber: 4782,
-    wating: 21,
+    waitingTime: 21,
     visit: 3,
     lastVisited: '2023-01-02',
     lastCallTime: '18 : 39',
@@ -22,16 +22,16 @@ function BusinessHistList({ histListShow, showHistButton }) {
         히스토리
         <button
           type="button"
-          className={histListShow ? 'close-button' : 'open-button'}
-          onClick={showHistButton}
+          className={historyShowToggle ? 'close-button' : 'open-button'}
+          onClick={showHistoryButton}
         >
           show
         </button>
       </div>
 
-      {histListShow && (
+      {historyShowToggle && (
         <div className="information-items-container">
-          <BusinessHistListItems
+          <BusinessHistoryItems
             stayNumber={historyCustomerInformation.stayNumber}
             stayStartTime={historyCustomerInformation.stayStartTime}
             customerName={historyCustomerInformation.customerName}
@@ -42,13 +42,13 @@ function BusinessHistList({ histListShow, showHistButton }) {
               historyCustomerInformation.customerPersonnelkid
             }
             lastPhoneNumber={historyCustomerInformation.lastPhoneNumber}
-            wating={historyCustomerInformation.wating}
+            waitingTime={historyCustomerInformation.waitingTime}
             visit={historyCustomerInformation.visit}
             lastVisited={historyCustomerInformation.lastVisited}
             lastCallTime={historyCustomerInformation.lastCallTime}
             joinTime={historyCustomerInformation.joinTime}
           />
-          <BusinessHistListItems
+          <BusinessHistoryItems
             stayNumber={historyCustomerInformation.stayNumber}
             stayStartTime={historyCustomerInformation.stayStartTime}
             customerName={historyCustomerInformation.customerName}
@@ -59,13 +59,13 @@ function BusinessHistList({ histListShow, showHistButton }) {
               historyCustomerInformation.customerPersonnelkid
             }
             lastPhoneNumber={historyCustomerInformation.lastPhoneNumber}
-            wating={historyCustomerInformation.wating}
+            waitingTime={historyCustomerInformation.waitingTime}
             visit={historyCustomerInformation.visit}
             lastVisited={historyCustomerInformation.lastVisited}
             lastCallTime={historyCustomerInformation.lastCallTime}
             joinTime={historyCustomerInformation.joinTime}
           />
-          <BusinessHistListItems
+          <BusinessHistoryItems
             stayNumber={historyCustomerInformation.stayNumber}
             stayStartTime={historyCustomerInformation.stayStartTime}
             customerName={historyCustomerInformation.customerName}
@@ -76,13 +76,13 @@ function BusinessHistList({ histListShow, showHistButton }) {
               historyCustomerInformation.customerPersonnelkid
             }
             lastPhoneNumber={historyCustomerInformation.lastPhoneNumber}
-            wating={historyCustomerInformation.wating}
+            waitingTime={historyCustomerInformation.waitingTime}
             visit={historyCustomerInformation.visit}
             lastVisited={historyCustomerInformation.lastVisited}
             lastCallTime={historyCustomerInformation.lastCallTime}
             joinTime={historyCustomerInformation.joinTime}
           />
-          <BusinessHistListItems
+          <BusinessHistoryItems
             stayNumber={historyCustomerInformation.stayNumber}
             stayStartTime={historyCustomerInformation.stayStartTime}
             customerName={historyCustomerInformation.customerName}
@@ -93,13 +93,13 @@ function BusinessHistList({ histListShow, showHistButton }) {
               historyCustomerInformation.customerPersonnelkid
             }
             lastPhoneNumber={historyCustomerInformation.lastPhoneNumber}
-            wating={historyCustomerInformation.wating}
+            waitingTime={historyCustomerInformation.waitingTime}
             visit={historyCustomerInformation.visit}
             lastVisited={historyCustomerInformation.lastVisited}
             lastCallTime={historyCustomerInformation.lastCallTime}
             joinTime={historyCustomerInformation.joinTime}
           />
-          <BusinessHistListItems
+          <BusinessHistoryItems
             stayNumber={historyCustomerInformation.stayNumber}
             stayStartTime={historyCustomerInformation.stayStartTime}
             customerName={historyCustomerInformation.customerName}
@@ -110,7 +110,7 @@ function BusinessHistList({ histListShow, showHistButton }) {
               historyCustomerInformation.customerPersonnelkid
             }
             lastPhoneNumber={historyCustomerInformation.lastPhoneNumber}
-            wating={historyCustomerInformation.wating}
+            waitingTime={historyCustomerInformation.waitingTime}
             visit={historyCustomerInformation.visit}
             lastVisited={historyCustomerInformation.lastVisited}
             lastCallTime={historyCustomerInformation.lastCallTime}
@@ -121,20 +121,20 @@ function BusinessHistList({ histListShow, showHistButton }) {
     </>
   );
 }
-BusinessHistList.propTypes = {
-  histListShow: propTypes.bool.isRequired,
-  showHistButton: propTypes.func.isRequired,
+BusinessHistory.propTypes = {
+  historyShowToggle: propTypes.bool.isRequired,
+  showHistoryButton: propTypes.func.isRequired,
 };
 function areEqual(prevProps, nextProps) {
-  // console.log('boolValue', prevProps.histListShow === nextProps.histListShow);
+  // console.log('boolValue', prevProps.historyShowToggle === nextProps.historyShowToggle);
   // console.log(
   //   'funcHandle',
-  //   prevProps.showHistButton === nextProps.showHistButton,
+  //   prevProps.showHistoryButton === nextProps.showHistoryButton,
   // );
   return (
     // eslint-disable-next-line operator-linebreak
-    prevProps.histListShow === nextProps.histListShow &&
-    prevProps.showHistButton === nextProps.showHistButton
+    prevProps.historyShowToggle === nextProps.historyShowToggle &&
+    prevProps.showHistoryButton === nextProps.showHistoryButton
   );
 }
-export default React.memo(BusinessHistList, areEqual);
+export default React.memo(BusinessHistory, areEqual);
