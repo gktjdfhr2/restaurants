@@ -9,8 +9,8 @@ function BusinessHistory({ historyShowToggle, showHistoryButton }) {
     customerName: '정한결',
     customerPersonnelAdult: 3,
     customerPersonnelkid: 0,
-    lastPhoneNumber: 4782,
-    waitingTime: 21,
+    lastPhoneNumber: 4782, // TODO format
+    waitingTime: 21, //  TODO format
     visit: 3,
     lastVisited: '2023-01-02',
     lastCallTime: '18 : 39',

@@ -9,7 +9,7 @@ export default class Restaurants extends React.Component {
     super();
 
     this.state = {
-      userType: '고객',
+      userType: '사업자',
     };
   }
 
