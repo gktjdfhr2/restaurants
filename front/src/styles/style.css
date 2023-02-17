@@ -536,3 +536,50 @@ ul ol li {
   background-repeat: no-repeat;
   text-indent: -9999px;
 }
+.guest-search-container {
+  padding: 10px;
+  display: flex;
+  height: 36px;
+  justify-content: center;
+}
+.guest-search-keyword {
+  min-width: 300px;
+  width: 1024px;
+  background-color: whitesmoke;
+  color: gray;
+  font-weight: bold;
+  padding: 5px;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+}
+.guest-search-button {
+  min-width: 36px;
+  margin-left: 10px;
+  background: url(../assets/magnifying-glass.png);
+  background-size: 28px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  background-color: gray;
+  display: flex;
+}
+.guest-book-container {
+  padding: 10px;
+  min-height: 480px;
+  display: flex;
+  justify-content: space-between;
+}
+.guests-container {
+  width: 30%;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+}
+.guest-information-container {
+  width: 60%;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
