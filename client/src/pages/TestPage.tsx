@@ -1,5 +1,14 @@
+import TextInput from '@UI/Form/TextInput';
+import DefaultLayout from '@UI/Layouts/DefaultLayout';
+import HeaderLayout from '@UI/Layouts/HeaderLayout';
+
 const TestPage = () => {
-  return <div>HMR - Hot Module Replacement</div>;
+  return (
+    <>
+      <HeaderLayout />
+      <DefaultLayout></DefaultLayout>
+    </>
+  );
 };
 
 export default TestPage;
