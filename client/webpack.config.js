@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index_bundle.js'
+    filename: 'index_bundle.js',
   },
 
   // dev server
@@ -32,6 +32,10 @@ module.exports = {
           loader: 'swc-loader',
         },
       },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
 
@@ -48,7 +52,9 @@ module.exports = {
     extensions: ['.tsx', '.ts', '...'],
     alias: {
       '@pages': path.resolve(__dirname, './src/pages'),
-    }
+      '@UI': path.resolve(__dirname, './src/UI'),
+      '@assets': path.resolve(__dirname, './src/assets'),
+    },
     // modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-  }
-}
+  },
+};
