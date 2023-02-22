@@ -11,6 +11,7 @@ const TextInput = styled.input.attrs({
   font-size: 14px;
   color: #333;
   outline: none;
+
   &:focus {
     border-color: #333;
   }

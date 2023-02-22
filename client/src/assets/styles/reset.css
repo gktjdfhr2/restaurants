@@ -126,6 +126,7 @@ table {
 body {
   overflow: hidden;
 }
+
 div#root {
   overflow: scroll;
   height: 100vh;
