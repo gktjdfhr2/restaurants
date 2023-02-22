@@ -4,6 +4,7 @@ import Guests from '../components/GuestBook/Guests';
 import GuestInformation from '../components/GuestBook/GuestInformation';
 
 function GuestBook() {
+  console.log('asdadd');
   return (
     <>
       <section className="business-show-customer-section">

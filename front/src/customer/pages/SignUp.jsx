@@ -63,7 +63,7 @@ function SignUp() {
 
   const register = () => {
     axios
-      .post('localhost:3000/account/signUp', signUpInfo)
+      .post('localhost:8080/account/signUp', signUpInfo)
       .then((response) => {
         console.log(response);
         console.log('data:', response.data.user);
