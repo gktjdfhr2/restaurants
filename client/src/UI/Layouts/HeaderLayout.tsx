@@ -8,6 +8,7 @@ const HeaderLayout = styled.header`
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 2;
 `;
 
 export default HeaderLayout;

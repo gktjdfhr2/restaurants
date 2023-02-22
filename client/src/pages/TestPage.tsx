@@ -1,24 +1,18 @@
 import DefaultLayout from '@UI/Layouts/DefaultLayout';
 import HeaderLayout from '@UI/Layouts/HeaderLayout';
-import HeaderContainer from '@UI/Form/Header/HeaderContainer';
-import HeaderLogo from '@UI/Form/Header/HeaderLogo';
-import HeaderNavigations from '@UI/Form/Header/HeaderNavigations';
+import KakaoMap from '@UI/Form/KakaoMap';
+import Header from '@UI/components/Header';
+
 
 const TestPage = () => {
   return (
     <>
       <HeaderLayout>
-        <HeaderContainer>
-          <HeaderLogo>Logo 맛집지도</HeaderLogo>
-          <HeaderNavigations>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-          </HeaderNavigations>
-        </HeaderContainer>
+        <Header />
       </HeaderLayout>
-      <DefaultLayout></DefaultLayout>
+      <DefaultLayout>
+        <KakaoMap />
+      </DefaultLayout>
     </>
   );
 };
