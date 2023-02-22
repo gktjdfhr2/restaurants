@@ -36,6 +36,15 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(png|jpe?g|gif|svg|webp)$/i,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[contenthash].[ext]',
+          },
+        },
+      },
     ],
   },
 
@@ -51,9 +60,8 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '...'],
     alias: {
-      '@pages': path.resolve(__dirname, './src/pages'),
-      '@UI': path.resolve(__dirname, './src/UI'),
-      '@assets': path.resolve(__dirname, './src/assets'),
+      '@business': path.resolve(__dirname, './src/business'),
+      '@customer': path.resolve(__dirname, './src/customer'),
     },
     // modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   },

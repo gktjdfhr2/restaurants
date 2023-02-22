@@ -1,4 +1,5 @@
-import TestPage from '@pages/TestPage';
+import TestPage from '@customer/pages/TestPage';
+import '@customer/assets/styles/index.css';
 
 function App() {
   return <TestPage />;

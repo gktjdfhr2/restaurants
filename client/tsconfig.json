@@ -14,9 +14,8 @@
     "rootDir": "." /* Specify the root folder within your source files. */,
     "baseUrl": "./src" /* Specify the base directory to resolve non-relative module names. */,
     "paths": {
-      "@pages/*": ["./pages/*"],
-      "@UI/*": ["./UI/*"],
-      "@assets/*": ["./assets/*"]
+      "@business/*": ["./business/*"],
+      "@customer/*": ["./customer/*"]
     },
 
     "allowJs": false /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */,

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const HeaderNavigations = styled.div`
+const HeaderNavigation = styled.div`
   display: flex;
   width: 400px;
   height: 100%;
@@ -10,4 +10,4 @@ const HeaderNavigations = styled.div`
   background-color: white;
 `;
 
-export default HeaderNavigations;
+export default HeaderNavigation;
