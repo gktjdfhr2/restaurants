@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const HeaderLayout = styled.header`
   width: 100vw;
-  height: 200px;
+  height: 72px;
   background-color: var(--signature);
 
   position: sticky;
