@@ -7,13 +7,13 @@ you must specify 'position: relative' to the parent element that binds the text 
 const ResetButton = styled.button.attrs({
   type: 'reset',
 })`
-  height: 20px;
-  width: 20px;
-  right: 10px;
-  top: 5px;
+  height: 25px;
+  width: 25px;
+  right: 5px;
+  top: 2px;
   border-radius: 50%;
-  background-color: #ccc;
-  color: white;
+  background-color: white;
+  color: gray;
   border: none;
   padding: 2px 5px;
   text-align: center;
@@ -22,6 +22,10 @@ const ResetButton = styled.button.attrs({
 
   &:before {
     content: 'X';
+  }
+  &:hover {
+    background-color: #ccc;
+    transition: background-color 0.5s;
   }
 `;
 
