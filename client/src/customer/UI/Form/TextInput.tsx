@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const TextInput = styled.input.attrs({
   type: 'text',
 })`
-  width: 100px;
+  width: 200px;
   height: 30px;
   border: 1px solid #ccc;
   border-radius: 4px;

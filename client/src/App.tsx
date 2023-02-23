@@ -1,8 +1,15 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TestPage from '@customer/pages/TestPage';
 import '@customer/assets/styles/index.css';
 
 function App() {
-  return <TestPage />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<TestPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 // TODO: import order

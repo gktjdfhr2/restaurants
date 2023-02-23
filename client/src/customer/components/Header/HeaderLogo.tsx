@@ -5,7 +5,7 @@ const HeaderLogo = styled.div`
   background-repeat: no-repeat;
   background-position: left;
   background-size: contain;
-  height: 100%;
+  height: 72px;
   width: 100px;
   text-align: center;
   position: relative;
