@@ -11,7 +11,7 @@ const CustomerInformationPage = () => {
         <HeaderBar />
       </HeaderLayout>
       <DefaultLayout>
-        CustomerInformationPage!
+        CustomerInformationPage!!
         {/* csstest */}
         <div style={{ position: 'relative', width: '200px' }}>
           <TextInput />

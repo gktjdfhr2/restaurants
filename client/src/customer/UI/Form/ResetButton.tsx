@@ -17,8 +17,8 @@ const ResetButton = styled.button.attrs({
   border: none;
   padding: 2px 5px;
   text-align: center;
-  cursor: pointer;
   position: absolute;
+  cursor: pointer;
 
   &:before {
     content: 'X';

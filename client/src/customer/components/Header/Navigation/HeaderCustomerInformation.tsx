@@ -5,6 +5,11 @@ const HeaderCustomerInformation = styled.button.attrs({ type: 'button' })`
   height: 72px;
   border: none;
   background: none;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+  }
 
   &:after {
     content: '내정보';

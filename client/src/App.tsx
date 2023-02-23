@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import TestPage from './pages/TestPage';
-import SearchPage from './pages/SearchPage';
-import ReservationPage from './pages/ReservationPage';
-import CustomerInformationPage from './pages/CustomerInformationPage';
-import RemoteLinePage from './pages/RemoteLinePage';
+import TestPage from './customer/pages/TestPage';
+import SearchPage from './customer/pages/SearchPage';
+import ReservationPage from './customer/pages/ReservationPage';
+import CustomerInformationPage from './customer/pages/CustomerInformationPage';
+import RemoteLinePage from './customer/pages/RemoteLinePage';
 import '@customer/assets/styles/index.css';
 
 function App() {

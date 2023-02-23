@@ -5,7 +5,11 @@ const HeaderRemoteLine = styled.button.attrs({ type: 'button' })`
   height: 72px;
   border: none;
   background: none;
+  opacity: 0.7;
 
+  &:hover {
+    opacity: 1;
+  }
   &:after {
     content: '원격 줄서기';
     font-size: 16px;
