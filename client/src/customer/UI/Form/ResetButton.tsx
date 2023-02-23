@@ -9,6 +9,8 @@ const ResetButton = styled.button.attrs({
 })`
   height: 20px;
   width: 20px;
+  right: 10px;
+  top: 5px;
   border-radius: 50%;
   background-color: #ccc;
   color: white;
@@ -17,8 +19,6 @@ const ResetButton = styled.button.attrs({
   text-align: center;
   cursor: pointer;
   position: absolute;
-  right: 10px;
-  top: 5px;
 
   &:before {
     content: 'X';

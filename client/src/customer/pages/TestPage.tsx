@@ -6,16 +6,7 @@ import TextInput from '@customer/UI/Form/TextInput';
 import ResetButton from '@customer/UI/Form/ResetButton';
 
 const TestPage = () => {
-  return (
-    <>
-      <HeaderLayout>
-        <HeaderBar />
-      </HeaderLayout>
-      <DefaultLayout>
-        <KakaoMap />
-      </DefaultLayout>
-    </>
-  );
+  return <>test</>;
 };
 
 export default TestPage;
