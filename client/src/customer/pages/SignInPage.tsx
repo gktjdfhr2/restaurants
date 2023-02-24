@@ -1,19 +1,19 @@
 import DefaultLayout from '@customer/UI/Layouts/DefaultLayout';
 import HeaderLayout from '@customer/UI/Layouts/HeaderLayout';
 import HeaderBar from '@customer/components/HeaderBar';
-import CustomerInformation from '@customer/components/CustomerInformationPart';
+import SignIn from '@customer/components/SignInPart';
 
-const CustomerInformationPage = () => {
+const SignInPage = () => {
   return (
     <>
       <HeaderLayout>
         <HeaderBar />
       </HeaderLayout>
       <DefaultLayout>
-        <CustomerInformation />
+        <SignIn />
       </DefaultLayout>
     </>
   );
 };
 
-export default CustomerInformationPage;
+export default SignInPage;
