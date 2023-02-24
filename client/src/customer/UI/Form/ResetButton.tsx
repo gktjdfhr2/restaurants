@@ -10,7 +10,7 @@ const ResetButton = styled.button.attrs({
   height: 25px;
   width: 25px;
   right: 5px;
-  top: 2px;
+  top: 6px;
   border-radius: 50%;
   background-color: white;
   color: gray;

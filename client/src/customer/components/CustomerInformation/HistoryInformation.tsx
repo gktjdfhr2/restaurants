@@ -9,6 +9,7 @@ const HistoryInformation = styled.div`
   align-items: center;
   font-size: 30px;
   opacity: 0.5;
+  color: black;
 
   &:before {
     content: ${(props) => `'${props.title || ''}'`};
@@ -17,6 +18,7 @@ const HistoryInformation = styled.div`
     width: max-content;
     height: 100%;
     font-size: 30px;
+    color: black;
   }
 
   &:hover {

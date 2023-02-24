@@ -9,6 +9,7 @@ const SignInNavigation = styled.div`
   height: 150px;
   font-weight: bold;
   opacity: 0.5;
+  color: black;
 
   &:before {
     content: ${(props) => `'${props.title + '  >' || ''}'`};
