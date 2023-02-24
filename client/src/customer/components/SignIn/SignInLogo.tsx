@@ -9,7 +9,7 @@ const HeaderLogo = styled.div`
   width: 350px;
   text-align: center;
   position: relative;
-  margin: 0 auto;
+  margin: 64px auto;
 
   &:after {
     content: ${(props) => `'${props.title || ''}'`};
