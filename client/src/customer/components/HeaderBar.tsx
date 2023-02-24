@@ -8,16 +8,16 @@ const HeaderBar = () => {
         <Header.Logo title="맛집지도" />
       </Link>
       <Header.Navigation>
-        <Link to="/Customer/SearchPage">
+        <Link to="/customer/SearchPage">
           <Header.Search />
         </Link>
-        <Link to="/Customer/RemoteLinePage">
+        <Link to="/customer/RemoteLinePage">
           <Header.RemoteLine />
         </Link>
-        <Link to="/Customer/ReservationPage">
+        <Link to="/customer/ReservationPage">
           <Header.Reservation />
         </Link>
-        <Link to="/Customer/CustomerInformationPage">
+        <Link to="/customer/CustomerInformationPage">
           <Header.CustomerInformation />
         </Link>
       </Header.Navigation>

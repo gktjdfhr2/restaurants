@@ -11,11 +11,11 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<TestPage />} />
-        <Route path="/Customer/SearchPage" element={<SearchPage />} />
-        <Route path="/Customer/RemoteLinePage" element={<RemoteLinePage />} />
-        <Route path="/Customer/ReservationPage" element={<ReservationPage />} />
+        <Route path="/customer/SearchPage" element={<SearchPage />} />
+        <Route path="/customer/RemoteLinePage" element={<RemoteLinePage />} />
+        <Route path="/customer/ReservationPage" element={<ReservationPage />} />
         <Route
-          path="/Customer/CustomerInformationPage"
+          path="/customer/CustomerInformationPage"
           element={<CustomerInformationPage />}
         />
       </Routes>

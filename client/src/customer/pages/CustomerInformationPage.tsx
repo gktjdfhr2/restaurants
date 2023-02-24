@@ -1,8 +1,7 @@
 import DefaultLayout from '@customer/UI/Layouts/DefaultLayout';
 import HeaderLayout from '@customer/UI/Layouts/HeaderLayout';
 import HeaderBar from '@customer/components/HeaderBar';
-import TextInput from '@customer/UI/Form/TextInput';
-import ResetButton from '@customer/UI/Form/ResetButton';
+import CustomerInformation from '@customer/components/CustomerInformationSection';
 
 const CustomerInformationPage = () => {
   return (
@@ -11,12 +10,7 @@ const CustomerInformationPage = () => {
         <HeaderBar />
       </HeaderLayout>
       <DefaultLayout>
-        CustomerInformationPage!!
-        {/* csstest */}
-        <div style={{ position: 'relative', width: '200px' }}>
-          <TextInput />
-          <ResetButton />
-        </div>
+        <CustomerInformation />
       </DefaultLayout>
     </>
   );
