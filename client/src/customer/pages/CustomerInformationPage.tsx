@@ -1,19 +1,19 @@
 import DefaultLayout from '@customer/UI/Layouts/DefaultLayout';
 import HeaderLayout from '@customer/UI/Layouts/HeaderLayout';
-import KakaoMap from '@customer/components/KakaoMap';
 import HeaderBar from '@customer/components/HeaderBar';
+import CustomerInformation from '@customer/components/CustomerInformationPart';
 
-const TestPage = () => {
+const CustomerInformationPage = () => {
   return (
     <>
       <HeaderLayout>
         <HeaderBar />
       </HeaderLayout>
       <DefaultLayout>
-        <KakaoMap />
+        <CustomerInformation />
       </DefaultLayout>
     </>
   );
 };
 
-export default TestPage;
+export default CustomerInformationPage;

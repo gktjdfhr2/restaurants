@@ -1,8 +1,28 @@
-import TestPage from '@customer/pages/TestPage';
-import '@customer/assets/styles/index.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import TestPage from './customer/pages/TestPage';
+import SearchPage from './customer/pages/SearchPage';
+import ReservationPage from './customer/pages/ReservationPage';
+import CustomerInformationPage from './customer/pages/CustomerInformationPage';
+import RemoteLinePage from './customer/pages/RemoteLinePage';
+import SignInPage from './customer/pages/SignInPage';
+import '@customer/styles/index.css';
 
 function App() {
-  return <TestPage />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<TestPage />} />
+        <Route path="/customer/SearchPage" element={<SearchPage />} />
+        <Route path="/customer/RemoteLinePage" element={<RemoteLinePage />} />
+        <Route path="/customer/ReservationPage" element={<ReservationPage />} />
+        <Route
+          path="/customer/CustomerInformationPage"
+          element={<CustomerInformationPage />}
+        />
+        <Route path="/customer/SignInPage" element={<SignInPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 // TODO: import order

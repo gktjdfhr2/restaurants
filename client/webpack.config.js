@@ -2,23 +2,26 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  // entry point and output when build.
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index_bundle.js',
+    publicPath: '/',
   },
 
   // dev server
   devServer: {
     static: {
-      directory: path.resolve(__dirname, 'public'),
+      directory: path.resolve(__dirname),
     },
     compress: true,
     port: 3000,
     client: {
       logging: 'error',
       overlay: true,
+    },
+    historyApiFallback: {
+      index: '/index.html',
     },
   },
 

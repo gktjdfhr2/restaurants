@@ -1,14 +1,25 @@
 import { Header } from '@customer/components/Header';
+import { Link } from 'react-router-dom';
 
 const HeaderBar = () => {
   return (
     <Header.Container>
-      <Header.Logo title="맛집지도" />
+      <Link to="/">
+        <Header.Logo title="맛집지도" />
+      </Link>
       <Header.Navigation>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
+        <Link to="/customer/SearchPage">
+          <Header.Search />
+        </Link>
+        <Link to="/customer/RemoteLinePage">
+          <Header.RemoteLine />
+        </Link>
+        <Link to="/customer/ReservationPage">
+          <Header.Reservation />
+        </Link>
+        <Link to="/customer/CustomerInformationPage">
+          <Header.CustomerInformation />
+        </Link>
       </Header.Navigation>
     </Header.Container>
   );
