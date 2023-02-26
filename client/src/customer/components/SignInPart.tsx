@@ -7,11 +7,10 @@ const SignInPart = () => {
   return (
     <>
       <SignIn.Logo title="맛집지도" />
-      <form style={{ position: 'relative', width: '300px', margin: '0 auto' }}>
-        <TextInput />
+      <div style={{ position: 'relative', width: '300px', margin: '0 auto' }}>
+        <TextInput></TextInput>
         <ResetButton />
-        <TextInput />
-      </form>
+      </div>
     </>
   );
 };

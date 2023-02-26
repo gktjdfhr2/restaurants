@@ -5,12 +5,12 @@ If you want to place it within the text,
 you must specify 'position: relative' to the parent element that binds the text and the button.  */
 
 const ResetButton = styled.button.attrs({
-  type: 'reset',
+  type: 'button',
 })`
   height: 25px;
   width: 25px;
-  right: 5px;
-  top: 6px;
+  right: 1%;
+  top: 50%;
   border-radius: 50%;
   background-color: white;
   color: gray;
@@ -19,6 +19,7 @@ const ResetButton = styled.button.attrs({
   text-align: center;
   position: absolute;
   cursor: pointer;
+  transform: translateY(-50%);
 
   &:before {
     content: 'X';

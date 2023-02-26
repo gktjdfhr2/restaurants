@@ -5,7 +5,6 @@ const TextInput = styled.input.attrs({
 })`
   width: 300px;
   height: 36px;
-  margin: 0 auto;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 0 10px;
@@ -13,6 +12,8 @@ const TextInput = styled.input.attrs({
   color: #333;
   outline: none;
   text-align: center;
+
+  position: relative;
 
   &:focus {
     border-color: #333;
