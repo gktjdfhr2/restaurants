@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const HeaderLogo = styled.div`
-  background: url(/images/placeholder.png);
+  background: url(/src/assets/images/placeholder.png);
   background-repeat: no-repeat;
   background-position: left;
   background-size: contain;
