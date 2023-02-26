@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const TextInput = styled.input.attrs({
-  type: 'text',
+const PasswordInput = styled.input.attrs({
+  type: 'password',
 })`
   width: 300px;
   height: 36px;
@@ -20,4 +20,4 @@ const TextInput = styled.input.attrs({
   }
 `;
 
-export default TextInput;
+export default PasswordInput;
