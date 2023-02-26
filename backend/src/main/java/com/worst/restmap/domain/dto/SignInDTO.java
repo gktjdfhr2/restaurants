@@ -8,7 +8,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginDTO {
+public class SignInDTO {
     @NotNull
     private String userEmail;
     @NotNull
