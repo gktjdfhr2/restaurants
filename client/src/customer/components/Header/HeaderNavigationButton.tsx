@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const HeaderCustomerInformation = styled.button.attrs({ type: 'button' })`
+const HeaderNavigationButton = styled.button.attrs({ type: 'button' })`
   width: 100px;
   height: 72px;
   border: none;
@@ -12,10 +12,10 @@ const HeaderCustomerInformation = styled.button.attrs({ type: 'button' })`
   }
 
   &:after {
-    content: '내정보';
+    content: ${(props) => `'${props.title || ''}'`};
     font-size: 16px;
     color: white;
   }
 `;
 
-export default HeaderCustomerInformation;
+export default HeaderNavigationButton;

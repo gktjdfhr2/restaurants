@@ -12,13 +12,13 @@ const HeaderBar = () => {
           <Header.Search />
         </Link>
         <Link to="/customer/RemoteLinePage">
-          <Header.RemoteLine />
+          <Header.NavigationButton title="원격 줄서기" />
         </Link>
         <Link to="/customer/ReservationPage">
-          <Header.Reservation />
+          <Header.NavigationButton title="즉시 예약" />
         </Link>
         <Link to="/customer/CustomerInformationPage">
-          <Header.CustomerInformation />
+          <Header.NavigationButton title="내정보" />
         </Link>
       </Header.Navigation>
     </Header.Container>

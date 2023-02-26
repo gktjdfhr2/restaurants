@@ -1,3 +1,8 @@
 :root {
   --signature: rgb(39, 111, 245);
+  --inputBorder: 1px solid #ccc;
+  --inputBorderRadius: 4px;
+  --inputColor: #333;
+  --inputPadding: 0 10px;
+  --inputFocusColor: #333;
 }
