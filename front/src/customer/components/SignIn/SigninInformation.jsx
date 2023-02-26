@@ -21,7 +21,7 @@ function SigninInput() {
   const register = () => {
     console.log(signInCheck);
     axios
-      .post('localhost:8080/api/auth/signIn', signInCheck)
+      .post('http://localhost:8080/api/auth/signIn', signInCheck)
       .then((response) => {
         console.log(response);
         console.log('data:', response.data.user);

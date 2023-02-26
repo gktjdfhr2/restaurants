@@ -2,7 +2,6 @@ package com.worst.restmap.config.jwt;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
@@ -26,7 +25,7 @@ public class TokenProvider implements InitializingBean {
     private final Logger logger = LoggerFactory.getLogger(TokenProvider.class);
     private static final String AUTHORITIES_KEY = "auth";
     private final String secret;
-    private final long tokenValidityInMilliseconds;
+    private final long tokenValidityInMilliseconds; //토큰 만료시간
     private Key key;
 
     public TokenProvider(
@@ -34,12 +33,6 @@ public class TokenProvider implements InitializingBean {
             @Value("${jwt.token-validity-in-seconds}") long tokenValidityInSeconds) {
         this.secret = secret;
         this.tokenValidityInMilliseconds = tokenValidityInSeconds * 1000;
-    }
-
-    @Override
-    public void afterPropertiesSet() {
-        byte[] keyBytes = Decoders.BASE64.decode(secret);
-        this.key = Keys.hmacShaKeyFor(keyBytes);
     }
 
     public String createToken(Authentication authentication) {
@@ -76,6 +69,12 @@ public class TokenProvider implements InitializingBean {
         return new UsernamePasswordAuthenticationToken(principal, token, authorities);
     }
 
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        byte[] keyBytes = Decoders.BASE64.decode(secret);
+
+    }
+
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
@@ -91,4 +90,5 @@ public class TokenProvider implements InitializingBean {
         }
         return false;
     }
+
 }
