@@ -12,11 +12,12 @@ const SignInPart = () => {
       <div
         style={{ position: 'relative', width: '300px', margin: '10px auto' }}
       >
-        <PlaceHolder content="아이디" type="password" />
-        <ResetButton />
+        <PlaceHolder content="아이디" type="text" reset={true} />
       </div>
-      <div style={{ width: '300px', margin: '10px auto' }}>
-        <PasswordInput placeholder="비밀번호" />
+      <div
+        style={{ position: 'relative', width: '300px', margin: '10px auto' }}
+      >
+        <PlaceHolder content="비밀번호" type="password" />
       </div>
       <div
         style={{
