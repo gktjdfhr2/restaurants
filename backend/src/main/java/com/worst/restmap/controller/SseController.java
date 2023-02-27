@@ -23,14 +23,29 @@ public class SseController {
     @GetMapping(value = "/connect", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public ResponseEntity<SseEmitter> connect() {
         SseEmitter emitter = new SseEmitter();
-        sseEmitters.add(emitter);
-        try {
-            emitter.send(SseEmitter.event()
-                    .name("connect")
-                    .data("connected!"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
+//        sseEmitters.add(emitter);
+//        try {
+//            emitter.send(SseEmitter.event()
+//                    .name("connect")
+//                    .data("connected!"));
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        return ResponseEntity.ok(emitter);
+
+        new Thread(() -> {
+            try {
+                for (int i = 0; i < 10; i++) {
+                    emitter.send(SseEmitter.event().id(String.valueOf(i)).data("Hello " + i));
+                    Thread.sleep(1000);
+                }
+                emitter.complete();
+            } catch (Exception e) {
+                emitter.completeWithError(e);
+            }
+        }).start();
+
         return ResponseEntity.ok(emitter);
     }
 }
