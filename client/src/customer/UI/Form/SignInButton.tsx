@@ -15,12 +15,14 @@ const SignInButton = styled.button.attrs({
   cursor: pointer;
   font-weight: bold;
   background-color: var(--signature);
+  opacity: 0.8;
 
   &:before {
     content: '로그인';
   }
 
   &:hover {
+    opacity: 1;
   }
 `;
 

@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
-const TextInput = styled.input.attrs({
-  type: 'text',
-})`
+/** props password를 주면 password type으로 사용 가능 */
+const TextInput = styled.input.attrs((props) => ({
+  type: props.type || 'text',
+}))`
   width: 300px;
-  height: 36px;
+  height: 46px;
   border: var(--inputBorder);
   border-radius: var(--inputBorderRadius);
   padding: var(--inputPadding);
   font-size: 14px;
   color: var(--inputColor);
   outline: none;
-  text-align: center;
 
   position: relative;
 

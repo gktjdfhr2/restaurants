@@ -1,8 +1,8 @@
 import { SignIn } from '@customer/components/SignIn';
-import TextInput from '@customer/UI/Form/TextInput';
 import ResetButton from '@customer/UI/Form/ResetButton';
 import PasswordInput from '@customer/UI/Form/PasswordInput';
 import SignInButton from '@customer/UI/Form/SignInButton';
+import PlaceHolder from '@customer/UI/Form/PlaceHolder';
 import { Link } from 'react-router-dom';
 
 const SignInPart = () => {
@@ -12,11 +12,12 @@ const SignInPart = () => {
       <div
         style={{ position: 'relative', width: '300px', margin: '10px auto' }}
       >
-        <TextInput placeholder="아이디" />
-        <ResetButton />
+        <PlaceHolder content="아이디" type="text" reset={true} />
       </div>
-      <div style={{ width: '300px', margin: '10px auto' }}>
-        <PasswordInput placeholder="비밀번호" />
+      <div
+        style={{ position: 'relative', width: '300px', margin: '10px auto' }}
+      >
+        <PlaceHolder content="비밀번호" type="password" />
       </div>
       <div
         style={{
