@@ -1,5 +1,5 @@
 import TextInput from './TextInput';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import ResetButton from './ResetButton';
 import PlaceHolderToggle from './PlaceHolderToggle';
 import styled from 'styled-components';
@@ -20,20 +20,21 @@ const PlaceHolderText = (props: {
   content?: string;
   type: string;
   reset?: boolean;
+  value: string;
+  onChange: any;
+  onReset?: any;
 }) => {
   const [textFocus, setTextFocus] = useState(false);
-  const [inputText, setInputText] = useState('');
 
   const textFocusEvent = () => {
-    console.log('focus');
+    console.log('focus', props.value);
+
     setTextFocus(true);
   };
 
   const textBlurEvent = () => {
-    console.log('blur');
-    if (inputText.length <= 0) {
-      setTextFocus(false);
-    }
+    console.log('blur', props.value);
+    props.value.length <= 0 ? setTextFocus(false) : setTextFocus(true);
   };
 
   return (
@@ -42,12 +43,12 @@ const PlaceHolderText = (props: {
         type={props.type}
         onFocus={textFocusEvent}
         onBlur={textBlurEvent}
-        onChange={(e) => setInputText(e.target.value)}
-        value={inputText}
+        onChange={props.onChange}
+        value={props.value}
       />
       <PlaceHolderToggle toggle={textFocus}>{props.content}</PlaceHolderToggle>
-      {props.reset === true && inputText.length > 0 && (
-        <ResetButton onClick={() => setInputText('')} />
+      {props.reset === true && props.value.length > 0 && (
+        <ResetButton onClick={props.onReset} />
       )}
     </RelativeDiv>
   );

@@ -1,5 +1,7 @@
-// import { default as SignUpContainer } from './SignUpContainer';
+import { default as SortDiv } from './SortDiv';
+import { default as MemberType } from './MemberType';
 
 export const SignIn = {
-  //   Container: SignUpContainer,
+  Sort: SortDiv,
+  Select: MemberType,
 };
