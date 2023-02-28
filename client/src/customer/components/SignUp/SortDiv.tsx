@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const SortDiv = styled.div`
-  width: 70%;
+const SortDiv = styled.section`
+  width: 100%;
   height: 100%;
   margin-bottom: 30px;
 `;
