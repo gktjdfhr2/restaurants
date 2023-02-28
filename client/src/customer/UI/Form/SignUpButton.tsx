@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const SignInButton = styled.button.attrs({
+const SignUpButton = styled.button.attrs({
   type: 'submit',
 })`
-  width: 300px;
+  width: 100%;
   height: 46px;
   border: none;
   border-radius: var(--inputBorderRadius);
@@ -18,7 +18,7 @@ const SignInButton = styled.button.attrs({
   opacity: 0.8;
 
   &:before {
-    content: '로그인';
+    content: '회원가입';
   }
 
   &:hover {
@@ -26,4 +26,4 @@ const SignInButton = styled.button.attrs({
   }
 `;
 
-export default SignInButton;
+export default SignUpButton;

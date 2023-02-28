@@ -1,6 +1,4 @@
 import { SignIn } from '@customer/components/SignIn';
-import ResetButton from '@customer/UI/Form/ResetButton';
-import PasswordInput from '@customer/UI/Form/PasswordInput';
 import SignInButton from '@customer/UI/Form/SignInButton';
 import PlaceHolder from '@customer/UI/Form/PlaceHolder';
 import { Link } from 'react-router-dom';
@@ -31,7 +29,7 @@ const SignInPart = () => {
         <SignInButton />
         <div style={{ margin: '10px' }}>
           회원이 아신가요? &nbsp;
-          <Link to="/">
+          <Link to="/customer/SignUpPage">
             <span
               style={{
                 fontWeight: 'bold',

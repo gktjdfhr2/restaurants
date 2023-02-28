@@ -1,6 +1,10 @@
 import { ChangeEvent, useState } from 'react';
+import DefaultLayout from '@customer/UI/Layouts/DefaultLayout';
+import HeaderLayout from '@customer/UI/Layouts/HeaderLayout';
+import HeaderBar from '@customer/components/HeaderBar';
+import SignUpPart from '@customer/components/SignUpPart';
 
-const SSETestPage = () => {
+const SignUpPage = () => {
   const [memberData, setMemberData] = useState({
     memberRole: 0,
     memberEmail: '',
@@ -16,24 +20,15 @@ const SSETestPage = () => {
     // setMemberData( memberData.memberEmail:value);
   };
   return (
-    <div>
-      SSE_TEST!
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <input
-          type="text"
-          value={memberData.memberEmail}
-          placeholder="아이디"
-          onChange={idHandle}
-        />
-      </div>
-    </div>
+    <>
+      <HeaderLayout>
+        <HeaderBar />
+      </HeaderLayout>
+      <DefaultLayout>
+        <SignUpPart />
+      </DefaultLayout>
+    </>
   );
 };
 
-export default SSETestPage;
+export default SignUpPage;

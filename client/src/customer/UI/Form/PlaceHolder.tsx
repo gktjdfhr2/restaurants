@@ -2,13 +2,20 @@ import TextInput from './TextInput';
 import { useState } from 'react';
 import ResetButton from './ResetButton';
 import PlaceHolderToggle from './PlaceHolderToggle';
+import styled from 'styled-components';
 
 /**
  * content에 placeHolder내용 작성
  * type을 반드시 지정해주어야함
  * type =  text || password
- * 상위 엘리먼트에 position: relative를 반드시 작성해주어야함
  */
+const RelativeDiv = styled.div`
+  position: relative;
+  width: 100%;
+  height: 46px;
+  margin: 0 auto 20px auto;
+`;
+
 const PlaceHolderText = (props: {
   content?: string;
   type: string;
@@ -30,7 +37,7 @@ const PlaceHolderText = (props: {
   };
 
   return (
-    <>
+    <RelativeDiv>
       <TextInput
         type={props.type}
         onFocus={textFocusEvent}
@@ -42,7 +49,7 @@ const PlaceHolderText = (props: {
       {props.reset === true && inputText.length > 0 && (
         <ResetButton onClick={() => setInputText('')} />
       )}
-    </>
+    </RelativeDiv>
   );
 };
 
