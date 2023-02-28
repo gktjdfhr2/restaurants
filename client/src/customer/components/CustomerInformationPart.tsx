@@ -11,7 +11,7 @@ const CustomerInformationSection = () => {
       {isLogin ? (
         <CustomerInformation.SignIn title={testUserName} />
       ) : (
-        <Link to="/customer/SignInPage">
+        <Link to="/customer/SignIn">
           <CustomerInformation.SignIn title="로그인 하기" />
         </Link>
       )}

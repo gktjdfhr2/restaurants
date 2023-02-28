@@ -2,18 +2,19 @@ import DefaultLayout from '@customer/UI/Layouts/DefaultLayout';
 import HeaderLayout from '@customer/UI/Layouts/HeaderLayout';
 import KakaoMap from '@customer/components/KakaoMap';
 import HeaderBar from '@customer/components/HeaderBar';
+import { Outlet } from 'react-router-dom';
 
-const TestPage = () => {
+const Restaurants = () => {
   return (
     <>
       <HeaderLayout>
         <HeaderBar />
       </HeaderLayout>
       <DefaultLayout>
-        <KakaoMap />
+        <Outlet />
       </DefaultLayout>
     </>
   );
 };
 
-export default TestPage;
+export default Restaurants;
