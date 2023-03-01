@@ -1,11 +1,7 @@
 import SignInLogo from './SignInLogo';
-
 import SignInButton from '@customer/UI/Form/SignInButton';
 import PlaceHolder from '@customer/UI/Form/PlaceHolder';
-import DefaultLayout from '@customer/UI/Layouts/DefaultLayout';
 import { Link } from 'react-router-dom';
-import HeaderLayout from '@customer/UI/Layouts/HeaderLayout';
-import HeaderBar from '@customer/components/HeaderBar';
 
 const SignIn = () => {
   return (
@@ -41,7 +37,7 @@ const SignIn = () => {
         <SignInButton />
         <div style={{ margin: '10px' }}>
           회원이 아신가요? &nbsp;
-          <Link to="/customer/SignUpPage">
+          <Link to="/customer/SignUp">
             <span
               style={{
                 fontWeight: 'bold',

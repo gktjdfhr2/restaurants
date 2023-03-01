@@ -5,7 +5,7 @@ import ReservationPage from './customer/pages/ReservationPage';
 import CustomerInformationPage from './customer/pages/CustomerInformationPage';
 import RemoteLinePage from './customer/pages/RemoteLinePage';
 import SignIn from './customer/pages/SignIn';
-import SignUpPage from './customer/pages/SignUpPage';
+import SignUp from './customer/pages/SignUp';
 import '@customer/styles/index.css';
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
             element={<CustomerInformationPage />}
           />
           <Route path="customer/SignIn" element={<SignIn />} />
-          <Route path="customer/SignUpPage" element={<SignUpPage />} />
+          <Route path="customer/SignUp" element={<SignUp />} />
         </Route>
       </Routes>
     </BrowserRouter>
