@@ -2,6 +2,8 @@ package com.worst.restmap.config.auth;
 
 import com.worst.restmap.common.enums.MemberRole;
 import com.worst.restmap.domain.entity.Member;
+import lombok.Data;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @RequiredArgsConstructor
+@Getter
 public class CustomUserDetail implements UserDetails {
     private final Member member;
 

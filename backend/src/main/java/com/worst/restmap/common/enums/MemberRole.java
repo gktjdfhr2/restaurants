@@ -12,10 +12,11 @@ public enum MemberRole {
         this.memberRoleName = memberRoleName;
     }
 
-    public static String getMemberRoleName(long code) {
-        if(code == 0) {
+    public static String getMemberRoleName(String code) {
+        long inCode = Long.parseLong(code);
+        if(inCode == 0) {
             return ROLE_MEMBER.memberRoleName;
-        } else if (code == 1) {
+        } else if (inCode == 1) {
             return ROLE_BUSINESS.memberRoleName;
         } else {
             return ROLE_ADMIN.memberRoleName;

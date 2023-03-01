@@ -13,11 +13,11 @@ import java.util.Date;
 @Component
 public class TokenProvider {
 
-    public String createAccessToken(String memberEmail) {
+    public String createAccessToken(String memberId) {
         return JWT.create()
                 .withSubject("jwt_token")
                 .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.ACCESS_EXPIRATION_TIME))
-                .withClaim("memberEmail", memberEmail)
+                .withClaim("memberId", memberId)
                 .sign(Algorithm.HMAC256(JwtProperties.SECRET));
     }
 

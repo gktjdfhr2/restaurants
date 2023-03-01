@@ -14,7 +14,7 @@ public class SignUpDto {
     private String memberName;
     private String memberPhone;
     private String memberAddress;
-    private long memberRole;
+    private String memberRole;
 
     public Member toEntity() {
         return Member.builder()

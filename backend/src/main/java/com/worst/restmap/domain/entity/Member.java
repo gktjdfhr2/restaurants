@@ -18,7 +18,7 @@ public class Member {
     private long memberId;
 
     @Column( name = "member_role")
-    private long memberRole;
+    private String memberRole;
 
     @Column( name = "member_email")
     private String memberEmail;
