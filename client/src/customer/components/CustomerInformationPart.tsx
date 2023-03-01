@@ -7,11 +7,11 @@ const CustomerInformationSection = () => {
   const testUserName = '최재혁';
 
   return (
-    <CustomerInformation.Container>
+    <>
       {isLogin ? (
         <CustomerInformation.SignIn title={testUserName} />
       ) : (
-        <Link to="/customer/SignInPage">
+        <Link to="/customer/SignIn">
           <CustomerInformation.SignIn title="로그인 하기" />
         </Link>
       )}
@@ -24,7 +24,7 @@ const CustomerInformationSection = () => {
       <CustomerInformation.History title="최근 본 매장">
         <span>&gt;</span>
       </CustomerInformation.History>
-    </CustomerInformation.Container>
+    </>
   );
 };
 
