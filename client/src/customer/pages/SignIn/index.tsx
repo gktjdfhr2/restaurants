@@ -2,8 +2,34 @@ import SignInLogo from './SignInLogo';
 import SignInButton from '@customer/UI/Form/SignInButton';
 import PlaceHolder from '@customer/UI/Form/PlaceHolder';
 import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const SignIn = () => {
+  const [idCheck, setIdCheck] = useState('');
+  const [passwordCheck, setPasswordCheck] = useState('');
+
+  const idCheckHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIdCheck(event.target.value);
+  };
+  const passwordCheckHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPasswordCheck(event.target.value);
+  };
+
+  const register = () => {
+    axios
+      .post('http://localhost:8080/login', {
+        id: idCheck,
+        password: passwordCheck,
+      })
+      .then((response) => {
+        console.log(response);
+        console.log('통:', response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <>
       <SignInLogo title="맛집지도" />
@@ -14,7 +40,12 @@ const SignIn = () => {
           margin: '10px auto',
         }}
       >
-        <PlaceHolder content="아이디" type="text" value="" onChange="" />
+        <PlaceHolder
+          content="아이디"
+          type="text"
+          value={idCheck}
+          onChange={idCheckHandle}
+        />
       </div>
       <div
         style={{
@@ -23,7 +54,12 @@ const SignIn = () => {
           margin: '10px auto',
         }}
       >
-        <PlaceHolder content="비밀번호" type="password" value="" onChange="" />
+        <PlaceHolder
+          content="비밀번호"
+          type="password"
+          value={passwordCheck}
+          onChange={passwordCheckHandle}
+        />
       </div>
       <div
         style={{
@@ -34,7 +70,7 @@ const SignIn = () => {
           textAlign: 'center',
         }}
       >
-        <SignInButton />
+        <SignInButton onClick={register} />
         <div style={{ margin: '10px' }}>
           회원이 아신가요? &nbsp;
           <Link to="/customer/SignUp">

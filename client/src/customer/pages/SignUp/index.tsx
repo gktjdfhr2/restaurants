@@ -108,8 +108,9 @@ const SignUp = () => {
       .post('http://localhost:8080/api/signUp', signUpInfo)
       .then((response) => {
         console.log(response);
-        console.log('data:', response.data.user);
-        console.log('tocken', response.data.jwt);
+        console.log('통:', response.data);
+        console.log('data:', response.data.member);
+        console.log('token', response.data.jwt);
       })
       .catch((error) => {
         console.log(error);
