@@ -17,7 +17,7 @@ const HeaderBar = () => {
         <Link to="/customer/ReservationPage">
           <Header.NavigationButton title="즉시 예약" />
         </Link>
-        <Link to="/customer/CustomerInformationPage">
+        <Link to="/customer/InformationPage">
           <Header.NavigationButton title="내정보" />
         </Link>
       </Header.Navigation>

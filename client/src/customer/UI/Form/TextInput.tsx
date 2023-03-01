@@ -4,9 +4,10 @@ import styled from 'styled-components';
 const TextInput = styled.input.attrs((props) => ({
   type: props.type || 'text',
 }))`
-  width: 300px;
+  width: 100%;
   height: 46px;
-  border: var(--inputBorder);
+  border: none;
+  border: 1px solid black;
   border-radius: var(--inputBorderRadius);
   padding: var(--inputPadding);
   font-size: 14px;
@@ -16,7 +17,8 @@ const TextInput = styled.input.attrs((props) => ({
   position: relative;
 
   &:focus {
-    border-color: var(--inputFocusColor);
+    border: 2px solid var(--signature);
+    transition: all 0.1s ease-in-out;
   }
 `;
 

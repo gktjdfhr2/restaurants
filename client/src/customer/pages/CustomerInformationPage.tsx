@@ -4,16 +4,7 @@ import HeaderBar from '@customer/components/HeaderBar';
 import CustomerInformation from '@customer/components/CustomerInformationPart';
 
 const CustomerInformationPage = () => {
-  return (
-    <>
-      <HeaderLayout>
-        <HeaderBar />
-      </HeaderLayout>
-      <DefaultLayout>
-        <CustomerInformation />
-      </DefaultLayout>
-    </>
-  );
+  return <CustomerInformation />;
 };
 
 export default CustomerInformationPage;
