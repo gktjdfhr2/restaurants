@@ -4,6 +4,8 @@ import PlaceHolder from '@customer/UI/Form/PlaceHolder';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import axios from 'axios';
+import ResetButton from '@customer/UI/Form/ResetButton';
+import ResetSortDiv from '@customer/UI/Form/ResetSortDiv';
 
 const SignIn = () => {
   const [idCheck, setIdCheck] = useState('');
@@ -11,9 +13,14 @@ const SignIn = () => {
 
   const idCheckHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIdCheck(event.target.value);
+    console.log(event.target.value.length);
   };
   const passwordCheckHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPasswordCheck(event.target.value);
+  };
+
+  const resetId = (event: React.MouseEvent) => {
+    setIdCheck('');
   };
 
   const register = () => {
@@ -46,6 +53,7 @@ const SignIn = () => {
           value={idCheck}
           onChange={idCheckHandle}
         />
+        {idCheck.length > 0 && <ResetButton onClick={resetId} />}
       </div>
       <div
         style={{

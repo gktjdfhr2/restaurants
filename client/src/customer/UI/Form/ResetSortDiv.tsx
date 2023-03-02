@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const ResetSortDiv = styled.div`
   position: relative;
-  width: 100%;
+  width: 300px;
   height: 46px;
   margin-bottom: 30px;
 `;
