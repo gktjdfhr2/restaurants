@@ -2,7 +2,7 @@ import { ChangeEvent, useState, useCallback } from 'react';
 import ResetSortDiv from '@customer/UI/Form/ResetSortDiv';
 import PlaceHolderText from '@customer/UI/Form/PlaceHolder';
 import PageTitle from '@customer/UI/Form/PageTitle';
-import SignUpButton from '@customer/UI/Form/SignUpButton';
+import Button from '@customer/UI/Form/Button';
 import ResetButton from '@customer/UI/Form/ResetButton';
 import MemberType from './MemberType';
 import SignUpContainer from './SignUpContainer';
@@ -204,7 +204,7 @@ const SignUp = () => {
           </SortDiv>
 
           <SortDiv>
-            <SignUpButton onClick={signUp} />
+            <Button onClick={signUp} title="회원가입" />
           </SortDiv>
         </div>
       </SignUpContainer>

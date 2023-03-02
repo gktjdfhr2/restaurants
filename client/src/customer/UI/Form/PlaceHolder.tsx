@@ -1,6 +1,8 @@
 import TextInput from './TextInput';
 import styled, { css } from 'styled-components';
 
+//TODO: changeEvent 타입 지정
+
 const RelativeDiv = styled.div`
   position: relative;
   width: 100%;

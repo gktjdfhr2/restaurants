@@ -1,11 +1,16 @@
 import SignInLogo from './SignInLogo';
-import SignInButton from '@customer/UI/Form/SignInButton';
+import Button from '@customer/UI/Form/Button';
 import PlaceHolder from '@customer/UI/Form/PlaceHolder';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import axios from 'axios';
 import ResetButton from '@customer/UI/Form/ResetButton';
 import ResetSortDiv from '@customer/UI/Form/ResetSortDiv';
+import styled from 'styled-components';
+
+const SignInButton = styled(Button)`
+  width: 300px;
+`;
 
 const SignIn = () => {
   const [idCheck, setIdCheck] = useState('');
@@ -78,7 +83,7 @@ const SignIn = () => {
           textAlign: 'center',
         }}
       >
-        <SignInButton onClick={register} />
+        <SignInButton onClick={register} title="로그인" />
         <div style={{ margin: '10px' }}>
           회원이 아신가요? &nbsp;
           <Link to="/customer/SignUp">
