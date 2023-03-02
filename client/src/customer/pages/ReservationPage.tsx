@@ -5,9 +5,6 @@ import HeaderBar from '@customer/components/HeaderBar';
 const ReservationPage = () => {
   return (
     <>
-      <HeaderLayout>
-        <HeaderBar />
-      </HeaderLayout>
       <DefaultLayout>ReservationPage!</DefaultLayout>
     </>
   );

@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Restaurants from './customer/pages/Restaurants';
 import SearchPage from './customer/pages/SearchPage';
 import ReservationPage from './customer/pages/ReservationPage';
-import CustomerInformationPage from './customer/pages/CustomerInformationPage';
+import CustomerInformation from './customer/pages/CustomerInformation';
 import RemoteLinePage from './customer/pages/RemoteLinePage';
 import SignIn from './customer/pages/SignIn';
 import SignUp from './customer/pages/SignUp';
@@ -13,7 +13,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Restaurants />}>
-          {/* <Route path="customer" element={<KakaoMap />} /> */}
           <Route path="customer/SearchPage" element={<SearchPage />} />
           <Route path="customer/RemoteLinePage" element={<RemoteLinePage />} />
           <Route
@@ -22,7 +21,7 @@ function App() {
           />
           <Route
             path="customer/InformationPage"
-            element={<CustomerInformationPage />}
+            element={<CustomerInformation />}
           />
           <Route path="customer/SignIn" element={<SignIn />} />
           <Route path="customer/SignUp" element={<SignUp />} />
