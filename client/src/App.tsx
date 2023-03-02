@@ -7,12 +7,14 @@ import RemoteLinePage from './customer/pages/RemoteLinePage';
 import SignIn from './customer/pages/SignIn';
 import SignUp from './customer/pages/SignUp';
 import '@customer/styles/index.css';
+import Layout from '@customer/UI/Layouts/Layout';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Restaurants />}>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Restaurants />} />
           <Route path="customer/SearchPage" element={<SearchPage />} />
           <Route path="customer/RemoteLinePage" element={<RemoteLinePage />} />
           <Route
