@@ -64,6 +64,7 @@ const PlaceHolderText = (props: {
   type: string;
   value: string;
   onChange: any;
+  pattern?: string;
 }) => {
   return (
     <RelativeDiv>
@@ -71,6 +72,8 @@ const PlaceHolderText = (props: {
         type={props.type}
         onChange={props.onChange}
         value={props.value}
+        required
+        pattern={props.pattern}
       />
       <TestToggle value={props.value}>{props.content}</TestToggle>
     </RelativeDiv>

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 /** title 지정 필요 */
-const SignUpButton = styled.button.attrs({
-  type: 'submit',
-})`
+const Button = styled.button.attrs((props) => ({
+  type: props.type || 'button',
+}))`
   width: 100%;
   height: 46px;
   border: none;
@@ -27,4 +27,4 @@ const SignUpButton = styled.button.attrs({
   }
 `;
 
-export default SignUpButton;
+export default Button;
