@@ -20,15 +20,6 @@ const SignUp = () => {
   });
   const [passwordCheck, setCheckPassword] = useState('');
 
-  // const userIdHandle = useCallback(
-  //   (inputId: ChangeEvent) => {
-  //     setSignUpInfo((prev) => ({
-  //       ...prev,
-  //       memberEmail: inputId.target.value,
-  //     }));
-  //   },
-  //   [signUpInfo.memberEmail]
-  // );
   const userIdHandle = (event: ChangeEvent<HTMLInputElement>) => {
     setSignUpInfo((prev) => ({
       ...prev,
@@ -108,9 +99,7 @@ const SignUp = () => {
       .post('http://localhost:8080/api/signUp', signUpInfo)
       .then((response) => {
         console.log(response);
-        console.log('통:', response.data);
-        console.log('data:', response.data.member);
-        console.log('token', response.data.jwt);
+        console.log('data:', response.data);
       })
       .catch((error) => {
         console.log(error);
