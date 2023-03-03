@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Restaurants from './customer/pages/Restaurants';
-import SearchPage from './customer/pages/SearchPage';
+import Search from './customer/pages/Search';
 import ReservationPage from './customer/pages/ReservationPage';
 import CustomerInformation from './customer/pages/CustomerInformation';
 import RemoteLinePage from './customer/pages/RemoteLinePage';
@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Restaurants />} />
-          <Route path="customer/SearchPage" element={<SearchPage />} />
+          <Route path="customer/Search" element={<Search />} />
           <Route path="customer/RemoteLinePage" element={<RemoteLinePage />} />
           <Route
             path="customer/ReservationPage"

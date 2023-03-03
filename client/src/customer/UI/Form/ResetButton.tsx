@@ -2,8 +2,11 @@ import styled from 'styled-components';
 
 /** this element position is absolute. 
 If you want to place it within the text,
-you must specify 'position: relative' to the parent element that binds the text and the button.  */
-
+you must specify 'position: relative' to the parent element that binds the text and the button. 
+ex)
+<ButtonSortDiv> 
+  <ResetButton/>
+</ButtonSortDiv> */
 const ResetButton = styled.button.attrs({
   type: 'button',
 })`

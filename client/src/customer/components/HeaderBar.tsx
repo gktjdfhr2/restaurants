@@ -8,7 +8,7 @@ const HeaderBar = () => {
         <Header.Logo title="맛집지도" />
       </Link>
       <Header.Navigation>
-        <Link to="/customer/SearchPage">
+        <Link to="/customer/Search">
           <Header.Search />
         </Link>
         <Link to="/customer/RemoteLinePage">

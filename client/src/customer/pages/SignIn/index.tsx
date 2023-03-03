@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import axios from 'axios';
 import ResetButton from '@customer/UI/Form/ResetButton';
-import ResetSortDiv from '@customer/UI/Form/ResetSortDiv';
+import ResetSortDiv from '@customer/UI/Form/ButtonSortDiv';
 import styled from 'styled-components';
 
 const SignInButton = styled(Button)`

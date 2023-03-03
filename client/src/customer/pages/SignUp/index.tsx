@@ -1,5 +1,5 @@
 import { ChangeEvent, useState, useCallback } from 'react';
-import ResetSortDiv from '@customer/UI/Form/ResetSortDiv';
+import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
 import PlaceHolderText from '@customer/UI/Form/PlaceHolder';
 import PageTitle from '@customer/UI/Form/PageTitle';
 import Button from '@customer/UI/Form/Button';
@@ -123,7 +123,7 @@ const SignUp = () => {
               alignItems: 'center',
             }}
           >
-            <ResetSortDiv>
+            <ButtonSortDiv>
               <PlaceHolderText
                 content="이메일 주소"
                 type="text"
@@ -134,7 +134,7 @@ const SignUp = () => {
               {signUpInfo.memberEmail.length > 0 && (
                 <ResetButton onClick={userIdReset} />
               )}
-            </ResetSortDiv>
+            </ButtonSortDiv>
 
             <SortDiv>
               <PlaceHolderText
@@ -152,7 +152,7 @@ const SignUp = () => {
               />
             </SortDiv>
 
-            <ResetSortDiv>
+            <ButtonSortDiv>
               <PlaceHolderText
                 content="이름"
                 type="text"
@@ -163,9 +163,9 @@ const SignUp = () => {
               {signUpInfo.memberName.length > 0 && (
                 <ResetButton onClick={userNameReset} />
               )}
-            </ResetSortDiv>
+            </ButtonSortDiv>
 
-            <ResetSortDiv>
+            <ButtonSortDiv>
               <PlaceHolderText
                 content="전화번호"
                 type="text"
@@ -176,9 +176,9 @@ const SignUp = () => {
               {signUpInfo.memberPhone.length > 0 && (
                 <ResetButton onClick={userPhoneReset} />
               )}
-            </ResetSortDiv>
+            </ButtonSortDiv>
 
-            <ResetSortDiv>
+            <ButtonSortDiv>
               <PlaceHolderText
                 content="주소"
                 type="text"
@@ -189,7 +189,7 @@ const SignUp = () => {
               {signUpInfo.memberAddress.length > 0 && (
                 <ResetButton onClick={userAddressReset} />
               )}
-            </ResetSortDiv>
+            </ButtonSortDiv>
 
             <SortDiv>
               <MemberType defaultValue="0" onChange={userRoleHandle}>
