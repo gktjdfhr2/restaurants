@@ -11,14 +11,11 @@ const KeywordsContainer = styled.div`
 `;
 
 const Keyword = styled.div`
-  // position: relative;
   display: inline-block;
   height: 36px;
   color: black;
   text-align: center;
   width: max-content;
-  // transform: translateY(-50%);
-  // top: 50%;
   background-color: gainsboro;
   padding: 10px;
   border-radius: 5px 0 0 5px;
@@ -37,12 +34,13 @@ const RemoveButton = styled(Button)`
 const KeywordSortDiv = styled(ButtonSortDiv)`
   width: max-content;
   height: 36px;
-  // display: flex;
-  margin: 0 10px;
-  // justify-content: flex-between;
+  display: flex;
+  margin: 0 10px 0 0;
+  justify-content: flex-between;
 `;
 
 const RecentKeywords = () => {
+  //TODO: 최근 검색어 서버에서 불러와 4개까지 띄우기
   return (
     <KeywordsContainer>
       <KeywordSortDiv>
