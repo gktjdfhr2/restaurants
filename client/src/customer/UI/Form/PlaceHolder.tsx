@@ -74,7 +74,7 @@ const PlaceHolderText = (props: {
         value={props.value}
         required
         pattern={props.pattern}
-        autoComplete="off"
+        autoComplete="new-password"
       />
       <TestToggle value={props.value}>{props.content}</TestToggle>
     </RelativeDiv>

@@ -7,9 +7,9 @@ ex)
 <ButtonSortDiv> 
   <SearchButton/>
 </ButtonSortDiv> */
-const SearchButton = styled.button.attrs({
-  type: 'button',
-})`
+const SearchButton = styled.button.attrs((props) => ({
+  type: props.type || 'button',
+}))`
   height: 25px;
   width: 25px;
   background: url(/src/assets/images/mobile-magnifying-glass.png) no-repeat;

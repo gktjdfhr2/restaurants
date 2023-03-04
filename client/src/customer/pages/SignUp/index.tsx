@@ -110,7 +110,7 @@ const SignUp = () => {
     console.log(signUpInfo);
     register();
   };
-
+  //TODO: add validation & step information
   return (
     <>
       <form>
