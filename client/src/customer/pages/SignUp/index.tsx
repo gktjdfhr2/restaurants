@@ -8,7 +8,7 @@ import MemberType from './MemberType';
 import SignUpContainer from './SignUpContainer';
 import SortDiv from './SortDiv';
 import axios from 'axios';
-import Step1 from './Step1';
+// import Step1 from './Step1';
 
 const SignUp = () => {
   const [signUpInfo, setSignUpInfo] = useState({
@@ -215,12 +215,12 @@ const SignUp = () => {
 
       <SignUpContainer>
         <PageTitle>회원가입 {signUpStep}/3</PageTitle>
-        <Step1
+        {/*<Step1
           value={signUpInfo.memberEmail}
           onChange={userIdHandle}
           onReset={userIdReset}
           onClick={nextStep}
-        />
+        />*/}
       </SignUpContainer>
     </>
   );

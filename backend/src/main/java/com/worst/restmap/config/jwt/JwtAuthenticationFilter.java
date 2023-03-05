@@ -52,7 +52,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String jwtToken = tokenProvider.createAccessToken(customUserDetail.getUsername());
         String refreshToken = tokenProvider.createRefreshToken();
 
-        Token token = Token.builder().tokenMemberId(Long.parseLong(customUserDetail.getUsername())).tokenRefreshToken(refreshToken).build();
+        Token token = Token.builder().tokenMemberEmail(customUserDetail.getUsername()).tokenRefreshToken(refreshToken).build();
         tokenRepository.save(token);
         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + jwtToken);
         response.addHeader(JwtProperties.REFRESH_HEADER_STRING, refreshToken);

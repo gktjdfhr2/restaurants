@@ -47,10 +47,10 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         String accessToken = jwtHeader.replace(JwtProperties.TOKEN_PREFIX, "");
 
         if (tokenProvider.accessTokenValid(accessToken)) {
-            String memberId = tokenProvider.getVerifyToken(accessToken).getClaim("memberId").asString();
+            String memberEmail = tokenProvider.getVerifyToken(accessToken).getClaim("memberEmail").asString();
 
-            if(memberId != null && !memberId.equals((""))) {
-                Member member = memberRepository.findByMemberId(Long.parseLong(memberId)).orElseGet(Member::new);
+            if(memberEmail != null && !memberEmail.equals((""))) {
+                Member member = memberRepository.findByMemberEmail(memberEmail).orElseGet(Member::new);
                 CustomUserDetail customUserDetail = new CustomUserDetail(member);
 
                 Authentication authentication = new UsernamePasswordAuthenticationToken(customUserDetail, null, customUserDetail.getAuthorities());
@@ -71,13 +71,13 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
                 // Refresh 유효성(만료시간) 검사
                 String refresh = request.getHeader(JwtProperties.REFRESH_HEADER_STRING);
-                String memberId = JWT.decode(accessToken).getClaim("memberId").asString();
+                String memberEmail = JWT.decode(accessToken).getClaim("memberEmail").asString();
                 // DB의 Refresh와 클라이언트에서 받은 Refresh 비교
-                if(refresh.equals(tokenRepository.findByTokenMemberId(Long.parseLong(memberId)).getTokenRefreshToken())){
+                if(refresh.equals(tokenRepository.findByTokenMemberEmail(memberEmail).getTokenRefreshToken())){
                     System.out.println("[SUCCESS] 정상적인 Refresh Token");
 
                     if(tokenProvider.refreshTokenValid(refresh)){ // refresh token 만료 여부 확인
-                        String reissueAccessToken = tokenProvider.createAccessToken(memberId);
+                        String reissueAccessToken = tokenProvider.createAccessToken(memberEmail);
                         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + reissueAccessToken);
                         statusCode.setResCode(555); statusCode.setResMsg("Access Token 재발급");
                         String result = om.writeValueAsString(statusCode);
@@ -85,7 +85,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                         return;
                     }else{
                         System.out.println("[WARN] Refresh Token 만료됨, 재로그인 요청");
-                        tokenRepository.deleteByTokenMemberId(Long.parseLong(memberId));
+                        tokenRepository.deleteByTokenMemberEmail(memberEmail);
                         statusCode.setResCode(999); statusCode.setResMsg("만료된 Refresh Token");
                         String result = om.writeValueAsString(statusCode);
                         response.getWriter().write(result);
@@ -93,7 +93,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                     }
                 }else{
                     System.out.println("[ERR] 비정상적인 Refresh Token");
-                    tokenRepository.deleteByTokenMemberId(Long.parseLong(memberId)); // DB에 존재하는 refresh token 삭제
+                    tokenRepository.deleteByTokenMemberEmail(memberEmail); // DB에 존재하는 refresh token 삭제
                     statusCode.setResCode(777); statusCode.setResMsg("비정상적인 Refresh Token");
                     String result = om.writeValueAsString(statusCode);
                     response.getWriter().write(result);
