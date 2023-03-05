@@ -8,6 +8,7 @@ import MemberType from './MemberType';
 import SignUpContainer from './SignUpContainer';
 import SortDiv from './SortDiv';
 import axios from 'axios';
+import Step1 from './Step1';
 
 const SignUp = () => {
   const [signUpInfo, setSignUpInfo] = useState({
@@ -18,6 +19,8 @@ const SignUp = () => {
     memberPhone: '',
     memberAddress: '',
   });
+
+  const [signUpStep, setSignUpStep] = useState(1);
   const [passwordCheck, setCheckPassword] = useState('');
 
   const userIdHandle = (event: ChangeEvent<HTMLInputElement>) => {
@@ -106,6 +109,11 @@ const SignUp = () => {
       });
   };
 
+  const nextStep = () => {
+    setSignUpStep(signUpStep + 1);
+    console.log(signUpInfo);
+  };
+
   const signUp = () => {
     console.log(signUpInfo);
     register();
@@ -113,7 +121,7 @@ const SignUp = () => {
   //TODO: add validation & step information
   return (
     <>
-      <form>
+      {/* <form>
         <PageTitle>회원가입</PageTitle>
         <SignUpContainer>
           <div
@@ -203,7 +211,17 @@ const SignUp = () => {
             </SortDiv>
           </div>
         </SignUpContainer>
-      </form>
+      </form> */}
+
+      <SignUpContainer>
+        <PageTitle>회원가입 {signUpStep}/3</PageTitle>
+        <Step1
+          value={signUpInfo.memberEmail}
+          onChange={userIdHandle}
+          onReset={userIdReset}
+          onClick={nextStep}
+        />
+      </SignUpContainer>
     </>
   );
 };
