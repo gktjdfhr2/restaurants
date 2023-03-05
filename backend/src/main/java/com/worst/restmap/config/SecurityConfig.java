@@ -36,7 +36,7 @@ public class SecurityConfig {
         //SpringSecurity Filter Setting
         httpSecurity
                 .csrf().disable()
-                .addFilter(corsFilter)
+                .addFilter(corsConfig.corsFilter())
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .formLogin().disable()
