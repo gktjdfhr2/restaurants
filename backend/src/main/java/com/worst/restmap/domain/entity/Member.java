@@ -2,6 +2,7 @@ package com.worst.restmap.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 @Table(name = "member")
@@ -10,6 +11,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Member {
 
     @Id
@@ -37,6 +39,5 @@ public class Member {
 
     @Column( name = "member_is_withdrawal")
     private boolean memberIsWithdrawal;
-
 
 }

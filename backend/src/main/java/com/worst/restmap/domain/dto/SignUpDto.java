@@ -1,9 +1,9 @@
 package com.worst.restmap.domain.dto;
 
 import com.worst.restmap.domain.entity.Member;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Getter
 @Setter
@@ -16,14 +16,14 @@ public class SignUpDto {
     private String memberAddress;
     private String memberRole;
 
-    public Member toEntity() {
+    public Member toEntity(BCryptPasswordEncoder bCryptPasswordEncoder) {
         return Member.builder()
-                .memberEmail(memberEmail)
-                .memberPassword(memberPassword)
-                .memberName(memberName)
-                .memberPhone(memberPhone)
-                .memberAddress(memberAddress)
                 .memberRole(memberRole)
-                .build();
+                .memberEmail(memberEmail)
+                .memberName(memberName)
+                .memberPassword(bCryptPasswordEncoder.encode(memberPassword))
+                .memberPhone(memberPhone)
+                .memberAddress(memberAddress).build();
     }
+
 }

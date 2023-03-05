@@ -9,9 +9,12 @@ import com.worst.restmap.repository.TokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -22,6 +25,7 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 @RequiredArgsConstructor
 public class SecurityConfig {
+    private final CorsConfig corsConfig;
     private final CorsFilter corsFilter;
     private final MemberRepository memberRepository;
     private final TokenRepository tokenRepository;
@@ -34,10 +38,12 @@ public class SecurityConfig {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .addFilter(new JwtAuthenticationFilter(authentication -> authentication, memberRepository, tokenRepository,tokenProvider))
-                .addFilter(new JwtAuthorizationFilter(authentication -> authentication, memberRepository,tokenRepository,tokenProvider))
-                .formLogin().
-                loginPage("/login").loginProcessingUrl("/api/signIn")
+                .formLogin().disable()
+                .httpBasic().disable()
+                .apply(new MyCustomDsl())
+//                loginPage("/login").loginProcessingUrl("/api/signIn")
+//                .usernameParameter("memberEmail")
+//                .passwordParameter("memberPassword")
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/signIn","/api/signUp", "/**").permitAll()
@@ -50,4 +56,19 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws  Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+
+    public class MyCustomDsl extends AbstractHttpConfigurer<MyCustomDsl, HttpSecurity> {
+        @Override
+        public void configure(HttpSecurity http) throws Exception {
+            AuthenticationManager authenticationManager = http.getSharedObject(AuthenticationManager.class);
+            http
+                    .addFilter(corsConfig.corsFilter())
+                    .addFilter(new JwtAuthenticationFilter(authenticationManager,tokenRepository,tokenProvider))
+                    .addFilter(new JwtAuthorizationFilter(authenticationManager,memberRepository,tokenRepository,tokenProvider));
+        }
+    }
 }

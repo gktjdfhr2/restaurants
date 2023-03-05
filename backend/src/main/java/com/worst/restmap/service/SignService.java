@@ -10,11 +10,13 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 public class SignService {
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final MemberRepository memberRepository;
     @Transactional
     public ResponseEntity<StatusCode> signUp(SignUpDto signUpDto) {
@@ -26,7 +28,7 @@ public class SignService {
             return new JsonResponse().send(HttpStatus.OK, StatusCode.builder().resCode(1).resMsg("이미 존재하는 계정입니다.").build());
         }
 
-        Object obj = memberRepository.saveAndFlush(signUpDto.toEntity());
+        Object obj = memberRepository.saveAndFlush(signUpDto.toEntity(bCryptPasswordEncoder));
 
         return new JsonResponse().send(HttpStatus.OK, StatusCode.builder().resCode(0).resMsg("계정 생성 완료").build());
     }

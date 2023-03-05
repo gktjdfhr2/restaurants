@@ -1,6 +1,5 @@
 package com.worst.restmap.config.auth;
 
-import com.worst.restmap.common.enums.MemberRole;
 import com.worst.restmap.domain.entity.Member;
 import lombok.Data;
 import lombok.Getter;
@@ -11,8 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@RequiredArgsConstructor
-@Getter
+@Data
 public class CustomUserDetail implements UserDetails {
     private final Member member;
 
@@ -20,7 +18,14 @@ public class CustomUserDetail implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(() -> MemberRole.getMemberRoleName(member.getMemberRole()) );
+        if(member.getMemberRole().equals("0")){
+            authorities.add(()-> "ROLE_MEMBE.R");
+        } else if((member.getMemberRole().equals("1"))){
+            authorities.add(()-> "ROLE_BUSINESS");
+        }
+        else {
+            authorities.add(()-> "ROLE_ADMIN");
+        }
         return authorities;
     }
 
@@ -31,7 +36,7 @@ public class CustomUserDetail implements UserDetails {
 
     @Override
     public String getUsername() {
-        return member.getMemberName();
+        return member.getMemberEmail();
     }
 
     @Override

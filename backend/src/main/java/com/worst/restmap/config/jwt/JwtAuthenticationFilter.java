@@ -11,6 +11,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,28 +21,22 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import java.io.IOException;
 
 
+@RequiredArgsConstructor
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
-    private final MemberRepository memberRepository;
     private final TokenRepository tokenRepository;
     private final TokenProvider tokenProvider;
     private ObjectMapper om = new ObjectMapper();
 
-
-
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager, MemberRepository memberRepository, TokenRepository tokenRepository, TokenProvider tokenProvider) {
-        this.authenticationManager = authenticationManager;
-        this.memberRepository = memberRepository;
-        this.tokenRepository = tokenRepository;
-        this.tokenProvider = tokenProvider;
-    }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
             Member member = om.readValue(request.getInputStream(), Member.class);
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(member.getMemberEmail(), member.getMemberPassword());
+
             Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+            CustomUserDetail customUserDetail = (CustomUserDetail) authentication.getPrincipal();
             return authentication;
         } catch (IOException e) {
             e.printStackTrace();
