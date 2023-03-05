@@ -34,8 +34,8 @@ const SignIn = () => {
     console.log('password :', passwordCheck);
     axios
       .post('http://localhost:8080/login', {
-        id: idCheck,
-        password: passwordCheck,
+        memberEmail: idCheck,
+        memberPassword: passwordCheck,
       })
       .then((response) => {
         console.log('data :', response);
