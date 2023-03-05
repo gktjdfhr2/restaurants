@@ -30,8 +30,8 @@ const SignIn = () => {
 
   const register = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    console.log('id :', idCheck);
-    console.log('password :', passwordCheck);
+    console.log('memberEmail :', idCheck);
+    console.log('memberPassword :', passwordCheck);
     axios
       .post('http://localhost:8080/login', {
         memberEmail: idCheck,
