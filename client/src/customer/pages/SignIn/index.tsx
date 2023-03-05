@@ -28,7 +28,10 @@ const SignIn = () => {
     setIdCheck('');
   };
 
-  const register = () => {
+  const register = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    console.log('id :', idCheck);
+    console.log('password :', passwordCheck);
     axios
       .post('http://localhost:8080/login', {
         id: idCheck,

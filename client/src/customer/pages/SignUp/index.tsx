@@ -215,12 +215,6 @@ const SignUp = () => {
 
       <SignUpContainer>
         <PageTitle>회원가입 {signUpStep}/3</PageTitle>
-        {/*<Step1
-          value={signUpInfo.memberEmail}
-          onChange={userIdHandle}
-          onReset={userIdReset}
-          onClick={nextStep}
-        />*/}
       </SignUpContainer>
     </>
   );
