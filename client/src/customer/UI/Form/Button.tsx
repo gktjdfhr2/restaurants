@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-const SignInButton = styled.button.attrs({
-  type: 'submit',
-})`
-  width: 300px;
+/** title 지정 필요 */
+const Button = styled.button.attrs((props) => ({
+  type: props.type || 'button',
+}))`
+  width: 100%;
   height: 46px;
   border: none;
   border-radius: var(--inputBorderRadius);
@@ -18,7 +19,7 @@ const SignInButton = styled.button.attrs({
   opacity: 0.8;
 
   &:before {
-    content: '로그인';
+    content: ${(props) => `'${props.title || ''}'`};
   }
 
   &:hover {
@@ -26,4 +27,4 @@ const SignInButton = styled.button.attrs({
   }
 `;
 
-export default SignInButton;
+export default Button;

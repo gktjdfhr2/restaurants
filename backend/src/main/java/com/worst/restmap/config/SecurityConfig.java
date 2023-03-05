@@ -32,6 +32,7 @@ public class SecurityConfig {
         //SpringSecurity Filter Setting
         httpSecurity
                 .csrf().disable()
+                .addFilter(corsFilter)
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .addFilter(new JwtAuthenticationFilter(authentication -> authentication, memberRepository, tokenRepository,tokenProvider))

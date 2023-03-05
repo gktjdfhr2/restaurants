@@ -1,8 +1,7 @@
 import TextInput from './TextInput';
-import { ChangeEvent, useState } from 'react';
-import ResetButton from './ResetButton';
-import PlaceHolderToggle from './PlaceHolderToggle';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+//TODO: changeEvent 타입 지정
 
 const RelativeDiv = styled.div`
   position: relative;
@@ -11,41 +10,73 @@ const RelativeDiv = styled.div`
   margin: 0 auto 20px auto;
 `;
 
+const TestToggle = styled.div<{ value: string }>`
+  position: absolute;
+  pointer-events: none;
+  background-color: white;
+  width: auto;
+  padding: 5px;
+  color: black;
+
+  top: 50%;
+  left: 0;
+  opacity: 0.5;
+  transform: translateY(-50%);
+  transition: all 0.1s ease-in-out;
+  color: black;
+
+  ${TextInput}:focus ~ & {
+    color: var(--signature);
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transform: scale(0.75) translateY(-50%);
+    transition: all 0.1s ease-in-out;
+  }
+
+  ${(props) =>
+    props.value === ''
+      ? css`
+          top: 50%;
+          left: 0;
+          opacity: 0.5;
+          transform: translateY(-50%);
+          transition: all 0.1s ease-in-out;
+          color: black;
+        `
+      : css`
+          color: var(--signature);
+          top: 0;
+          left: 0;
+          opacity: 1;
+          transform: scale(0.75) translateY(-50%);
+          transition: all 0.1s ease-in-out;
+        `}
+`;
+
 /**
  * content에 placeHolder내용 작성
  * type을 반드시 지정해주어야함
  * type =  text || password
- * reset버튼과 함께 사용하려면 ResetSortDiv로 묶어주어야함
  */
 const PlaceHolderText = (props: {
-  content?: string;
+  content: string;
   type: string;
   value: string;
   onChange: any;
+  pattern?: string;
 }) => {
-  const [textFocus, setTextFocus] = useState(false);
-
-  const textFocusEvent = () => {
-    console.log('focus', props.value);
-
-    setTextFocus(true);
-  };
-
-  const textBlurEvent = () => {
-    console.log('blur', props.value);
-    props.value.length === 0 ? setTextFocus(false) : setTextFocus(true);
-  };
-
   return (
     <RelativeDiv>
       <TextInput
         type={props.type}
-        onFocus={textFocusEvent}
-        onBlur={textBlurEvent}
         onChange={props.onChange}
         value={props.value}
+        required
+        pattern={props.pattern}
+        autoComplete="new-password"
       />
-      <PlaceHolderToggle toggle={textFocus}>{props.content}</PlaceHolderToggle>
+      <TestToggle value={props.value}>{props.content}</TestToggle>
     </RelativeDiv>
   );
 };
