@@ -5,9 +5,6 @@ import HeaderBar from '@customer/components/HeaderBar';
 const RemoteLinePage = () => {
   return (
     <>
-      <HeaderLayout>
-        <HeaderBar />
-      </HeaderLayout>
       <DefaultLayout>RemoteLinePage!</DefaultLayout>
     </>
   );

@@ -1,13 +1,14 @@
 import { ChangeEvent, useState, useCallback } from 'react';
-import ResetSortDiv from '@customer/UI/Form/ResetSortDiv';
+import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
 import PlaceHolderText from '@customer/UI/Form/PlaceHolder';
 import PageTitle from '@customer/UI/Form/PageTitle';
-import SignUpButton from '@customer/UI/Form/SignUpButton';
+import Button from '@customer/UI/Form/Button';
 import ResetButton from '@customer/UI/Form/ResetButton';
 import MemberType from './MemberType';
 import SignUpContainer from './SignUpContainer';
 import SortDiv from './SortDiv';
 import axios from 'axios';
+import Step1 from './Step1';
 
 const SignUp = () => {
   const [signUpInfo, setSignUpInfo] = useState({
@@ -18,17 +19,10 @@ const SignUp = () => {
     memberPhone: '',
     memberAddress: '',
   });
+
+  const [signUpStep, setSignUpStep] = useState(1);
   const [passwordCheck, setCheckPassword] = useState('');
 
-  // const userIdHandle = useCallback(
-  //   (inputId: ChangeEvent) => {
-  //     setSignUpInfo((prev) => ({
-  //       ...prev,
-  //       memberEmail: inputId.target.value,
-  //     }));
-  //   },
-  //   [signUpInfo.memberEmail]
-  // );
   const userIdHandle = (event: ChangeEvent<HTMLInputElement>) => {
     setSignUpInfo((prev) => ({
       ...prev,
@@ -108,104 +102,125 @@ const SignUp = () => {
       .post('http://localhost:8080/api/signUp', signUpInfo)
       .then((response) => {
         console.log(response);
-        console.log('data:', response.data.user);
-        console.log('tocken', response.data.jwt);
+        console.log('data:', response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
+  const nextStep = () => {
+    setSignUpStep(signUpStep + 1);
+    console.log(signUpInfo);
+  };
+
   const signUp = () => {
     console.log(signUpInfo);
     register();
   };
-
+  //TODO: add validation & step information
   return (
     <>
-      <PageTitle>회원가입</PageTitle>
+      {/* <form>
+        <PageTitle>회원가입</PageTitle>
+        <SignUpContainer>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <ButtonSortDiv>
+              <PlaceHolderText
+                content="이메일 주소"
+                type="text"
+                value={signUpInfo.memberEmail}
+                onChange={userIdHandle}
+                pattern="^[a-zA-Z0-9]{2,}@[a-zA-Z0-9]{2,}.[a-zA-Z0-9]{2,}$"
+              />
+              {signUpInfo.memberEmail.length > 0 && (
+                <ResetButton onClick={userIdReset} />
+              )}
+            </ButtonSortDiv>
+
+            <SortDiv>
+              <PlaceHolderText
+                content="비밀번호"
+                type="password"
+                value={signUpInfo.memberPassword}
+                onChange={userPasswordHandle}
+                pattern="^[a-zA-Z0-9]{8,}$"
+              />
+              <PlaceHolderText
+                content="비밀번호 확인"
+                type="password"
+                value={passwordCheck}
+                onChange={userPasswordCheckHandle}
+              />
+            </SortDiv>
+
+            <ButtonSortDiv>
+              <PlaceHolderText
+                content="이름"
+                type="text"
+                value={signUpInfo.memberName}
+                onChange={userNameHandle}
+                pattern="^[가-힣]{2,4}$"
+              />
+              {signUpInfo.memberName.length > 0 && (
+                <ResetButton onClick={userNameReset} />
+              )}
+            </ButtonSortDiv>
+
+            <ButtonSortDiv>
+              <PlaceHolderText
+                content="전화번호"
+                type="text"
+                value={signUpInfo.memberPhone}
+                onChange={userPhoneHandle}
+                pattern="^[0]+[1]+[0-9]{9}$"
+              />
+              {signUpInfo.memberPhone.length > 0 && (
+                <ResetButton onClick={userPhoneReset} />
+              )}
+            </ButtonSortDiv>
+
+            <ButtonSortDiv>
+              <PlaceHolderText
+                content="주소"
+                type="text"
+                value={signUpInfo.memberAddress}
+                onChange={userAddressHandle}
+                pattern="^[가-힣]{6,}$"
+              />
+              {signUpInfo.memberAddress.length > 0 && (
+                <ResetButton onClick={userAddressReset} />
+              )}
+            </ButtonSortDiv>
+
+            <SortDiv>
+              <MemberType defaultValue="0" onChange={userRoleHandle}>
+                <option value="0">고객</option>
+                <option value="1">사업자</option>
+              </MemberType>
+            </SortDiv>
+
+            <SortDiv>
+              <Button onClick={signUp} title="회원가입" type="submit" />
+            </SortDiv>
+          </div>
+        </SignUpContainer>
+      </form> */}
+
       <SignUpContainer>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <ResetSortDiv>
-            <PlaceHolderText
-              content="이메일 주소"
-              type="text"
-              value={signUpInfo.memberEmail}
-              onChange={userIdHandle}
-            />
-            {signUpInfo.memberEmail.length > 0 && (
-              <ResetButton onClick={userIdReset} />
-            )}
-          </ResetSortDiv>
-
-          <SortDiv>
-            <PlaceHolderText
-              content="비밀번호"
-              type="password"
-              value={signUpInfo.memberPassword}
-              onChange={userPasswordHandle}
-            />
-            <PlaceHolderText
-              content="비밀번호 확인"
-              type="password"
-              value={passwordCheck}
-              onChange={userPasswordCheckHandle}
-            />
-          </SortDiv>
-
-          <ResetSortDiv>
-            <PlaceHolderText
-              content="이름"
-              type="text"
-              value={signUpInfo.memberName}
-              onChange={userNameHandle}
-            />
-            {signUpInfo.memberName.length > 0 && (
-              <ResetButton onClick={userNameReset} />
-            )}
-          </ResetSortDiv>
-
-          <ResetSortDiv>
-            <PlaceHolderText
-              content="전화번호"
-              type="text"
-              value={signUpInfo.memberPhone}
-              onChange={userPhoneHandle}
-            />
-            {signUpInfo.memberPhone.length > 0 && (
-              <ResetButton onClick={userPhoneReset} />
-            )}
-          </ResetSortDiv>
-
-          <ResetSortDiv>
-            <PlaceHolderText
-              content="주소"
-              type="text"
-              value={signUpInfo.memberAddress}
-              onChange={userAddressHandle}
-            />
-            {signUpInfo.memberAddress.length > 0 && (
-              <ResetButton onClick={userAddressReset} />
-            )}
-          </ResetSortDiv>
-
-          <SortDiv>
-            <MemberType defaultValue="0" onChange={userRoleHandle}>
-              <option value="0">고객</option>
-              <option value="1">사업자</option>
-            </MemberType>
-          </SortDiv>
-
-          <SortDiv>
-            <SignUpButton onClick={signUp} />
-          </SortDiv>
-        </div>
+        <PageTitle>회원가입 {signUpStep}/3</PageTitle>
+        <Step1
+          value={signUpInfo.memberEmail}
+          onChange={userIdHandle}
+          onReset={userIdReset}
+          onClick={nextStep}
+        />
       </SignUpContainer>
     </>
   );

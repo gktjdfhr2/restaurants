@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import SignUpId from '../components/SignUp/SignUpId';
 import SignUpPassword from '../components/SignUp/SignUpPassword';
 
@@ -7,31 +7,31 @@ function SignUp() {
   console.log('siginUp');
 
   const [signUpInfo, setSignUpInfo] = useState({
-    userId: '',
-    userPassword: '',
-    userName: '',
-    userAddress: '',
-    userPhoneNumber: '',
-    userType: '고객',
+    memberRole: 0,
+    memberEmail: '',
+    memberPassword: '',
+    memberName: '',
+    memberPhone: '',
+    memberAddress: '',
   });
   const [passwordCheck, setCheckPassword] = useState('');
 
   /** 아이디 입력 */
   const userIdHandle = useCallback(
     (inputId) => {
-      setSignUpInfo((prev) => ({ ...prev, userId: inputId }));
-      console.log(signUpInfo.userId);
+      setSignUpInfo((prev) => ({ ...prev, memberEmail: inputId }));
+      console.log(signUpInfo.memberEmail);
     },
-    [signUpInfo.userId],
+    [signUpInfo.memberEmail],
   );
 
   /** 비밀번호 입력 확인 */
   const passwordHandle = useCallback(
     (inputPassword) => {
-      setSignUpInfo((prev) => ({ ...prev, userPassword: inputPassword }));
-      console.log(signUpInfo.userPassword);
+      setSignUpInfo((prev) => ({ ...prev, memberPassword: inputPassword }));
+      console.log(signUpInfo.memberPassword);
     },
-    [signUpInfo.userPassword],
+    [signUpInfo.memberPassword],
   );
 
   /** 비밀번호 일치 확인 */
@@ -44,34 +44,35 @@ function SignUp() {
 
   /** 이름 입력 확인 */
   const userNameHandle = (event) => {
-    setSignUpInfo({ ...signUpInfo, userName: event.target.value });
+    setSignUpInfo({ ...signUpInfo, memberName: event.target.value });
   };
 
   /** 주소 입력 확인 */
   const userAddressHandle = (event) => {
-    setSignUpInfo({ ...signUpInfo, userAddress: event.target.value });
+    setSignUpInfo({ ...signUpInfo, memberAddress: event.target.value });
   };
   /** 핸드폰번호 입력 확인 */
+  // const memberRoleHandle = (event) => {
   const userPhoneNumberHandle = (event) => {
-    setSignUpInfo({ ...signUpInfo, userPhoneNumber: event.target.value });
+    setSignUpInfo({ ...signUpInfo, memberPhone: event.target.value });
   };
 
   /** 회원 유형 확인 */
-  const userTypeHandle = (event) => {
-    setSignUpInfo({ ...signUpInfo, userType: event.target.value });
-  };
+  //   setSignUpInfo({ ...signUpInfo, memberRole: event.target.value });
+  // };
 
   const register = () => {
-    axios
-      .post('localhost:8080/account/signUp', signUpInfo)
-      .then((response) => {
-        console.log(response);
-        console.log('data:', response.data.user);
-        console.log('tocken', response.data.jwt);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    console.log(signUpInfo);
+    // axios
+    //   .post('localhost:8080/account/signUp', signUpInfo)
+    //   .then((response) => {
+    //     console.log(response);
+    //     console.log('data:', response.data.user);
+    //     console.log('tocken', response.data.jwt);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   const signIn = (event) => {
@@ -79,10 +80,10 @@ function SignUp() {
     console.log(signUpInfo);
     // if (signUpInfo.userPassword !== signUpInfo.passwordCheck) {
     //   setSignUpInfo({ ...signUpInfo, passwordCheck: '' });
-    //   console.log(signUpInfo.userId);
+    //   console.log(signUpInfo.memberEmail);
     // } else {
     //   register();
-    //   console.log(signUpInfo.userId);
+    //   console.log(signUpInfo.memberEmail);
     // }
     register();
   };
@@ -91,10 +92,10 @@ function SignUp() {
     <section id="signup-section">
       <div id="signup-title">회원가입</div>
       <div id="SignUpItemContainer">
-        <SignUpId userId={signUpInfo.userId} userIdHandle={userIdHandle} />
+        <SignUpId userId={signUpInfo.memberEmail} userIdHandle={userIdHandle} />
 
         <SignUpPassword
-          userPassword={signUpInfo.userPassword}
+          memberPassword={signUpInfo.memberPassword}
           passwordCheck={passwordCheck}
           passwordHandle={passwordHandle}
           passwordCheckHandle={passwordCheckHandle}
@@ -122,11 +123,11 @@ function SignUp() {
           pattern="[0]+[1]+[0-9]{9}"
           onChange={userPhoneNumberHandle}
         />
+        {/* <select defaultValue="고객" onChange={memberRoleHandle}>
         <div>회원 유형</div>
-        <select defaultValue="고객" onChange={userTypeHandle}>
           <option value="고객">고객</option>
           <option value="사업자">사업자</option>
-        </select>
+        </select> */}
         <form onSubmit={signIn}>
           <button type="submit" id="informationSubmit">
             가입하기

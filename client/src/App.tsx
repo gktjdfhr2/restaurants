@@ -1,20 +1,21 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Restaurants from './customer/pages/Restaurants';
-import SearchPage from './customer/pages/SearchPage';
+import Search from './customer/pages/Search';
 import ReservationPage from './customer/pages/ReservationPage';
-import CustomerInformationPage from './customer/pages/CustomerInformationPage';
+import CustomerInformation from './customer/pages/CustomerInformation';
 import RemoteLinePage from './customer/pages/RemoteLinePage';
 import SignIn from './customer/pages/SignIn';
 import SignUp from './customer/pages/SignUp';
 import '@customer/styles/index.css';
+import Layout from '@customer/UI/Layouts/Layout';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Restaurants />}>
-          {/* <Route path="customer" element={<KakaoMap />} /> */}
-          <Route path="customer/SearchPage" element={<SearchPage />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<Restaurants />} />
+          <Route path="customer/Search" element={<Search />} />
           <Route path="customer/RemoteLinePage" element={<RemoteLinePage />} />
           <Route
             path="customer/ReservationPage"
@@ -22,7 +23,7 @@ function App() {
           />
           <Route
             path="customer/InformationPage"
-            element={<CustomerInformationPage />}
+            element={<CustomerInformation />}
           />
           <Route path="customer/SignIn" element={<SignIn />} />
           <Route path="customer/SignUp" element={<SignUp />} />

@@ -1,7 +1,3 @@
-// const SignInNavigation = () => {
-//   return <div>로그인 하기 &gt;</div>;
-// };
-
 import styled from 'styled-components';
 
 const SignInNavigation = styled.div`
