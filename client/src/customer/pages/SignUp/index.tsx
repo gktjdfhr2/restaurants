@@ -43,6 +43,9 @@ const SignUp = () => {
     const memberEmailRegex =
       /^[a-zA-Z0-9]{2,}@[a-zA-Z0-9]{2,}.[a-zA-Z0-9]{2,}$/;
 
+    console.log(signUpInfo);
+    console.log(passwordCheck);
+    console.log(memberInfoError);
     setSignUpInfo((prev) => ({
       ...prev,
       memberEmail: event.target.value,
@@ -64,6 +67,7 @@ const SignUp = () => {
   const memberPasswordHandle = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const memberPasswordRegex = /^[a-zA-Z0-9]{8,}$/;
+
       setSignUpInfo((prev) => ({
         ...prev,
         memberPassword: event.target.value,
@@ -79,7 +83,41 @@ const SignUp = () => {
             </ValidationCheckDiv>
           ),
         }));
-      } else if (event.target.value !== passwordCheck) {
+      } else if (
+        memberPasswordRegex.test(event.target.value) &&
+        event.target.value !== passwordCheck
+      ) {
+        console.log('value', event.target.value);
+        console.log('pwc', passwordCheck);
+        setMemberInfoError((prev) => ({
+          ...prev,
+          memberPasswordCheck: false,
+          memberPasswordCheckMessage: (
+            <ValidationCheckDiv>
+              비밀번호가 일치하지 않습니다.
+            </ValidationCheckDiv>
+          ),
+        }));
+      } else if (
+        event.target.value === passwordCheck &&
+        memberPasswordRegex.test(event.target.value)
+      ) {
+        setMemberInfoError((prev) => ({
+          ...prev,
+          memberPassword: true,
+          memberPasswordCheck: true,
+          memberPasswordCheckMessage: <ValidationCheckDiv></ValidationCheckDiv>,
+        }));
+      }
+    },
+    [signUpInfo.memberPassword, passwordCheck]
+  );
+
+  const memberPasswordCheckHandle = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setCheckPassword(() => event.target.value);
+
+      if (event.target.value !== signUpInfo.memberPassword) {
         setMemberInfoError((prev) => ({
           ...prev,
           memberPasswordCheck: false,
@@ -93,34 +131,13 @@ const SignUp = () => {
         setMemberInfoError((prev) => ({
           ...prev,
           memberPassword: true,
+          memberPasswordCheck: true,
           memberPasswordCheckMessage: <ValidationCheckDiv></ValidationCheckDiv>,
         }));
       }
     },
-    [signUpInfo.memberPassword]
+    [signUpInfo.memberPassword, passwordCheck]
   );
-
-  const memberPasswordCheckHandle = (event: ChangeEvent<HTMLInputElement>) => {
-    setCheckPassword(event.target.value);
-
-    if (event.target.value !== signUpInfo.memberPassword) {
-      setMemberInfoError((prev) => ({
-        ...prev,
-        memberPassword: false,
-        memberPasswordCheck: false,
-        memberPasswordCheckMessage: (
-          <ValidationCheckDiv>비밀번호가 일치하지 않습니다.</ValidationCheckDiv>
-        ),
-      }));
-    } else {
-      setMemberInfoError((prev) => ({
-        ...prev,
-        memberPassword: true,
-        memberPasswordCheck: true,
-        memberPasswordCheckMessage: <ValidationCheckDiv></ValidationCheckDiv>,
-      }));
-    }
-  };
 
   const memberNameHandle = useCallback(
     (inputName: ChangeEvent<HTMLInputElement>) => {
@@ -198,7 +215,12 @@ const SignUp = () => {
   };
 
   const accountNextStep = () => {
-    if (memberInfoError.memberEmail && memberInfoError.memberPassword) {
+    console.log('suv', memberInfoError);
+    if (
+      memberInfoError.memberEmail &&
+      memberInfoError.memberPassword &&
+      memberInfoError.memberPasswordCheck
+    ) {
       console.log(memberInfoError.memberEmail);
       setSignUpStep(signUpStep + 1);
     }
