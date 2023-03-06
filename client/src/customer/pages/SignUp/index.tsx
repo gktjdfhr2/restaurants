@@ -1,14 +1,18 @@
 import { ChangeEvent, useState, useCallback } from 'react';
-import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
-import PlaceHolderText from '@customer/UI/Form/PlaceHolder';
 import PageTitle from '@customer/UI/Form/PageTitle';
-import Button from '@customer/UI/Form/Button';
-import ResetButton from '@customer/UI/Form/ResetButton';
-import MemberType from './MemberType';
 import SignUpContainer from './SignUpContainer';
-import SortDiv from './SortDiv';
 import axios from 'axios';
-import EmailCheck from './EmailCheck';
+import AccountCheck from './AccountCheck';
+import styled from 'styled-components';
+
+const PasswordDiv = styled.div`
+  opacity: 0.7;
+`;
+
+const ValidationCheckDiv = styled.div`
+  color: red;
+  opacity: 0.7;
+`;
 
 const SignUp = () => {
   const [signUpInfo, setSignUpInfo] = useState({
@@ -24,6 +28,10 @@ const SignUp = () => {
   const [memberInfoError, setMemberInfoError] = useState({
     memberEmail: false,
     memberPassword: false,
+    memberPasswordCheck: false,
+    memberPasswordCheckMessage: (
+      <PasswordDiv>문자,숫자를 조합하여 8자 이상을 사용하세요.</PasswordDiv>
+    ),
     memberName: false,
     memberPhone: false,
     memberAddress: false,
@@ -31,15 +39,16 @@ const SignUp = () => {
 
   const [signUpStep, setSignUpStep] = useState(1);
 
-  const userIdHandle = (event: ChangeEvent<HTMLInputElement>) => {
-    const userIdRegex = /^[a-zA-Z0-9]{2,}@[a-zA-Z0-9]{2,}.[a-zA-Z0-9]{2,}$/;
+  const memberEmailHandle = (event: ChangeEvent<HTMLInputElement>) => {
+    const memberEmailRegex =
+      /^[a-zA-Z0-9]{2,}@[a-zA-Z0-9]{2,}.[a-zA-Z0-9]{2,}$/;
 
     setSignUpInfo((prev) => ({
       ...prev,
       memberEmail: event.target.value,
     }));
 
-    if (!userIdRegex.test(event.target.value)) {
+    if (!memberEmailRegex.test(event.target.value)) {
       setMemberInfoError((prev) => ({
         ...prev,
         memberEmail: false,
@@ -51,21 +60,69 @@ const SignUp = () => {
       }));
     }
   };
-  const userPasswordHandle = useCallback(
-    (inputPassword: ChangeEvent<HTMLInputElement>) => {
+
+  const memberPasswordHandle = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const memberPasswordRegex = /^[a-zA-Z0-9]{8,}$/;
       setSignUpInfo((prev) => ({
         ...prev,
-        memberPassword: inputPassword.target.value,
+        memberPassword: event.target.value,
       }));
+
+      if (!memberPasswordRegex.test(event.target.value)) {
+        setMemberInfoError((prev) => ({
+          ...prev,
+          memberPassword: false,
+          memberPasswordCheckMessage: (
+            <ValidationCheckDiv>
+              비밀번호 양식을 확인해주세요. 영문 + 숫자 8자이상
+            </ValidationCheckDiv>
+          ),
+        }));
+      } else if (event.target.value !== passwordCheck) {
+        setMemberInfoError((prev) => ({
+          ...prev,
+          memberPasswordCheck: false,
+          memberPasswordCheckMessage: (
+            <ValidationCheckDiv>
+              비밀번호가 일치하지 않습니다.
+            </ValidationCheckDiv>
+          ),
+        }));
+      } else {
+        setMemberInfoError((prev) => ({
+          ...prev,
+          memberPassword: true,
+          memberPasswordCheckMessage: <ValidationCheckDiv></ValidationCheckDiv>,
+        }));
+      }
     },
     [signUpInfo.memberPassword]
   );
 
-  const userPasswordCheckHandle = (event: ChangeEvent<HTMLInputElement>) => {
+  const memberPasswordCheckHandle = (event: ChangeEvent<HTMLInputElement>) => {
     setCheckPassword(event.target.value);
+
+    if (event.target.value !== signUpInfo.memberPassword) {
+      setMemberInfoError((prev) => ({
+        ...prev,
+        memberPassword: false,
+        memberPasswordCheck: false,
+        memberPasswordCheckMessage: (
+          <ValidationCheckDiv>비밀번호가 일치하지 않습니다.</ValidationCheckDiv>
+        ),
+      }));
+    } else {
+      setMemberInfoError((prev) => ({
+        ...prev,
+        memberPassword: true,
+        memberPasswordCheck: true,
+        memberPasswordCheckMessage: <ValidationCheckDiv></ValidationCheckDiv>,
+      }));
+    }
   };
 
-  const userNameHandle = useCallback(
+  const memberNameHandle = useCallback(
     (inputName: ChangeEvent<HTMLInputElement>) => {
       setSignUpInfo((prev) => ({
         ...prev,
@@ -75,7 +132,7 @@ const SignUp = () => {
     [signUpInfo.memberName]
   );
 
-  const userPhoneHandle = useCallback(
+  const memberPhoneHandle = useCallback(
     (inputPhone: ChangeEvent<HTMLInputElement>) => {
       setSignUpInfo((prev) => ({
         ...prev,
@@ -85,7 +142,7 @@ const SignUp = () => {
     [signUpInfo.memberPhone]
   );
 
-  const userAddressHandle = useCallback(
+  const memberAddressHandle = useCallback(
     (inputAddress: ChangeEvent<HTMLInputElement>) => {
       setSignUpInfo((prev) => ({
         ...prev,
@@ -95,7 +152,7 @@ const SignUp = () => {
     [signUpInfo.memberAddress]
   );
 
-  const userRoleHandle = useCallback(
+  const memberRoleHandle = useCallback(
     (inputRole: ChangeEvent<HTMLSelectElement>) => {
       setSignUpInfo((prev) => ({
         ...prev,
@@ -105,20 +162,20 @@ const SignUp = () => {
     [signUpInfo.memberRole]
   );
 
-  const userIdReset = () => {
+  const memberEmailReset = () => {
     setSignUpInfo((prev) => ({ ...prev, memberEmail: '' }));
     setMemberInfoError((prev) => ({
       ...prev,
       memberEmail: false,
     }));
   };
-  const userNameReset = () => {
+  const memberNameReset = () => {
     setSignUpInfo((prev) => ({ ...prev, memberName: '' }));
   };
-  const userPhoneReset = () => {
+  const memberPhoneReset = () => {
     setSignUpInfo((prev) => ({ ...prev, memberPhone: '' }));
   };
-  const userAddressReset = () => {
+  const memberAddressReset = () => {
     setSignUpInfo((prev) => ({ ...prev, memberAddress: '' }));
   };
 
@@ -139,12 +196,11 @@ const SignUp = () => {
     console.log(signUpInfo);
     signUpRegister();
   };
-  const emailNextStep = () => {
-    if (memberInfoError.memberEmail) {
+
+  const accountNextStep = () => {
+    if (memberInfoError.memberEmail && memberInfoError.memberPassword) {
       console.log(memberInfoError.memberEmail);
       setSignUpStep(signUpStep + 1);
-    } else {
-      // console.log(memberInfoError.memberEmail);
     }
   };
 
@@ -165,11 +221,11 @@ const SignUp = () => {
                 content="이메일 주소"
                 type="text"
                 value={signUpInfo.memberEmail}
-                onChange={userIdHandle}
+                onChange={memberEmailHandle}
                 pattern="^[a-zA-Z0-9]{2,}@[a-zA-Z0-9]{2,}.[a-zA-Z0-9]{2,}$"
               />
               {signUpInfo.memberEmail.length > 0 && (
-                <ResetButton onClick={userIdReset} />
+                <ResetButton onClick={memberEmailReset} />
               )}
             </ButtonSortDiv>
 
@@ -178,14 +234,14 @@ const SignUp = () => {
                 content="비밀번호"
                 type="password"
                 value={signUpInfo.memberPassword}
-                onChange={userPasswordHandle}
+                onChange={memberPasswordHandle}
                 pattern="^[a-zA-Z0-9]{8,}$"
               />
               <PlaceHolderText
                 content="비밀번호 확인"
                 type="password"
                 value={passwordCheck}
-                onChange={userPasswordCheckHandle}
+                onChange={memberPasswordCheckHandle}
               />
             </SortDiv>
 
@@ -194,11 +250,11 @@ const SignUp = () => {
                 content="이름"
                 type="text"
                 value={signUpInfo.memberName}
-                onChange={userNameHandle}
+                onChange={memberNameHandle}
                 pattern="^[가-힣]{2,4}$"
               />
               {signUpInfo.memberName.length > 0 && (
-                <ResetButton onClick={userNameReset} />
+                <ResetButton onClick={memberNameReset} />
               )}
             </ButtonSortDiv>
 
@@ -207,11 +263,11 @@ const SignUp = () => {
                 content="전화번호"
                 type="text"
                 value={signUpInfo.memberPhone}
-                onChange={userPhoneHandle}
+                onChange={memberPhoneHandle}
                 pattern="^[0]+[1]+[0-9]{9}$"
               />
               {signUpInfo.memberPhone.length > 0 && (
-                <ResetButton onClick={userPhoneReset} />
+                <ResetButton onClick={memberPhoneReset} />
               )}
             </ButtonSortDiv>
 
@@ -220,16 +276,16 @@ const SignUp = () => {
                 content="주소"
                 type="text"
                 value={signUpInfo.memberAddress}
-                onChange={userAddressHandle}
+                onChange={memberAddressHandle}
                 pattern="^[가-힣]{6,}$"
               />
               {signUpInfo.memberAddress.length > 0 && (
-                <ResetButton onClick={userAddressReset} />
+                <ResetButton onClick={memberAddressReset} />
               )}
             </ButtonSortDiv>
 
             <SortDiv>
-              <MemberType defaultValue="0" onChange={userRoleHandle}>
+              <MemberType defaultValue="0" onChange={memberRoleHandle}>
                 <option value="0">고객</option>
                 <option value="1">사업자</option>
               </MemberType>
@@ -245,12 +301,18 @@ const SignUp = () => {
       <SignUpContainer>
         <PageTitle>회원가입 {signUpStep}/3</PageTitle>
         {signUpStep === 1 && (
-          <EmailCheck
-            value={signUpInfo.memberEmail}
-            onChange={userIdHandle}
-            onReset={userIdReset}
-            onClick={emailNextStep}
-            validation={memberInfoError.memberEmail}
+          <AccountCheck
+            emailValue={signUpInfo.memberEmail}
+            memberEmailHandle={memberEmailHandle}
+            memberEmailReset={memberEmailReset}
+            emailValidation={memberInfoError.memberEmail}
+            passwordValue={signUpInfo.memberPassword}
+            memberPasswordHandle={memberPasswordHandle}
+            passwordValidation={memberInfoError.memberPassword}
+            passwordCheckValue={passwordCheck}
+            memberPasswordCheckHandle={memberPasswordCheckHandle}
+            passwordCheckValidation={memberInfoError.memberPasswordCheckMessage}
+            onClick={accountNextStep}
           />
         )}
       </SignUpContainer>
