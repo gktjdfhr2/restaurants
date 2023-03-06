@@ -8,7 +8,7 @@ import MemberType from './MemberType';
 import SignUpContainer from './SignUpContainer';
 import SortDiv from './SortDiv';
 import axios from 'axios';
-// import Step1 from './Step1';
+import EmailCheck from './EmailCheck';
 
 const SignUp = () => {
   const [signUpInfo, setSignUpInfo] = useState({
@@ -19,15 +19,37 @@ const SignUp = () => {
     memberPhone: '',
     memberAddress: '',
   });
-
-  const [signUpStep, setSignUpStep] = useState(1);
   const [passwordCheck, setCheckPassword] = useState('');
 
+  const [memberInfoError, setMemberInfoError] = useState({
+    memberEmail: false,
+    memberPassword: false,
+    memberName: false,
+    memberPhone: false,
+    memberAddress: false,
+  });
+
+  const [signUpStep, setSignUpStep] = useState(1);
+
   const userIdHandle = (event: ChangeEvent<HTMLInputElement>) => {
+    const userIdRegex = /^[a-zA-Z0-9]{2,}@[a-zA-Z0-9]{2,}.[a-zA-Z0-9]{2,}$/;
+
     setSignUpInfo((prev) => ({
       ...prev,
       memberEmail: event.target.value,
     }));
+
+    if (!userIdRegex.test(event.target.value)) {
+      setMemberInfoError((prev) => ({
+        ...prev,
+        memberEmail: false,
+      }));
+    } else {
+      setMemberInfoError((prev) => ({
+        ...prev,
+        memberEmail: true,
+      }));
+    }
   };
   const userPasswordHandle = useCallback(
     (inputPassword: ChangeEvent<HTMLInputElement>) => {
@@ -85,6 +107,10 @@ const SignUp = () => {
 
   const userIdReset = () => {
     setSignUpInfo((prev) => ({ ...prev, memberEmail: '' }));
+    setMemberInfoError((prev) => ({
+      ...prev,
+      memberEmail: false,
+    }));
   };
   const userNameReset = () => {
     setSignUpInfo((prev) => ({ ...prev, memberName: '' }));
@@ -96,7 +122,7 @@ const SignUp = () => {
     setSignUpInfo((prev) => ({ ...prev, memberAddress: '' }));
   };
 
-  const register = () => {
+  const signUpRegister = () => {
     console.log(signUpInfo);
     axios
       .post('http://localhost:8080/api/signUp', signUpInfo)
@@ -109,16 +135,19 @@ const SignUp = () => {
       });
   };
 
-  const nextStep = () => {
-    setSignUpStep(signUpStep + 1);
-    console.log(signUpInfo);
-  };
-
   const signUp = () => {
     console.log(signUpInfo);
-    register();
+    signUpRegister();
   };
-  //TODO: add validation & step information
+  const emailNextStep = () => {
+    if (memberInfoError.memberEmail) {
+      console.log(memberInfoError.memberEmail);
+      setSignUpStep(signUpStep + 1);
+    } else {
+      // console.log(memberInfoError.memberEmail);
+    }
+  };
+
   return (
     <>
       {/* <form>
@@ -215,6 +244,15 @@ const SignUp = () => {
 
       <SignUpContainer>
         <PageTitle>회원가입 {signUpStep}/3</PageTitle>
+        {signUpStep === 1 && (
+          <EmailCheck
+            value={signUpInfo.memberEmail}
+            onChange={userIdHandle}
+            onReset={userIdReset}
+            onClick={emailNextStep}
+            validation={memberInfoError.memberEmail}
+          />
+        )}
       </SignUpContainer>
     </>
   );

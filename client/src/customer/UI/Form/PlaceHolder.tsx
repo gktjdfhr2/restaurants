@@ -7,7 +7,7 @@ const RelativeDiv = styled.div`
   position: relative;
   width: 100%;
   height: 46px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 10px auto;
 `;
 
 const TestToggle = styled.div<{ value: string }>`
