@@ -1,10 +1,11 @@
 import Button from '@customer/UI/Form/Button';
+import styled from 'styled-components';
+import { ChangeEventHandler, MouseEventHandler } from 'react';
 import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
 import PlaceHolderText from '@customer/UI/Form/PlaceHolder';
 import ResetButton from '@customer/UI/Form/ResetButton';
-import { ChangeEventHandler, MouseEventHandler, useState } from 'react';
-import styled from 'styled-components';
 import PageTitle from '@customer/UI/Form/PageTitle';
+
 const Container = styled(ButtonSortDiv)`
   width: 70%;
   margin: 0 auto;
@@ -57,7 +58,7 @@ const EmailCheck = (props: {
             </ValidationCheckDiv>
           ))}
 
-        <NextButton title="다음" onClick={props.onClick} />
+        <NextButton type="button" title="다음" onClick={props.onClick} />
       </Container>
     </>
   );
