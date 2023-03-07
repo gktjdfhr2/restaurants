@@ -21,11 +21,6 @@ const NextButton = styled(Button)`
   margin-top: 30px;
 `;
 
-const ValidationCheckDiv = styled.div`
-  color: red;
-  opacity: 0.7;
-`;
-
 const PageTitleDiv = styled(PageTitle)`
   margin: 0 0 20px 0;
   font-size: 15px;
