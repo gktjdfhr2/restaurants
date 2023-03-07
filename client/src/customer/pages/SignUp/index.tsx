@@ -5,6 +5,7 @@ import axios from 'axios';
 import AccountCheck from './AccountCheck';
 import styled from 'styled-components';
 import PrivacyCheck from './PrivacyCheck';
+import SignIn from '../SignIn';
 
 const PasswordDiv = styled.div`
   opacity: 0.7;
@@ -260,11 +261,6 @@ const SignUp = () => {
       });
   };
 
-  // const signUp = () => {
-  //   console.log(signUpInfo);
-  //   signUpRegister();
-  // };
-
   const accountNextStep = () => {
     console.log('suv', memberInfoError);
     if (
@@ -326,141 +322,58 @@ const SignUp = () => {
     if (
       memberInfoError.memberPhone &&
       memberInfoError.memberName &&
-      memberInfoError.memberAddress
+      memberInfoError.memberAddress &&
+      memberInfoError.memberEmail &&
+      memberInfoError.memberPassword
     ) {
+      console.log(memberInfoError);
       setSignUpStep(signUpStep + 1);
+
       signUpRegister();
     }
   };
 
   return (
     <>
-      {/* <form>
-        <PageTitle>회원가입</PageTitle>
+      {signUpStep > 2 ? (
+        <SignIn />
+      ) : (
         <SignUpContainer>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <ButtonSortDiv>
-              <PlaceHolderText
-                content="이메일 주소"
-                type="text"
-                value={signUpInfo.memberEmail}
-                onChange={memberEmailHandle}
-                pattern="^[a-zA-Z0-9]{2,}@[a-zA-Z0-9]{2,}.[a-zA-Z0-9]{2,}$"
-              />
-              {signUpInfo.memberEmail.length > 0 && (
-                <ResetButton onClick={memberEmailReset} />
-              )}
-            </ButtonSortDiv>
-
-            <SortDiv>
-              <PlaceHolderText
-                content="비밀번호"
-                type="password"
-                value={signUpInfo.memberPassword}
-                onChange={memberPasswordHandle}
-                pattern="^[a-zA-Z0-9]{8,}$"
-              />
-              <PlaceHolderText
-                content="비밀번호 확인"
-                type="password"
-                value={passwordCheck}
-                onChange={memberPasswordCheckHandle}
-              />
-            </SortDiv>
-
-            <ButtonSortDiv>
-              <PlaceHolderText
-                content="이름"
-                type="text"
-                value={signUpInfo.memberName}
-                onChange={memberNameHandle}
-                pattern="^[가-힣]{2,4}$"
-              />
-              {signUpInfo.memberName.length > 0 && (
-                <ResetButton onClick={memberNameReset} />
-              )}
-            </ButtonSortDiv>
-
-            <ButtonSortDiv>
-              <PlaceHolderText
-                content="전화번호"
-                type="text"
-                value={signUpInfo.memberPhone}
-                onChange={memberPhoneHandle}
-                pattern="^[0]+[1]+[0-9]{9}$"
-              />
-              {signUpInfo.memberPhone.length > 0 && (
-                <ResetButton onClick={memberPhoneReset} />
-              )}
-            </ButtonSortDiv>
-
-            <ButtonSortDiv>
-              <PlaceHolderText
-                content="주소"
-                type="text"
-                value={signUpInfo.memberAddress}
-                onChange={memberAddressHandle}
-                pattern="^[가-힣]{6,}$"
-              />
-              {signUpInfo.memberAddress.length > 0 && (
-                <ResetButton onClick={memberAddressReset} />
-              )}
-            </ButtonSortDiv>
-
-            <SortDiv>
-              <MemberType defaultValue="0" onChange={memberRoleHandle}>
-                <option value="0">고객</option>
-                <option value="1">사업자</option>
-              </MemberType>
-            </SortDiv>
-
-            <SortDiv>
-              <Button onClick={signUp} title="회원가입" type="submit" />
-            </SortDiv>
-          </div>
+          <PageTitle>회원가입 {signUpStep} /2</PageTitle>
+          {signUpStep === 1 && (
+            <AccountCheck
+              emailValue={signUpInfo.memberEmail}
+              memberEmailHandle={memberEmailHandle}
+              memberEmailReset={memberEmailReset}
+              emailValidation={memberInfoError.memberEmail}
+              passwordValue={signUpInfo.memberPassword}
+              memberPasswordHandle={memberPasswordHandle}
+              passwordValidation={memberInfoError.memberPassword}
+              passwordCheckValue={passwordCheck}
+              memberPasswordCheckHandle={memberPasswordCheckHandle}
+              passwordCheckValidation={
+                memberInfoError.memberPasswordCheckMessage
+              }
+              onClick={accountNextStep}
+            />
+          )}
+          {signUpStep === 2 && (
+            <PrivacyCheck
+              nameValue={signUpInfo.memberName}
+              memberNameHandle={memberNameHandle}
+              nameCheckValidation={memberInfoError.memberNameCheck}
+              phoneValue={signUpInfo.memberPhone}
+              memberPhoneHandle={memberPhoneHandle}
+              phoneCheckValidation={memberInfoError.memberPhoneCheck}
+              addressValue={signUpInfo.memberAddress}
+              memberAddressHandle={memberAddressHandle}
+              addressCheckValidation={memberInfoError.memberAddressCheck}
+              memberRoleHandle={memberRoleHandle}
+              onClick={privacyNextStep}
+            />
+          )}
         </SignUpContainer>
-      </form> */}
-
-      <SignUpContainer>
-        <PageTitle>
-          {signUpStep > 2 ? '가입 완료' : `회원가입 ${signUpStep} /2`}
-        </PageTitle>
-        {/* {signUpStep === 1 && (
-          <AccountCheck
-            emailValue={signUpInfo.memberEmail}
-            memberEmailHandle={memberEmailHandle}
-            memberEmailReset={memberEmailReset}
-            emailValidation={memberInfoError.memberEmail}
-            passwordValue={signUpInfo.memberPassword}
-            memberPasswordHandle={memberPasswordHandle}
-            passwordValidation={memberInfoError.memberPassword}
-            passwordCheckValue={passwordCheck}
-            memberPasswordCheckHandle={memberPasswordCheckHandle}
-            passwordCheckValidation={memberInfoError.memberPasswordCheckMessage}
-            onClick={accountNextStep}
-          />
-        )} */}
-        {/* {signUpStep === 2 && <PrivacyCheck />} */}
-        <PrivacyCheck
-          nameValue={signUpInfo.memberName}
-          memberNameHandle={memberNameHandle}
-          nameCheckValidation={memberInfoError.memberNameCheck}
-          phoneValue={signUpInfo.memberPhone}
-          memberPhoneHandle={memberPhoneHandle}
-          phoneCheckValidation={memberInfoError.memberPhoneCheck}
-          addressValue={signUpInfo.memberAddress}
-          memberAddressHandle={memberAddressHandle}
-          addressCheckValidation={memberInfoError.memberAddressCheck}
-          memberRoleHandle={memberRoleHandle}
-          onClick={privacyNextStep}
-        />
-      </SignUpContainer>
+      )}
     </>
   );
 };
