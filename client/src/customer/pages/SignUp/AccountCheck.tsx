@@ -1,5 +1,5 @@
 import { ChangeEventHandler, MouseEventHandler } from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
 import Button from '@customer/UI/Form/Button';
 import PlaceHolderText from '@customer/UI/Form/PlaceHolder';
@@ -100,13 +100,6 @@ const AccountCheck = (props: {
             onChange={props.memberPasswordCheckHandle}
           />
           {props.passwordCheckValidation}
-          {/* <PasswordDiv>문자,숫자를 조합하여 8자 이상을 사용하세요.</PasswordDiv> */}
-          {/* {props.validation ||
-            (props.value.length > 0 && (
-              <ValidationCheckDiv>
-                이메일 양식을 맞춰주세요 ex)example@example.com
-              </ValidationCheckDiv>
-            ))} */}
         </PasswordInputContainer>
 
         <NextButton type="button" title="다음" onClick={props.onClick} />
