@@ -1,11 +1,11 @@
 import { ChangeEvent, useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import styled from 'styled-components';
 import PageTitle from '@customer/UI/Form/PageTitle';
 import SignUpContainer from './SignUpContainer';
-import axios from 'axios';
 import AccountCheck from './AccountCheck';
-import styled from 'styled-components';
 import PrivacyCheck from './PrivacyCheck';
-import SignIn from '../SignIn';
 
 const PasswordDiv = styled.div`
   opacity: 0.7;
@@ -28,6 +28,7 @@ const SignUp = () => {
     memberPhone: '',
     memberAddress: '',
   });
+
   const [passwordCheck, setCheckPassword] = useState('');
 
   const [memberInfoError, setMemberInfoError] = useState({
@@ -51,14 +52,12 @@ const SignUp = () => {
   });
 
   const [signUpStep, setSignUpStep] = useState(1);
+  const navigate = useNavigate();
 
   const memberEmailHandle = (event: ChangeEvent<HTMLInputElement>) => {
     const memberEmailRegex =
       /^[a-zA-Z0-9]{2,}@[a-zA-Z0-9]{2,}.[a-zA-Z0-9]{2,}$/;
 
-    console.log(signUpInfo);
-    console.log(passwordCheck);
-    console.log(memberInfoError);
     setSignUpInfo((prev) => ({
       ...prev,
       memberEmail: event.target.value,
@@ -79,8 +78,6 @@ const SignUp = () => {
 
   const memberPasswordHandle = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      console.log('test', event.target.value);
-      console.log('pw', memberInfoError);
       const memberPasswordRegex = /^[a-zA-Z0-9]{8,}$/;
 
       setSignUpInfo((prev) => ({
@@ -253,11 +250,15 @@ const SignUp = () => {
     axios
       .post('http://localhost:8080/api/signUp', signUpInfo)
       .then((response) => {
-        console.log(response);
-        console.log('data:', response.data);
+        console.log('data:', response);
+        alert('가입완료! 로그인 페이지로 이동합니다.');
+        navigate('../../customer/SignIn');
       })
       .catch((error) => {
         console.log(error);
+        setSignUpStep(1);
+        alert('가입실패! 이전 페이지로 이동합니다.');
+        navigate('./');
       });
   };
 
@@ -327,7 +328,6 @@ const SignUp = () => {
       memberInfoError.memberPassword
     ) {
       console.log(memberInfoError);
-      setSignUpStep(signUpStep + 1);
 
       signUpRegister();
     }
@@ -335,45 +335,39 @@ const SignUp = () => {
 
   return (
     <>
-      {signUpStep > 2 ? (
-        <SignIn />
-      ) : (
-        <SignUpContainer>
-          <PageTitle>회원가입 {signUpStep} /2</PageTitle>
-          {signUpStep === 1 && (
-            <AccountCheck
-              emailValue={signUpInfo.memberEmail}
-              memberEmailHandle={memberEmailHandle}
-              memberEmailReset={memberEmailReset}
-              emailValidation={memberInfoError.memberEmail}
-              passwordValue={signUpInfo.memberPassword}
-              memberPasswordHandle={memberPasswordHandle}
-              passwordValidation={memberInfoError.memberPassword}
-              passwordCheckValue={passwordCheck}
-              memberPasswordCheckHandle={memberPasswordCheckHandle}
-              passwordCheckValidation={
-                memberInfoError.memberPasswordCheckMessage
-              }
-              onClick={accountNextStep}
-            />
-          )}
-          {signUpStep === 2 && (
-            <PrivacyCheck
-              nameValue={signUpInfo.memberName}
-              memberNameHandle={memberNameHandle}
-              nameCheckValidation={memberInfoError.memberNameCheck}
-              phoneValue={signUpInfo.memberPhone}
-              memberPhoneHandle={memberPhoneHandle}
-              phoneCheckValidation={memberInfoError.memberPhoneCheck}
-              addressValue={signUpInfo.memberAddress}
-              memberAddressHandle={memberAddressHandle}
-              addressCheckValidation={memberInfoError.memberAddressCheck}
-              memberRoleHandle={memberRoleHandle}
-              onClick={privacyNextStep}
-            />
-          )}
-        </SignUpContainer>
-      )}
+      <SignUpContainer>
+        <PageTitle>회원가입 {signUpStep} /2</PageTitle>
+        {signUpStep === 1 && (
+          <AccountCheck
+            emailValue={signUpInfo.memberEmail}
+            memberEmailHandle={memberEmailHandle}
+            memberEmailReset={memberEmailReset}
+            emailValidation={memberInfoError.memberEmail}
+            passwordValue={signUpInfo.memberPassword}
+            memberPasswordHandle={memberPasswordHandle}
+            passwordValidation={memberInfoError.memberPassword}
+            passwordCheckValue={passwordCheck}
+            memberPasswordCheckHandle={memberPasswordCheckHandle}
+            passwordCheckValidation={memberInfoError.memberPasswordCheckMessage}
+            onClick={accountNextStep}
+          />
+        )}
+        {signUpStep === 2 && (
+          <PrivacyCheck
+            nameValue={signUpInfo.memberName}
+            memberNameHandle={memberNameHandle}
+            nameCheckValidation={memberInfoError.memberNameCheck}
+            phoneValue={signUpInfo.memberPhone}
+            memberPhoneHandle={memberPhoneHandle}
+            phoneCheckValidation={memberInfoError.memberPhoneCheck}
+            addressValue={signUpInfo.memberAddress}
+            memberAddressHandle={memberAddressHandle}
+            addressCheckValidation={memberInfoError.memberAddressCheck}
+            memberRoleHandle={memberRoleHandle}
+            onClick={privacyNextStep}
+          />
+        )}
+      </SignUpContainer>
     </>
   );
 };
