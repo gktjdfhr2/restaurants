@@ -20,6 +20,7 @@ const ValidationDiv = styled.div`
 `;
 
 const SignUp = () => {
+  /** 입력값을 저장하는 State */
   const [signUpInfo, setSignUpInfo] = useState({
     memberRole: '0',
     memberEmail: '',
@@ -31,8 +32,12 @@ const SignUp = () => {
 
   const [passwordCheck, setCheckPassword] = useState('');
 
+  /** 입력값의 정합성을 체크하는 State */
   const [memberInfoError, setMemberInfoError] = useState({
     memberEmail: false,
+    memberEmailCheckMessage: (
+      <PasswordDiv>이메일 양식 ex&#41;example@example.com</PasswordDiv>
+    ),
     memberPassword: false,
     memberPasswordCheck: false,
     memberPasswordCheckMessage: (
@@ -51,76 +56,63 @@ const SignUp = () => {
     memberAddressCheck: <ValidationDiv></ValidationDiv>,
   });
 
+  /** 회원가입 단계 State */
   const [signUpStep, setSignUpStep] = useState(1);
+
   const navigate = useNavigate();
 
   const memberEmailHandle = (event: ChangeEvent<HTMLInputElement>) => {
     const memberEmailRegex =
       /^[a-zA-Z0-9]{2,}@[a-zA-Z0-9]{2,}.[a-zA-Z0-9]{2,}$/;
+    const isEmailValid = memberEmailRegex.test(event.target.value);
 
     setSignUpInfo((prev) => ({
       ...prev,
       memberEmail: event.target.value,
     }));
 
-    if (!memberEmailRegex.test(event.target.value)) {
-      setMemberInfoError((prev) => ({
-        ...prev,
-        memberEmail: false,
-      }));
-    } else {
-      setMemberInfoError((prev) => ({
-        ...prev,
-        memberEmail: true,
-      }));
-    }
+    setMemberInfoError((prev) => ({
+      ...prev,
+      memberEmail: isEmailValid,
+      memberEmailCheckMessage: isEmailValid ? (
+        <PasswordDiv>사용 가능한 아이디 입니다.</PasswordDiv>
+      ) : (
+        <ValidationErrorDiv>
+          이메일 양식에 맞게 작성해주세요.
+          <br /> ex &#41; example@example.com
+        </ValidationErrorDiv>
+      ),
+    }));
   };
 
   const memberPasswordHandle = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const memberPasswordRegex = /^[a-zA-Z0-9]{8,}$/;
+      const isPasswordValid = memberPasswordRegex.test(event.target.value);
 
       setSignUpInfo((prev) => ({
         ...prev,
         memberPassword: event.target.value,
       }));
+      console.log('function valid', isPasswordValid);
 
-      if (!memberPasswordRegex.test(event.target.value)) {
-        setMemberInfoError((prev) => ({
-          ...prev,
-          memberPassword: false,
-          memberPasswordCheckMessage: (
+      setMemberInfoError((prev) => ({
+        ...prev,
+        memberPassword: isPasswordValid,
+        memberPasswordCheckMessage: isPasswordValid ? (
+          event.target.value === passwordCheck ? (
+            <PasswordDiv>사용 가능한 비밀번호 입니다.</PasswordDiv>
+          ) : (
             <ValidationErrorDiv>
-              비밀번호 양식을 확인해주세요. 영문 + 숫자 8자이상
+              일치하지 않는 비밀번호 입니다.
             </ValidationErrorDiv>
-          ),
-        }));
-      } else if (
-        memberPasswordRegex.test(event.target.value) &&
-        event.target.value !== passwordCheck
-      ) {
-        console.log('value', event.target.value);
-        console.log('pwc', passwordCheck);
-        setMemberInfoError((prev) => ({
-          ...prev,
-          memberPassword: true,
-          memberPasswordCheck: false,
-          memberPasswordCheckMessage: (
-            <ValidationErrorDiv>
-              비밀번호가 일치하지 않습니다.
-            </ValidationErrorDiv>
-          ),
-        }));
-      } else if (
-        event.target.value === passwordCheck &&
-        memberPasswordRegex.test(event.target.value)
-      ) {
-        setMemberInfoError((prev) => ({
-          ...prev,
-          memberPassword: true,
-          memberPasswordCheckMessage: <ValidationErrorDiv></ValidationErrorDiv>,
-        }));
-      }
+          )
+        ) : (
+          <ValidationErrorDiv>
+            비밀번호 양식에 맞게 작성해주세요.
+          </ValidationErrorDiv>
+        ),
+      }));
     },
     [signUpInfo.memberPassword, passwordCheck]
   );
@@ -129,109 +121,83 @@ const SignUp = () => {
     (event: ChangeEvent<HTMLInputElement>) => {
       console.log('pwc', memberInfoError);
       const memberPasswordRegex = /^[a-zA-Z0-9]{8,}$/;
-      setCheckPassword(() => event.target.value);
+      const isPasswordCheckValid = memberPasswordRegex.test(event.target.value);
+      const isPasswordCheckSame =
+        event.target.value === signUpInfo.memberPassword;
 
-      if (event.target.value !== signUpInfo.memberPassword) {
+      setCheckPassword(() => event.target.value);
+      isPasswordCheckValid &&
         setMemberInfoError((prev) => ({
           ...prev,
-          memberPasswordCheck: false,
-          memberPasswordCheckMessage: (
+          memberPasswordCheck: isPasswordCheckSame,
+          memberPasswordCheckMessage: isPasswordCheckSame ? (
+            <PasswordDiv>사용 가능한 비밀번호 입니다.</PasswordDiv>
+          ) : (
             <ValidationErrorDiv>
               비밀번호가 일치하지 않습니다.
             </ValidationErrorDiv>
           ),
         }));
-      } else if (
-        memberPasswordRegex.test(event.target.value) &&
-        event.target.value === signUpInfo.memberPassword
-      ) {
-        setMemberInfoError((prev) => ({
-          ...prev,
-
-          memberPasswordCheck: true,
-          memberPasswordCheckMessage: <ValidationErrorDiv></ValidationErrorDiv>,
-        }));
-      }
     },
     [signUpInfo.memberPassword, passwordCheck]
   );
 
   const memberNameHandle = useCallback(
-    (inputName: ChangeEvent<HTMLInputElement>) => {
+    (event: ChangeEvent<HTMLInputElement>) => {
       const memberNameRegex = /^[가-힣]{2,4}$/;
+      const isNameValid = memberNameRegex.test(event.target.value);
       setSignUpInfo((prev) => ({
         ...prev,
-        memberName: inputName.target.value,
+        memberName: event.target.value,
       }));
-
-      if (memberNameRegex.test(inputName.target.value)) {
-        setMemberInfoError((prev) => ({
-          ...prev,
-          memberName: true,
-        }));
-      } else {
-        setMemberInfoError((prev) => ({
-          ...prev,
-          memberName: false,
-        }));
-      }
+      setMemberInfoError((prev) => ({
+        ...prev,
+        memberName: isNameValid,
+      }));
     },
     [signUpInfo.memberName]
   );
 
   const memberPhoneHandle = useCallback(
-    (inputPhone: ChangeEvent<HTMLInputElement>) => {
+    (event: ChangeEvent<HTMLInputElement>) => {
       const memberPhoneRegex = /^[0]+[1]+[0-9]{9}$/;
+      const isMemberPhoneValid = memberPhoneRegex.test(event.target.value);
 
       setSignUpInfo((prev) => ({
         ...prev,
-        memberPhone: inputPhone.target.value,
+        memberPhone: event.target.value,
       }));
-
-      if (memberPhoneRegex.test(inputPhone.target.value)) {
-        setMemberInfoError((prev) => ({
-          ...prev,
-          memberPhone: true,
-        }));
-      } else {
-        setMemberInfoError((prev) => ({
-          ...prev,
-          memberPhone: false,
-        }));
-      }
+      setMemberInfoError((prev) => ({
+        ...prev,
+        memberPhone: isMemberPhoneValid,
+      }));
     },
     [signUpInfo.memberPhone]
   );
 
   const memberAddressHandle = useCallback(
-    (inputAddress: ChangeEvent<HTMLInputElement>) => {
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const memberAddressRegex = /[가-힣]{6,}$/;
+      const isMemberAddressValid = memberAddressRegex.test(event.target.value);
+
       setSignUpInfo((prev) => ({
         ...prev,
-        memberAddress: inputAddress.target.value,
+        memberAddress: event.target.value,
       }));
 
-      const memberAddressRegex = /[가-힣]{6,}$/;
-
-      if (memberAddressRegex.test(inputAddress.target.value)) {
-        setMemberInfoError((prev) => ({
-          ...prev,
-          memberAddress: true,
-        }));
-      } else {
-        setMemberInfoError((prev) => ({
-          ...prev,
-          memberAddress: false,
-        }));
-      }
+      setMemberInfoError((prev) => ({
+        ...prev,
+        memberAddress: isMemberAddressValid,
+      }));
     },
     [signUpInfo.memberAddress]
   );
 
   const memberRoleHandle = useCallback(
-    (inputRole: ChangeEvent<HTMLSelectElement>) => {
+    (event: ChangeEvent<HTMLSelectElement>) => {
       setSignUpInfo((prev) => ({
         ...prev,
-        memberRole: inputRole.target.value,
+        memberRole: event.target.value,
       }));
     },
     [signUpInfo.memberRole]
@@ -243,6 +209,16 @@ const SignUp = () => {
       ...prev,
       memberEmail: false,
     }));
+  };
+
+  const accountNextStep = () => {
+    if (
+      memberInfoError.memberEmail &&
+      memberInfoError.memberPassword &&
+      memberInfoError.memberPasswordCheck
+    ) {
+      setSignUpStep(signUpStep + 1);
+    }
   };
 
   const signUpRegister = () => {
@@ -257,68 +233,34 @@ const SignUp = () => {
       .catch((error) => {
         console.log(error);
         setSignUpStep(1);
-        alert('가입실패! 이전 페이지로 이동합니다.');
+        alert('가입실패! 회원가입 페이지로 돌아갑니다.');
         navigate('./');
       });
   };
 
-  const accountNextStep = () => {
-    console.log('suv', memberInfoError);
-    if (
-      memberInfoError.memberEmail &&
-      memberInfoError.memberPassword &&
-      memberInfoError.memberPasswordCheck
-    ) {
-      console.log(memberInfoError.memberEmail);
-      setSignUpStep(signUpStep + 1);
-    }
-  };
   const privacyNextStep = () => {
-    if (!memberInfoError.memberName) {
-      setMemberInfoError((prev) => ({
-        ...prev,
-        memberNameCheck: (
-          <ValidationErrorDiv>
-            이름을 확인해주세요 ex&#41; 홍길동
-          </ValidationErrorDiv>
-        ),
-      }));
-    } else {
-      setMemberInfoError((prev) => ({
-        ...prev,
-        memberNameCheck: <ValidationErrorDiv></ValidationErrorDiv>,
-      }));
-    }
-
-    if (!memberInfoError.memberPhone) {
-      setMemberInfoError((prev) => ({
-        ...prev,
-        memberPhoneCheck: (
-          <ValidationErrorDiv>
-            핸드폰 번호를 확인해주세요 ex&#41; 01012345678
-          </ValidationErrorDiv>
-        ),
-      }));
-    } else {
-      setMemberInfoError((prev) => ({
-        ...prev,
-        memberPhoneCheck: <ValidationErrorDiv></ValidationErrorDiv>,
-      }));
-    }
-
-    if (!memberInfoError.memberAddress) {
-      setMemberInfoError((prev) => ({
-        ...prev,
-        memberAddressCheck: (
-          <ValidationErrorDiv>주소를 확인해주세요</ValidationErrorDiv>
-        ),
-      }));
-    } else {
-      setMemberInfoError((prev) => ({
-        ...prev,
-        memberAddressCheck: <ValidationErrorDiv></ValidationErrorDiv>,
-      }));
-    }
+    setMemberInfoError((prev) => ({
+      ...prev,
+      memberNameCheck: memberInfoError.memberName ? (
+        <ValidationDiv>ex&#41; 홍길동</ValidationDiv>
+      ) : (
+        <ValidationErrorDiv>
+          이름을 확인해주세요 ex&#41; 홍길동
+        </ValidationErrorDiv>
+      ),
+      memberPhoneCheck: memberInfoError.memberPhone ? (
+        <ValidationDiv>사용 가능한 번호입니다.</ValidationDiv>
+      ) : (
+        <ValidationErrorDiv>
+          핸드폰 번호를 확인해주세요 ex&#41; 01012345678
+        </ValidationErrorDiv>
+      ),
+      memberAddressCheck: memberInfoError.memberAddress ? (
+        <ValidationDiv>사용 가능한 주소입니다.</ValidationDiv>
+      ) : (
+        <ValidationErrorDiv>주소를 확인해주세요</ValidationErrorDiv>
+      ),
+    }));
 
     if (
       memberInfoError.memberPhone &&
@@ -327,8 +269,6 @@ const SignUp = () => {
       memberInfoError.memberEmail &&
       memberInfoError.memberPassword
     ) {
-      console.log(memberInfoError);
-
       signUpRegister();
     }
   };
@@ -342,7 +282,7 @@ const SignUp = () => {
             emailValue={signUpInfo.memberEmail}
             memberEmailHandle={memberEmailHandle}
             memberEmailReset={memberEmailReset}
-            emailValidation={memberInfoError.memberEmail}
+            emailValidation={memberInfoError.memberEmailCheckMessage}
             passwordValue={signUpInfo.memberPassword}
             memberPasswordHandle={memberPasswordHandle}
             passwordValidation={memberInfoError.memberPassword}

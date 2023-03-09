@@ -46,7 +46,7 @@ const AccountCheck = (props: {
   emailValue: string;
   memberEmailHandle: ChangeEventHandler;
   memberEmailReset: MouseEventHandler;
-  emailValidation: boolean;
+  emailValidation: JSX.Element;
   passwordValue: string;
   memberPasswordHandle: ChangeEventHandler;
   passwordValidation: boolean;
@@ -76,12 +76,7 @@ const AccountCheck = (props: {
             )}
           </ButtonContainer>
 
-          {props.emailValidation ||
-            (props.emailValue.length > 0 && (
-              <ValidationCheckDiv>
-                이메일 양식을 맞춰주세요 ex)example@example.com
-              </ValidationCheckDiv>
-            ))}
+          {props.emailValidation}
         </EmailInputContainer>
 
         <PasswordInputContainer>
