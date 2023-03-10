@@ -5,23 +5,34 @@ import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
 import RecentKeywords from './RecentKeywords';
 import styled from 'styled-components';
 import RecommendKeywords from './RecommendKeywords';
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 const SearchDiv = styled(ButtonSortDiv)`
   //   margin: 20px 0;
   //
 `;
 
-const SearchForm = styled.form``;
+let history = new Array();
+JSON.parse(`${localStorage.getItem('searchHistory')}`) &&
+  history.push(JSON.parse(`${localStorage.getItem('searchHistory')}`));
 
 const Search = () => {
   const [keyword, setKeyword] = useState('');
+  const localStorage = window.localStorage;
 
-  const keywordChangeHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyword(event.target.value);
-  };
+  console.log(history);
+
+  const keywordChangeHandle = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setKeyword(event.target.value);
+    },
+    [keyword]
+  );
+
   const searchEvent = () => {
     console.log('submit', keyword);
+    history.push(keyword);
+    localStorage.setItem('searchHistory', JSON.stringify(history));
   };
   return (
     <SearchContainer>
@@ -34,7 +45,7 @@ const Search = () => {
         />
         <SearchButton type="submit" onClick={searchEvent} />
       </SearchDiv>
-      <RecentKeywords />
+      <RecentKeywords keyWords={history} />
       <RecommendKeywords />
     </SearchContainer>
   );
