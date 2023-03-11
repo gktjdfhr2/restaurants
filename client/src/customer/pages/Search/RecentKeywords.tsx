@@ -1,18 +1,14 @@
 import styled from 'styled-components';
 import Button from '@customer/UI/Form/Button';
 import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
-import { FC } from 'react';
 
-const KeywordsContainer: FC<{ children: any }> = ({ children }) => {
-  styled.div`
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    height: 36px;
-  `;
-  return <>{children}</>;
-};
+const KeywordsContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 36px;
+`;
 
 const Keyword = styled.div`
   display: inline-block;
@@ -47,7 +43,6 @@ const KeywordSortDiv = styled(ButtonSortDiv)`
 `;
 
 const RecentKeywords = (props: { keyWords: Array<String> }) => {
-  //TODO: 최근 검색어 서버에서 불러와 4개까지 띄우기
   return (
     <KeywordsContainer>
       {props.keyWords.length === 0 ? (
@@ -55,14 +50,13 @@ const RecentKeywords = (props: { keyWords: Array<String> }) => {
           <NoneKeyword>최근검색어 내역이 없습니다.</NoneKeyword>
         </KeywordSortDiv>
       ) : (
-        props.keyWords.forEach((value, index) => {
-          <KeywordSortDiv>
+        props.keyWords.slice(0, 4).map((value, index) => (
+          <KeywordSortDiv key={index}>
             <Keyword>{value}</Keyword>
             <RemoveButton title="X" />
-          </KeywordSortDiv>;
-        })
+          </KeywordSortDiv>
+        ))
       )}
-      )
     </KeywordsContainer>
   );
 };

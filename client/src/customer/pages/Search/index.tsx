@@ -12,15 +12,15 @@ const SearchDiv = styled(ButtonSortDiv)`
   //
 `;
 
-let history = new Array();
-JSON.parse(`${localStorage.getItem('searchHistory')}`) &&
-  history.push(JSON.parse(`${localStorage.getItem('searchHistory')}`));
-
 const Search = () => {
   const [keyword, setKeyword] = useState('');
   const localStorage = window.localStorage;
-
-  console.log(history);
+  const historyDefault: Array<String> = JSON.parse(
+    `${localStorage.getItem('searchHistory')}`
+  )
+    ? JSON.parse(`${localStorage.getItem('searchHistory')}`)
+    : [];
+  const [history, setHistory] = useState(historyDefault);
 
   const keywordChangeHandle = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,11 +28,20 @@ const Search = () => {
     },
     [keyword]
   );
+  console.log('history', history.length);
 
   const searchEvent = () => {
     console.log('submit', keyword);
-    history.push(keyword);
-    localStorage.setItem('searchHistory', JSON.stringify(history));
+
+    keyword &&
+      setHistory((prev) => {
+        localStorage.setItem(
+          'searchHistory',
+          JSON.stringify([...prev, keyword])
+        );
+
+        return [keyword, ...prev];
+      });
   };
   return (
     <SearchContainer>
