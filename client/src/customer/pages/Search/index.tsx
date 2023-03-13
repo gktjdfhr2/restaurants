@@ -1,15 +1,16 @@
 import TextInput from '@customer/UI/Form/TextInput';
 import SearchContainer from './SearchContainer';
 import SearchButton from '@customer/UI/Form/SearchButton';
-import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
 import RecentKeywords from './RecentKeywords';
 import styled from 'styled-components';
 import RecommendKeywords from './RecommendKeywords';
 import React, { useState, useCallback } from 'react';
 
-const SearchDiv = styled(ButtonSortDiv)`
-  //   margin: 20px 0;
-  //
+const SearchForm = styled.form`
+  position: relative;
+  width: 100%;
+  height: 46px;
+  margin-bottom: 30px;
 `;
 
 const Search = () => {
@@ -33,28 +34,59 @@ const Search = () => {
   const searchEvent = () => {
     console.log('submit', keyword);
 
-    keyword &&
-      setHistory((prev) => {
-        localStorage.setItem(
-          'searchHistory',
-          JSON.stringify([keyword, ...prev])
-        );
+    // keyword &&
+    //   setHistory((prev) => {
+    //     localStorage.setItem(
+    //       'searchHistory',
+    //       JSON.stringify([keyword, ...prev])
+    //     );
 
-        return [keyword, ...prev];
-      });
+    //     return [keyword, ...prev];
+    //   });
+
+    // console.log(
+    //   'filter',
+    //   history.filter((value) => {
+    //     return value === keyword;
+    //   }).length
+    // );
+
+    keyword &&
+    history.filter((value) => {
+      return value === keyword;
+    }).length
+      ? setHistory((): String[] => {
+          history.splice(history.indexOf(keyword), 1);
+          localStorage.setItem(
+            'searchHistory',
+            JSON.stringify([keyword, ...history])
+          );
+
+          return [keyword, ...history];
+        })
+      : // (history.splice(history.indexOf(keyword),1))
+        setHistory((prev) => {
+          localStorage.setItem(
+            'searchHistory',
+            JSON.stringify([keyword, ...prev])
+          );
+
+          return [keyword, ...prev];
+        });
   };
 
   return (
     <SearchContainer>
-      <SearchDiv>
+      <SearchForm>
         <TextInput
           placeholder="검색어를 입력해주세요"
           autoComplete="off"
+          autoFocus={true}
           value={keyword}
           onChange={keywordChangeHandle}
         />
         <SearchButton type="submit" onClick={searchEvent} />
-      </SearchDiv>
+      </SearchForm>
       <RecentKeywords history={history} setHistory={setHistory} />
       <RecommendKeywords />
     </SearchContainer>
