@@ -55,17 +55,16 @@ const Search = () => {
     history.filter((value) => {
       return value === keyword;
     }).length
-      ? setHistory((): String[] => {
-          history.splice(history.indexOf(keyword), 1);
+      ? setHistory((prev) => {
+          prev.splice(history.indexOf(keyword), 1);
           localStorage.setItem(
             'searchHistory',
-            JSON.stringify([keyword, ...history])
+            JSON.stringify([keyword, ...prev])
           );
 
-          return [keyword, ...history];
+          return [keyword, ...prev];
         })
-      : // (history.splice(history.indexOf(keyword),1))
-        setHistory((prev) => {
+      : setHistory((prev) => {
           localStorage.setItem(
             'searchHistory',
             JSON.stringify([keyword, ...prev])
