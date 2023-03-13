@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Button from '@customer/UI/Form/Button';
 import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
+import { SetStateAction } from 'react';
 
 const KeywordsContainer = styled.div`
   display: flex;
@@ -19,6 +20,9 @@ const Keyword = styled.div`
   background-color: gainsboro;
   padding: 10px;
   border-radius: 5px 0 0 5px;
+`;
+const NoneKeyword = styled(Keyword)`
+  border-radius: 5px;
 `;
 const RemoveButton = styled(Button)`
   width: 20px;
@@ -39,26 +43,37 @@ const KeywordSortDiv = styled(ButtonSortDiv)`
   justify-content: flex-between;
 `;
 
-const RecentKeywords = () => {
-  //TODO: 최근 검색어 서버에서 불러와 4개까지 띄우기
+const RecentKeywords = (props: {
+  history: Array<String>;
+  setHistory: React.Dispatch<SetStateAction<String[]>>;
+}) => {
+  const localStorage = window.localStorage;
+
   return (
     <KeywordsContainer>
-      <KeywordSortDiv>
-        <Keyword>keyword</Keyword>
-        <RemoveButton title="X" />
-      </KeywordSortDiv>
-      <KeywordSortDiv>
-        <Keyword>keywordkeywordkeyword</Keyword>
-        <RemoveButton title="X" />
-      </KeywordSortDiv>
-      <KeywordSortDiv>
-        <Keyword>keywordkeyword</Keyword>
-        <RemoveButton title="X" />
-      </KeywordSortDiv>{' '}
-      <KeywordSortDiv>
-        <Keyword>keywordkeyword</Keyword>
-        <RemoveButton title="X" />
-      </KeywordSortDiv>
+      {props.history.length === 0 ? (
+        <KeywordSortDiv>
+          <NoneKeyword>최근검색어 내역이 없습니다.</NoneKeyword>
+        </KeywordSortDiv>
+      ) : (
+        props.history.slice(0, 4).map((value, index) => (
+          <KeywordSortDiv key={index}>
+            <Keyword>{value}</Keyword>
+            <RemoveButton
+              title="X"
+              onClick={() => {
+                props.history.splice(index, 1);
+
+                props.setHistory([...props.history]);
+                localStorage.setItem(
+                  'searchHistory',
+                  JSON.stringify(props.history)
+                );
+              }}
+            />
+          </KeywordSortDiv>
+        ))
+      )}
     </KeywordsContainer>
   );
 };
