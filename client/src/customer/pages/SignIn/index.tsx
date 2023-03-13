@@ -39,6 +39,7 @@ const SignIn = () => {
       })
       .then((response) => {
         console.log('data :', response);
+        console.log('headers :', response.headers);
       })
       .catch((error) => {
         console.log(error);

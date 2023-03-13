@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Button from '@customer/UI/Form/Button';
 import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
+import { SetStateAction } from 'react';
 
 const KeywordsContainer = styled.div`
   display: flex;
@@ -42,18 +43,34 @@ const KeywordSortDiv = styled(ButtonSortDiv)`
   justify-content: flex-between;
 `;
 
-const RecentKeywords = (props: { keyWords: Array<String> }) => {
+const RecentKeywords = (props: {
+  history: Array<String>;
+  setHistory: React.Dispatch<SetStateAction<String[]>>;
+}) => {
+  const localStorage = window.localStorage;
+
   return (
     <KeywordsContainer>
-      {props.keyWords.length === 0 ? (
+      {props.history.length === 0 ? (
         <KeywordSortDiv>
           <NoneKeyword>최근검색어 내역이 없습니다.</NoneKeyword>
         </KeywordSortDiv>
       ) : (
-        props.keyWords.slice(0, 4).map((value, index) => (
+        props.history.slice(0, 4).map((value, index) => (
           <KeywordSortDiv key={index}>
             <Keyword>{value}</Keyword>
-            <RemoveButton title="X" />
+            <RemoveButton
+              title="X"
+              onClick={() => {
+                props.history.splice(index, 1);
+
+                props.setHistory([...props.history]);
+                localStorage.setItem(
+                  'searchHistory',
+                  JSON.stringify(props.history)
+                );
+              }}
+            />
           </KeywordSortDiv>
         ))
       )}

@@ -28,7 +28,7 @@ const Search = () => {
     },
     [keyword]
   );
-  console.log('history', history.length);
+  console.log('history', history);
 
   const searchEvent = () => {
     console.log('submit', keyword);
@@ -37,12 +37,13 @@ const Search = () => {
       setHistory((prev) => {
         localStorage.setItem(
           'searchHistory',
-          JSON.stringify([...prev, keyword])
+          JSON.stringify([keyword, ...prev])
         );
 
         return [keyword, ...prev];
       });
   };
+
   return (
     <SearchContainer>
       <SearchDiv>
@@ -54,7 +55,7 @@ const Search = () => {
         />
         <SearchButton type="submit" onClick={searchEvent} />
       </SearchDiv>
-      <RecentKeywords keyWords={history} />
+      <RecentKeywords history={history} setHistory={setHistory} />
       <RecommendKeywords />
     </SearchContainer>
   );
