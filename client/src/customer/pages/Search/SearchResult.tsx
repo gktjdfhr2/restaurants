@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from '@customer/UI/Form/Button';
 
 const ResultContainer = styled.div`
   display: flex;
@@ -17,7 +18,7 @@ const ResultItems = styled.div`
 `;
 
 const StorePicture = styled.div`
-  flex-grow: 0.2;
+  flex-grow: 0.3;
   width: initial;
   height: inherit;
   background: url(/src/assets/images/placeholder.png) no-repeat;
@@ -25,7 +26,7 @@ const StorePicture = styled.div`
 `;
 
 const StoreInformation = styled.div`
-  flex-grow: 0.8;
+  flex-grow: 0.7;
 `;
 const StoreTitle = styled.div`
   font-size: 20px;
@@ -36,10 +37,9 @@ const StoreReviewContainer = styled.div`
   height: 20px;
   width: 100%;
   margin: 5px 0;
-  background-color: gray;
 `;
 
-const ReviewScore = styled.div`
+const ReviewScore = styled.span`
   height: 20px;
   width: 100%;
 `;
@@ -51,7 +51,7 @@ const ScoreBackground = styled.span`
   background: url(/src/assets/images/rating_0.png) no-repeat;
   background-size: contain;
 `;
-const CurrentScore = styled.span`
+const CurrentScoreIcon = styled.span`
   display: inline-block;
   height: 20px;
   width: 100%;
@@ -60,9 +60,21 @@ const CurrentScore = styled.span`
   background-size: 100px 20px;
 `;
 
-const TotalScore = styled.span`
+const CurrentScore = styled.span`
   height: 20px;
   display: inline-block;
+  vertical-align: middle;
+`;
+
+const ReservationButton = styled(Button)`
+  width: 80px;
+  height: 40px;
+  margin-right: 20px;
+`;
+
+const Distance = styled.div`
+  margin: 2px 0;
+  color: gray;
 `;
 
 const SearchResult = () => {
@@ -75,11 +87,14 @@ const SearchResult = () => {
           <StoreReviewContainer>
             <ReviewScore>
               <ScoreBackground>
-                <CurrentScore />
+                <CurrentScoreIcon />
               </ScoreBackground>
-              <TotalScore>123</TotalScore>
+              <CurrentScore>4.9(300 +)</CurrentScore>
             </ReviewScore>
           </StoreReviewContainer>
+          <Distance>일식 · 사직동 · 0.82km</Distance>
+          <ReservationButton>예약 하기</ReservationButton>
+          <ReservationButton>줄서기</ReservationButton>
         </StoreInformation>
       </ResultItems>
     </ResultContainer>
