@@ -1,4 +1,4 @@
-package com.worst.restmap.domain.dto;
+package com.worst.restmap.domain.dto.sign;
 
 import com.worst.restmap.domain.entity.Member;
 import lombok.Getter;

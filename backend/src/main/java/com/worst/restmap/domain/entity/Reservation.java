@@ -22,8 +22,8 @@ public class Reservation {
     @Column( name = "reservation_member_role")
     private long reservationMemberRole;
 
-    @Column( name = "reservation_member_id")
-    private long reservationMemberId;
+    @Column( name = "reservation_member_email")
+    private long reservationMemberEmail;
 
     @Column( name = "reservation_phone")
     private String reservationPhone;

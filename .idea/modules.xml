@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.worst.restmap.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.worst.restmap.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/restaurants.iml" filepath="$PROJECT_DIR$/.idea/restaurants.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/restmap.main.iml" filepath="$PROJECT_DIR$/.idea/modules/restmap.main.iml" />
     </modules>
