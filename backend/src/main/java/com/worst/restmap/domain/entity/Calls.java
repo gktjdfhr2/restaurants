@@ -22,8 +22,8 @@ public class Calls {
     @Column( name = "calls_business_id")
     private long callsBusinessId;
 
-    @Column( name = "calls_member_id")
-    private long callsMemberId;
+    @Column( name = "calls_member_email")
+    private long callsMemberEmail;
 
     @Column( name = "calls_time")
     private Date callsTime;

@@ -18,8 +18,8 @@ public class Line {
     @Column( name = "line_id")
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private long lineId;
-    @Column( name = "line_member_role")
-    private long lineMemberRole;
+    @Column( name = "line_member_email")
+    private long lineMemberEmail;
     @Column(name = "line_member_name")
     private String lineMemberName;
     @Column(name = "line_phone_number")

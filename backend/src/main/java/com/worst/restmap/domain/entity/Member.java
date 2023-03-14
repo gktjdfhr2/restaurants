@@ -15,15 +15,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class Member {
 
     @Id
-    @Column(name = "member_id")
+    @Column( name = "member_email")
     @GeneratedValue( strategy = GenerationType.IDENTITY)
-    private long memberId;
+    private String memberEmail;
 
     @Column( name = "member_role")
     private String memberRole;
-
-    @Column( name = "member_email")
-    private String memberEmail;
 
     @Column( name = "member_name")
     private String memberName;
