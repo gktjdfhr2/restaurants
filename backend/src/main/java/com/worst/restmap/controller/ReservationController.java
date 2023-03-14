@@ -19,6 +19,6 @@ public class ReservationController {
     @Transactional
     public ResponseEntity<StatusCode> saveLine(@RequestBody LineDto lineDto, @AuthenticationPrincipal CustomUserDetail customUserDetail) {
         String memberEmail = customUserDetail.getUsername();
-        return
+        return null;
     }
 }
