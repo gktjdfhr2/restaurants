@@ -57,7 +57,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
                 chain.doFilter(request, response);
             } else {
-                statusCode.setResCode(888); statusCode.setResMsg("[ERR] ACCESS TOKEN 사용자 정보 에러");
+                statusCode.setResCode("888"); statusCode.setResMsg("[ERR] ACCESS TOKEN 사용자 정보 에러");
                 String result = om.writeValueAsString(statusCode);
                 response.getWriter().write(result);
             }
@@ -79,14 +79,14 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                     if(tokenProvider.refreshTokenValid(refresh)){ // refresh token 만료 여부 확인
                         String reissueAccessToken = tokenProvider.createAccessToken(memberEmail);
                         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + reissueAccessToken);
-                        statusCode.setResCode(555); statusCode.setResMsg("Access Token 재발급");
+                        statusCode.setResCode("555"); statusCode.setResMsg("Access Token 재발급");
                         String result = om.writeValueAsString(statusCode);
                         response.getWriter().write(result);
                         return;
                     }else{
                         System.out.println("[WARN] Refresh Token 만료됨, 재로그인 요청");
                         tokenRepository.deleteByTokenMemberEmail(memberEmail);
-                        statusCode.setResCode(999); statusCode.setResMsg("만료된 Refresh Token");
+                        statusCode.setResCode("999"); statusCode.setResMsg("만료된 Refresh Token");
                         String result = om.writeValueAsString(statusCode);
                         response.getWriter().write(result);
                         return;
@@ -94,14 +94,14 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                 }else{
                     System.out.println("[ERR] 비정상적인 Refresh Token");
                     tokenRepository.deleteByTokenMemberEmail(memberEmail); // DB에 존재하는 refresh token 삭제
-                    statusCode.setResCode(777); statusCode.setResMsg("비정상적인 Refresh Token");
+                    statusCode.setResCode("777"); statusCode.setResMsg("비정상적인 Refresh Token");
                     String result = om.writeValueAsString(statusCode);
                     response.getWriter().write(result);
                     return;
                 }
 
             }else{
-                statusCode.setResCode(666); statusCode.setResMsg("Access Token 만료됨");
+                statusCode.setResCode("666"); statusCode.setResMsg("Access Token 만료됨");
                 String result = om.writeValueAsString(statusCode);
                 response.getWriter().write(result);
                 return;

@@ -54,17 +54,19 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         Token token = Token.builder().tokenMemberEmail(customUserDetail.getUsername()).tokenRefreshToken(refreshToken).build();
         tokenRepository.save(token);
-        response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + jwtToken);
-        response.addHeader(JwtProperties.REFRESH_HEADER_STRING, refreshToken);
+//        response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + jwtToken);
+//        response.addHeader(JwtProperties.REFRESH_HEADER_STRING, refreshToken);
+        response.setHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + jwtToken);
+        response.setHeader(JwtProperties.REFRESH_HEADER_STRING, refreshToken);
         String getRole = customUserDetail.getMember().getMemberRole();
         String getName = customUserDetail.getMember().getMemberName();
         StatusCode statusCode = null;
         if(getRole.equals("0")) {
-            statusCode = StatusCode.builder().resCode(0).data(Member.builder().memberRole(getRole).memberName(getName).build()).resMsg("로그인 성공").build();
+            statusCode = StatusCode.builder().resCode("0").data(Member.builder().memberRole(getRole).memberName(getName).build()).resMsg("로그인 성공").build();
         } else if(getRole.equals("1")) {
-            statusCode = StatusCode.builder().resCode(0).data(Member.builder().memberRole(getRole).memberName(getName).build()).resMsg("로그인 성공").build();
+            statusCode = StatusCode.builder().resCode("0").data(Member.builder().memberRole(getRole).memberName(getName).build()).resMsg("로그인 성공").build();
         } else {
-            StatusCode.builder().resCode(0).data(Member.builder().memberRole(getRole).memberName(getName).build()).resMsg("로그인 성공").build();
+            StatusCode.builder().resCode("0").data(Member.builder().memberRole(getRole).memberName(getName).build()).resMsg("로그인 성공").build();
         }
         String result = om.writeValueAsString(statusCode);
         response.getWriter().write(result);
@@ -72,7 +74,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
-        StatusCode statusCode = StatusCode.builder().resCode(1).resMsg("유효하지 않은 사용자 입니다.").build();
+        StatusCode statusCode = StatusCode.builder().resCode("1").resMsg("유효하지 않은 사용자 입니다.").build();
         String result = om.writeValueAsString(statusCode);
         response.getWriter().write(result);
     }

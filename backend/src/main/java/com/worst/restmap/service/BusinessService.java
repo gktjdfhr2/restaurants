@@ -11,4 +11,9 @@ public interface BusinessService {
 
     ResponseEntity<StatusCode> saveBusiness(Business business);
     ResponseEntity<StatusCode> saveMenu(MenuDto menuDto);
+    ResponseEntity<StatusCode> ReservationAll(Business business);
+    ResponseEntity<StatusCode> updateLine();
+    ResponseEntity<StatusCode> updateReservation();
+    ResponseEntity<StatusCode> callLineMember();
+
 }
