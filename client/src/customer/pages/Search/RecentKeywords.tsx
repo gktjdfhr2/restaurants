@@ -1,7 +1,7 @@
+import { FormEventHandler, SetStateAction, useEffect } from 'react';
 import styled from 'styled-components';
 import Button from '@customer/UI/Form/Button';
 import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
-import { SetStateAction } from 'react';
 
 const KeywordsContainer = styled.div`
   display: flex;
@@ -20,6 +20,7 @@ const Keyword = styled.div`
   background-color: gainsboro;
   padding: 10px;
   border-radius: 5px 0 0 5px;
+  cursor: pointer;
 `;
 const NoneKeyword = styled(Keyword)`
   border-radius: 5px;
@@ -45,10 +46,22 @@ const KeywordSortDiv = styled(ButtonSortDiv)`
 
 const RecentKeywords = (props: {
   history: Array<String>;
+  setKeyword: React.Dispatch<SetStateAction<string>>;
   setHistory: React.Dispatch<SetStateAction<String[]>>;
+  searchEvent: FormEventHandler;
 }) => {
   const localStorage = window.localStorage;
-
+  console.log('hist', typeof props.history);
+  // const test =
+  //  (event: any) => {
+  //   useEffect(
+  //     () => {
+  //     props.setKeyword(value);
+  //     props.setHistory([...props.history]);
+  //     localStorage.setItem('searchHistory', JSON.stringify(props.history));
+  //     return props.searchEvent(event);
+  //   });
+  // };
   return (
     <KeywordsContainer>
       {props.history.length === 0 ? (
@@ -58,12 +71,23 @@ const RecentKeywords = (props: {
       ) : (
         props.history.slice(0, 4).map((value, index) => (
           <KeywordSortDiv key={index}>
-            <Keyword>{value}</Keyword>
+            <Keyword
+            // onClick={(event: any) => {
+            //   props.setKeyword(() => `${value}`);
+            //   props.setHistory([...props.history]);
+            //   localStorage.setItem(
+            //     'searchHistory',
+            //     JSON.stringify(props.history)
+            //   );
+            //   return props.searchEvent(event);
+            // }}
+            >
+              {value}
+            </Keyword>
             <RemoveButton
               title="X"
               onClick={() => {
                 props.history.splice(index, 1);
-
                 props.setHistory([...props.history]);
                 localStorage.setItem(
                   'searchHistory',

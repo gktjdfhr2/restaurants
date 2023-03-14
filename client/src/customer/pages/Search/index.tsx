@@ -1,10 +1,11 @@
+import React, { useState, useCallback, FormEvent, useEffect } from 'react';
+import styled from 'styled-components';
 import TextInput from '@customer/UI/Form/TextInput';
 import SearchContainer from './SearchContainer';
 import SearchButton from '@customer/UI/Form/SearchButton';
 import RecentKeywords from './RecentKeywords';
-import styled from 'styled-components';
 import RecommendKeywords from './RecommendKeywords';
-import React, { useState, useCallback } from 'react';
+import SearchResult from './SearchResult';
 
 const SearchForm = styled.form`
   position: relative;
@@ -14,6 +15,7 @@ const SearchForm = styled.form`
 `;
 
 const Search = () => {
+  const [isSearch, setIsSearch] = useState(false);
   const [keyword, setKeyword] = useState('');
   const localStorage = window.localStorage;
   const historyDefault: Array<String> = JSON.parse(
@@ -26,32 +28,16 @@ const Search = () => {
   const keywordChangeHandle = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setKeyword(event.target.value);
+      event.target.value.length === 0 && setIsSearch(false);
     },
     [keyword]
   );
-  console.log('history', history);
 
-  const searchEvent = () => {
-    console.log('submit', keyword);
+  const searchEvent = (event: FormEvent) => {
+    event.preventDefault();
+    console.log('key', keyword.length);
 
-    // keyword &&
-    //   setHistory((prev) => {
-    //     localStorage.setItem(
-    //       'searchHistory',
-    //       JSON.stringify([keyword, ...prev])
-    //     );
-
-    //     return [keyword, ...prev];
-    //   });
-
-    // console.log(
-    //   'filter',
-    //   history.filter((value) => {
-    //     return value === keyword;
-    //   }).length
-    // );
-
-    keyword &&
+    keyword.length !== 0 &&
     history.filter((value) => {
       return value === keyword;
     }).length
@@ -72,11 +58,12 @@ const Search = () => {
 
           return [keyword, ...prev];
         });
+    setIsSearch(true);
   };
 
   return (
     <SearchContainer>
-      <SearchForm>
+      <SearchForm onSubmit={searchEvent}>
         <TextInput
           placeholder="검색어를 입력해주세요"
           autoComplete="off"
@@ -84,10 +71,16 @@ const Search = () => {
           value={keyword}
           onChange={keywordChangeHandle}
         />
-        <SearchButton type="submit" onClick={searchEvent} />
+        <SearchButton type="submit" />
       </SearchForm>
-      <RecentKeywords history={history} setHistory={setHistory} />
-      <RecommendKeywords />
+      <RecentKeywords
+        history={history}
+        // keyword={keyword}
+        setKeyword={setKeyword}
+        setHistory={setHistory}
+        searchEvent={searchEvent}
+      />
+      {isSearch ? <SearchResult /> : <RecommendKeywords />}
     </SearchContainer>
   );
 };
