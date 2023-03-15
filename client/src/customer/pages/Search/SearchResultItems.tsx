@@ -81,6 +81,7 @@ const SearchResultItems = (props: {
   reservation?: boolean;
   line?: boolean;
 }) => {
+  //TODO: 나중에 폼 재활용 하기
   return (
     <ResultItems>
       <StorePicture />
