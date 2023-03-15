@@ -229,6 +229,7 @@ const SignUp = () => {
         console.log('data:', response);
         alert('가입완료! 로그인 페이지로 이동합니다.');
         navigate('../../customer/SignIn');
+        // response.headers.authorization
       })
       .catch((error) => {
         console.log(error);

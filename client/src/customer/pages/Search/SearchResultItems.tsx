@@ -45,11 +45,11 @@ const ScoreBackground = styled.span`
   background: url(/src/assets/images/rating_0.png) no-repeat;
   background-size: contain;
 `;
-const CurrentScoreIcon = styled.span`
+const CurrentScoreIcon = styled.span<{ score: number }>`
   display: inline-block;
   height: 20px;
-  width: 100%;
-  //TODO:props로 점수 받아서 width % 결정
+  width: ${(props) => props.score * 20}%;
+
   background: url(/src/assets/images/rating_1.png) no-repeat;
   background-size: 100px 20px;
 `;
@@ -71,23 +71,37 @@ const Distance = styled.div`
   color: gray;
 `;
 
-const SearchResultItems = () => {
+const SearchResultItems = (props: {
+  title: string;
+  score: number;
+  countReview: number;
+  condition: string;
+  address: string;
+  distance: number;
+  reservation?: boolean;
+  line?: boolean;
+}) => {
   return (
     <ResultItems>
       <StorePicture />
       <StoreInformation>
-        <StoreTitle>소우데스</StoreTitle>
+        <StoreTitle>{props.title}</StoreTitle>
         <StoreReviewContainer>
           <ReviewScore>
             <ScoreBackground>
-              <CurrentScoreIcon />
+              <CurrentScoreIcon score={props.score} />
             </ScoreBackground>
-            <CurrentScore>4.9(300 +)</CurrentScore>
+            <CurrentScore>
+              {props.score} (
+              {props.countReview > 300 ? `300 +` : props.countReview})
+            </CurrentScore>
           </ReviewScore>
         </StoreReviewContainer>
-        <Distance>일식 · 사직동 · 0.82km</Distance>
-        <ReservationButton>예약 하기</ReservationButton>
-        <ReservationButton>줄서기</ReservationButton>
+        <Distance>
+          {props.condition} · {props.address} · {props.distance}km
+        </Distance>
+        {props.reservation && <ReservationButton>예약 하기</ReservationButton>}
+        {props.line && <ReservationButton>줄서기</ReservationButton>}
       </StoreInformation>
     </ResultItems>
   );
