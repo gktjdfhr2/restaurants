@@ -33,37 +33,41 @@ const Search = () => {
     [keyword]
   );
 
-  const searchEvent = (event: FormEvent) => {
+  const searchEvent = (event: FormEvent, inputValue: string) => {
+    setKeyword(inputValue);
     event.preventDefault();
-    console.log('key', keyword.length);
 
-    keyword.length !== 0 &&
-    history.filter((value) => {
-      return value === keyword;
-    }).length
+    inputValue.length === 0
+      ? setIsSearch(false)
+      : history.filter((value) => {
+          return value === inputValue;
+        }).length
       ? setHistory((prev) => {
-          prev.splice(history.indexOf(keyword), 1);
+          prev.splice(history.indexOf(inputValue), 1);
           localStorage.setItem(
             'searchHistory',
-            JSON.stringify([keyword, ...prev])
+            JSON.stringify([inputValue, ...prev])
           );
-
-          return [keyword, ...prev];
+          setIsSearch(true);
+          return [inputValue, ...prev];
         })
       : setHistory((prev) => {
           localStorage.setItem(
             'searchHistory',
-            JSON.stringify([keyword, ...prev])
+            JSON.stringify([inputValue, ...prev])
           );
-
-          return [keyword, ...prev];
+          setIsSearch(true);
+          return [inputValue, ...prev];
         });
-    setIsSearch(true);
   };
 
   return (
     <SearchContainer>
-      <SearchForm onSubmit={searchEvent}>
+      <SearchForm
+        onSubmit={(event) => {
+          searchEvent(event, keyword);
+        }}
+      >
         <TextInput
           placeholder="검색어를 입력해주세요"
           autoComplete="off"
@@ -75,11 +79,10 @@ const Search = () => {
       </SearchForm>
       <RecentKeywords
         history={history}
-        // keyword={keyword}
-        setKeyword={setKeyword}
         setHistory={setHistory}
         searchEvent={searchEvent}
       />
+
       {isSearch ? <SearchResult /> : <RecommendKeywords />}
     </SearchContainer>
   );

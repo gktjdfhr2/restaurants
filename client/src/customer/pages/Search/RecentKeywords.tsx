@@ -1,4 +1,4 @@
-import { FormEventHandler, SetStateAction, useEffect } from 'react';
+import { FormEvent, FormEventHandler, SetStateAction, useEffect } from 'react';
 import styled from 'styled-components';
 import Button from '@customer/UI/Form/Button';
 import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
@@ -46,22 +46,11 @@ const KeywordSortDiv = styled(ButtonSortDiv)`
 
 const RecentKeywords = (props: {
   history: Array<String>;
-  setKeyword: React.Dispatch<SetStateAction<string>>;
   setHistory: React.Dispatch<SetStateAction<String[]>>;
-  searchEvent: FormEventHandler;
+  searchEvent: any;
 }) => {
   const localStorage = window.localStorage;
-  console.log('hist', typeof props.history);
-  // const test =
-  //  (event: any) => {
-  //   useEffect(
-  //     () => {
-  //     props.setKeyword(value);
-  //     props.setHistory([...props.history]);
-  //     localStorage.setItem('searchHistory', JSON.stringify(props.history));
-  //     return props.searchEvent(event);
-  //   });
-  // };
+
   return (
     <KeywordsContainer>
       {props.history.length === 0 ? (
@@ -72,15 +61,9 @@ const RecentKeywords = (props: {
         props.history.slice(0, 4).map((value, index) => (
           <KeywordSortDiv key={index}>
             <Keyword
-            // onClick={(event: any) => {
-            //   props.setKeyword(() => `${value}`);
-            //   props.setHistory([...props.history]);
-            //   localStorage.setItem(
-            //     'searchHistory',
-            //     JSON.stringify(props.history)
-            //   );
-            //   return props.searchEvent(event);
-            // }}
+              onClick={(event: FormEvent) => {
+                props.searchEvent(event, `${value}`);
+              }}
             >
               {value}
             </Keyword>
