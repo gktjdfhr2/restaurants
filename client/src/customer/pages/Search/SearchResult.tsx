@@ -1,30 +1,13 @@
-import Button from '@customer/UI/Form/Button';
 import { useState } from 'react';
-import styled, { css } from 'styled-components';
-import SearchResultItems from './SearchResultItems';
+import styled from 'styled-components';
+import ExhibitionItems from '../../UI/Form/ExhibitionItems';
+import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
 
 const ResultContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 100%;
-`;
-
-const ClassificationButton = styled(Button)<{ selectFilter: boolean }>`
-  width: auto;
-  height: 40px;
-  background-color: white;
-
-  border-radius: 0;
-  color: black;
-  padding: 0 20px;
-  font-weight: normal;
-  ${(props) =>
-    props.selectFilter &&
-    css`
-      border-bottom: 1px solid black;
-      font-weight: bold;
-    `};
 `;
 
 const ButtonContainer = styled.div`
@@ -46,21 +29,21 @@ const SearchResult = () => {
   return (
     <ResultContainer>
       <ButtonContainer>
-        <ClassificationButton
+        <ToggleMenuButton
           title="전체"
           selectFilter={selectFilter.all}
           onClick={() =>
             setSelectFilter({ all: true, reservation: false, line: false })
           }
         />
-        <ClassificationButton
+        <ToggleMenuButton
           title="예약"
           selectFilter={selectFilter.reservation}
           onClick={() =>
             setSelectFilter({ all: false, reservation: true, line: false })
           }
         />
-        <ClassificationButton
+        <ToggleMenuButton
           title="원격 줄서기"
           selectFilter={selectFilter.line}
           onClick={() =>
@@ -69,7 +52,7 @@ const SearchResult = () => {
         />
       </ButtonContainer>
 
-      <SearchResultItems
+      <ExhibitionItems
         title="소우데스"
         score={3.9}
         countReview={303}

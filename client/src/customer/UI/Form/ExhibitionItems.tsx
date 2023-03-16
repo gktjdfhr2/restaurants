@@ -12,15 +12,15 @@ const ResultItems = styled.div`
 `;
 
 const StorePicture = styled.div`
-  flex-grow: 0.3;
-  width: initial;
-  height: inherit;
+  width: 124px;
+  height: 124px;
   background: url(/src/assets/images/placeholder.png) no-repeat;
   background-size: contain;
 `;
 
 const StoreInformation = styled.div`
-  flex-grow: 0.7;
+  margin-left: 20px;
+  flex-grow: 1;
 `;
 const StoreTitle = styled.div`
   font-size: 20px;
@@ -71,7 +71,7 @@ const Distance = styled.div`
   color: gray;
 `;
 
-const SearchResultItems = (props: {
+const ExhibitionItems = (props: {
   title: string;
   score: number;
   countReview: number;
@@ -81,7 +81,6 @@ const SearchResultItems = (props: {
   reservation?: boolean;
   line?: boolean;
 }) => {
-  //TODO: 나중에 폼 재활용 하기
   return (
     <ResultItems>
       <StorePicture />
@@ -107,4 +106,4 @@ const SearchResultItems = (props: {
     </ResultItems>
   );
 };
-export default SearchResultItems;
+export default ExhibitionItems;
