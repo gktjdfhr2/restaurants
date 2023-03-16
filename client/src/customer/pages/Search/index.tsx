@@ -1,7 +1,6 @@
-import React, { useState, useCallback, FormEvent, useEffect } from 'react';
+import React, { useState, useCallback, FormEvent } from 'react';
 import styled from 'styled-components';
 import TextInput from '@customer/UI/Form/TextInput';
-import SearchContainer from './SearchContainer';
 import SearchButton from '@customer/UI/Form/SearchButton';
 import RecentKeywords from './RecentKeywords';
 import RecommendKeywords from './RecommendKeywords';
@@ -11,7 +10,12 @@ const SearchForm = styled.form`
   position: relative;
   width: 100%;
   height: 46px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+`;
+const SearchContainer = styled.section`
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
 `;
 
 const Search = () => {

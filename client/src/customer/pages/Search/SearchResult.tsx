@@ -2,13 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import ExhibitionItems from '../../UI/Form/ExhibitionItems';
 import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
-
-const ResultContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-`;
+import SearchResultContainer from '@customer/UI/Form/SearchResultContainer';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -27,7 +21,7 @@ const SearchResult = () => {
   });
 
   return (
-    <ResultContainer>
+    <SearchResultContainer>
       <ButtonContainer>
         <ToggleMenuButton
           title="전체"
@@ -62,7 +56,7 @@ const SearchResult = () => {
         reservation={true}
         line={false}
       />
-    </ResultContainer>
+    </SearchResultContainer>
   );
 };
 export default SearchResult;
