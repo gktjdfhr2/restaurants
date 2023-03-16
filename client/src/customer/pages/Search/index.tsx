@@ -5,6 +5,7 @@ import SearchButton from '@customer/UI/Form/SearchButton';
 import RecentKeywords from './RecentKeywords';
 import RecommendKeywords from './RecommendKeywords';
 import SearchResult from './SearchResult';
+import ResetButton from '@customer/UI/Form/ResetButton';
 
 const SearchForm = styled.form`
   position: relative;
@@ -16,6 +17,10 @@ const SearchContainer = styled.section`
   width: 70%;
   height: 100%;
   margin: 0 auto;
+`;
+
+const KeywordInput = styled(TextInput)`
+  padding: 0 40px;
 `;
 
 const Search = () => {
@@ -72,14 +77,22 @@ const Search = () => {
           searchEvent(event, keyword);
         }}
       >
-        <TextInput
+        <SearchButton type="submit" />
+        <KeywordInput
           placeholder="검색어를 입력해주세요"
           autoComplete="off"
           autoFocus={true}
           value={keyword}
           onChange={keywordChangeHandle}
         />
-        <SearchButton type="submit" />
+        {keyword && (
+          <ResetButton
+            onClick={() => {
+              setKeyword('');
+              setIsSearch(false);
+            }}
+          />
+        )}
       </SearchForm>
       <RecentKeywords
         history={history}
@@ -87,7 +100,11 @@ const Search = () => {
         searchEvent={searchEvent}
       />
 
-      {isSearch ? <SearchResult /> : <RecommendKeywords />}
+      {isSearch ? (
+        <SearchResult />
+      ) : (
+        <RecommendKeywords searchEvent={searchEvent} />
+      )}
     </SearchContainer>
   );
 };

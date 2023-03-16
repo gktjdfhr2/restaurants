@@ -16,7 +16,8 @@ const SearchButton = styled.button.attrs((props) => ({
   background-size: contain;
   background-position: center;
   background-size: 20px;
-  right: 1%;
+  left: 1%;
+  z-index: 2;
   top: 50%;
   border: none;
   text-align: center;
