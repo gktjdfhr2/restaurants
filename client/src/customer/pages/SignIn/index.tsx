@@ -17,7 +17,7 @@ const SignIn = () => {
   const [passwordCheck, setPasswordCheck] = useState('');
   const [cookies, setCookie] = useCookies(['token']);
   const navigate = useNavigate();
-  useEffect(() => (cookies.token ? navigate('/') : console.log('false')));
+  useEffect(() => (cookies.token ? navigate('/') : console.log('false')), []);
 
   const idCheckHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIdCheck(event.target.value);
