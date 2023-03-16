@@ -1,12 +1,12 @@
 import SignInLogo from './SignInLogo';
 import Button from '@customer/UI/Form/Button';
 import PlaceHolder from '@customer/UI/Form/PlaceHolder';
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ResetButton from '@customer/UI/Form/ResetButton';
-import ResetSortDiv from '@customer/UI/Form/ButtonSortDiv';
 import styled from 'styled-components';
+import { useCookies } from 'react-cookie';
 
 const SignInButton = styled(Button)`
   width: 300px;
@@ -15,6 +15,9 @@ const SignInButton = styled(Button)`
 const SignIn = () => {
   const [idCheck, setIdCheck] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
+  const [cookies, setCookie] = useCookies(['token']);
+  const navigate = useNavigate();
+  useEffect(() => (cookies.token ? navigate('/') : console.log('false')), []);
 
   const idCheckHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIdCheck(event.target.value);
@@ -28,11 +31,11 @@ const SignIn = () => {
     setIdCheck('');
   };
 
-  const register = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const register = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     console.log('memberEmail :', idCheck);
     console.log('memberPassword :', passwordCheck);
-    axios
+    await axios
       .post('http://localhost:8080/login', {
         memberEmail: idCheck,
         memberPassword: passwordCheck,
@@ -40,6 +43,8 @@ const SignIn = () => {
       .then((response) => {
         console.log('data :', response);
         console.log('headers :', response.headers);
+        setCookie('token', response.headers.authorization);
+        navigate('/');
       })
       .catch((error) => {
         console.log(error);
