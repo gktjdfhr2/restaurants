@@ -4,6 +4,7 @@ import Search from './customer/pages/Search';
 import CustomerInformation from './customer/pages/CustomerInformation';
 import SignIn from './customer/pages/SignIn';
 import SignUp from './customer/pages/SignUp';
+import ReservationHistory from '@customer/pages/CustomerInformation/ReservationHistory';
 import '@customer/styles/index.css';
 import Layout from '@customer/UI/Layouts/Layout';
 
@@ -17,6 +18,10 @@ function App() {
           <Route
             path="customer/InformationPage"
             element={<CustomerInformation />}
+          />
+          <Route
+            path="customer/InformationPage/ReservationHistory"
+            element={<ReservationHistory />}
           />
           <Route path="customer/SignIn" element={<SignIn />} />
           <Route path="customer/SignUp" element={<SignUp />} />
