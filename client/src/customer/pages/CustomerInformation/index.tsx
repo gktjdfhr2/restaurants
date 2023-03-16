@@ -52,12 +52,16 @@ const CustomerInformationSection = () => {
           <span>&gt;</span>
         </HistoryNavigation>
       </Link>
-      <HistoryNavigation title="원격 줄서기 내역">
-        <span>&gt;</span>
-      </HistoryNavigation>
-      <HistoryNavigation title="최근 본 매장">
-        <span>&gt;</span>
-      </HistoryNavigation>
+      <Link to="LineHistory">
+        <HistoryNavigation title="원격 줄서기 내역">
+          <span>&gt;</span>
+        </HistoryNavigation>
+      </Link>
+      <Link to="RecentViewHistory">
+        <HistoryNavigation title="최근 본 매장">
+          <span>&gt;</span>
+        </HistoryNavigation>
+      </Link>
     </>
   );
 };

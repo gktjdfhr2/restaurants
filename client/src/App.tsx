@@ -7,6 +7,8 @@ import SignUp from './customer/pages/SignUp';
 import ReservationHistory from '@customer/pages/CustomerInformation/ReservationHistory';
 import '@customer/styles/index.css';
 import Layout from '@customer/UI/Layouts/Layout';
+import RecentViewHistory from '@customer/pages/CustomerInformation/RecentViewHistory';
+import LineHistory from '@customer/pages/CustomerInformation/LineHistory';
 
 function App() {
   return (
@@ -22,6 +24,14 @@ function App() {
           <Route
             path="customer/InformationPage/ReservationHistory"
             element={<ReservationHistory />}
+          />
+          <Route
+            path="customer/InformationPage/LineHistory"
+            element={<LineHistory />}
+          />
+          <Route
+            path="customer/InformationPage/RecentViewHistory"
+            element={<RecentViewHistory />}
           />
           <Route path="customer/SignIn" element={<SignIn />} />
           <Route path="customer/SignUp" element={<SignUp />} />
