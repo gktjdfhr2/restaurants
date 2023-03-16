@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const HeaderSearch = styled.button.attrs({ type: 'button' })`
-  width: 100px;
+  width: 50px;
   height: 72px;
   background: url(/src/assets/images/magnifying-glass.png) no-repeat;
   background-size: contain;
