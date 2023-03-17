@@ -18,6 +18,12 @@ const ValidationErrorDiv = styled.div`
 const ValidationDiv = styled.div`
   opacity: 0.7;
 `;
+const PrevButton = styled.button`
+  background-color: white ;
+  border none;
+  font-size:30px;
+  position:absolute;
+`;
 
 const SignUp = () => {
   /** 입력값을 저장하는 State */
@@ -229,6 +235,7 @@ const SignUp = () => {
         console.log('data:', response);
         alert('가입완료! 로그인 페이지로 이동합니다.');
         navigate('../../customer/SignIn');
+        // response.headers.authorization
       })
       .catch((error) => {
         console.log(error);
@@ -276,6 +283,11 @@ const SignUp = () => {
   return (
     <>
       <SignUpContainer>
+        {signUpStep > 1 && (
+          <PrevButton onClick={() => setSignUpStep(signUpStep - 1)}>
+            &#60;
+          </PrevButton>
+        )}
         <PageTitle>회원가입 {signUpStep} /2</PageTitle>
         {signUpStep === 1 && (
           <AccountCheck

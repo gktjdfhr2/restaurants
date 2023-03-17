@@ -1,9 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Restaurants from './customer/pages/Restaurants';
 import Search from './customer/pages/Search';
-import ReservationPage from './customer/pages/ReservationPage';
 import CustomerInformation from './customer/pages/CustomerInformation';
-import RemoteLinePage from './customer/pages/RemoteLinePage';
 import SignIn from './customer/pages/SignIn';
 import SignUp from './customer/pages/SignUp';
 import '@customer/styles/index.css';
@@ -16,11 +14,6 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Restaurants />} />
           <Route path="customer/Search" element={<Search />} />
-          <Route path="customer/RemoteLinePage" element={<RemoteLinePage />} />
-          <Route
-            path="customer/ReservationPage"
-            element={<ReservationPage />}
-          />
           <Route
             path="customer/InformationPage"
             element={<CustomerInformation />}

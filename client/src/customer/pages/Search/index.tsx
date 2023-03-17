@@ -1,19 +1,30 @@
+import React, { useState, useCallback, FormEvent } from 'react';
+import styled from 'styled-components';
 import TextInput from '@customer/UI/Form/TextInput';
-import SearchContainer from './SearchContainer';
 import SearchButton from '@customer/UI/Form/SearchButton';
 import RecentKeywords from './RecentKeywords';
-import styled from 'styled-components';
 import RecommendKeywords from './RecommendKeywords';
-import React, { useState, useCallback } from 'react';
+import SearchResult from './SearchResult';
+import ResetButton from '@customer/UI/Form/ResetButton';
 
 const SearchForm = styled.form`
   position: relative;
   width: 100%;
   height: 46px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+`;
+const SearchContainer = styled.section`
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+`;
+
+const KeywordInput = styled(TextInput)`
+  padding: 0 40px;
 `;
 
 const Search = () => {
+  const [isSearch, setIsSearch] = useState(false);
   const [keyword, setKeyword] = useState('');
   const localStorage = window.localStorage;
   const historyDefault: Array<String> = JSON.parse(
@@ -26,68 +37,74 @@ const Search = () => {
   const keywordChangeHandle = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setKeyword(event.target.value);
+      event.target.value.length === 0 && setIsSearch(false);
     },
     [keyword]
   );
-  console.log('history', history);
 
-  const searchEvent = () => {
-    console.log('submit', keyword);
+  const searchEvent = (event: FormEvent, inputValue: string) => {
+    setKeyword(inputValue);
+    event.preventDefault();
 
-    // keyword &&
-    //   setHistory((prev) => {
-    //     localStorage.setItem(
-    //       'searchHistory',
-    //       JSON.stringify([keyword, ...prev])
-    //     );
-
-    //     return [keyword, ...prev];
-    //   });
-
-    // console.log(
-    //   'filter',
-    //   history.filter((value) => {
-    //     return value === keyword;
-    //   }).length
-    // );
-
-    keyword &&
-    history.filter((value) => {
-      return value === keyword;
-    }).length
+    inputValue.length === 0
+      ? setIsSearch(false)
+      : history.filter((value) => {
+          return value === inputValue;
+        }).length
       ? setHistory((prev) => {
-          prev.splice(history.indexOf(keyword), 1);
+          prev.splice(history.indexOf(inputValue), 1);
           localStorage.setItem(
             'searchHistory',
-            JSON.stringify([keyword, ...prev])
+            JSON.stringify([inputValue, ...prev])
           );
-
-          return [keyword, ...prev];
+          setIsSearch(true);
+          return [inputValue, ...prev];
         })
       : setHistory((prev) => {
           localStorage.setItem(
             'searchHistory',
-            JSON.stringify([keyword, ...prev])
+            JSON.stringify([inputValue, ...prev])
           );
-
-          return [keyword, ...prev];
+          setIsSearch(true);
+          return [inputValue, ...prev];
         });
   };
 
   return (
     <SearchContainer>
-      <SearchForm>
-        <TextInput
+      <SearchForm
+        onSubmit={(event) => {
+          searchEvent(event, keyword);
+        }}
+      >
+        <SearchButton type="submit" />
+        <KeywordInput
           placeholder="검색어를 입력해주세요"
           autoComplete="off"
           autoFocus={true}
           value={keyword}
           onChange={keywordChangeHandle}
         />
-        <SearchButton type="submit" onClick={searchEvent} />
+        {keyword && (
+          <ResetButton
+            onClick={() => {
+              setKeyword('');
+              setIsSearch(false);
+            }}
+          />
+        )}
       </SearchForm>
-      <RecentKeywords history={history} setHistory={setHistory} />
-      <RecommendKeywords />
+      <RecentKeywords
+        history={history}
+        setHistory={setHistory}
+        searchEvent={searchEvent}
+      />
+
+      {isSearch ? (
+        <SearchResult />
+      ) : (
+        <RecommendKeywords searchEvent={searchEvent} />
+      )}
     </SearchContainer>
   );
 };
