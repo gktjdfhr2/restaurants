@@ -15,7 +15,7 @@ import java.util.Date;
 public class Calls {
 
     @Id
-    @Column
+    @Column( name = "calls_id")
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private long callsId;
 

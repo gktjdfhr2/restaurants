@@ -15,7 +15,7 @@ import java.util.Date;
 public class Business {
 
     @Id
-    @Column(name = "memberId")
+    @Column(name = "business_id")
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private long businessId;
     @Column( name = "business_place")
