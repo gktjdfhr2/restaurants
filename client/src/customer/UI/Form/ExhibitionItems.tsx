@@ -25,6 +25,7 @@ const StoreInformation = styled.div`
 const StoreTitle = styled.div`
   font-size: 20px;
   font-weight: bold;
+  color: black;
 `;
 const StoreReviewContainer = styled.div`
   display: flex;
@@ -58,6 +59,7 @@ const CurrentScore = styled.span`
   height: 20px;
   display: inline-block;
   vertical-align: middle;
+  color: black;
 `;
 
 const ReservationButton = styled(Button)`

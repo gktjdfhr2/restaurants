@@ -34,8 +34,6 @@ const HistoryNavigation = styled.div`
 
 const CustomerInformationSection = () => {
   const [cookies] = useCookies(['token']);
-  // const navigate = useNavigate();
-  // useEffect(() => (cookies.token ? navigate('/') : console.log('false')), []);
   const testUserName = '최재혁';
 
   return (
@@ -47,18 +45,13 @@ const CustomerInformationSection = () => {
           <SignInNavigation title="로그인 하기" />
         </Link>
       )}
-      <Link to="ReservationHistory">
+      <Link to="/customer/ReservationHistory">
         <HistoryNavigation title="예약 내역">
           <span>&gt;</span>
         </HistoryNavigation>
       </Link>
-      <Link to="LineHistory">
+      <Link to="/customer/LineHistory">
         <HistoryNavigation title="원격 줄서기 내역">
-          <span>&gt;</span>
-        </HistoryNavigation>
-      </Link>
-      <Link to="RecentViewHistory">
-        <HistoryNavigation title="최근 본 매장">
           <span>&gt;</span>
         </HistoryNavigation>
       </Link>
