@@ -3,7 +3,7 @@ import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
 import { useState } from 'react';
 import SearchResultContainer from '@customer/UI/Form/SearchResultContainer';
 import ExhibitionItems from '@customer/UI/Form/ExhibitionItems';
-import HistoryContainer from '@customer/UI/Form/HistoryContainer';
+import MediumContainer from '@customer/UI/Form/MediumContainer';
 
 const LineHistory = () => {
   const [selectButton, setSelectButton] = useState({
@@ -14,7 +14,7 @@ const LineHistory = () => {
   return (
     <>
       <PageTitle>줄서기 내역</PageTitle>
-      <HistoryContainer>
+      <MediumContainer>
         <ToggleMenuButton
           selectFilter={selectButton.line}
           onClick={() => setSelectButton({ line: true, cancel: false })}
@@ -49,7 +49,7 @@ const LineHistory = () => {
             line={false}
           />
         </SearchResultContainer>
-      </HistoryContainer>
+      </MediumContainer>
     </>
   );
 };

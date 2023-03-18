@@ -3,7 +3,7 @@ import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
 import { useState } from 'react';
 import SearchResultContainer from '@customer/UI/Form/SearchResultContainer';
 import ExhibitionItems from '@customer/UI/Form/ExhibitionItems';
-import HistoryContainer from '@customer/UI/Form/HistoryContainer';
+import MediumContainer from '@customer/UI/Form/MediumContainer';
 
 const ReservationHistory = () => {
   const [selectButton, setSelectButton] = useState({
@@ -14,7 +14,7 @@ const ReservationHistory = () => {
   return (
     <>
       <PageTitle>예약 내역</PageTitle>
-      <HistoryContainer>
+      <MediumContainer>
         <ToggleMenuButton
           selectFilter={selectButton.reservation}
           onClick={() => setSelectButton({ reservation: true, cancel: false })}
@@ -39,7 +39,7 @@ const ReservationHistory = () => {
             line={false}
           />
         </SearchResultContainer>
-      </HistoryContainer>
+      </MediumContainer>
     </>
   );
 };

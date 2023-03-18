@@ -1,6 +1,6 @@
 import PageTitle from '@customer/UI/Form/PageTitle';
 import ExhibitionItems from '@customer/UI/Form/ExhibitionItems';
-import HistoryContainer from '@customer/UI/Form/HistoryContainer';
+import MediumContainer from '@customer/UI/Form/MediumContainer';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useState } from 'react';
@@ -79,7 +79,7 @@ const RecentViewHistory = () => {
   return (
     <>
       <PageTitle>최근 본 매장</PageTitle>
-      <HistoryContainer>
+      <MediumContainer>
         {history.length === 0 ? (
           <>
             <NoneHistory>최근 본 매장이 없네요!</NoneHistory>
@@ -106,7 +106,7 @@ const RecentViewHistory = () => {
             </Link>
           ))
         )}
-      </HistoryContainer>
+      </MediumContainer>
     </>
   );
 };
