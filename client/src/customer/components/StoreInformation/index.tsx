@@ -4,6 +4,7 @@ import MediumContainer from '@customer/UI/Form/MediumContainer';
 import styled from 'styled-components';
 import StoreMoreInformation from './StoreMoreInformation';
 import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
+import StoreMenu from './StoreMenu';
 
 const StoreImages = styled.div`
   //TODO: props로 서버에서 이미지 받아와서 background지정
@@ -88,6 +89,7 @@ const StoreInformation = () => {
           <MenuNavigation selectFilter={false}>최근리뷰</MenuNavigation>
           <MenuNavigation selectFilter={false}>매장정보</MenuNavigation>
         </MenuNavigationContainer>
+        <StoreMenu />
       </StoreMoreInformationContainer>
     </MediumContainer>
   );
