@@ -27,4 +27,6 @@ public class Review {
 
     @Column( name = "review_image_id")
     private long reviewImageId;
+
+
 }
