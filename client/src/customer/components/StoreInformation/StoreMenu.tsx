@@ -13,7 +13,7 @@ const PageTitle = styled.div`
   margin: 0 auto 50px auto;
 `;
 
-const MenuItems = styled.div`
+const MenuItem = styled.div`
   display: flex;
   width: 100%;
   height: 100px;   
@@ -68,27 +68,27 @@ const StoreMenu = () => {
   return (
     <StoreMenuContainer>
       <PageTitle>전체 메뉴</PageTitle>
-      <MenuItems>
+      <MenuItem>
         <MenuPicture />
         <MenuInformationContainer>
           <MenuTitle>눈꽃 갈비살 (100g)</MenuTitle>
           <MenuPrice>13,900원</MenuPrice>
         </MenuInformationContainer>
-      </MenuItems>
-      <MenuItems>
+      </MenuItem>
+      <MenuItem>
         <MenuPicture />
         <MenuInformationContainer>
           <MenuTitle>눈꽃 갈비살 (100g)</MenuTitle>
           <MenuPrice>13,900원</MenuPrice>
         </MenuInformationContainer>
-      </MenuItems>
-      <MenuItems>
+      </MenuItem>
+      <MenuItem>
         <MenuPicture />
         <MenuInformationContainer>
           <MenuTitle>눈꽃 갈비살 (100g)</MenuTitle>
           <MenuPrice>13,900원</MenuPrice>
         </MenuInformationContainer>
-      </MenuItems>
+      </MenuItem>
 
       <MoreMenuButton>메뉴 전체보기 &gt;</MoreMenuButton>
     </StoreMenuContainer>
