@@ -39,21 +39,21 @@ const StoreReviews = () => {
         writer="하성록"
         timeStamp="10분전"
         reviewContent="내용"
-        reviewPicture={[]}
+        reviewPicture={['1', '2', '3', '4']}
       />
       <ReviewItem
         reviewScore={3.7}
         writer="하성록"
         timeStamp="10분전"
         reviewContent="내용"
-        reviewPicture={[]}
+        reviewPicture={['1', '2', '3']}
       />
       <ReviewItem
         reviewScore={3.7}
         writer="하성록"
         timeStamp="10분전"
         reviewContent="내용"
-        reviewPicture={[]}
+        reviewPicture={['1']}
       />
     </StoreReviewContainer>
   );
