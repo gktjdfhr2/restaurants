@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import MediumContainer from '@customer/UI/Form/MediumContainer';
 import styled from 'styled-components';
 import StoreMoreInformation from './StoreMoreInformation';
@@ -7,7 +7,7 @@ import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
 import StoreMenu from './StoreMenu';
 import StoreReviews from './StoreReviews';
 
-const StoreImages = styled.div`
+const StoreImage = styled.div`
   //TODO: props로 서버에서 이미지 받아와서 background지정
   background: url(/src/assets/images/placeholder.png);
   background-repeat: no-repeat;
@@ -51,6 +51,7 @@ const StoreInformation = () => {
   let storeName = storeInformation.storeId ? storeInformation.storeId : '';
   storeName = storeName.toString();
 
+  /** 최근 본 가게정보 로컬 스토리지에 추가 */
   useEffect(() => {
     history.filter((value) => {
       return value === storeName;
@@ -78,7 +79,7 @@ const StoreInformation = () => {
 
   return (
     <MediumContainer>
-      <StoreImages />
+      <StoreImage />
       <StoreMoreInformationContainer>
         <StoreMoreInformation
           storeName="소우데스"

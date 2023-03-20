@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import ReviewScore from '@customer/UI/Form/ReviewScore';
 import StoreInformationTitle from '@customer/UI/Form/StoreInformationTitle';
+import ReviewItem from '@customer/UI/Form/ReviewItem';
 
 const StoreReviewContainer = styled.div`
   width: 100%;
@@ -26,13 +26,6 @@ const MoreReviewButton = styled.button`
     opacity: 1;
   }
 `;
-const ReviewContainer = styled.div`
-  // border-top: 1px solid gainsboro;
-  display:flex
-  width: 100%;
-  height: 520px;
-  padding: 10px;
-`;
 
 const StoreReviews = () => {
   return (
@@ -41,16 +34,13 @@ const StoreReviews = () => {
         <StoreInformationTitle>리뷰 22</StoreInformationTitle>
         <MoreReviewButton>더보기</MoreReviewButton>
       </TitleContainer>
-
-      <ReviewContainer>
-        //height 140px
-        {/* <ReviewScore reviewScore={3.8} />
-        왼쪽 오른쪽 나눠서 묶기
-        <ReviewInformation>하성록 · 10분전</ReviewInformation> */}
-        {/* <MenuPicture />
-      TODO:reviewContainer flex로 만들어서 오른쪽에 4개까지 보여주기
-      */}
-      </ReviewContainer>
+      <ReviewItem
+        reviewScore={3.7}
+        writer="하성록"
+        timeStamp="10분전"
+        reviewContent="내용"
+        reviewPicture={[]}
+      />
     </StoreReviewContainer>
   );
 };

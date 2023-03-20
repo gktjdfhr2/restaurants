@@ -12,9 +12,6 @@ const SignUpContainer = styled.section`
   margin: 0 auto;
   border: 1px solid black;
 `;
-const PasswordDiv = styled.div`
-  opacity: 0.7;
-`;
 
 const ValidationErrorDiv = styled.div`
   color: red;
@@ -47,12 +44,12 @@ const SignUp = () => {
   const [memberInfoError, setMemberInfoError] = useState({
     memberEmail: false,
     memberEmailCheckMessage: (
-      <PasswordDiv>이메일 양식 ex&#41;example@example.com</PasswordDiv>
+      <ValidationDiv>이메일 양식 ex&#41;example@example.com</ValidationDiv>
     ),
     memberPassword: false,
     memberPasswordCheck: false,
     memberPasswordCheckMessage: (
-      <PasswordDiv>문자,숫자를 조합하여 8자 이상을 사용하세요.</PasswordDiv>
+      <ValidationDiv>문자,숫자를 조합하여 8자 이상을 사용하세요.</ValidationDiv>
     ),
     memberName: false,
     memberNameCheck: <ValidationDiv>ex&#41; 홍길동</ValidationDiv>,
@@ -86,7 +83,7 @@ const SignUp = () => {
       ...prev,
       memberEmail: isEmailValid,
       memberEmailCheckMessage: isEmailValid ? (
-        <PasswordDiv>사용 가능한 아이디 입니다.</PasswordDiv>
+        <ValidationDiv>사용 가능한 아이디 입니다.</ValidationDiv>
       ) : (
         <ValidationErrorDiv>
           이메일 양식에 맞게 작성해주세요.
@@ -112,7 +109,7 @@ const SignUp = () => {
         memberPassword: isPasswordValid,
         memberPasswordCheckMessage: isPasswordValid ? (
           event.target.value === passwordCheck ? (
-            <PasswordDiv>사용 가능한 비밀번호 입니다.</PasswordDiv>
+            <ValidationDiv>사용 가능한 비밀번호 입니다.</ValidationDiv>
           ) : (
             <ValidationErrorDiv>
               일치하지 않는 비밀번호 입니다.
@@ -142,7 +139,7 @@ const SignUp = () => {
           ...prev,
           memberPasswordCheck: isPasswordCheckSame,
           memberPasswordCheckMessage: isPasswordCheckSame ? (
-            <PasswordDiv>사용 가능한 비밀번호 입니다.</PasswordDiv>
+            <ValidationDiv>사용 가능한 비밀번호 입니다.</ValidationDiv>
           ) : (
             <ValidationErrorDiv>
               비밀번호가 일치하지 않습니다.
