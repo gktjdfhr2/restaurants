@@ -3,18 +3,16 @@ import ReviewScore from '@customer/UI/Form/ReviewScore';
 import GrayDIv from '@customer/UI/Form/GrayDIv';
 
 const ReviewContainer = styled.div`
-  // border-top: 1px solid gainsboro;
-
   display: flex;
   justify-content: space-between
   width: 100%;
-  height: 520px;
-  padding: 10px;
+  height:120px;
+  padding: 10px;border-top: 1px solid gainsboro;
 `;
 
 const ReviewInformationContainer = styled.div`
   width: 300px;
-  height: 140px;
+  height: 120px;
 `;
 
 const ReviewContent = styled.div`
