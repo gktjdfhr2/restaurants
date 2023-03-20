@@ -1,19 +1,11 @@
 import styled from 'styled-components';
 import ReviewScore from '@customer/UI/Form/ReviewScore';
+import GrayDIv from '@customer/UI/Form/GrayDIv';
+import StoreInformationTitle from '@customer/UI/Form/StoreInformationTitle';
 
 const InformationContainer = styled.div`
   margin-left: 20px;
   flex-grow: 1;
-`;
-const StoreTitle = styled.div`
-  font-size: 20px;
-  font-weight: bold;
-  color: black;
-`;
-
-const Distance = styled.div`
-  margin: 2px 0;
-  color: gray;
 `;
 
 const StoreMoreInformation = (props: {
@@ -23,8 +15,8 @@ const StoreMoreInformation = (props: {
 }) => {
   return (
     <InformationContainer>
-      <StoreTitle>{props.storeName}</StoreTitle>
-      <Distance>{props.storeAddress}</Distance>
+      <StoreInformationTitle>{props.storeName}</StoreInformationTitle>
+      <GrayDIv>{props.storeAddress}</GrayDIv>
       <ReviewScore reviewScore={props.reviewScore} />
     </InformationContainer>
   );

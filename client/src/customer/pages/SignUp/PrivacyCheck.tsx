@@ -1,32 +1,12 @@
 import { ChangeEventHandler, MouseEventHandler } from 'react';
-import styled from 'styled-components';
-import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
-import Button from '@customer/UI/Form/Button';
 import PlaceHolderText from '@customer/UI/Form/PlaceHolder';
-import PageTitle from '@customer/UI/Form/PageTitle';
-import MemberType from './MemberType';
+import { SignUp } from '@customer/components/SignUp';
+import styled from 'styled-components';
 
-const ElementContainer = styled(ButtonSortDiv)`
-  width: 70%;
-  margin: 0 auto;
-`;
-
-const InputContainer = styled(ButtonSortDiv)`
+const MemberType = styled.select`
   width: 100%;
-  margin: 0 auto;
-  height: 100px;
-`;
-
-const NextButton = styled(Button)`
-  margin-top: 30px;
-`;
-
-const PageTitleDiv = styled(PageTitle)`
-  margin: 0 0 20px 0;
-  font-size: 15px;
-  text-align: left;
-  font-weight: normal;
-  color: gray;
+  height: 46px;
+  padding: 0 5px;
 `;
 
 const PrivacyCheck = (props: {
@@ -44,12 +24,12 @@ const PrivacyCheck = (props: {
 }) => {
   return (
     <>
-      <ElementContainer>
-        <PageTitleDiv>
+      <SignUp.ElementContainer>
+        <SignUp.PageTitleDiv>
           맛집 지도는 개인 정보를 비공개로 안전하게 유지합니다.
           <br />
-        </PageTitleDiv>
-        <InputContainer>
+        </SignUp.PageTitleDiv>
+        <SignUp.InputContainer>
           <PlaceHolderText
             content="이름"
             type="text"
@@ -57,8 +37,8 @@ const PrivacyCheck = (props: {
             onChange={props.memberNameHandle}
           />
           {props.nameCheckValidation}
-        </InputContainer>
-        <InputContainer>
+        </SignUp.InputContainer>
+        <SignUp.InputContainer>
           <PlaceHolderText
             content="핸드폰 번호"
             type="text"
@@ -66,8 +46,8 @@ const PrivacyCheck = (props: {
             onChange={props.memberPhoneHandle}
           />
           {props.phoneCheckValidation}
-        </InputContainer>
-        <InputContainer>
+        </SignUp.InputContainer>
+        <SignUp.InputContainer>
           <PlaceHolderText
             content="주소"
             type="text"
@@ -75,14 +55,18 @@ const PrivacyCheck = (props: {
             onChange={props.memberAddressHandle}
           />
           {props.addressCheckValidation}
-        </InputContainer>
+        </SignUp.InputContainer>
         <MemberType defaultValue="0" onChange={props.memberRoleHandle}>
           <option value="0">고객</option>
           <option value="1">사업자</option>
         </MemberType>
 
-        <NextButton type="button" title="가입하기" onClick={props.onClick} />
-      </ElementContainer>
+        <SignUp.NextButton
+          type="button"
+          title="가입하기"
+          onClick={props.onClick}
+        />
+      </SignUp.ElementContainer>
     </>
   );
 };

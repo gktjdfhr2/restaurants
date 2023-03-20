@@ -2,7 +2,7 @@ import PageTitle from '@customer/UI/Form/PageTitle';
 import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
 import { useState } from 'react';
 import SearchResultContainer from '@customer/UI/Form/SearchResultContainer';
-import ExhibitionItems from '@customer/UI/Form/ExhibitionItems';
+import ExhibitionItem from '@customer/UI/Form/ExhibitionItem';
 import MediumContainer from '@customer/UI/Form/MediumContainer';
 
 const LineHistory = () => {
@@ -28,7 +28,7 @@ const LineHistory = () => {
           취소 / 노쇼
         </ToggleMenuButton>
         <SearchResultContainer>
-          <ExhibitionItems
+          <ExhibitionItem
             title="소우데스"
             score={3.9}
             countReview={303}
@@ -38,7 +38,7 @@ const LineHistory = () => {
             reservation={true}
             line={true}
           />
-          <ExhibitionItems
+          <ExhibitionItem
             title="소우데스"
             score={3.5}
             countReview={33}

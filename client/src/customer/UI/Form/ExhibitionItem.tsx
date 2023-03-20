@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import Button from '@customer/UI/Form/Button';
+import GrayDIv from './GrayDIv';
 
-const ResultItems = styled.div`
+const ResultItem = styled.div`
   display: flex;
   width: 100%;
   height: 124px;   
@@ -18,7 +19,7 @@ const StorePicture = styled.div`
   background-size: contain;
 `;
 
-const StoreInformation = styled.div`
+const StoreInformationContainer = styled.div`
   margin-left: 20px;
   flex-grow: 1;
 `;
@@ -65,15 +66,16 @@ const CurrentScore = styled.span`
 const ReservationButton = styled(Button)`
   width: 80px;
   height: 40px;
-  margin-right: 20px;
 `;
 
-const Distance = styled.div`
-  margin: 2px 0;
-  color: gray;
+const ButtonContainer = styled.div`
+  display: flex;
+  width: 180px;
+  height: 40px;
+  justify-content: space-between;
 `;
 
-const ExhibitionItems = (props: {
+const ExhibitionItem = (props: {
   title: string;
   score: number;
   countReview: number;
@@ -84,9 +86,9 @@ const ExhibitionItems = (props: {
   line?: boolean;
 }) => {
   return (
-    <ResultItems>
+    <ResultItem>
       <StorePicture />
-      <StoreInformation>
+      <StoreInformationContainer>
         <StoreTitle>{props.title}</StoreTitle>
         <StoreReviewContainer>
           <ReviewScore>
@@ -99,13 +101,17 @@ const ExhibitionItems = (props: {
             </CurrentScore>
           </ReviewScore>
         </StoreReviewContainer>
-        <Distance>
+        <GrayDIv>
           {props.condition} · {props.address} · {props.distance}km
-        </Distance>
-        {props.reservation && <ReservationButton>예약 하기</ReservationButton>}
-        {props.line && <ReservationButton>줄서기</ReservationButton>}
-      </StoreInformation>
-    </ResultItems>
+        </GrayDIv>
+        <ButtonContainer>
+          {props.reservation && (
+            <ReservationButton>예약 하기</ReservationButton>
+          )}
+          {props.line && <ReservationButton>줄서기</ReservationButton>}
+        </ButtonContainer>
+      </StoreInformationContainer>
+    </ResultItem>
   );
 };
-export default ExhibitionItems;
+export default ExhibitionItem;

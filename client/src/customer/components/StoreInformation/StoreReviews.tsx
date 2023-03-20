@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import ReviewScore from '@customer/UI/Form/ReviewScore';
+import StoreInformationTitle from '@customer/UI/Form/StoreInformationTitle';
 
 const StoreReviewContainer = styled.div`
   width: 100%;
@@ -15,12 +16,7 @@ const TitleContainer = styled.div`
   justify-content: space-between;
 `;
 
-const PageTitle = styled.div`
-  font-size: 20px;
-  font-weight: bold;
-`;
-
-const MoreMenuButton = styled.button`
+const MoreReviewButton = styled.button`
   font-size: 20px;
   border: none;
   opacity: 0.7;
@@ -38,17 +34,12 @@ const ReviewContainer = styled.div`
   padding: 10px;
 `;
 
-const ReviewInformation = styled.div`
-  margin: 2px 0;
-  color: gray;
-`;
-
 const StoreReviews = () => {
   return (
     <StoreReviewContainer>
       <TitleContainer>
-        <PageTitle>리뷰 22</PageTitle>
-        <MoreMenuButton>더보기</MoreMenuButton>
+        <StoreInformationTitle>리뷰 22</StoreInformationTitle>
+        <MoreReviewButton>더보기</MoreReviewButton>
       </TitleContainer>
 
       <ReviewContainer>

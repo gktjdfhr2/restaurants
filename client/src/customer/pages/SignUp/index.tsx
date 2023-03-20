@@ -3,10 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 import PageTitle from '@customer/UI/Form/PageTitle';
-import SignUpContainer from './SignUpContainer';
 import AccountCheck from './AccountCheck';
 import PrivacyCheck from './PrivacyCheck';
 
+const SignUpContainer = styled.section`
+  width: 50%;
+  height: 80vh;
+  margin: 0 auto;
+  border: 1px solid black;
+`;
 const PasswordDiv = styled.div`
   opacity: 0.7;
 `;
