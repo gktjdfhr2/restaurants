@@ -6,6 +6,8 @@ import StoreMoreInformation from './StoreMoreInformation';
 import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
 import StoreMenu from './StoreMenu';
 import StoreReviews from './StoreReviews';
+import OperatingTime from './OperatingTime';
+import Amenities from './Amenities';
 
 const StoreImage = styled.div`
   //TODO: props로 서버에서 이미지 받아와서 background지정
@@ -93,6 +95,8 @@ const StoreInformation = () => {
         </MenuNavigationContainer>
         <StoreMenu />
         <StoreReviews />
+        <OperatingTime />
+        <Amenities />
       </StoreMoreInformationContainer>
     </MediumContainer>
   );

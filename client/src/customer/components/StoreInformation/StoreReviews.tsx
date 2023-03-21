@@ -27,6 +27,7 @@ const MoreReviewButton = styled.button`
 `;
 
 const StoreReviews = () => {
+  //TODO: 정보 props로 받아와서 뿌려주기
   return (
     <StoreReviewContainer>
       <TitleContainer>
