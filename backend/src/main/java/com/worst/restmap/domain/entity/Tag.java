@@ -23,6 +23,6 @@ public class Tag {
     private String tagName;
 
     @OneToMany
-    @JoinColumn( name = "tag_id")
+    @JoinColumn( name = "business_tag_tag_id")
     private List<BusinessTag> businessTags = new ArrayList<>();
 }

@@ -17,7 +17,7 @@ public class Review {
     private long reivewBusinessId;
 
     @Column( name = "review_member_email")
-    private long reviewMemberEmail;
+    private String reviewMemberEmail;
 
     @Column( name = "review_score")
     private BigDecimal reviewScore;

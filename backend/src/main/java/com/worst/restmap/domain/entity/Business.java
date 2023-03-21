@@ -50,7 +50,6 @@ public class Business {
 //    @Column(name = "business_close_day")
 //    private LocalDate businessCloseDay;
 
-    @OneToMany
-    @JoinColumn( name = "business_id")
+    @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BusinessTag> BusinessTags = new ArrayList<>();
 }

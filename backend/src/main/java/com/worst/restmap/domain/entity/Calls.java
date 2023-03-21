@@ -23,7 +23,7 @@ public class Calls {
     private long callsBusinessId;
 
     @Column( name = "calls_member_email")
-    private long callsMemberEmail;
+    private String callsMemberEmail;
 
     @Column( name = "calls_time")
     private Date callsTime;

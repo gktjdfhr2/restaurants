@@ -17,11 +17,11 @@ public class BusinessTag {
     @Column( name = "business_tag_tag_id")
     private long businessTagTagId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "business_tag_business_id", insertable = false, updatable = false)
     private Business business;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "business_tag_tag_id", insertable = false, updatable = false)
     private Tag tag;
 }

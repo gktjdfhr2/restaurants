@@ -9,7 +9,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "search")
+@Table(name = "`search`")
 @Getter
 @Setter
 @Builder
@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class Search {
 
     @Id
-    @Column(name = "search")
+    @Column(name = "search_id")
     private long searchId;
     @Column(name = "search_member_email")
     private String searchMemberEmail;
