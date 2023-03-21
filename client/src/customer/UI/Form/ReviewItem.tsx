@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const ReviewContainer = styled.div`
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
   width: 100%;
   height:120px;
   padding: 10px;border-top: 1px solid gainsboro;
