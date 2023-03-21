@@ -8,22 +8,23 @@ const ReviewContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 120px;
+  // height: 120px;
   padding: 10px;
   border-top: 1px solid gainsboro;
 `;
 
 const ReviewInformationContainer = styled.div`
-  width: 300px;
-  height: 120px;
+  width: 100%;
+  // height: 120px;
 `;
 
 const ReviewContent = styled.div`
   word-break: break-word;
+  margin: 10px 0;
 `;
 const ReviewPicture = styled.div<{ pictureCount: number }>`
   flex-grow: ${(props) => 1 / props.pictureCount};
-  height: 100px;
+  height: 200px;
   //TODO: 이미지 서버에서 받고 props로 설정해서 뿌려주기
   background: url(/src/assets/images/placeholder.png);
   background-repeat: no-repeat;
@@ -38,7 +39,7 @@ const ReviewPicture = styled.div<{ pictureCount: number }>`
 
 const ReviewPictureContainer = styled.div`
   width: 100%;
-  height: 140px;
+  // height: 210px;
   display: flex;
 `;
 const ReviewItem = (props: {
@@ -72,23 +73,23 @@ const ReviewItem = (props: {
         <GrayDIv>
           {props.writer} · {props.timeStamp}
         </GrayDIv>
+        <ReviewPictureContainer>
+          {props.reviewPicture.map((value, index) => {
+            return (
+              <ReviewPicture
+                key={index}
+                pictureCount={props.reviewPicture.length}
+                onClick={() => setShowPicture(!showPicture)}
+              >
+                {showPicture && (
+                  <PictureDialog onClick={() => setShowPicture(!showPicture)} />
+                )}
+              </ReviewPicture>
+            );
+          })}
+        </ReviewPictureContainer>
         <ReviewContent>{props.reviewContent}</ReviewContent>
       </ReviewInformationContainer>
-      <ReviewPictureContainer>
-        {props.reviewPicture.map((value, index) => {
-          return (
-            <ReviewPicture
-              key={index}
-              pictureCount={props.reviewPicture.length}
-              onClick={() => setShowPicture(!showPicture)}
-            >
-              {showPicture && (
-                <PictureDialog onClick={() => setShowPicture(!showPicture)} />
-              )}
-            </ReviewPicture>
-          );
-        })}
-      </ReviewPictureContainer>
     </ReviewContainer>
   );
 };

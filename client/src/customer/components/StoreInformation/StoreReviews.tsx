@@ -4,7 +4,6 @@ import ReviewItem from '@customer/UI/Form/ReviewItem';
 
 const StoreReviewContainer = styled.div`
   width: 100%;
-  height: 430px;
   border-bottom: 10px solid gainsboro;
 `;
 
@@ -47,6 +46,13 @@ const StoreReviews = () => {
         timeStamp="10분전"
         reviewContent="내용"
         reviewPicture={['1', '2', '3']}
+      />
+      <ReviewItem
+        reviewScore={3.7}
+        writer="하성록"
+        timeStamp="10분전"
+        reviewContent="내용"
+        reviewPicture={[]}
       />
       <ReviewItem
         reviewScore={3.7}
