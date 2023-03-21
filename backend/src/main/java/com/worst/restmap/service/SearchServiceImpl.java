@@ -38,6 +38,7 @@ public class SearchServiceImpl implements SearchService{
     }
 
     @Override
+    @Transactional
     public ResponseEntity<StatusCode> findStoreDetail(long id) {
         Business business = businessRepository.findBusinessByBusinessId(id).orElseGet(Business::new);
         return new JsonResponse().send(HttpStatus.OK, StatusCode.builder().resCode("").resMsg("조회완료").data(business).build());
