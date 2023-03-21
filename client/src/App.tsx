@@ -4,9 +4,12 @@ import Search from './customer/pages/Search';
 import CustomerInformation from './customer/pages/CustomerInformation';
 import SignIn from './customer/pages/SignIn';
 import SignUp from './customer/pages/SignUp';
+import ReservationHistory from '@customer/pages/CustomerInformation/ReservationHistory';
 import '@customer/styles/index.css';
 import Layout from '@customer/UI/Layouts/Layout';
-
+import RecentViewHistory from '@customer/pages/CustomerInformation/RecentViewHistory';
+import LineHistory from '@customer/pages/CustomerInformation/LineHistory';
+import StoreInformation from './customer/components/StoreInformation';
 function App() {
   return (
     <BrowserRouter>
@@ -15,11 +18,24 @@ function App() {
           <Route path="/" element={<Restaurants />} />
           <Route path="customer/Search" element={<Search />} />
           <Route
-            path="customer/InformationPage"
+            path="customer/InformationPage/"
             element={<CustomerInformation />}
+          />
+          <Route
+            path="customer/ReservationHistory"
+            element={<ReservationHistory />}
+          />
+          <Route path="customer/LineHistory" element={<LineHistory />} />
+          <Route
+            path="customer/RecentViewHistory"
+            element={<RecentViewHistory />}
           />
           <Route path="customer/SignIn" element={<SignIn />} />
           <Route path="customer/SignUp" element={<SignUp />} />
+          <Route
+            path="customer/StoreInformation/:storeId"
+            element={<StoreInformation />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

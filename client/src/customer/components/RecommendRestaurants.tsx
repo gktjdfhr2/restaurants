@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import PageTitle from '@customer/UI/Form/PageTitle';
-import ExhibitionItems from '@customer/UI/Form/ExhibitionItems';
+import ExhibitionItem from '@customer/UI/Form/ExhibitionItem';
+import RecommendTypeSelect from '@customer/UI/Form/RecommendTypeSelect';
 
 const RecommendContainer = styled.div`
   display: flex;
@@ -12,12 +13,6 @@ const RecommendContainer = styled.div`
 const Title = styled(PageTitle)`
   margin: 40px 0;
   text-align: left;
-`;
-
-const RecommendType = styled.select`
-  width: 80px;
-  height: 40px;
-  padding: 0 5px;
 `;
 
 const TitleContainer = styled.div`
@@ -32,12 +27,12 @@ const RecommendRestaurants = () => {
     <RecommendContainer>
       <TitleContainer>
         <Title>맛집지도 추천 맛집!</Title>
-        <RecommendType defaultValue="recommend">
+        <RecommendTypeSelect defaultValue="recommend">
           <option value="recommend">추천순</option>
           <option value="distance">거리순</option>
-        </RecommendType>
+        </RecommendTypeSelect>
       </TitleContainer>
-      <ExhibitionItems
+      <ExhibitionItem
         title="소우데스"
         score={3.9}
         countReview={303}

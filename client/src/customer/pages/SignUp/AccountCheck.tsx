@@ -1,21 +1,10 @@
 import { ChangeEventHandler, MouseEventHandler } from 'react';
 import styled from 'styled-components';
 import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
-import Button from '@customer/UI/Form/Button';
 import PlaceHolderText from '@customer/UI/Form/PlaceHolder';
 import ResetButton from '@customer/UI/Form/ResetButton';
-import PageTitle from '@customer/UI/Form/PageTitle';
+import { SignUp } from '@customer/components/SignUp';
 
-const ElementContainer = styled(ButtonSortDiv)`
-  width: 70%;
-  margin: 0 auto;
-`;
-
-const EmailInputContainer = styled(ButtonSortDiv)`
-  width: 100%;
-  margin: 0 auto;
-  height: 100px;
-`;
 const PasswordInputContainer = styled(ButtonSortDiv)`
   width: 100%;
   margin: 0 auto;
@@ -23,23 +12,6 @@ const PasswordInputContainer = styled(ButtonSortDiv)`
 `;
 const ButtonContainer = styled(ButtonSortDiv)`
   margin: 0 auto 10px auto;
-`;
-
-const NextButton = styled(Button)`
-  margin-top: 30px;
-`;
-
-const ValidationCheckDiv = styled.div`
-  color: red;
-  opacity: 0.7;
-`;
-
-const PageTitleDiv = styled(PageTitle)`
-  margin: 0 0 20px 0;
-  font-size: 15px;
-  text-align: left;
-  font-weight: normal;
-  color: gray;
 `;
 
 const AccountCheck = (props: {
@@ -57,13 +29,13 @@ const AccountCheck = (props: {
 }) => {
   return (
     <>
-      <ElementContainer>
-        <PageTitleDiv>
+      <SignUp.ElementContainer>
+        <SignUp.PageTitleDiv>
           하나의 계정으로
           <br />
           모든 맛집지도 서비스를 이용하실 수 있습니다.
-        </PageTitleDiv>
-        <EmailInputContainer>
+        </SignUp.PageTitleDiv>
+        <SignUp.InputContainer>
           <ButtonContainer>
             <PlaceHolderText
               content="이메일 주소"
@@ -77,7 +49,7 @@ const AccountCheck = (props: {
           </ButtonContainer>
 
           {props.emailValidation}
-        </EmailInputContainer>
+        </SignUp.InputContainer>
 
         <PasswordInputContainer>
           <PlaceHolderText
@@ -95,8 +67,8 @@ const AccountCheck = (props: {
           {props.passwordCheckValidation}
         </PasswordInputContainer>
 
-        <NextButton type="button" title="다음" onClick={props.onClick} />
-      </ElementContainer>
+        <SignUp.NextButton type="button" title="다음" onClick={props.onClick} />
+      </SignUp.ElementContainer>
     </>
   );
 };

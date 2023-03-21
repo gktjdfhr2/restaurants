@@ -43,7 +43,9 @@ const SignIn = () => {
       .then((response) => {
         console.log('data :', response);
         console.log('headers :', response.headers);
+
         setCookie('token', response.headers.authorization);
+        //TODO: 쿠키 refresh  추가
         navigate('/');
       })
       .catch((error) => {

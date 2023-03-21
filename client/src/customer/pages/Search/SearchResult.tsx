@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import ExhibitionItems from '../../UI/Form/ExhibitionItems';
+import ExhibitionItem from '../../UI/Form/ExhibitionItem';
 import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
 import SearchResultContainer from '@customer/UI/Form/SearchResultContainer';
 
-const ButtonContainer = styled.div`
+const MenuButtonContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -22,7 +22,7 @@ const SearchResult = () => {
 
   return (
     <SearchResultContainer>
-      <ButtonContainer>
+      <MenuButtonContainer>
         <ToggleMenuButton
           title="전체"
           selectFilter={selectFilter.all}
@@ -44,9 +44,9 @@ const SearchResult = () => {
             setSelectFilter({ all: false, reservation: false, line: true })
           }
         />
-      </ButtonContainer>
+      </MenuButtonContainer>
 
-      <ExhibitionItems
+      <ExhibitionItem
         title="소우데스"
         score={3.9}
         countReview={303}

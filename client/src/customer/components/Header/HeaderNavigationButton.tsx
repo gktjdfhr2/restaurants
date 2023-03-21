@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const HeaderNavigationButton = styled.button.attrs({ type: 'button' })`
-  width: 80px;
+  width: 100px;
   height: 72px;
   border: none;
   background: none;
