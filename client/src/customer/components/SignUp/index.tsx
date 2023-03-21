@@ -4,8 +4,8 @@ import { default as NextButton } from './NextButton';
 import { default as PageTitleDiv } from './PageTitleDiv';
 
 export const SignUp = {
-  ElementContainer: ElementContainer,
-  InputContainer: InputContainer,
-  NextButton: NextButton,
-  PageTitleDiv: PageTitleDiv,
+  ElementContainer,
+  InputContainer,
+  NextButton,
+  PageTitleDiv,
 };
