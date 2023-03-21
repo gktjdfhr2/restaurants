@@ -6,6 +6,7 @@ import com.worst.restmap.domain.dto.SearchDto;
 import com.worst.restmap.service.SearchService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.expression.spel.support.StandardTypeComparator;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Component;
@@ -27,5 +28,13 @@ public class SearchController {
         String memberEmail = customUserDetail.getUsername();
         return searchService.findStore(keyword, searchDto);
     }
+
+    @GetMapping("/store/{id}")
+    @Transactional
+    public ResponseEntity<StatusCode> storeDetail(@AuthenticationPrincipal CustomUserDetail customUserDetail,
+                                                  @PathVariable long id) {
+        return searchService.findStoreDetail(id);
+    }
+
 
 }

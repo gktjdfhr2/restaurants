@@ -5,7 +5,9 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "`business`")
@@ -47,4 +49,8 @@ public class Business {
     private LocalTime businessBreakEnd;
 //    @Column(name = "business_close_day")
 //    private LocalDate businessCloseDay;
+
+    @OneToMany
+    @JoinColumn( name = "business_id")
+    private List<BusinessTag> BusinessTags = new ArrayList<>();
 }

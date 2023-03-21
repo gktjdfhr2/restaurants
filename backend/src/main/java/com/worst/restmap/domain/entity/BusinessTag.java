@@ -17,4 +17,11 @@ public class BusinessTag {
     @Column( name = "business_tag_tag_id")
     private long businessTagTagId;
 
+    @ManyToOne
+    @JoinColumn(name = "business_tag_business_id", insertable = false, updatable = false)
+    private Business business;
+
+    @ManyToOne
+    @JoinColumn(name = "business_tag_tag_id", insertable = false, updatable = false)
+    private Tag tag;
 }

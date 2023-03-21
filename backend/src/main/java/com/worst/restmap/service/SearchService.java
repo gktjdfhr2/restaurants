@@ -11,5 +11,6 @@ public interface SearchService {
 
     ResponseEntity<StatusCode> findStore(String memberEmail, SearchDto searchDto);
 
+    ResponseEntity<StatusCode> findStoreDetail(long id);
     ResponseEntity<StatusCode> deleteFindStoreLog(String searchId);
 }

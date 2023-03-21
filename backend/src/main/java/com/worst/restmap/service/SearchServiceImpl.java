@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -29,10 +30,17 @@ public class SearchServiceImpl implements SearchService{
     public ResponseEntity<StatusCode> findStore(String memberEmail, SearchDto searchDto) {
         LocalDateTime localDateTime = LocalDateTime.now();
         String businessName = searchDto.getKeyWord();
+
         List<Business> business = businessRepository.findByBusinessNameContaining(businessName);
         Search search = Search.builder().searchMemberEmail(memberEmail).searchKeyword(businessName).searchLogDatetime(localDateTime).build();
         searchRepository.save(search);
         return new JsonResponse().send(HttpStatus.OK, StatusCode.builder().resCode("").resMsg("정상조회").data(business).build());
+    }
+
+    @Override
+    public ResponseEntity<StatusCode> findStoreDetail(long id) {
+        Business business = businessRepository.findBusinessByBusinessId(id).orElseGet(Business::new);
+        return new JsonResponse().send(HttpStatus.OK, StatusCode.builder().resCode("").resMsg("조회완료").data(business).build());
     }
 
     @Override

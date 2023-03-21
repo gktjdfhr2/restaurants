@@ -3,6 +3,9 @@ package com.worst.restmap.domain.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table( name = "`tag`")
 @Getter
@@ -19,4 +22,7 @@ public class Tag {
     @Column(name = "tag_name")
     private String tagName;
 
+    @OneToMany
+    @JoinColumn( name = "tag_id")
+    private List<BusinessTag> businessTags = new ArrayList<>();
 }

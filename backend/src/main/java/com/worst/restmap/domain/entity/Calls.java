@@ -28,5 +28,4 @@ public class Calls {
     @Column( name = "calls_time")
     private Date callsTime;
 
-
 }
