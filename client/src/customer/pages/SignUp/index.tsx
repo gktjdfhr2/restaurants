@@ -21,10 +21,10 @@ const ValidationDiv = styled.div`
   opacity: 0.7;
 `;
 const PrevButton = styled.button`
-  background-color: white ;
-  border none;
-  font-size:30px;
-  position:absolute;
+  background-color: white;
+  border: none;
+  font-size: 30px;
+  position: absolute;
 `;
 
 const SignUp = () => {

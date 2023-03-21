@@ -36,12 +36,12 @@ const CloseButton = styled(ResetButton)`
   top: 18px;
 `;
 
-const PictureDialog = (props: { closeEvent: MouseEventHandler }) => {
+const PictureDialog = (props: { onClick: MouseEventHandler }) => {
   //TODO: 이미지도 props로 받아서 background url에 지정
   return (
     <DarkBackground>
       <DialogBlock>
-        <CloseButton onClick={props.closeEvent} />
+        <CloseButton onClick={props.onClick} />
       </DialogBlock>
     </DarkBackground>
   );

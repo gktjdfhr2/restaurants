@@ -6,24 +6,24 @@ import ExhibitionItem from '@customer/UI/Form/ExhibitionItem';
 import MediumContainer from '@customer/UI/Form/MediumContainer';
 
 const ReservationHistory = () => {
-  const [selectButton, setSelectButton] = useState({
-    reservation: true,
-    cancel: false,
-  });
+  type ReservationHistoryTab = 'RESERVATION' | 'CANCEL';
+
+  const [selectButton, setSelectButton] =
+    useState<ReservationHistoryTab>('RESERVATION');
 
   return (
     <>
       <PageTitle>예약 내역</PageTitle>
       <MediumContainer>
         <ToggleMenuButton
-          selectFilter={selectButton.reservation}
-          onClick={() => setSelectButton({ reservation: true, cancel: false })}
+          selectFilter={selectButton === 'RESERVATION'}
+          onClick={() => setSelectButton(() => 'RESERVATION')}
         >
           이용예정 / 완료
         </ToggleMenuButton>
         <ToggleMenuButton
-          selectFilter={selectButton.cancel}
-          onClick={() => setSelectButton({ reservation: false, cancel: true })}
+          selectFilter={selectButton === 'CANCEL'}
+          onClick={() => setSelectButton(() => 'CANCEL')}
         >
           취소 / 노쇼
         </ToggleMenuButton>

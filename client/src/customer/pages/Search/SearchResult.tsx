@@ -14,35 +14,26 @@ const MenuButtonContainer = styled.div`
 `;
 
 const SearchResult = () => {
-  const [selectFilter, setSelectFilter] = useState({
-    all: true,
-    reservation: false,
-    line: false,
-  });
+  type selectMenu = 'ALL' | 'RESERVATION' | 'LINE';
+  const [selectFilter, setSelectFilter] = useState<selectMenu>('ALL');
 
   return (
     <SearchResultContainer>
       <MenuButtonContainer>
         <ToggleMenuButton
           title="전체"
-          selectFilter={selectFilter.all}
-          onClick={() =>
-            setSelectFilter({ all: true, reservation: false, line: false })
-          }
+          selectFilter={selectFilter === 'ALL'}
+          onClick={() => setSelectFilter(() => 'ALL')}
         />
         <ToggleMenuButton
           title="예약"
-          selectFilter={selectFilter.reservation}
-          onClick={() =>
-            setSelectFilter({ all: false, reservation: true, line: false })
-          }
+          selectFilter={selectFilter === 'RESERVATION'}
+          onClick={() => setSelectFilter(() => 'RESERVATION')}
         />
         <ToggleMenuButton
           title="원격 줄서기"
-          selectFilter={selectFilter.line}
-          onClick={() =>
-            setSelectFilter({ all: false, reservation: false, line: true })
-          }
+          selectFilter={selectFilter === 'LINE'}
+          onClick={() => setSelectFilter(() => 'LINE')}
         />
       </MenuButtonContainer>
 
