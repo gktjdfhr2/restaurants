@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 /** this element position is absolute. 
@@ -33,4 +34,4 @@ const ResetButton = styled.button.attrs({
   }
 `;
 
-export default ResetButton;
+export default React.memo(ResetButton);

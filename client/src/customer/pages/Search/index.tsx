@@ -42,33 +42,36 @@ const Search = () => {
     [keyword]
   );
 
-  const searchEvent = (event: FormEvent, inputValue: string) => {
-    setKeyword(inputValue);
-    event.preventDefault();
+  const searchEvent = useCallback(
+    (event: FormEvent, inputValue: string) => {
+      setKeyword(inputValue);
+      event.preventDefault();
 
-    inputValue.length === 0
-      ? setIsSearch(false)
-      : history.filter((value) => {
-          return value === inputValue;
-        }).length
-      ? setHistory((prev) => {
-          prev.splice(history.indexOf(inputValue), 1);
-          localStorage.setItem(
-            'searchHistory',
-            JSON.stringify([inputValue, ...prev])
-          );
-          setIsSearch(true);
-          return [inputValue, ...prev];
-        })
-      : setHistory((prev) => {
-          localStorage.setItem(
-            'searchHistory',
-            JSON.stringify([inputValue, ...prev])
-          );
-          setIsSearch(true);
-          return [inputValue, ...prev];
-        });
-  };
+      inputValue.length === 0
+        ? setIsSearch(false)
+        : history.filter((value) => {
+            return value === inputValue;
+          }).length
+        ? setHistory((prev) => {
+            prev.splice(history.indexOf(inputValue), 1);
+            localStorage.setItem(
+              'searchHistory',
+              JSON.stringify([inputValue, ...prev])
+            );
+            setIsSearch(true);
+            return [inputValue, ...prev];
+          })
+        : setHistory((prev) => {
+            localStorage.setItem(
+              'searchHistory',
+              JSON.stringify([inputValue, ...prev])
+            );
+            setIsSearch(true);
+            return [inputValue, ...prev];
+          });
+    },
+    [history]
+  );
 
   return (
     <SearchContainer>

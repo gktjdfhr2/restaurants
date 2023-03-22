@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ExhibitionItem from '../../UI/Form/ExhibitionItem';
 import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
 import SearchResultContainer from '@customer/UI/Form/SearchResultContainer';
+import React from 'react';
 
 const MenuButtonContainer = styled.div`
   display: flex;
@@ -50,4 +51,4 @@ const SearchResult = () => {
     </SearchResultContainer>
   );
 };
-export default SearchResult;
+export default React.memo(SearchResult);
