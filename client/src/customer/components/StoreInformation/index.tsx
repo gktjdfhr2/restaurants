@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MediumContainer from '@customer/UI/Form/MediumContainer';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import StoreMoreInformation from './StoreMoreInformation';
 import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
 import StoreMenu from './StoreMenu';
@@ -39,6 +39,28 @@ const MenuNavigationContainer = styled.div`
   justify-content: center;
   padding: 20px 0;
   border-bottom: 10px solid gainsboro;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  width: 70%;
+  height: 50px;
+  justify-content: space-between;
+  margin: 0 auto;
+`;
+
+const ReservationButton = styled.button<{ use: boolean }>`
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  opacity: 0.2;
+  ${(props) =>
+    props.use &&
+    css`
+      opacity: 1;
+    `}
+  border: 1px solid black;
+  border-radius: 10px;
 `;
 
 const StoreInformation = () => {
@@ -84,7 +106,7 @@ const StoreInformation = () => {
       <StoreImage />
       <StoreMoreInformationContainer>
         <StoreMoreInformation
-          storeName="소우데스"
+          storeName={storeName}
           storeAddress="동래구 석사북로 5 (사직동) 1층"
           reviewScore={3.9}
         />
@@ -97,6 +119,10 @@ const StoreInformation = () => {
         <StoreReviews />
         <OperatingTime />
         <Amenities />
+        <ButtonContainer>
+          <ReservationButton use={true}>원격 줄서기</ReservationButton>
+          <ReservationButton use={false}>예약 미사용</ReservationButton>
+        </ButtonContainer>
       </StoreMoreInformationContainer>
     </MediumContainer>
   );

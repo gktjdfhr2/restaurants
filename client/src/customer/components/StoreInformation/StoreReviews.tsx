@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import StoreInformationTitle from '@customer/UI/Form/StoreInformationTitle';
 import ReviewItem from '@customer/UI/Form/ReviewItem';
+import { Link } from 'react-router-dom';
 
 const StoreReviewContainer = styled.div`
   width: 100%;
@@ -28,11 +29,14 @@ const MoreReviewButton = styled.button`
 
 const StoreReviews = () => {
   //TODO: 정보 props로 받아와서 뿌려주기
+  console.log('StoreReviews');
   return (
     <StoreReviewContainer>
       <TitleContainer>
         <StoreInformationTitle>리뷰 22</StoreInformationTitle>
-        <MoreReviewButton>더보기</MoreReviewButton>
+        <Link to="MoreReview">
+          <MoreReviewButton>더보기</MoreReviewButton>
+        </Link>
       </TitleContainer>
       <ReviewItem
         reviewScore={3.7}
