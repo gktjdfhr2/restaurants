@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import StoreInformationTitle from '@customer/UI/Form/StoreInformationTitle';
 import ReviewItem from '@customer/UI/Form/ReviewItem';
 import { Link } from 'react-router-dom';
+import React from 'react';
 
 const StoreReviewContainer = styled.div`
   width: 100%;
@@ -27,11 +28,11 @@ const MoreReviewButton = styled.button`
   }
 `;
 
-const StoreReviews = () => {
+const StoreReviews = React.forwardRef((props, reviewRef: any) => {
   //TODO: 정보 props로 받아와서 뿌려주기
   console.log('StoreReviews');
   return (
-    <StoreReviewContainer>
+    <StoreReviewContainer ref={reviewRef}>
       <TitleContainer>
         <StoreInformationTitle>리뷰 22</StoreInformationTitle>
         <Link to="MoreReview">
@@ -68,6 +69,6 @@ const StoreReviews = () => {
       />
     </StoreReviewContainer>
   );
-};
+});
 
 export default StoreReviews;

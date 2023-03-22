@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import StoreInformationTitle from '@customer/UI/Form/StoreInformationTitle';
 import GrayDIv from '@customer/UI/Form/GrayDIv';
+import React from 'react';
 
 const OperatingTimeContainer = styled.div`
   width: 100%;
@@ -32,10 +33,10 @@ const StoreIntroductions = styled.div`
   white-space: pre-line;
 `;
 
-const OperatingTime = () => {
+const OperatingTime = React.forwardRef((props, infoRef: any) => {
   //TODO: 정보 props로 받아와서 뿌려주기
   return (
-    <OperatingTimeContainer>
+    <OperatingTimeContainer ref={infoRef}>
       <StoreInformationTitle>영업정보</StoreInformationTitle>
       <AlignDiv>
         <GraySpan>운영시간</GraySpan>
@@ -66,6 +67,6 @@ const OperatingTime = () => {
       </StoreIntroductions>
     </OperatingTimeContainer>
   );
-};
+});
 
 export default OperatingTime;

@@ -1,5 +1,6 @@
 import TextInput from './TextInput';
 import styled, { css } from 'styled-components';
+import React from 'react';
 
 //TODO: changeEvent 타입 지정
 
@@ -81,4 +82,4 @@ const PlaceHolderText = (props: {
   );
 };
 
-export default PlaceHolderText;
+export default React.memo(PlaceHolderText);

@@ -2,7 +2,7 @@ import SignInLogo from './SignInLogo';
 import Button from '@customer/UI/Form/Button';
 import PlaceHolder from '@customer/UI/Form/PlaceHolder';
 import { Link, useNavigate } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import ResetButton from '@customer/UI/Form/ResetButton';
 import styled from 'styled-components';
@@ -12,6 +12,12 @@ const SignInButton = styled(Button)`
   width: 300px;
 `;
 
+const SignUpNavigation = styled.span`
+  font-weight: bold;
+  text-decoration: underline;
+  color: black;
+`;
+
 const SignIn = () => {
   const [idCheck, setIdCheck] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
@@ -19,13 +25,19 @@ const SignIn = () => {
   const navigate = useNavigate();
   useEffect(() => (cookies.token ? navigate('/') : console.log('false')), []);
 
-  const idCheckHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIdCheck(event.target.value);
-    console.log(event.target.value.length);
-  };
-  const passwordCheckHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPasswordCheck(event.target.value);
-  };
+  const idCheckHandle = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setIdCheck(event.target.value);
+      console.log(event.target.value.length);
+    },
+    [idCheck]
+  );
+  const passwordCheckHandle = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setPasswordCheck(event.target.value);
+    },
+    [passwordCheck]
+  );
 
   const resetId = (event: React.MouseEvent) => {
     setIdCheck('');
@@ -52,6 +64,7 @@ const SignIn = () => {
         console.log(error);
       });
   };
+
   return (
     <>
       <form>
@@ -98,15 +111,7 @@ const SignIn = () => {
           <div style={{ margin: '10px' }}>
             회원이 아신가요? &nbsp;
             <Link to="/customer/SignUp">
-              <span
-                style={{
-                  fontWeight: 'bold',
-                  textDecoration: 'underline',
-                  color: 'black',
-                }}
-              >
-                회원가입
-              </span>
+              <SignUpNavigation>회원가입</SignUpNavigation>
             </Link>
           </div>
         </div>

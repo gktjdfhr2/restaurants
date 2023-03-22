@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import MediumContainer from '@customer/UI/Form/MediumContainer';
 import styled, { css } from 'styled-components';
@@ -8,6 +8,7 @@ import StoreMenu from './StoreMenu';
 import StoreReviews from './StoreReviews';
 import OperatingTime from './OperatingTime';
 import Amenities from './Amenities';
+import React from 'react';
 
 const StoreImage = styled.div`
   //TODO: props로 서버에서 이미지 받아와서 background지정
@@ -74,6 +75,8 @@ const StoreInformation = () => {
   const storeInformation = useParams();
   let storeName = storeInformation.storeId ? storeInformation.storeId : '';
   storeName = storeName.toString();
+  const reviewRef = useRef(null);
+  const infoRef = useRef(null);
 
   /** 최근 본 가게정보 로컬 스토리지에 추가 */
   useEffect(() => {
@@ -112,12 +115,26 @@ const StoreInformation = () => {
         />
         <MenuNavigationContainer>
           <MenuNavigation selectFilter>전체메뉴</MenuNavigation>
-          <MenuNavigation selectFilter={false}>최근리뷰</MenuNavigation>
-          <MenuNavigation selectFilter={false}>매장정보</MenuNavigation>
+          <MenuNavigation
+            selectFilter={false}
+            onClick={() =>
+              reviewRef.current.scrollIntoView({ behavior: 'smooth' })
+            }
+          >
+            최근리뷰
+          </MenuNavigation>
+          <MenuNavigation
+            selectFilter={false}
+            onClick={() =>
+              infoRef.current.scrollIntoView({ behavior: 'smooth' })
+            }
+          >
+            매장정보
+          </MenuNavigation>
         </MenuNavigationContainer>
         <StoreMenu />
-        <StoreReviews />
-        <OperatingTime />
+        <StoreReviews ref={reviewRef} />
+        <OperatingTime ref={infoRef} />
         <Amenities />
         <ButtonContainer>
           <ReservationButton use={true}>원격 줄서기</ReservationButton>
@@ -127,4 +144,4 @@ const StoreInformation = () => {
     </MediumContainer>
   );
 };
-export default StoreInformation;
+export default React.memo(StoreInformation);
