@@ -10,6 +10,8 @@ import Layout from '@customer/UI/Layouts/Layout';
 import RecentViewHistory from '@customer/pages/CustomerInformation/RecentViewHistory';
 import LineHistory from '@customer/pages/CustomerInformation/LineHistory';
 import StoreInformation from './customer/components/StoreInformation';
+import ShowMap from '@customer/components/StoreInformation/ShowMap';
+
 function App() {
   return (
     <BrowserRouter>
@@ -35,6 +37,10 @@ function App() {
           <Route
             path="customer/StoreInformation/:storeId"
             element={<StoreInformation />}
+          />
+          <Route
+            path="customer/StoreInformation/:storeId/showMap"
+            element={<ShowMap />}
           />
         </Route>
       </Routes>
