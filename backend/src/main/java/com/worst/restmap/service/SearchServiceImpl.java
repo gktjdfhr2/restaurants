@@ -32,8 +32,8 @@ public class SearchServiceImpl implements SearchService{
         String businessName = searchDto.getKeyWord();
 
         List<Business> business = businessRepository.findByBusinessNameContaining(businessName);
-        Search search = Search.builder().searchMemberEmail(memberEmail).searchKeyword(businessName).searchLogDatetime(localDateTime).build();
-        searchRepository.save(search);
+//        Search search = Search.builder().searchMemberEmail(memberEmail).searchKeyword(businessName).searchLogDatetime(localDateTime).build();
+//        searchRepository.save(search);
         return new JsonResponse().send(HttpStatus.OK, StatusCode.builder().resCode("").resMsg("정상조회").data(business).build());
     }
 
