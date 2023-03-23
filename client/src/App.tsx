@@ -18,7 +18,7 @@ import MoreAmenities from '@customer/components/StoreInformation/MoreAmenities';
 function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Restaurants />} />
