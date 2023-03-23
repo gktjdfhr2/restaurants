@@ -11,14 +11,12 @@ import RecentViewHistory from '@customer/pages/CustomerInformation/RecentViewHis
 import LineHistory from '@customer/pages/CustomerInformation/LineHistory';
 import StoreInformation from './customer/components/StoreInformation';
 import MoreMenu from '@customer/components/StoreInformation/MoreMenu';
-import ScrollToTop from '@customer/components/ScrollToTop';
 import MoreReview from '@customer/components/StoreInformation/MoreReview';
 import MoreAmenities from '@customer/components/StoreInformation/MoreAmenities';
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <ScrollToTop /> */}
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Restaurants />} />
