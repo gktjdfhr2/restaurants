@@ -75,8 +75,8 @@ const StoreInformation = () => {
   const storeInformation = useParams();
   let storeName = storeInformation.storeId ? storeInformation.storeId : '';
   storeName = storeName.toString();
-  const reviewRef = useRef(null);
-  const infoRef = useRef(null);
+  const reviewRef = useRef<HTMLElement>(null);
+  const infoRef = useRef<HTMLElement>(null);
 
   /** 최근 본 가게정보 로컬 스토리지에 추가 */
   useEffect(() => {

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import ReviewScore from '@customer/UI/Form/ReviewScore';
 import GrayDIv from '@customer/UI/Form/GrayDIv';
 import StoreInformationTitle from '@customer/UI/Form/StoreInformationTitle';
+import { Link } from 'react-router-dom';
 
 const InformationContainer = styled.div`
   margin-left: 20px;
@@ -31,7 +32,9 @@ const StoreMoreInformation = (props: {
       <StoreInformationTitle>{props.storeName}</StoreInformationTitle>
       <StoreAddress>
         {props.storeAddress}
-        <ShowMap>지도보기 &gt;</ShowMap>
+        <Link to="ShowMap">
+          <ShowMap>지도보기 &gt;</ShowMap>
+        </Link>
       </StoreAddress>
       <ReviewScore reviewScore={props.reviewScore} />
     </InformationContainer>

@@ -16,7 +16,6 @@ import MoreAmenities from '@customer/components/StoreInformation/MoreAmenities';
 import ModifyInformation from '@customer/pages/ModifyInformation';
 import ShowMap from '@customer/components/StoreInformation/ShowMap';
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -57,8 +56,9 @@ function App() {
           />
           <Route
             path="customer/StoreInformation/:storeId/MoreAmenities"
-            element={<MoreAmenities />}  
-           <Route
+            element={<MoreAmenities />}
+          />
+          <Route
             path="customer/StoreInformation/:storeId/showMap"
             element={<ShowMap />}
           />

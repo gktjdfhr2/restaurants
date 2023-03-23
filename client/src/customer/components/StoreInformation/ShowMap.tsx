@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 const AddressDiv = styled.div`
@@ -27,8 +28,10 @@ const ShowMap = () => {
   const [info, setInfo]: any = useState();
   const [markers, setMarkers]: any = useState([]);
   const [map, setMap]: any = useState();
-  //TODO: 가게이름, 주소 받아오기
+
   let store = '부산 동래구 석사북로 5 (사직동) 1층';
+  const storeInformation = useParams(); //   //TODO: 가게이름, 주소 받아오기
+  console.log(storeInformation);
 
   useEffect(() => {
     if (!map) return;
