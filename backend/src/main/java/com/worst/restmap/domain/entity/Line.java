@@ -19,7 +19,7 @@ public class Line {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private long lineId;
     @Column( name = "line_member_email")
-    private long lineMemberEmail;
+    private String lineMemberEmail;
     @Column(name = "line_member_name")
     private String lineMemberName;
     @Column(name = "line_phone_number")

@@ -47,7 +47,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         String accessToken = jwtHeader.replace(JwtProperties.TOKEN_PREFIX, "");
 
         if (tokenProvider.accessTokenValid(accessToken)) {
-            String memberEmail = tokenProvider.getVerifyToken(accessToken).getClaim("memberEmail").asString();
+            String memberEmail = tokenProvider.getVerifyToken(accessToken).getClaim("memberId").asString();
 
             if(memberEmail != null && !memberEmail.equals((""))) {
                 Member member = memberRepository.findByMemberEmail(memberEmail).orElseGet(Member::new);

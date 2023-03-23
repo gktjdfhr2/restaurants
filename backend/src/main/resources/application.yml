@@ -15,7 +15,9 @@ spring:
     password: gurfhr123!
 
   jpa:
-    open-in-view: false
+    open-in-view: true
+    hibernate:
+      ddl-auto: validate
     database-platform: org.hibernate.dialect.MariaDB103Dialect
     show-sql: true
 jwt:

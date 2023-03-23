@@ -6,6 +6,8 @@ import RecentKeywords from './RecentKeywords';
 import RecommendKeywords from './RecommendKeywords';
 import SearchResult from './SearchResult';
 import ResetButton from '@customer/UI/Form/ResetButton';
+import axios from 'axios';
+import { useCookies } from 'react-cookie';
 
 const SearchForm = styled.form`
   position: relative;
@@ -33,6 +35,7 @@ const Search = () => {
     ? JSON.parse(`${localStorage.getItem('searchHistory')}`)
     : [];
   const [history, setHistory] = useState(historyDefault);
+  const [cookies] = useCookies(['token']);
 
   const keywordChangeHandle = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,36 +45,48 @@ const Search = () => {
     [keyword]
   );
 
-  const searchEvent = useCallback(
-    (event: FormEvent, inputValue: string) => {
-      setKeyword(inputValue);
-      event.preventDefault();
 
-      inputValue.length === 0
-        ? setIsSearch(false)
-        : history.filter((value) => {
-            return value === inputValue;
-          }).length
-        ? setHistory((prev) => {
-            prev.splice(history.indexOf(inputValue), 1);
-            localStorage.setItem(
-              'searchHistory',
-              JSON.stringify([inputValue, ...prev])
-            );
-            setIsSearch(true);
-            return [inputValue, ...prev];
-          })
-        : setHistory((prev) => {
-            localStorage.setItem(
-              'searchHistory',
-              JSON.stringify([inputValue, ...prev])
-            );
-            setIsSearch(true);
-            return [inputValue, ...prev];
-          });
-    },
-    [history]
-  );
+  const searchEvent = async (event: FormEvent, inputValue: string) => {
+    setKeyword(inputValue);
+    event.preventDefault();
+
+    await axios
+      .get(`http://localhost:8080/api/member/store`, {
+        params: {
+          keyword: inputValue,
+        },
+        headers: { Authorization: `Bearer ${cookies.token}` },
+      })
+      .then((response) => {
+        console.log('data :', response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    inputValue.length === 0
+      ? setIsSearch(false)
+      : history.filter((value) => {
+          return value === inputValue;
+        }).length
+      ? setHistory((prev) => {
+          prev.splice(history.indexOf(inputValue), 1);
+          localStorage.setItem(
+            'searchHistory',
+            JSON.stringify([inputValue, ...prev])
+          );
+          setIsSearch(true);
+          return [inputValue, ...prev];
+        })
+      : setHistory((prev) => {
+          localStorage.setItem(
+            'searchHistory',
+            JSON.stringify([inputValue, ...prev])
+          );
+          setIsSearch(true);
+          return [inputValue, ...prev];
+        });
+  };
 
   return (
     <SearchContainer>

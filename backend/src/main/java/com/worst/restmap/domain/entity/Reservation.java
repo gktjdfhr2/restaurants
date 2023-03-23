@@ -23,7 +23,7 @@ public class Reservation {
     private long reservationMemberRole;
 
     @Column( name = "reservation_member_email")
-    private long reservationMemberEmail;
+    private String reservationMemberEmail;
 
     @Column( name = "reservation_phone")
     private String reservationPhone;
