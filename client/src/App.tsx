@@ -13,6 +13,7 @@ import StoreInformation from './customer/components/StoreInformation';
 import MoreMenu from '@customer/components/StoreInformation/MoreMenu';
 import MoreReview from '@customer/components/StoreInformation/MoreReview';
 import MoreAmenities from '@customer/components/StoreInformation/MoreAmenities';
+import ModifyInformation from '@customer/pages/ModifyInformation';
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
           <Route
             path="customer/InformationPage/"
             element={<CustomerInformation />}
+          />
+          <Route
+            path="customer/InformationPage/ModifyInformation"
+            element={<ModifyInformation />}
           />
           <Route
             path="customer/ReservationHistory"
