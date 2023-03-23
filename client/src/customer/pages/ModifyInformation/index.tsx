@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 import MediumContainer from '@customer/UI/Form/MediumContainer';
 import PageTitle from '@customer/UI/Form/PageTitle';
+import TextInput from '@customer/UI/Form/TextInput';
+import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const InformationContainer = styled.div`
   width: 100%;
@@ -21,6 +24,10 @@ const InformationTitle = styled.div`
   font-size: 25px;
 `;
 const InformationContent = styled.div`
+  font-size: 25px;
+`;
+
+const InformationModifyContent = styled(TextInput)`
   font-size: 25px;
 `;
 
@@ -65,6 +72,51 @@ const BottomButton = styled.button`
   }
 `;
 const ModifyInformation = () => {
+  const [modify, setModify] = useState({
+    address: false,
+    phone: false,
+    password: false,
+  });
+  const navigation = useNavigate();
+
+  const addressRef = useRef<HTMLInputElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  let address = 'sowoo@naver.com';
+  let phone = '01012345678';
+  let password = '12341234';
+
+  const modifyEvent = (target: string) => {
+    target === '이메일 주소' &&
+      setModify((prev) => ({ ...prev, address: !modify.address }));
+
+    target === '휴대폰 번호' &&
+      setModify((prev) => ({ ...prev, phone: !modify.phone }));
+
+    target === '비밀번호' &&
+      setModify((prev) => ({ ...prev, password: !modify.password }));
+
+    return console.log(modify);
+  };
+
+  const modifyAxios = (target: string) => {
+    //TODO: axios로 서버랑 통신해서 정보 수정
+
+    target === '이메일 주소' &&
+      setModify((prev) => ({ ...prev, address: !modify.address })),
+      console.log(addressRef.current?.value);
+
+    target === '휴대폰 번호' &&
+      setModify((prev) => ({ ...prev, phone: !modify.phone })),
+      console.log(phoneRef.current?.value);
+
+    target === '비밀번호' &&
+      setModify((prev) => ({ ...prev, password: !modify.password })),
+      console.log(passwordRef.current?.value);
+
+    return navigation('.'), alert('수정되었습니다.');
+  };
+
   return (
     <>
       <MediumContainer>
@@ -78,23 +130,63 @@ const ModifyInformation = () => {
         <InformationContainer>
           <InformationContentContainer>
             <InformationTitle>이메일 주소</InformationTitle>
-            <InformationContent>sowoo@naver.com</InformationContent>
+            {modify.address ? (
+              <InformationModifyContent
+                ref={addressRef}
+                defaultValue={address}
+              />
+            ) : (
+              <InformationContent>{address}</InformationContent>
+            )}
           </InformationContentContainer>
-          <ModifyButton />
+          <ModifyButton
+            onClick={
+              modify.address
+                ? () => modifyAxios('이메일 주소')
+                : () => modifyEvent('이메일 주소')
+            }
+          />
         </InformationContainer>
+
         <InformationContainer>
           <InformationContentContainer>
             <InformationTitle>휴대폰 번호</InformationTitle>
-            <InformationContent>01012345678</InformationContent>
+            {modify.phone ? (
+              <InformationModifyContent ref={phoneRef} defaultValue={phone} />
+            ) : (
+              <InformationContent>{phone}</InformationContent>
+            )}
           </InformationContentContainer>
-          <ModifyButton />
+          <ModifyButton
+            onClick={
+              modify.address
+                ? () => modifyAxios('휴대폰 번호')
+                : () => modifyEvent('휴대폰 번호')
+            }
+          />
         </InformationContainer>
         <InformationContainer>
           <InformationContentContainer>
             <InformationTitle>비밀번호</InformationTitle>
-            <InformationContent>********</InformationContent>
+            {modify.password ? (
+              <InformationModifyContent
+                ref={passwordRef}
+                defaultValue={password}
+                type="password"
+              />
+            ) : (
+              <InformationContent>
+                {'*'.repeat(password.length)}
+              </InformationContent>
+            )}
           </InformationContentContainer>
-          <ModifyButton />
+          <ModifyButton
+            onClick={
+              modify.address
+                ? () => modifyAxios('비밀번호')
+                : () => modifyEvent('비밀번호')
+            }
+          />
         </InformationContainer>
       </MediumContainer>
       <BottomButtonContainer>
