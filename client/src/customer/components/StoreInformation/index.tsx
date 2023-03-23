@@ -118,7 +118,7 @@ const StoreInformation = () => {
           <MenuNavigation
             selectFilter={false}
             onClick={() =>
-              reviewRef.current.scrollIntoView({ behavior: 'smooth' })
+              reviewRef.current?.scrollIntoView({ behavior: 'smooth' })
             }
           >
             최근리뷰
@@ -126,7 +126,7 @@ const StoreInformation = () => {
           <MenuNavigation
             selectFilter={false}
             onClick={() =>
-              infoRef.current.scrollIntoView({ behavior: 'smooth' })
+              infoRef.current?.scrollIntoView({ behavior: 'smooth' })
             }
           >
             매장정보
