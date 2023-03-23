@@ -45,6 +45,7 @@ const Search = () => {
     [keyword]
   );
 
+
   const searchEvent = async (event: FormEvent, inputValue: string) => {
     setKeyword(inputValue);
     event.preventDefault();

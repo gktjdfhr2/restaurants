@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 /** title 지정 필요 */
@@ -27,4 +28,4 @@ const Button = styled.button.attrs((props) => ({
   }
 `;
 
-export default Button;
+export default React.memo(Button);

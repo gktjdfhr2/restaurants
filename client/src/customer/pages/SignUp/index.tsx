@@ -21,10 +21,10 @@ const ValidationDiv = styled.div`
   opacity: 0.7;
 `;
 const PrevButton = styled.button`
-  background-color: white ;
-  border none;
-  font-size:30px;
-  position:absolute;
+  background-color: white;
+  border: none;
+  font-size: 30px;
+  position: absolute;
 `;
 
 const SignUp = () => {
@@ -69,29 +69,32 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
-  const memberEmailHandle = (event: ChangeEvent<HTMLInputElement>) => {
-    const memberEmailRegex =
-      /^[a-zA-Z0-9]{2,}@[a-zA-Z0-9]{2,}.[a-zA-Z0-9]{2,}$/;
-    const isEmailValid = memberEmailRegex.test(event.target.value);
+  const memberEmailHandle = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const memberEmailRegex =
+        /^[a-zA-Z0-9]{2,}@[a-zA-Z0-9]{2,}.[a-zA-Z0-9]{2,}$/;
+      const isEmailValid = memberEmailRegex.test(event.target.value);
 
-    setSignUpInfo((prev) => ({
-      ...prev,
-      memberEmail: event.target.value,
-    }));
+      setSignUpInfo((prev) => ({
+        ...prev,
+        memberEmail: event.target.value,
+      }));
 
-    setMemberInfoError((prev) => ({
-      ...prev,
-      memberEmail: isEmailValid,
-      memberEmailCheckMessage: isEmailValid ? (
-        <ValidationDiv>사용 가능한 아이디 입니다.</ValidationDiv>
-      ) : (
-        <ValidationErrorDiv>
-          이메일 양식에 맞게 작성해주세요.
-          <br /> ex &#41; example@example.com
-        </ValidationErrorDiv>
-      ),
-    }));
-  };
+      setMemberInfoError((prev) => ({
+        ...prev,
+        memberEmail: isEmailValid,
+        memberEmailCheckMessage: isEmailValid ? (
+          <ValidationDiv>사용 가능한 아이디 입니다.</ValidationDiv>
+        ) : (
+          <ValidationErrorDiv>
+            이메일 양식에 맞게 작성해주세요.
+            <br /> ex &#41; example@example.com
+          </ValidationErrorDiv>
+        ),
+      }));
+    },
+    [signUpInfo.memberEmail]
+  );
 
   const memberPasswordHandle = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {

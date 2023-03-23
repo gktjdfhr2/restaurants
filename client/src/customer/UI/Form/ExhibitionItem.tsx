@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Button from '@customer/UI/Form/Button';
 import GrayDIv from './GrayDIv';
+import React from 'react';
 
 const ResultItem = styled.div`
   display: flex;
@@ -114,4 +115,4 @@ const ExhibitionItem = (props: {
     </ResultItem>
   );
 };
-export default ExhibitionItem;
+export default React.memo(ExhibitionItem);

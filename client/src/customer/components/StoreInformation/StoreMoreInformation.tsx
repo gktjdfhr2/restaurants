@@ -8,15 +8,31 @@ const InformationContainer = styled.div`
   flex-grow: 1;
 `;
 
+const StoreAddress = styled(GrayDIv)`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const ShowMap = styled.button`
+  background-color: white;
+  border: none;
+  margin-right: 10px;
+  font-weight: bold;
+`;
+
 const StoreMoreInformation = (props: {
   storeName: string;
   storeAddress: string;
   reviewScore: number;
 }) => {
+  console.log('StoreMoreInformation');
   return (
     <InformationContainer>
       <StoreInformationTitle>{props.storeName}</StoreInformationTitle>
-      <GrayDIv>{props.storeAddress}</GrayDIv>
+      <StoreAddress>
+        {props.storeAddress}
+        <ShowMap>지도보기 &gt;</ShowMap>
+      </StoreAddress>
       <ReviewScore reviewScore={props.reviewScore} />
     </InformationContainer>
   );

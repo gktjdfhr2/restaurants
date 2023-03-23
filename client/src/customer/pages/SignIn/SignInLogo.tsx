@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 const HeaderLogo = styled.div`
@@ -26,4 +27,4 @@ const HeaderLogo = styled.div`
     transform: translate(0, -50%);
   }
 `;
-export default HeaderLogo;
+export default React.memo(HeaderLogo);

@@ -39,7 +39,9 @@ const CustomerInformationSection = () => {
   return (
     <>
       {cookies.token ? (
-        <SignInNavigation title={testUserName} />
+        <Link to="ModifyInformation">
+          <SignInNavigation title={testUserName} />
+        </Link>
       ) : (
         <Link to="/customer/SignIn">
           <SignInNavigation title="로그인 하기" />

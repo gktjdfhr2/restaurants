@@ -2,6 +2,7 @@ import { FormEvent, SetStateAction } from 'react';
 import styled from 'styled-components';
 import Button from '@customer/UI/Form/Button';
 import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
+import React from 'react';
 
 const KeywordsContainer = styled.div`
   display: flex;
@@ -85,4 +86,4 @@ const RecentKeywords = (props: {
   );
 };
 
-export default RecentKeywords;
+export default React.memo(RecentKeywords);

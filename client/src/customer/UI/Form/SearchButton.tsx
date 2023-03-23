@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 /** this element position is absolute. 
@@ -31,4 +32,4 @@ const SearchButton = styled.button.attrs((props) => ({
   // }
 `;
 
-export default SearchButton;
+export default React.memo(SearchButton);

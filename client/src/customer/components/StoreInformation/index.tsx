@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import MediumContainer from '@customer/UI/Form/MediumContainer';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import StoreMoreInformation from './StoreMoreInformation';
 import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
 import StoreMenu from './StoreMenu';
 import StoreReviews from './StoreReviews';
+import OperatingTime from './OperatingTime';
+import Amenities from './Amenities';
+import React from 'react';
 
 const StoreImage = styled.div`
   //TODO: props로 서버에서 이미지 받아와서 background지정
@@ -39,6 +42,28 @@ const MenuNavigationContainer = styled.div`
   border-bottom: 10px solid gainsboro;
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  width: 70%;
+  height: 50px;
+  justify-content: space-between;
+  margin: 0 auto;
+`;
+
+const ReservationButton = styled.button<{ use: boolean }>`
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  opacity: 0.2;
+  ${(props) =>
+    props.use &&
+    css`
+      opacity: 1;
+    `}
+  border: 1px solid black;
+  border-radius: 10px;
+`;
+
 const StoreInformation = () => {
   const localStorage = window.localStorage;
   const historyDefault: Array<String> = JSON.parse(
@@ -50,6 +75,8 @@ const StoreInformation = () => {
   const storeInformation = useParams();
   let storeName = storeInformation.storeId ? storeInformation.storeId : '';
   storeName = storeName.toString();
+  const reviewRef = useRef(null);
+  const infoRef = useRef(null);
 
   /** 최근 본 가게정보 로컬 스토리지에 추가 */
   useEffect(() => {
@@ -82,19 +109,39 @@ const StoreInformation = () => {
       <StoreImage />
       <StoreMoreInformationContainer>
         <StoreMoreInformation
-          storeName="소우데스"
+          storeName={storeName}
           storeAddress="동래구 석사북로 5 (사직동) 1층"
           reviewScore={3.9}
         />
         <MenuNavigationContainer>
           <MenuNavigation selectFilter>전체메뉴</MenuNavigation>
-          <MenuNavigation selectFilter={false}>최근리뷰</MenuNavigation>
-          <MenuNavigation selectFilter={false}>매장정보</MenuNavigation>
+          <MenuNavigation
+            selectFilter={false}
+            onClick={() =>
+              reviewRef.current.scrollIntoView({ behavior: 'smooth' })
+            }
+          >
+            최근리뷰
+          </MenuNavigation>
+          <MenuNavigation
+            selectFilter={false}
+            onClick={() =>
+              infoRef.current.scrollIntoView({ behavior: 'smooth' })
+            }
+          >
+            매장정보
+          </MenuNavigation>
         </MenuNavigationContainer>
         <StoreMenu />
-        <StoreReviews />
+        <StoreReviews ref={reviewRef} />
+        <OperatingTime ref={infoRef} />
+        <Amenities />
+        <ButtonContainer>
+          <ReservationButton use={true}>원격 줄서기</ReservationButton>
+          <ReservationButton use={false}>예약 미사용</ReservationButton>
+        </ButtonContainer>
       </StoreMoreInformationContainer>
     </MediumContainer>
   );
 };
-export default StoreInformation;
+export default React.memo(StoreInformation);

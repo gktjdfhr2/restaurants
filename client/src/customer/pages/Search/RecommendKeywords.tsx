@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import PageTitle from '@customer/UI/Form/PageTitle';
 import ButtonSortDiv from '@customer/UI/Form/ButtonSortDiv';
+import React from 'react';
 
 const Title = styled(PageTitle)`
   text-align: left;
@@ -73,4 +74,4 @@ const RecommendKeywords = (props: { searchEvent: any }) => {
     </>
   );
 };
-export default RecommendKeywords;
+export default React.memo(RecommendKeywords);

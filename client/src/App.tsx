@@ -10,7 +10,12 @@ import Layout from '@customer/UI/Layouts/Layout';
 import RecentViewHistory from '@customer/pages/CustomerInformation/RecentViewHistory';
 import LineHistory from '@customer/pages/CustomerInformation/LineHistory';
 import StoreInformation from './customer/components/StoreInformation';
+import MoreMenu from '@customer/components/StoreInformation/MoreMenu';
+import MoreReview from '@customer/components/StoreInformation/MoreReview';
+import MoreAmenities from '@customer/components/StoreInformation/MoreAmenities';
+import ModifyInformation from '@customer/pages/ModifyInformation';
 import ShowMap from '@customer/components/StoreInformation/ShowMap';
+
 
 function App() {
   return (
@@ -22,6 +27,10 @@ function App() {
           <Route
             path="customer/InformationPage/"
             element={<CustomerInformation />}
+          />
+          <Route
+            path="customer/InformationPage/ModifyInformation"
+            element={<ModifyInformation />}
           />
           <Route
             path="customer/ReservationHistory"
@@ -39,6 +48,17 @@ function App() {
             element={<StoreInformation />}
           />
           <Route
+            path="customer/StoreInformation/:storeId/MoreMenu"
+            element={<MoreMenu />}
+          />
+          <Route
+            path="customer/StoreInformation/:storeId/MoreReview"
+            element={<MoreReview />}
+          />
+          <Route
+            path="customer/StoreInformation/:storeId/MoreAmenities"
+            element={<MoreAmenities />}  
+           <Route
             path="customer/StoreInformation/:storeId/showMap"
             element={<ShowMap />}
           />

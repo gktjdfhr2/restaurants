@@ -1,4 +1,5 @@
 import PageTitle from '@customer/UI/Form/PageTitle';
+import React from 'react';
 import styled from 'styled-components';
 
 const PageTitleDiv = styled(PageTitle)`
@@ -8,4 +9,4 @@ const PageTitleDiv = styled(PageTitle)`
   font-weight: normal;
   color: gray;
 `;
-export default PageTitleDiv;
+export default React.memo(PageTitleDiv);
