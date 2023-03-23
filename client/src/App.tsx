@@ -14,6 +14,8 @@ import MoreMenu from '@customer/components/StoreInformation/MoreMenu';
 import MoreReview from '@customer/components/StoreInformation/MoreReview';
 import MoreAmenities from '@customer/components/StoreInformation/MoreAmenities';
 import ModifyInformation from '@customer/pages/ModifyInformation';
+import ShowMap from '@customer/components/StoreInformation/ShowMap';
+
 
 function App() {
   return (
@@ -55,7 +57,10 @@ function App() {
           />
           <Route
             path="customer/StoreInformation/:storeId/MoreAmenities"
-            element={<MoreAmenities />}
+            element={<MoreAmenities />}  
+           <Route
+            path="customer/StoreInformation/:storeId/showMap"
+            element={<ShowMap />}
           />
         </Route>
       </Routes>
