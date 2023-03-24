@@ -126,8 +126,8 @@ const KakaoMap = () => {
               {info && info.content === marker.content && (
                 <div
                   style={{
-                    width: '200px',
-                    height: '30px',
+                    width: '240px',
+                    height: '60px',
                     color: '#000',
                     display: 'flex',
                     alignItems: 'center',
