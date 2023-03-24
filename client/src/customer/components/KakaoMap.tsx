@@ -35,38 +35,43 @@ const KakaoMap = () => {
     });
   }, []);
 
-  const clickEvent = (event: any) => {
-    event.preventDefault();
-    console.log('event');
-    if (!map) return;
-    const ps = new kakao.maps.services.Places();
+  const clickEvent = useCallback(
+    (event: any) => {
+      event.preventDefault();
+      console.log('event');
+      if (!map) return;
+      const ps = new kakao.maps.services.Places();
 
-    ps.keywordSearch(keyword, (data, status, _pagination) => {
-      if (status === kakao.maps.services.Status.OK) {
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-        // LatLngBounds 객체에 좌표를 추가합니다
-        const bounds = new kakao.maps.LatLngBounds();
-        let markers: any = [];
+      ps.keywordSearch(keyword, (data: any, status, _pagination) => {
+        if (status === kakao.maps.services.Status.OK) {
+          // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+          // LatLngBounds 객체에 좌표를 추가합니다
+          const bounds = new kakao.maps.LatLngBounds();
+          let markers: any = [];
 
-        for (var i = 0; i < data.length; i++) {
-          // @ts-ignore
-          markers.push({
-            position: {
-              lat: data[i].y,
-              lng: data[i].x,
-            },
-            content: data[i].place_name,
-          });
-          // @ts-ignore
-          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+          for (var i = 0; i < data.length; i++) {
+            // @ts-ignore
+            markers.push({
+              position: {
+                lat: data[i].y,
+                lng: data[i].x,
+              },
+              content: data[i].place_name,
+              // content: `<div style="text-align:center; padding:16px ; background-color:white ; position: relative;
+              // bottom: 70px; border:1px solid gainsboro; border-radius:20px">${data[i].place_name}</div>`,
+            });
+            // @ts-ignore
+            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+          }
+          setMarkers(markers);
+
+          // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+          map.setBounds(bounds);
         }
-        setMarkers(markers);
-
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-        map.setBounds(bounds);
-      }
-    });
-  };
+      });
+    },
+    [keyword]
+  );
 
   const keywordChangeHandle = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -110,6 +115,7 @@ const KakaoMap = () => {
         level={3} // 지도의 확대 레벨
         onCreate={setMap}
       >
+        {console.log(markers)}
         {markers.map((marker: any) => (
           <>
             <MapMarker
@@ -118,7 +124,16 @@ const KakaoMap = () => {
               onClick={() => setInfo(marker)}
             >
               {info && info.content === marker.content && (
-                <div style={{ color: '#000', textAlign: 'center' }}>
+                <div
+                  style={{
+                    width: '200px',
+                    height: '30px',
+                    color: '#000',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
                   {marker.content}
                 </div>
               )}
