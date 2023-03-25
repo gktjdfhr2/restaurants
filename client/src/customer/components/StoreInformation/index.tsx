@@ -98,28 +98,30 @@ const StoreInformation = () => {
   });
 
   /** 최근 본 가게정보 로컬 스토리지에 추가 */
-  useEffect(() => {
+  () => {
     history.filter((value) => {
-      return value === storeName;
+      return value === data.businessName;
     }).length
       ? setHistory((prev) => {
-          prev.splice(history.indexOf(storeName), 1);
+          prev.splice(history.indexOf(data.businessName), 1);
           localStorage.setItem(
             'viewHistory',
-            JSON.stringify([storeName, ...prev])
+            JSON.stringify([data.businessName, ...prev])
           );
 
-          return [storeName, ...prev];
+          return [data.businessName, ...prev];
         })
       : setHistory((prev) => {
           localStorage.setItem(
             'viewHistory',
-            JSON.stringify([storeName, ...prev])
+            JSON.stringify([data.businessName, ...prev])
           );
 
-          return [storeName, ...prev];
+          return [data.businessName, ...prev];
         });
+  };
 
+  useEffect(() => {
     axios
       .get(
         `http://localhost:8080/api/member/store/${Number(
@@ -134,7 +136,6 @@ const StoreInformation = () => {
       .then((response) => {
         console.log(response);
         setData(response.data.data);
-
         console.log('data', data);
       })
       .catch((err) => {
@@ -151,7 +152,7 @@ const StoreInformation = () => {
         <StoreMoreInformation
           storeName={data.businessName}
           storeAddress={data.businessAddress}
-          reviewScore={3.9}
+          reviewScore={3.9} //추가
         />
         <MenuNavigationContainer>
           <MenuNavigation selectFilter>전체메뉴</MenuNavigation>
