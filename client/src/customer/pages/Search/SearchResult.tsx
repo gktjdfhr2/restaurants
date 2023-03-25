@@ -17,6 +17,7 @@ const MenuButtonContainer = styled.div`
 const SearchResult = (props: { searchResult: {}[] }) => {
   type selectMenu = 'ALL' | 'RESERVATION' | 'LINE';
   const [selectFilter, setSelectFilter] = useState<selectMenu>('ALL');
+  //TODO: 프롭스 배열 인자 타입 정의해주기
 
   return (
     <SearchResultContainer>

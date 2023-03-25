@@ -9,6 +9,8 @@ import StoreReviews from './StoreReviews';
 import OperatingTime from './OperatingTime';
 import Amenities from './Amenities';
 import React from 'react';
+import axios from 'axios';
+import { useCookies } from 'react-cookie';
 
 const StoreImage = styled.div`
   //TODO: props로 서버에서 이미지 받아와서 background지정
@@ -74,9 +76,26 @@ const StoreInformation = () => {
   const [history, setHistory] = useState(historyDefault);
   const storeInformation = useParams();
   let storeName = storeInformation.storeId ? storeInformation.storeId : '';
+
   storeName = storeName.toString();
   const reviewRef = useRef<HTMLElement>(null);
   const infoRef = useRef<HTMLElement>(null);
+  const [data, setData] = useState({
+    businessAddress: '',
+    businessBreakEnd: null,
+    businessBreakTime: null,
+    businessClosedTime: '',
+    businessConditions: '',
+    businessDeleteState: 0,
+    businessId: 1,
+    businessLikes: 0,
+    businessName: '',
+    businessOpenState: 1,
+    businessOpenTime: '',
+    businessOwner: '',
+    businessPlaceX: 0,
+    businessPlaceY: 0,
+  });
 
   /** 최근 본 가게정보 로컬 스토리지에 추가 */
   useEffect(() => {
@@ -100,6 +119,27 @@ const StoreInformation = () => {
 
           return [storeName, ...prev];
         });
+
+    axios
+      .get(
+        `http://localhost:8080/api/member/store/${Number(
+          storeInformation.storeId
+        )}`,
+        {
+          params: {
+            id: Number(storeInformation.storeId),
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        setData(response.data.data);
+
+        console.log('data', data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   //TODO: storeId로 서버에서 데이터 받아서 뿌려주기
@@ -109,8 +149,8 @@ const StoreInformation = () => {
       <StoreImage />
       <StoreMoreInformationContainer>
         <StoreMoreInformation
-          storeName={storeName}
-          storeAddress="동래구 석사북로 5 (사직동) 1층"
+          storeName={data.businessName}
+          storeAddress={data.businessAddress}
           reviewScore={3.9}
         />
         <MenuNavigationContainer>

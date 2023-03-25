@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { useParams } from 'react-router-dom';
@@ -28,12 +29,17 @@ const ShowMap = () => {
   const [info, setInfo]: any = useState();
   const [markers, setMarkers]: any = useState([]);
   const [map, setMap]: any = useState();
+  const [data, setData] = useState({
+    address: '',
+    name: '',
+  });
 
   let store = '부산 동래구 석사북로 5 (사직동) 1층';
   const storeInformation = useParams(); //   //TODO: 가게이름, 주소 받아오기
   console.log(storeInformation);
 
   useEffect(() => {
+    // axios.
     if (!map) return;
 
     const address = new kakao.maps.services.Geocoder();
