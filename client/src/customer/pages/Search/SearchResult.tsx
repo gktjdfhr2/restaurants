@@ -14,7 +14,7 @@ const MenuButtonContainer = styled.div`
   margin: 20px 0;
 `;
 
-const SearchResult = () => {
+const SearchResult = (props: { searchResult: {}[] }) => {
   type selectMenu = 'ALL' | 'RESERVATION' | 'LINE';
   const [selectFilter, setSelectFilter] = useState<selectMenu>('ALL');
 
@@ -37,17 +37,20 @@ const SearchResult = () => {
           onClick={() => setSelectFilter(() => 'LINE')}
         />
       </MenuButtonContainer>
-
-      <ExhibitionItem
-        title="소우데스"
-        score={3.9}
-        countReview={303}
-        condition="일식"
-        address="사직동"
-        distance={0.98}
-        reservation={true}
-        line={false}
-      />
+      {props.searchResult.length === 0 ? (
+        <div>검색 결과가 없습니다.</div>
+      ) : (
+        <ExhibitionItem
+          title="소우데스"
+          score={3.9}
+          countReview={303}
+          condition="일식"
+          address="사직동"
+          distance={0.98}
+          reservation={true}
+          line={false}
+        />
+      )}
     </SearchResultContainer>
   );
 };

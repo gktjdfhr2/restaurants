@@ -36,15 +36,17 @@ const Search = () => {
     : [];
   const [history, setHistory] = useState(historyDefault);
   const [cookies] = useCookies(['token']);
+  const [searchResult, setSearchResult] = useState<Array<object>>([]);
+  //TODO: 배열 인자 타입 인터페이스로 정의해주기,
 
   const keywordChangeHandle = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setKeyword(event.target.value);
       event.target.value.length === 0 && setIsSearch(false);
+      console.log('data :', searchResult);
     },
     [keyword]
   );
-
 
   const searchEvent = async (event: FormEvent, inputValue: string) => {
     setKeyword(inputValue);
@@ -58,34 +60,36 @@ const Search = () => {
         headers: { Authorization: `Bearer ${cookies.token}` },
       })
       .then((response) => {
+        //TODO: 응답 인자 타입 정의해주기,
         console.log('data :', response);
+        setSearchResult(response.data.data);
+
+        inputValue.length === 0
+          ? setIsSearch(false)
+          : history.filter((value) => {
+              return value === inputValue;
+            }).length
+          ? setHistory((prev) => {
+              prev.splice(history.indexOf(inputValue), 1);
+              localStorage.setItem(
+                'searchHistory',
+                JSON.stringify([inputValue, ...prev])
+              );
+              setIsSearch(true);
+              return [inputValue, ...prev];
+            })
+          : setHistory((prev) => {
+              localStorage.setItem(
+                'searchHistory',
+                JSON.stringify([inputValue, ...prev])
+              );
+              setIsSearch(true);
+              return [inputValue, ...prev];
+            });
       })
       .catch((error) => {
         console.log(error);
       });
-
-    inputValue.length === 0
-      ? setIsSearch(false)
-      : history.filter((value) => {
-          return value === inputValue;
-        }).length
-      ? setHistory((prev) => {
-          prev.splice(history.indexOf(inputValue), 1);
-          localStorage.setItem(
-            'searchHistory',
-            JSON.stringify([inputValue, ...prev])
-          );
-          setIsSearch(true);
-          return [inputValue, ...prev];
-        })
-      : setHistory((prev) => {
-          localStorage.setItem(
-            'searchHistory',
-            JSON.stringify([inputValue, ...prev])
-          );
-          setIsSearch(true);
-          return [inputValue, ...prev];
-        });
   };
 
   return (
@@ -119,7 +123,7 @@ const Search = () => {
       />
 
       {isSearch ? (
-        <SearchResult />
+        <SearchResult searchResult={searchResult} />
       ) : (
         <RecommendKeywords searchEvent={searchEvent} />
       )}
