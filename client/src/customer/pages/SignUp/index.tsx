@@ -188,7 +188,7 @@ const SignUp = () => {
 
   const memberAddressHandle = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      const memberAddressRegex = /[가-힣]{6,}$/;
+      const memberAddressRegex = /[가-힣1-9\s\- ]{6,}$/;
       const isMemberAddressValid = memberAddressRegex.test(event.target.value);
 
       setSignUpInfo((prev) => ({
@@ -235,7 +235,7 @@ const SignUp = () => {
   const signUpRegister = () => {
     console.log(signUpInfo);
     axios
-      .post('http://localhost:8080/api/signUp', signUpInfo)
+      .post('http://localhost:8080/api/sign/signUp', signUpInfo)
       .then((response) => {
         console.log('data:', response);
         alert('가입완료! 로그인 페이지로 이동합니다.');
