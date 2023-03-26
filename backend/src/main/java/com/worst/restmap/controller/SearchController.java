@@ -25,7 +25,7 @@ public class SearchController {
     public ResponseEntity<StatusCode> store(@AuthenticationPrincipal CustomUserDetail customUserDetail,
                                             @RequestParam String keyword){
         SearchDto searchDto = SearchDto.builder().keyWord(keyword).build();
-        String memberEmail = customUserDetail.getUsername();
+//        String memberEmail = customUserDetail.getUsername();
         return searchService.findStore(keyword, searchDto);
     }
 

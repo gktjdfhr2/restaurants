@@ -1,8 +1,10 @@
 package com.worst.restmap.domain.entity;
 
+import com.worst.restmap.domain.dto.reservation.LineDto;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -33,7 +35,19 @@ public class Line {
     @Column(name = "line_personnel_kid")
     private long linePersonnelKid;
     @Column(name = "line_datetime")
-    private Date lineDatetime;
+    private LocalDateTime lineDatetime;
     @Column(name = "line_complete_time")
-    private Date lineCompleteTime;
+    private LocalDateTime lineCompleteTime;
+
+    @Builder(builderMethodName = "lineBuilder")
+    public Line(LineDto lineDto, LocalDateTime localDateTime, Member member) {
+        this.lineMemberEmail = member.getMemberEmail();
+        this.lineMemberName = member.getMemberName();
+        this.linePhoneNumber = member.getMemberPhone();
+        this.lineBusinessId = lineDto.getLineBusinessId();
+        this.lineState = 1;
+        this.linePersonnelAdult = lineDto.getLinePersonnelAdult();
+        this.linePersonnelKid = lineDto.getLinePersonnelKid();
+        this.lineDatetime = localDateTime;
+    }
 }
