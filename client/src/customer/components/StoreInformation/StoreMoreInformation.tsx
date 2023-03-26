@@ -27,6 +27,7 @@ const StoreMoreInformation = (props: {
   reviewScore: number;
 }) => {
   console.log('StoreMoreInformation');
+  //TODO: Link로 보내지 말고 페이지에서 띄우기
   return (
     <InformationContainer>
       <StoreInformationTitle>{props.storeName}</StoreInformationTitle>

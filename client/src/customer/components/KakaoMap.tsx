@@ -9,7 +9,6 @@ const KeywordInput = styled(TextInput)`
   padding: 0 40px;
 `;
 const SearchForm = styled.form`
-  margin-top: 33px;
   position: relative;
   width: 100%;
   height: 46px;
