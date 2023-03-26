@@ -1,4 +1,4 @@
-import React, { useState, useCallback, FormEvent } from 'react';
+import React, { useState, useCallback, FormEvent, useEffect } from 'react';
 import styled from 'styled-components';
 import TextInput from '@customer/UI/Form/TextInput';
 import SearchButton from '@customer/UI/Form/SearchButton';
@@ -35,7 +35,7 @@ const Search = () => {
     ? JSON.parse(`${localStorage.getItem('searchHistory')}`)
     : [];
   const [history, setHistory] = useState(historyDefault);
-  const [cookies] = useCookies(['token']);
+  // const [cookies] = useCookies(['token']);
   const [searchResult, setSearchResult] = useState<Array<object>>([]);
   //TODO: 배열 인자 타입 인터페이스로 정의해주기,
 
@@ -47,50 +47,68 @@ const Search = () => {
     },
     [keyword]
   );
+  useEffect(() => {
+    const address = new kakao.maps.services.Geocoder();
+    address.addressSearch(
+      '부산 동래구 석사북로 5 1층',
+      (result: any, status: any) => {
+        if (status === kakao.maps.services.Status.OK) {
+          var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+          console.log('coords :', coords);
+          navigator.geolocation.getCurrentPosition((position) => {
+            console.log('position', position);
+          });
+        }
+      }
+    );
+  }, []);
 
-  const searchEvent = async (event: FormEvent, inputValue: string) => {
-    setKeyword(inputValue);
-    event.preventDefault();
+  const searchEvent = useCallback(
+    async (event: FormEvent, inputValue: string) => {
+      setKeyword(inputValue);
+      event.preventDefault();
 
-    await axios
-      .get(`http://localhost:8080/api/member/store`, {
-        params: {
-          keyword: inputValue,
-        },
-        headers: { Authorization: `Bearer ${cookies.token}` },
-      })
-      .then((response) => {
-        //TODO: 응답 인자 타입 정의해주기,
-        console.log('data :', response);
-        setSearchResult(response.data.data);
+      await axios
+        .get(`http://localhost:8080/api/member/store`, {
+          params: {
+            keyword: inputValue,
+          },
+          // headers: { Authorization: `Bearer ${cookies.token}` },
+        })
+        .then((response) => {
+          //TODO: 응답 인자 타입 정의해주기,
+          console.log('data :', response);
+          setSearchResult(response.data.data);
 
-        inputValue.length === 0
-          ? setIsSearch(false)
-          : history.filter((value) => {
-              return value === inputValue;
-            }).length
-          ? setHistory((prev) => {
-              prev.splice(history.indexOf(inputValue), 1);
-              localStorage.setItem(
-                'searchHistory',
-                JSON.stringify([inputValue, ...prev])
-              );
-              setIsSearch(true);
-              return [inputValue, ...prev];
-            })
-          : setHistory((prev) => {
-              localStorage.setItem(
-                'searchHistory',
-                JSON.stringify([inputValue, ...prev])
-              );
-              setIsSearch(true);
-              return [inputValue, ...prev];
-            });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+          inputValue.length === 0
+            ? setIsSearch(false)
+            : history.filter((value) => {
+                return value === inputValue;
+              }).length
+            ? setHistory((prev) => {
+                prev.splice(history.indexOf(inputValue), 1);
+                localStorage.setItem(
+                  'searchHistory',
+                  JSON.stringify([inputValue, ...prev])
+                );
+                setIsSearch(true);
+                return [inputValue, ...prev];
+              })
+            : setHistory((prev) => {
+                localStorage.setItem(
+                  'searchHistory',
+                  JSON.stringify([inputValue, ...prev])
+                );
+                setIsSearch(true);
+                return [inputValue, ...prev];
+              });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    [keyword]
+  );
 
   return (
     <SearchContainer>

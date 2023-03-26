@@ -99,6 +99,7 @@ const StoreInformation = () => {
 
   /** 최근 본 가게정보 로컬 스토리지에 추가 */
   () => {
+    // TODO: 서버 응답 수정하고,response에 값 설정한 다음 useEffect에 넣기
     history.filter((value) => {
       return value === data.businessName;
     }).length
