@@ -46,10 +46,9 @@ const SearchForm = styled.form`
 
 const KakaoMap = () => {
   const [location, setLocation] = useState({
-    lat: 33.450701,
-    lng: 126.570667,
+    lat: 0,
+    lng: 0,
   });
-  const [isLocation, isSetLocation] = useState(false);
 
   const [keyword, setKeyword] = useState('');
 
@@ -64,7 +63,6 @@ const KakaoMap = () => {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       }));
-      isSetLocation(() => true);
     });
   }, []);
 
@@ -132,7 +130,11 @@ const KakaoMap = () => {
           />
         )}
       </SearchForm>
-      {isLocation ? (
+      {location.lat === 0 ? (
+        <SpinnerContainer>
+          <Spinner />
+        </SpinnerContainer>
+      ) : (
         <Map // 지도를 표시할 Container
           center={{
             // 지도의 중심좌표
@@ -175,10 +177,6 @@ const KakaoMap = () => {
             </>
           ))}
         </Map>
-      ) : (
-        <SpinnerContainer>
-          <Spinner />
-        </SpinnerContainer>
       )}
     </>
   );
