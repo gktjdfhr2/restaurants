@@ -21,4 +21,10 @@ public class StatusCode {
         this.resMsg = resMsg;
         this.data = data;
     }
+
+    @Builder
+    public StatusCode(String resCode, String resMsg) {
+        this.resCode = resCode;
+        this.resMsg = resMsg;
+    }
 }

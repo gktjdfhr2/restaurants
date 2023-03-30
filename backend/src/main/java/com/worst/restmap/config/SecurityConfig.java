@@ -17,8 +17,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.filter.CorsFilter;
 
 @EnableWebSecurity
@@ -49,7 +52,7 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/signIn","/api/signUp").permitAll()
-                .requestMatchers(HttpMethod.GET,"/api/member/store").permitAll()
+                .requestMatchers(HttpMethod.GET,"/api/member/store","/api/member/store/**").permitAll()
                 .anyRequest().authenticated();
         return httpSecurity.build();
     }
@@ -70,8 +73,8 @@ public class SecurityConfig {
             AuthenticationManager authenticationManager = http.getSharedObject(AuthenticationManager.class);
             http
                     .addFilter(corsConfig.corsFilter())
-                    .addFilter(new JwtAuthenticationFilter(authenticationManager,tokenRepository,tokenProvider))
-                    .addFilter(new JwtAuthorizationFilter(authenticationManager,memberRepository,tokenRepository,tokenProvider));
+                    .addFilterBefore(new JwtAuthenticationFilter(authenticationManager,tokenRepository,tokenProvider), UsernamePasswordAuthenticationFilter.class)
+                    .addFilterBefore(new JwtAuthorizationFilter(authenticationManager,memberRepository,tokenRepository,tokenProvider), BasicAuthenticationFilter.class);
         }
     }
 }

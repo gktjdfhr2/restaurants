@@ -1,10 +1,13 @@
 package com.worst.restmap.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 
 @Entity
+@Getter
 @Table( name = "`review`")
 public class Review {
 
@@ -25,8 +28,17 @@ public class Review {
     @Column( name = "review_detail")
     private String reviewDetail;
 
-    @Column( name = "review_image_id")
-    private long reviewImageId;
+    //TODO 이미지 조인 컬럼 추가
+    /*@Column( name = "review_image_id")
+    private long reviewImageId;*/
 
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "review_business_id", insertable = false, updatable = false)
+    private Business business;
 
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "review_member_email", insertable = false, updatable = false)
+    private Member member;
 }

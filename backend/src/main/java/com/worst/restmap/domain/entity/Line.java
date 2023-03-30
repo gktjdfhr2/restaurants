@@ -11,7 +11,6 @@ import java.util.Date;
 @Table(name = "`line`")
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Line {

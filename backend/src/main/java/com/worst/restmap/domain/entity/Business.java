@@ -1,8 +1,12 @@
 package com.worst.restmap.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -50,6 +54,24 @@ public class Business {
 //    @Column(name = "business_close_day")
 //    private LocalDate businessCloseDay;
 
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BusinessTag> BusinessTags = new ArrayList<>();
+    private List<BusinessTag> businessTags = new ArrayList<>();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews = new ArrayList<>();
+
+    public double getAverageScore() {
+        if (reviews.isEmpty()) {
+            return 0;
+        }
+        BigDecimal sum = new BigDecimal("0.0");
+        for (Review review: reviews) {
+            sum.add(review.getReviewScore());
+        }
+        double result = sum.divide(BigDecimal.valueOf(reviews.size()),2, RoundingMode.DOWN).doubleValue();
+        return result;
+    }
 }

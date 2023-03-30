@@ -1,5 +1,6 @@
 package com.worst.restmap.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -17,10 +18,12 @@ public class BusinessTag {
     @Column( name = "business_tag_tag_id")
     private long businessTagTagId;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "business_tag_business_id", insertable = false, updatable = false)
     private Business business;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "business_tag_tag_id", insertable = false, updatable = false)
     private Tag tag;
