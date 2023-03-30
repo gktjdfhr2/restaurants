@@ -1,6 +1,7 @@
 package com.worst.restmap.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -53,10 +54,12 @@ public class Business {
 //    @Column(name = "business_close_day")
 //    private LocalDate businessCloseDay;
 
-    @JsonIgnore
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BusinessTag> businessTags = new ArrayList<>();
-    @JsonIgnore
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
 

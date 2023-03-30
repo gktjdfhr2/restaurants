@@ -35,8 +35,13 @@ public class SearchServiceImpl implements SearchService{
     public ResponseEntity<StatusCode> findStore(String memberEmail, SearchDto searchDto) {
         LocalDateTime localDateTime = LocalDateTime.now();
         String businessName = searchDto.getKeyWord();
+        List<Business> business;
+        if(searchDto.getKeyWord() == null) {
+            business = businessRepository.findAll();
+        } else {
+            business = businessRepository.findByBusinessNameContaining(businessName);
+        }
 
-        List<Business> business = businessRepository.findByBusinessNameContaining(businessName);
         List<TestDto> dtos = new ArrayList<>();
         for (Business business1: business) {
             Double rating = calculateRating(business1.getReviews());

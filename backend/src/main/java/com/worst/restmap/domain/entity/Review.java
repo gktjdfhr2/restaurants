@@ -1,5 +1,6 @@
 package com.worst.restmap.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -31,10 +32,12 @@ public class Review {
     /*@Column( name = "review_image_id")
     private long reviewImageId;*/
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "review_business_id", insertable = false, updatable = false)
     private Business business;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "review_member_email", insertable = false, updatable = false)
     private Member member;
