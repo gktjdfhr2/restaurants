@@ -51,8 +51,9 @@ public class SecurityConfig {
 //                .passwordParameter("memberPassword")
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/signIn","/api/signUp").permitAll()
-                .requestMatchers(HttpMethod.GET,"/api/member/store","/api/member/store/**").permitAll()
+
+                .requestMatchers("/api/sign/signIn","/api/sign/signUp").permitAll()
+                .requestMatchers(HttpMethod.GET,"/api/member/store").permitAll()
                 .anyRequest().authenticated();
         return httpSecurity.build();
     }
