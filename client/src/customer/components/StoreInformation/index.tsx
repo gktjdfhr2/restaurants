@@ -11,7 +11,21 @@ import Amenities from './Amenities';
 import React from 'react';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
+const DarkBackground = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
 
+  div {
+    opacity: 1;
+  }
+`;
 const StoreImage = styled.div`
   //TODO: props로 서버에서 이미지 받아와서 background지정
   background: url(/src/assets/images/placeholder.png);
@@ -27,13 +41,15 @@ const StoreMoreInformationContainer = styled.div`
   border-radius: 10px 10px 0 0;
   border: 1px solid black;
   position: relative;
-  background-color: white;
+
   padding: 30px 0;
 `;
 
 const MenuNavigation = styled(ToggleMenuButton)`
+  background: none;
   font-size: 20px;
   margin: 0 20px;
+  opacity: 1;
 `;
 
 const MenuNavigationContainer = styled.div`
@@ -55,7 +71,7 @@ const ButtonContainer = styled.div`
 const ReservationButton = styled.button<{ use: boolean }>`
   width: 200px;
   height: 50px;
-  background-color: white;
+  background: none;
   opacity: 0.2;
   ${(props) =>
     props.use &&
@@ -147,43 +163,46 @@ const StoreInformation = () => {
   //TODO: storeId로 서버에서 데이터 받아서 뿌려주기
 
   return (
-    <MediumContainer>
-      <StoreImage />
-      <StoreMoreInformationContainer>
-        <StoreMoreInformation
-          storeName={data.businessName}
-          storeAddress={data.businessAddress}
-          reviewScore={3.9} //추가
-        />
-        <MenuNavigationContainer>
-          <MenuNavigation selectFilter>전체메뉴</MenuNavigation>
-          <MenuNavigation
-            selectFilter={false}
-            onClick={() =>
-              reviewRef.current?.scrollIntoView({ behavior: 'smooth' })
-            }
-          >
-            최근리뷰
-          </MenuNavigation>
-          <MenuNavigation
-            selectFilter={false}
-            onClick={() =>
-              infoRef.current?.scrollIntoView({ behavior: 'smooth' })
-            }
-          >
-            매장정보
-          </MenuNavigation>
-        </MenuNavigationContainer>
-        <StoreMenu />
-        <StoreReviews ref={reviewRef} />
-        <OperatingTime ref={infoRef} />
-        <Amenities />
-        <ButtonContainer>
-          <ReservationButton use={true}>원격 줄서기</ReservationButton>
-          <ReservationButton use={false}>예약 미사용</ReservationButton>
-        </ButtonContainer>
-      </StoreMoreInformationContainer>
-    </MediumContainer>
+    <>
+      {/* <DarkBackground></DarkBackground> */}
+      <MediumContainer>
+        <StoreImage />
+        <StoreMoreInformationContainer>
+          <StoreMoreInformation
+            storeName={data.businessName}
+            storeAddress={data.businessAddress}
+            reviewScore={3.9} //추가
+          />
+          <MenuNavigationContainer>
+            <MenuNavigation selectFilter>전체메뉴</MenuNavigation>
+            <MenuNavigation
+              selectFilter={false}
+              onClick={() =>
+                reviewRef.current?.scrollIntoView({ behavior: 'smooth' })
+              }
+            >
+              최근리뷰
+            </MenuNavigation>
+            <MenuNavigation
+              selectFilter={false}
+              onClick={() =>
+                infoRef.current?.scrollIntoView({ behavior: 'smooth' })
+              }
+            >
+              매장정보
+            </MenuNavigation>
+          </MenuNavigationContainer>
+          <StoreMenu />
+          <StoreReviews ref={reviewRef} />
+          <OperatingTime ref={infoRef} />
+          <Amenities />
+          <ButtonContainer>
+            <ReservationButton use={true}>원격 줄서기</ReservationButton>
+            <ReservationButton use={false}>예약 미사용</ReservationButton>
+          </ButtonContainer>
+        </StoreMoreInformationContainer>
+      </MediumContainer>
+    </>
   );
 };
 export default React.memo(StoreInformation);

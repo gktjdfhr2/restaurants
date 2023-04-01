@@ -1,10 +1,40 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import TextInput from '@customer/UI/Form/TextInput';
 import SearchButton from '@customer/UI/Form/SearchButton';
 import ResetButton from '@customer/UI/Form/ResetButton';
 
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const Spinner = styled.div`
+  animation: ${rotate360} 1s linear infinite;
+  transform: translateZ(0);
+
+  border-top: 2px solid grey;
+  border-right: 2px solid grey;
+  border-bottom: 2px solid grey;
+  border-left: 4px solid black;
+  background: transparent;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+`;
+
+const SpinnerContainer = styled.div`
+  width: 100%;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const KeywordInput = styled(TextInput)`
   padding: 0 40px;
 `;
@@ -16,9 +46,10 @@ const SearchForm = styled.form`
 
 const KakaoMap = () => {
   const [location, setLocation] = useState({
-    lat: 33.450701,
-    lng: 126.570667,
+    lat: 0,
+    lng: 0,
   });
+
   const [keyword, setKeyword] = useState('');
 
   const [info, setInfo]: any = useState();
@@ -99,49 +130,54 @@ const KakaoMap = () => {
           />
         )}
       </SearchForm>
-
-      <Map // 지도를 표시할 Container
-        center={{
-          // 지도의 중심좌표
-          lat: location.lat,
-          lng: location.lng,
-        }}
-        style={{
-          // 지도의 크기
-          width: '100%',
-          height: '450px',
-          overflow: 'hidden',
-        }}
-        level={3} // 지도의 확대 레벨
-        onCreate={setMap}
-      >
-        {console.log(markers)}
-        {markers.map((marker: any) => (
-          <>
-            <MapMarker
-              key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
-              position={marker.position}
-              onClick={() => setInfo(marker)}
-            >
-              {info && info.content === marker.content && (
-                <div
-                  style={{
-                    width: '240px',
-                    height: '60px',
-                    color: '#000',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                  onClick={() => setInfo()}
-                >
-                  {marker.content}
-                </div>
-              )}
-            </MapMarker>
-          </>
-        ))}
-      </Map>
+      {location.lat === 0 ? (
+        <SpinnerContainer>
+          <Spinner />
+        </SpinnerContainer>
+      ) : (
+        <Map // 지도를 표시할 Container
+          center={{
+            // 지도의 중심좌표
+            lat: location.lat,
+            lng: location.lng,
+          }}
+          style={{
+            // 지도의 크기
+            width: '100%',
+            height: '450px',
+            overflow: 'hidden',
+          }}
+          level={3} // 지도의 확대 레벨
+          onCreate={setMap}
+        >
+          {console.log(markers)}
+          {markers.map((marker: any) => (
+            <>
+              <MapMarker
+                key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
+                position={marker.position}
+                onClick={() => setInfo(marker)}
+              >
+                {info && info.content === marker.content && (
+                  <div
+                    style={{
+                      width: '240px',
+                      height: '60px',
+                      color: '#000',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                    onClick={() => setInfo()}
+                  >
+                    {marker.content}
+                  </div>
+                )}
+              </MapMarker>
+            </>
+          ))}
+        </Map>
+      )}
     </>
   );
 };

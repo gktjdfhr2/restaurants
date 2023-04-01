@@ -6,7 +6,7 @@ const MoreInformationButton = styled.button`
   border: 1px solid gainsboro;
   border-radius: 25px;
   font-size: 20px;
-  background-color: white;
+  background: none;
   text-align: center;
   margin: 0 auto;
   display: flex;
