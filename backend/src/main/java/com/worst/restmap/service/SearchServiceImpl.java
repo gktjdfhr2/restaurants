@@ -41,27 +41,14 @@ public class SearchServiceImpl implements SearchService{
         } else {
             business = businessRepository.findByBusinessNameContaining(businessName);
         }
-
-        List<TestDto> dtos = new ArrayList<>();
-        for (Business business1: business) {
-            Double rating = calculateRating(business1.getReviews());
-            TestDto dto = new TestDto(business1, rating);
-            dtos.add(dto);
-        }
-
-//        Search search = Search.builder().searchMemberEmail(memberEmail).searchKeyword(businessName).searchLogDatetime(localDateTime).build();
-//        searchRepository.save(search);
-        System.out.println(dtos);
-        return new JsonResponse().send(HttpStatus.OK, StatusCode.builder().resCode("").resMsg("정상조회").data(dtos).build());
+        return new JsonResponse().send(HttpStatus.OK, StatusCode.builder().resCode("").resMsg("정상조회").data(business).build());
     }
 
     @Override
     @Transactional
     public ResponseEntity<StatusCode> findStoreDetail(long id) {
         Business business = businessRepository.findBusinessByBusinessId(id).orElseGet(Business::new);
-        Double rating = calculateRating(business.getReviews());
-        TestDto dto = new TestDto(business, rating);
-        return new JsonResponse().send(HttpStatus.OK, StatusCode.builder().resCode("").resMsg("조회완료").data(dto).build());
+        return new JsonResponse().send(HttpStatus.OK, StatusCode.builder().resCode("").resMsg("조회완료").data(business).build());
     }
 
     @Override

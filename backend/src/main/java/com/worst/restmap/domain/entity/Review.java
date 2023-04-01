@@ -32,12 +32,12 @@ public class Review {
     /*@Column( name = "review_image_id")
     private long reviewImageId;*/
 
-    @JsonBackReference
+    @JsonBackReference("BusinessReviewReference")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "review_business_id", insertable = false, updatable = false)
     private Business business;
 
-    @JsonBackReference
+    @JsonBackReference("MemberReviewReference")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "review_member_email", insertable = false, updatable = false)
     private Member member;

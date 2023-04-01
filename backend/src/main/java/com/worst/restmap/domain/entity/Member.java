@@ -41,7 +41,7 @@ public class Member {
     @Column( name = "member_is_withdrawal")
     private boolean memberIsWithdrawal;
 
-    @JsonManagedReference
+    @JsonManagedReference("MemberReviewReference")
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
 }

@@ -1,5 +1,6 @@
 package com.worst.restmap.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,6 +23,7 @@ public class Tag {
     @Column(name = "tag_name")
     private String tagName;
 
+    @JsonManagedReference("TagReference")
     @OneToMany
     @JoinColumn( name = "business_tag_tag_id")
     private List<BusinessTag> businessTags = new ArrayList<>();
