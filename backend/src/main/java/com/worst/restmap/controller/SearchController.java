@@ -23,7 +23,6 @@ public class SearchController {
     private final SearchService searchService;
 
     @GetMapping("/store")
-    @PreAuthorize("hasAuthority('MEMBER')")
     @Transactional
     public ResponseEntity<StatusCode> store(@AuthenticationPrincipal CustomUserDetail customUserDetail,
                                             @RequestParam String keyword){

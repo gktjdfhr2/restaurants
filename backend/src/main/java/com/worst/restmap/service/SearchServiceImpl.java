@@ -73,7 +73,7 @@ public class SearchServiceImpl implements SearchService{
         if (reviews == null || reviews.isEmpty()) {
             return 0.0;
         }
-        BigDecimal sum = new BigDecimal("0.0");
+        BigDecimal sum = new BigDecimal(0.0);
         for (Review review : reviews) {
             sum.add(review.getReviewScore());
         }
