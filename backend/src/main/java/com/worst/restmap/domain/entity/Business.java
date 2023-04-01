@@ -63,6 +63,10 @@ public class Business {
     @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
 
+    @JsonManagedReference("BusinessAmenities")
+    @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BusinessAmenities> businessAmenities = new ArrayList<>();
+
     public double getAverageScore() {
         if (reviews.isEmpty()) {
             return 0;
