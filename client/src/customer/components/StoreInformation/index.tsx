@@ -141,16 +141,7 @@ const StoreInformation = () => {
   useEffect(() => {
     console.log('id:', Number(storeInformation.storeId));
     axios
-      .get(
-        `http://localhost:8080/api/member/store/${Number(
-          storeInformation.storeId
-        )}`,
-        {
-          params: {
-            id: Number(storeInformation.storeId),
-          },
-        }
-      )
+      .get(`http://localhost:8080/api/member/store/${storeInformation.storeId}`)
       .then((response) => {
         console.log(response);
         setData(response.data.data);
