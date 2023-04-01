@@ -52,7 +52,7 @@ const MoreReviewButton = styled.button`
   font-size: 20px;
   border: none;
   opacity: 0.7;
-  background-color: white;
+  background: none;
   color: gray;
   &:hover {
     opacity: 1;
