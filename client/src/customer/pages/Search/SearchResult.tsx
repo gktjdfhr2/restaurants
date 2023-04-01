@@ -4,6 +4,7 @@ import ExhibitionItem from '../../UI/Form/ExhibitionItem';
 import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
 import SearchResultContainer from '@customer/UI/Form/SearchResultContainer';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MenuButtonContainer = styled.div`
   display: flex;
@@ -41,16 +42,18 @@ const SearchResult = (props: { searchResult: {}[] }) => {
       {props.searchResult.length === 0 ? (
         <div>검색 결과가 없습니다.</div>
       ) : (
-        <ExhibitionItem
-          title="소우데스"
-          score={3.9}
-          countReview={303}
-          condition="일식"
-          address="사직동"
-          distance={0.98}
-          reservation={true}
-          line={false}
-        />
+        <Link to={`/customer/StoreInformation/${1}`}>
+          <ExhibitionItem
+            title="소우데스"
+            score={3.9}
+            countReview={303}
+            condition="일식"
+            address="사직동"
+            distance={0.98}
+            reservation={true}
+            line={false}
+          />
+        </Link>
       )}
     </SearchResultContainer>
   );

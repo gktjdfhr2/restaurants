@@ -139,6 +139,7 @@ const StoreInformation = () => {
   };
 
   useEffect(() => {
+    console.log('id:', Number(storeInformation.storeId));
     axios
       .get(
         `http://localhost:8080/api/member/store/${Number(
