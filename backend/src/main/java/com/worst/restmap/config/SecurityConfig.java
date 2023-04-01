@@ -53,7 +53,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
 
                 .requestMatchers("/api/sign/signIn","/api/sign/signUp").permitAll()
-                .requestMatchers(HttpMethod.GET,"/api/member/store").permitAll()
+                .requestMatchers(HttpMethod.GET,"/api/member/store","/api/member/store/**").permitAll()
                 .anyRequest().authenticated();
         return httpSecurity.build();
     }

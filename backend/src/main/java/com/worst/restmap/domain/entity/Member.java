@@ -1,5 +1,6 @@
 package com.worst.restmap.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Fetch;
@@ -40,6 +41,7 @@ public class Member {
     @Column( name = "member_is_withdrawal")
     private boolean memberIsWithdrawal;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
 }
