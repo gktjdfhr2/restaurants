@@ -14,8 +14,28 @@ const MenuButtonContainer = styled.div`
   width: 100%;
   margin: 20px 0;
 `;
+interface StoreInformation {
+  averageScore: number;
+  businessAddress: string;
+  businessAmenities?: Array<number>;
+  businessBreakEnd?: string;
+  businessBreakTime?: string;
+  businessClosedTime?: string;
+  businessConditions?: string;
+  businessDeleteState?: number;
+  businessId: number;
+  businessLikes?: number;
+  businessName: string;
+  businessOpenState: number;
+  businessOpenTime: string;
+  businessOwner?: string;
+  businessPlaceX?: number;
+  businessPlaceY?: number;
+  businessTags: Array<string>;
+  reviews?: Array<string>;
+}
 
-const SearchResult = (props: { searchResult: {}[] }) => {
+const SearchResult = (props: { searchResult: StoreInformation[] }) => {
   type selectMenu = 'ALL' | 'RESERVATION' | 'LINE';
   const [selectFilter, setSelectFilter] = useState<selectMenu>('ALL');
   //TODO: 프롭스 배열 인자 타입 정의해주기

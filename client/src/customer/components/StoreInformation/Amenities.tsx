@@ -1,6 +1,6 @@
 import StoreInformationTitle from '@customer/UI/Form/StoreInformationTitle';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const AmenitiesContainer = styled.div`
   width: 100%;
@@ -14,11 +14,49 @@ const AmenityItemContainer = styled.div`
   justify-content: flex-start;
 `;
 
-const AmenityItem = styled.div`
+const AmenityItem = styled.div<{ AmenityItem: number }>`
   //TODO: 이미지 타이틀에 맞게 지정
   width: 200px;
   height: 200px;
-  background: url(/src/assets/images/free-icon-sofa-333493.png);
+  ${(props) => {
+    switch (props.AmenityItem) {
+      case 1:
+        return css`
+          background: url(/src/assets/images/free-icon-sofa-333493.png);
+        `;
+
+      case 2:
+        return css`
+          background: url(/src/assets/images/free-icon-wifi-signal-640708.png);
+        `;
+
+      case 3:
+        return css`
+          background: url(/src/assets/images/parked-car.png);
+        `;
+
+      case 4:
+        return css`
+          background: url(/src/assets/images/dog.png);
+        `;
+
+      case 5:
+        return css`
+          background: url(/src/assets/images/playtime.png);
+        `;
+
+      case 6:
+        return css`
+          background: url(/src/assets/images/toilet.png);
+        `;
+
+      case 7:
+        return css`
+          background: url(/src/assets/images/chairs.png);
+        `;
+    }
+  }}
+
   background-repeat: no-repeat;
   background-position: top;
   background-size: 150px;
@@ -27,7 +65,38 @@ const AmenityItem = styled.div`
   margin: 0 10px;
 
   &:after {
-    content: ${(props) => `'${props.title}'`};
+    ${(props) => {
+      switch (props.AmenityItem) {
+        case 1:
+          return css`
+            content: '단체석 구비';
+          `;
+        case 2:
+          return css`
+            content: '무선 인터넷';
+          `;
+        case 3:
+          return css`
+            content: '주차 이용가능';
+          `;
+        case 4:
+          return css`
+            content: '반려동물 입장가능';
+          `;
+        case 5:
+          return css`
+            content: '유아 놀이방';
+          `;
+        case 6:
+          return css`
+            content: '남녀 화장실 구분';
+          `;
+        case 7:
+          return css`
+            content: '테라스 테이블 제공';
+          `;
+      }
+    }};
     position: absolute;
 
     width: 200px;
@@ -36,7 +105,7 @@ const AmenityItem = styled.div`
 
     text-align: center;
 
-    transform: translate(0, 150px);
+    transform: translate(0, 160px);
   }
 `;
 
@@ -68,9 +137,9 @@ const Amenities = () => {
         </Link>
       </TitleContainer>
       <AmenityItemContainer>
-        <AmenityItem title="단체석 구비" />
-        <AmenityItem title="테라스 테이블 제공" />
-        <AmenityItem title="주차 이용 가능" />
+        <AmenityItem AmenityItem={1} />
+        <AmenityItem AmenityItem={2} />
+        <AmenityItem AmenityItem={3} />
       </AmenityItemContainer>
     </AmenitiesContainer>
   );

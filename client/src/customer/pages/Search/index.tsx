@@ -36,7 +36,27 @@ const Search = () => {
     : [];
   const [history, setHistory] = useState(historyDefault);
   // const [cookies] = useCookies(['token']);
-  const [searchResult, setSearchResult] = useState<Array<object>>([]);
+  interface StoreInformation {
+    averageScore: number;
+    businessAddress: string;
+    businessAmenities?: Array<number>;
+    businessBreakEnd?: string;
+    businessBreakTime?: string;
+    businessClosedTime?: string;
+    businessConditions?: string;
+    businessDeleteState?: number;
+    businessId: number;
+    businessLikes?: number;
+    businessName: string;
+    businessOpenState: number;
+    businessOpenTime: string;
+    businessOwner?: string;
+    businessPlaceX?: number;
+    businessPlaceY?: number;
+    businessTags: Array<string>;
+    reviews?: Array<string>;
+  }
+  const [searchResult, setSearchResult] = useState<Array<StoreInformation>>([]);
   //TODO: 배열 인자 타입 인터페이스로 정의해주기,
 
   const keywordChangeHandle = useCallback(
