@@ -105,7 +105,7 @@ const AmenityItem = styled.div<{ AmenityItem: number }>`
 
     text-align: center;
 
-    transform: translate(0, 150px);
+    transform: translate(0, 160px);
   }
 `;
 

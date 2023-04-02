@@ -87,6 +87,7 @@ const StoreInformation = () => {
   const [data, setData] = useState({
     averageScore: 0,
     businessAddress: '',
+    businessAmenities: [],
     businessBreakEnd: '',
     businessBreakTime: '',
     businessClosedTime: '',
@@ -100,31 +101,31 @@ const StoreInformation = () => {
     businessOwner: '',
     businessPlaceX: 0,
     businessPlaceY: 0,
+    businessTags: [],
+    reviews: [],
   });
 
   /** 최근 본 가게정보 로컬 스토리지에 추가 */
   () => {
     // TODO: 서버 응답 수정하고,response에 값 설정한 다음 useEffect에 넣기
-    history.filter((value) => {
-      return value === data.businessName;
-    }).length
-      ? setHistory((prev) => {
-          prev.splice(history.indexOf(data.businessName), 1);
-          localStorage.setItem(
-            'viewHistory',
-            JSON.stringify([data.businessName, ...prev])
-          );
-
-          return [data.businessName, ...prev];
-        })
-      : setHistory((prev) => {
-          localStorage.setItem(
-            'viewHistory',
-            JSON.stringify([data.businessName, ...prev])
-          );
-
-          return [data.businessName, ...prev];
-        });
+    // history.filter((value) => {
+    //   return value === data.businessName;
+    // }).length
+    //   ? setHistory((prev) => {
+    //       prev.splice(history.indexOf(data.businessName), 1);
+    //       localStorage.setItem(
+    //         'viewHistory',
+    //         JSON.stringify([data.businessName, ...prev])
+    //       );
+    //       return [data.businessName, ...prev];
+    //     })
+    //   : setHistory((prev) => {
+    //       localStorage.setItem(
+    //         'viewHistory',
+    //         JSON.stringify([data.businessName, ...prev])
+    //       );
+    //       return [data.businessName, ...prev];
+    //     });
   };
 
   useEffect(() => {
@@ -132,9 +133,29 @@ const StoreInformation = () => {
     axios
       .get(`http://localhost:8080/api/member/store/${storeInformation.storeId}`)
       .then((response) => {
-        console.log(response);
-        setData(response.data.data.business);
-        console.log('data', response.data.data.business);
+        // console.log(response);
+        setData(response.data.data);
+        // console.log('data', response.data.data);
+        history.filter((value) => {
+          return value === data.businessName;
+        }).length
+          ? setHistory((prev) => {
+              prev.splice(history.indexOf(data.businessName), 1);
+              localStorage.setItem(
+                'viewHistory',
+                JSON.stringify([data.businessName, ...prev])
+              );
+
+              return [data.businessName, ...prev];
+            })
+          : setHistory((prev) => {
+              localStorage.setItem(
+                'viewHistory',
+                JSON.stringify([data.businessName, ...prev])
+              );
+
+              return [data.businessName, ...prev];
+            });
       })
       .catch((err) => {
         console.log(err);

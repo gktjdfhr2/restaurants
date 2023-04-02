@@ -92,15 +92,15 @@ const AmenityItem = styled.div<{ AmenityItem: number }>`
           `;
       }
     }};
-    position: absolute;
 
+    display: block;
     width: 200px;
     font-weight: bold;
     color: black;
 
     text-align: center;
 
-    transform: translate(0, 150px);
+    transform: translate(0, 160px);
   }
 `;
 
