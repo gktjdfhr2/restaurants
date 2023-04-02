@@ -4,6 +4,7 @@ import com.worst.restmap.common.StatusCode;
 import com.worst.restmap.config.auth.CustomUserDetail;
 import com.worst.restmap.domain.entity.Line;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,9 +18,16 @@ import java.security.Principal;
 public class MemberController {
 
     @PostMapping("/line")
-    public ResponseEntity<StatusCode> saveLine(@RequestBody Line line, CustomUserDetail customUserDetail){
+    public ResponseEntity<StatusCode> saveLine(@RequestBody Line line, @AuthenticationPrincipal CustomUserDetail customUserDetail){
         String memberEmail = customUserDetail.getMember().getMemberEmail();
         return null;
+    }
+
+
+
+    @PostMapping("/review")
+    public ResponseEntity<StatusCode> saveReview(@RequestBody  , @AuthenticationPrincipal CustomUserDetail customUserDetail){
+        String memberEmail = customUserDetail.getMember().getMemberEmail();
     }
 
 
