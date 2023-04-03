@@ -36,6 +36,14 @@ const Search = () => {
     ? JSON.parse(`${localStorage.getItem('searchHistory')}`)
     : [];
   const [history, setHistory] = useState(historyDefault);
+  const [stayLocation, setStayLocation] = useState<StayLocation>({
+    latitude: 0,
+    longitude: 0,
+  });
+  interface StayLocation {
+    latitude: number;
+    longitude: number;
+  }
   // const [cookies] = useCookies(['token']);
   interface StoreInformation {
     averageScore: number;
@@ -69,20 +77,31 @@ const Search = () => {
     [keyword]
   );
   useEffect(() => {
-    const address = new kakao.maps.services.Geocoder();
-    address.addressSearch(
-      '부산 동래구 석사북로 5 1층',
-      (result: any, status: any) => {
-        if (status === kakao.maps.services.Status.OK) {
-          var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-          console.log('coords :', coords);
-          navigator.geolocation.getCurrentPosition((position) => {
-            console.log('position', position);
-          });
-        }
-      }
-    );
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log('position', position);
+      setStayLocation((prev) => ({
+        ...prev,
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      }));
+    });
   }, []);
+
+  // useEffect(() => {
+  //   const address = new kakao.maps.services.Geocoder();
+  //   address.addressSearch(
+  //     '부산 동래구 석사북로 5 1층',
+  //     (result: any, status: any) => {
+  //       if (status === kakao.maps.services.Status.OK) {
+  //         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+  //         console.log('coords :', coords);
+  //         navigator.geolocation.getCurrentPosition((position) => {
+  //           console.log('position', position);
+  //         });
+  //       }
+  //     }
+  //   );
+  // }, []);
 
   const searchEvent = async (event: FormEvent, inputValue: string) => {
     setKeyword(inputValue);
@@ -160,7 +179,10 @@ const Search = () => {
 
       {isSearch ? (
         <SearchResultContainer>
-          <SearchResult searchResult={searchResult} />
+          <SearchResult
+            searchResult={searchResult}
+            stayLocation={stayLocation}
+          />
         </SearchResultContainer>
       ) : (
         <RecommendKeywords searchEvent={searchEvent} />

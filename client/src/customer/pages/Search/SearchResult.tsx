@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ExhibitionItem from '../../UI/Form/ExhibitionItem';
 import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getDistance } from 'geolib';
 
 const MenuButtonContainer = styled.div`
   display: flex;
@@ -33,12 +34,17 @@ interface StoreInformation {
   businessTags: Array<string>;
   reviews: Array<string>;
 }
-
-const SearchResult = (props: { searchResult: StoreInformation[] }) => {
+interface StayLocation {
+  latitude: number;
+  longitude: number;
+}
+const SearchResult = (props: {
+  searchResult: StoreInformation[];
+  stayLocation: StayLocation;
+}) => {
   type selectMenu = 'ALL' | 'RESERVATION' | 'LINE';
   const [selectFilter, setSelectFilter] = useState<selectMenu>('ALL');
-  //TODO: 프롭스 배열 인자 타입 정의해주기
-
+  // console.log(props.stayLocation);
   return (
     <>
       <MenuButtonContainer>
@@ -63,6 +69,24 @@ const SearchResult = (props: { searchResult: StoreInformation[] }) => {
           <div>검색 결과가 없습니다.</div>
         ) : (
           props.searchResult.map((value: StoreInformation, index) => {
+            const address = new kakao.maps.services.Geocoder();
+            let coords = { latitude: 0, longitude: 0 };
+            address.addressSearch(
+              value.businessAddress,
+              (result: any, status: any) => {
+                if (status === kakao.maps.services.Status.OK) {
+                  var checkCoords: any = new kakao.maps.LatLng(
+                    result[0].y,
+                    result[0].x
+                  );
+                  coords = {
+                    latitude: checkCoords.Ma,
+                    longitude: checkCoords.La,
+                  };
+                  console.log('coords!!! :', coords);
+                }
+              }
+            );
             return (
               <Link
                 to={`/customer/StoreInformation/${value.businessId}`}
@@ -74,7 +98,14 @@ const SearchResult = (props: { searchResult: StoreInformation[] }) => {
                   countReview={value.reviews.length}
                   condition={value.businessConditions}
                   address="사직동"
-                  distance={0.98}
+                  distance={
+                    props.stayLocation.latitude === 0
+                      ? '0'
+                      : (
+                          getDistance(coords, props.stayLocation, 1000) /
+                          10000000
+                        ).toFixed(2)
+                  }
                   reservation={true}
                   line={false}
                 />
