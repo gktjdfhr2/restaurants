@@ -84,9 +84,30 @@ const StoreInformation = () => {
   storeName = storeName.toString();
   const reviewRef = useRef<HTMLElement>(null);
   const infoRef = useRef<HTMLElement>(null);
-  const [data, setData] = useState({
+  interface StoreInformation {
+    averageScore: number;
+    businessAddress: string;
+    businessAmenities?: Array<number>;
+    businessBreakEnd?: string;
+    businessBreakTime?: string;
+    businessClosedTime?: string;
+    businessConditions: string;
+    businessDeleteState?: number;
+    businessId: number;
+    businessLikes?: number;
+    businessName: string;
+    businessOpenState: number;
+    businessOpenTime: string;
+    businessOwner?: string;
+    businessPlaceX?: number;
+    businessPlaceY?: number;
+    businessTags: Array<string>;
+    reviews: Array<string>;
+  }
+  const [data, setData] = useState<StoreInformation>({
     averageScore: 0,
     businessAddress: '',
+    businessAmenities: [],
     businessBreakEnd: '',
     businessBreakTime: '',
     businessClosedTime: '',
@@ -100,49 +121,123 @@ const StoreInformation = () => {
     businessOwner: '',
     businessPlaceX: 0,
     businessPlaceY: 0,
+    businessTags: [],
+    reviews: [],
   });
 
   /** 최근 본 가게정보 로컬 스토리지에 추가 */
   () => {
     // TODO: 서버 응답 수정하고,response에 값 설정한 다음 useEffect에 넣기
-    history.filter((value) => {
-      return value === data.businessName;
-    }).length
-      ? setHistory((prev) => {
-          prev.splice(history.indexOf(data.businessName), 1);
-          localStorage.setItem(
-            'viewHistory',
-            JSON.stringify([data.businessName, ...prev])
-          );
-
-          return [data.businessName, ...prev];
-        })
-      : setHistory((prev) => {
-          localStorage.setItem(
-            'viewHistory',
-            JSON.stringify([data.businessName, ...prev])
-          );
-
-          return [data.businessName, ...prev];
-        });
+    // history.filter((value) => {
+    //   return value === data.businessName;
+    // }).length
+    //   ? setHistory((prev) => {
+    //       prev.splice(history.indexOf(data.businessName), 1);
+    //       localStorage.setItem(
+    //         'viewHistory',
+    //         JSON.stringify([data.businessName, ...prev])
+    //       );
+    //       return [data.businessName, ...prev];
+    //     })
+    //   : setHistory((prev) => {
+    //       localStorage.setItem(
+    //         'viewHistory',
+    //         JSON.stringify([data.businessName, ...prev])
+    //       );
+    //       return [data.businessName, ...prev];
+    //     });
   };
 
   useEffect(() => {
-    console.log('id:', Number(storeInformation.storeId));
+    console.log('id:', storeInformation.storeId);
     axios
       .get(`http://localhost:8080/api/member/store/${storeInformation.storeId}`)
       .then((response) => {
-        console.log(response);
-        setData(response.data.data.business);
-        console.log('data', response.data.data.business);
+        setData(response.data.data);
+        return response.data.data;
+        // history.filter((value) => {
+        //   return value === data.businessName;
+        // }).length
+        //   ? setHistory((prev) => {
+        //       console.log('data!', data.businessName);
+        //       prev.splice(history.indexOf(data.businessName), 1);
+        //       localStorage.setItem(
+        //         'viewHistory',
+        //         JSON.stringify([data.businessName, ...prev])
+        //       );
+
+        //       return [data.businessName, ...prev];
+        //     })
+        //   : setHistory((prev) => {
+        //       console.log('data!!', data.businessName);
+        //       localStorage.setItem(
+        //         'viewHistory',
+        //         JSON.stringify([data.businessName, ...prev])
+        //       );
+
+        //       return [data.businessName, ...prev];
+        //     });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .then((response) => {
+        console.log('response', response);
+        history.filter((value) => {
+          return value === response.businessName;
+        }).length
+          ? setHistory((prev) => {
+              console.log('data!', response.businessName);
+              prev.splice(history.indexOf(response.businessName), 1);
+              localStorage.setItem(
+                'viewHistory',
+                JSON.stringify([response.businessName, ...prev])
+              );
+
+              return [response.businessName, ...prev];
+            })
+          : setHistory((prev) => {
+              console.log('data!!', response.businessName);
+              localStorage.setItem(
+                'viewHistory',
+                JSON.stringify([response.businessName, ...prev])
+              );
+
+              return [response.businessName, ...prev];
+            });
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
+  // useEffect(() => {
+  //   history.filter((value) => {
+  //     return value === data.businessName;
+  //   }).length
+  //     ? setHistory((prev) => {
+  //         console.log('data!', data.businessName);
+  //         prev.splice(history.indexOf(data.businessName), 1);
+  //         localStorage.setItem(
+  //           'viewHistory',
+  //           JSON.stringify([data.businessName, ...prev])
+  //         );
+
+  //         return [data.businessName, ...prev];
+  //       })
+  //     : setHistory((prev) => {
+  //         console.log('data!!', data.businessName);
+  //         localStorage.setItem(
+  //           'viewHistory',
+  //           JSON.stringify([data.businessName, ...prev])
+  //         );
+
+  //         return [data.businessName, ...prev];
+  //       });
+  // }, [data]);
+
   //TODO: storeId로 서버에서 데이터 받아서 뿌려주기
-  console.log('data!:', data);
+  // console.log('data!:', data);
   return (
     <>
       <MediumContainer>

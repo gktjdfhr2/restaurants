@@ -2,7 +2,6 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import ExhibitionItem from '../../UI/Form/ExhibitionItem';
 import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
-import SearchResultContainer from '@customer/UI/Form/SearchResultContainer';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -14,14 +13,34 @@ const MenuButtonContainer = styled.div`
   width: 100%;
   margin: 20px 0;
 `;
+interface StoreInformation {
+  averageScore: number;
+  businessAddress: string;
+  businessAmenities?: Array<number>;
+  businessBreakEnd?: string;
+  businessBreakTime?: string;
+  businessClosedTime?: string;
+  businessConditions: string;
+  businessDeleteState?: number;
+  businessId: number;
+  businessLikes?: number;
+  businessName: string;
+  businessOpenState: number;
+  businessOpenTime: string;
+  businessOwner?: string;
+  businessPlaceX?: number;
+  businessPlaceY?: number;
+  businessTags: Array<string>;
+  reviews: Array<string>;
+}
 
-const SearchResult = (props: { searchResult: {}[] }) => {
+const SearchResult = (props: { searchResult: StoreInformation[] }) => {
   type selectMenu = 'ALL' | 'RESERVATION' | 'LINE';
   const [selectFilter, setSelectFilter] = useState<selectMenu>('ALL');
   //TODO: 프롭스 배열 인자 타입 정의해주기
 
   return (
-    <SearchResultContainer>
+    <>
       <MenuButtonContainer>
         <ToggleMenuButton
           title="전체"
@@ -39,23 +58,50 @@ const SearchResult = (props: { searchResult: {}[] }) => {
           onClick={() => setSelectFilter(() => 'LINE')}
         />
       </MenuButtonContainer>
-      {props.searchResult.length === 0 ? (
-        <div>검색 결과가 없습니다.</div>
-      ) : (
-        <Link to={`/customer/StoreInformation/${1}`}>
-          <ExhibitionItem
-            title="소우데스"
-            score={3.9}
-            countReview={303}
-            condition="일식"
-            address="사직동"
-            distance={0.98}
-            reservation={true}
-            line={false}
-          />
-        </Link>
-      )}
-    </SearchResultContainer>
+      {
+        props.searchResult.length === 0 ? (
+          <div>검색 결과가 없습니다.</div>
+        ) : (
+          props.searchResult.map((value: StoreInformation, index) => {
+            console.log('index:', index);
+            console.log('value:', value);
+            console.log('reviews:', value.reviews.length);
+            console.log('businessName:', value.businessName);
+            console.log('averageScore:', value.averageScore);
+            console.log('businessConditions:', value.businessConditions);
+
+            <Link
+              to={`/customer/StoreInformation/${value.businessId}`}
+              key={index}
+            >
+              <ExhibitionItem
+                title={value.businessName}
+                score={value.averageScore}
+                countReview={value.reviews.length}
+                condition={value.businessConditions}
+                address="사직동"
+                distance={0.98}
+                reservation={true}
+                line={false}
+              />
+            </Link>;
+          })
+        )
+
+        // <Link to={`/customer/StoreInformation/${1}`}>
+        //   <ExhibitionItem
+        //     title="소우데스"
+        //     score={3.9}
+        //     countReview={303}
+        //     condition="일식"
+        //     address="사직동"
+        //     distance={0.98}
+        //     reservation={true}
+        //     line={false}
+        //   />
+        // </Link>
+      }
+    </>
   );
 };
 export default React.memo(SearchResult);

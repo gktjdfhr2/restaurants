@@ -7,6 +7,7 @@ import RecommendKeywords from './RecommendKeywords';
 import SearchResult from './SearchResult';
 import ResetButton from '@customer/UI/Form/ResetButton';
 import axios from 'axios';
+import SearchResultContainer from '@customer/UI/Form/SearchResultContainer';
 import { useCookies } from 'react-cookie';
 
 const SearchForm = styled.form`
@@ -36,7 +37,27 @@ const Search = () => {
     : [];
   const [history, setHistory] = useState(historyDefault);
   // const [cookies] = useCookies(['token']);
-  const [searchResult, setSearchResult] = useState<Array<object>>([]);
+  interface StoreInformation {
+    averageScore: number;
+    businessAddress: string;
+    businessAmenities?: Array<number>;
+    businessBreakEnd?: string;
+    businessBreakTime?: string;
+    businessClosedTime?: string;
+    businessConditions: string;
+    businessDeleteState?: number;
+    businessId: number;
+    businessLikes?: number;
+    businessName: string;
+    businessOpenState: number;
+    businessOpenTime: string;
+    businessOwner?: string;
+    businessPlaceX?: number;
+    businessPlaceY?: number;
+    businessTags: Array<string>;
+    reviews: Array<string>;
+  }
+  const [searchResult, setSearchResult] = useState<Array<StoreInformation>>([]);
   //TODO: 배열 인자 타입 인터페이스로 정의해주기,
 
   const keywordChangeHandle = useCallback(
@@ -63,52 +84,49 @@ const Search = () => {
     );
   }, []);
 
-  const searchEvent = useCallback(
-    async (event: FormEvent, inputValue: string) => {
-      setKeyword(inputValue);
-      event.preventDefault();
+  const searchEvent = async (event: FormEvent, inputValue: string) => {
+    setKeyword(inputValue);
+    event.preventDefault();
 
-      await axios
-        .get(`http://localhost:8080/api/member/store`, {
-          params: {
-            keyword: inputValue,
-          },
-          // headers: { Authorization: `Bearer ${cookies.token}` },
-        })
-        .then((response) => {
-          //TODO: 응답 인자 타입 정의해주기,
-          console.log('data :', response);
-          setSearchResult(response.data.data);
+    await axios
+      .get(`http://localhost:8080/api/member/store`, {
+        params: {
+          keyword: inputValue,
+        },
+        // headers: { Authorization: `Bearer ${cookies.token}` },
+      })
+      .then((response) => {
+        //TODO: 응답 인자 타입 정의해주기,
+        console.log('data :', response);
+        setSearchResult(response.data.data);
 
-          inputValue.length === 0
-            ? setIsSearch(false)
-            : history.filter((value) => {
-                return value === inputValue;
-              }).length
-            ? setHistory((prev) => {
-                prev.splice(history.indexOf(inputValue), 1);
-                localStorage.setItem(
-                  'searchHistory',
-                  JSON.stringify([inputValue, ...prev])
-                );
-                setIsSearch(true);
-                return [inputValue, ...prev];
-              })
-            : setHistory((prev) => {
-                localStorage.setItem(
-                  'searchHistory',
-                  JSON.stringify([inputValue, ...prev])
-                );
-                setIsSearch(true);
-                return [inputValue, ...prev];
-              });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    [keyword]
-  );
+        inputValue.length === 0
+          ? setIsSearch(true)
+          : history.filter((value) => {
+              return value === inputValue;
+            }).length
+          ? setHistory((prev) => {
+              prev.splice(history.indexOf(inputValue), 1);
+              localStorage.setItem(
+                'searchHistory',
+                JSON.stringify([inputValue, ...prev])
+              );
+              setIsSearch(true);
+              return [inputValue, ...prev];
+            })
+          : setHistory((prev) => {
+              localStorage.setItem(
+                'searchHistory',
+                JSON.stringify([inputValue, ...prev])
+              );
+              setIsSearch(true);
+              return [inputValue, ...prev];
+            });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <SearchContainer>
@@ -141,7 +159,9 @@ const Search = () => {
       />
 
       {isSearch ? (
-        <SearchResult searchResult={searchResult} />
+        <SearchResultContainer>
+          <SearchResult searchResult={searchResult} />
+        </SearchResultContainer>
       ) : (
         <RecommendKeywords searchEvent={searchEvent} />
       )}
