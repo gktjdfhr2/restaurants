@@ -4,7 +4,6 @@ import ExhibitionItem from '../../UI/Form/ExhibitionItem';
 import ToggleMenuButton from '@customer/UI/Form/ToggleMenuButton';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getDistance } from 'geolib';
 
 const MenuButtonContainer = styled.div`
   display: flex;
@@ -37,6 +36,26 @@ interface StoreInformation {
 interface StayLocation {
   latitude: number;
   longitude: number;
+}
+function getDistanceFromLatLonInKm(
+  first: StayLocation,
+  second: StayLocation
+): number {
+  function deg2rad(deg: number) {
+    return deg * (Math.PI / 180);
+  }
+  var r = 6371; //지구의 반지름(km)
+  var dLat = deg2rad(second.latitude - first.latitude);
+  var dLon = deg2rad(second.longitude - first.longitude);
+  var a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(deg2rad(first.latitude)) *
+      Math.cos(deg2rad(second.latitude)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = r * c; // Distance in km
+  return Math.round(d * 1000) / 10000000;
 }
 const SearchResult = (props: {
   searchResult: StoreInformation[];
@@ -100,10 +119,10 @@ const SearchResult = (props: {
                   address="사직동"
                   distance={
                     props.stayLocation.latitude === 0
-                      ? '0'
-                      : (
-                          getDistance(coords, props.stayLocation, 1000) /
-                          10000000
+                      ? '-'
+                      : getDistanceFromLatLonInKm(
+                          coords,
+                          props.stayLocation
                         ).toFixed(2)
                   }
                   reservation={true}
