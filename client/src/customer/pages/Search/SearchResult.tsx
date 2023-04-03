@@ -63,28 +63,23 @@ const SearchResult = (props: { searchResult: StoreInformation[] }) => {
           <div>검색 결과가 없습니다.</div>
         ) : (
           props.searchResult.map((value: StoreInformation, index) => {
-            console.log('index:', index);
-            console.log('value:', value);
-            console.log('reviews:', value.reviews.length);
-            console.log('businessName:', value.businessName);
-            console.log('averageScore:', value.averageScore);
-            console.log('businessConditions:', value.businessConditions);
-
-            <Link
-              to={`/customer/StoreInformation/${value.businessId}`}
-              key={index}
-            >
-              <ExhibitionItem
-                title={value.businessName}
-                score={value.averageScore}
-                countReview={value.reviews.length}
-                condition={value.businessConditions}
-                address="사직동"
-                distance={0.98}
-                reservation={true}
-                line={false}
-              />
-            </Link>;
+            return (
+              <Link
+                to={`/customer/StoreInformation/${value.businessId}`}
+                key={index}
+              >
+                <ExhibitionItem
+                  title={value.businessName}
+                  score={value.averageScore}
+                  countReview={value.reviews.length}
+                  condition={value.businessConditions}
+                  address="사직동"
+                  distance={0.98}
+                  reservation={true}
+                  line={false}
+                />
+              </Link>
+            );
           })
         )
 
