@@ -6,6 +6,8 @@ import StorePrevButton from '@customer/UI/Form/StorePrevButton';
 import { useNavigate } from 'react-router-dom';
 import ReviewItem from '@customer/UI/Form/ReviewItem';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 const StoreReviewContainer = styled.div`
   width: 100%;
@@ -61,10 +63,31 @@ const CurrentScore = styled.div`
   font-size: 30px;
   font-weight: bold;
 `;
+interface Reviews {
+  reivewBusinessId: number;
+  reviewDetail: string;
+  reviewId: number;
+  reviewMemberEmail: string;
+  reviewScore: number;
+}
 
 const MoreReview = () => {
   const navigation = useNavigate();
   const storeInformation = useParams();
+  const [reviews, setReviews] = useState<Array<Reviews>>([]);
+
+  useEffect(() => {
+    console.log('id:', storeInformation.storeId);
+    axios
+      .get(`http://localhost:8080/api/member/store/${storeInformation.storeId}`)
+      .then((response) => {
+        console.log('response:', response);
+        setReviews(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   console.log('review', storeInformation);
   return (
@@ -91,7 +114,20 @@ const MoreReview = () => {
         </ButtonContainer>
       </TitleContainer>
       <StoreReviewContainer>
-        <ReviewItem
+        {/* {reviews.map((value, index) => {
+          return (
+            <ReviewItem
+              key={index}
+              reviewScore={value.reviewScore}
+              writer="하성록"
+              timeStamp="10분전"
+              reviewContent={value.reviewDetail}
+              reviewPicture={[]}
+            />
+          );
+        })} */}
+
+        {/* <ReviewItem
           reviewScore={3.0}
           writer="하성록"
           timeStamp="10분전"
@@ -118,7 +154,7 @@ const MoreReview = () => {
           timeStamp="10분전"
           reviewContent="내용"
           reviewPicture={['1']}
-        />
+        /> */}
       </StoreReviewContainer>
     </MediumContainer>
   );

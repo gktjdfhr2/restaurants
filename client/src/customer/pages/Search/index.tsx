@@ -8,7 +8,6 @@ import SearchResult from './SearchResult';
 import ResetButton from '@customer/UI/Form/ResetButton';
 import axios from 'axios';
 import SearchResultContainer from '@customer/UI/Form/SearchResultContainer';
-import { useCookies } from 'react-cookie';
 
 const SearchForm = styled.form`
   position: relative;
@@ -86,22 +85,6 @@ const Search = () => {
       }));
     });
   }, []);
-
-  // useEffect(() => {
-  //   const address = new kakao.maps.services.Geocoder();
-  //   address.addressSearch(
-  //     '부산 동래구 석사북로 5 1층',
-  //     (result: any, status: any) => {
-  //       if (status === kakao.maps.services.Status.OK) {
-  //         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-  //         console.log('coords :', coords);
-  //         navigator.geolocation.getCurrentPosition((position) => {
-  //           console.log('position', position);
-  //         });
-  //       }
-  //     }
-  //   );
-  // }, []);
 
   const searchEvent = async (event: FormEvent, inputValue: string) => {
     setKeyword(inputValue);

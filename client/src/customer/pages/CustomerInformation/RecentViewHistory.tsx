@@ -41,7 +41,7 @@ const RecentViewHistory = () => {
             </Link>
           </>
         ) : (
-          history.slice(0, history.length).map((value, index) => (
+          history.slice(0, 4).map((value, index) => (
             //TODO: 받아온 ID값으로 링크 값 변경
             <Link to={`/customer/StoreInformation/${1}`} key={index}>
               <ExhibitionItem

@@ -4,11 +4,6 @@ import ReviewItem from '@customer/UI/Form/ReviewItem';
 import { Link } from 'react-router-dom';
 import React from 'react';
 
-const StoreReviewContainer = styled.div`
-  width: 100%;
-  border-bottom: 10px solid gainsboro;
-`;
-
 const TitleContainer = styled.div`
   padding: 20px;
   width: 100%;
@@ -27,48 +22,37 @@ const MoreReviewButton = styled.button`
     opacity: 1;
   }
 `;
-
-const StoreReviews = React.forwardRef((props, reviewRef: any) => {
-  //TODO: 정보 props로 받아와서 뿌려주기
+interface Reviews {
+  reivewBusinessId: number;
+  reviewDetail: string;
+  reviewId: number;
+  reviewMemberEmail: string;
+  reviewScore: number;
+}
+const StoreReviews = (props: { reviews: Reviews[] }) => {
   console.log('StoreReviews');
   return (
-    <StoreReviewContainer ref={reviewRef}>
+    <>
       <TitleContainer>
         <StoreInformationTitle>리뷰 22</StoreInformationTitle>
         <Link to="MoreReview">
           <MoreReviewButton>더보기</MoreReviewButton>
         </Link>
       </TitleContainer>
-      <ReviewItem
-        reviewScore={3.7}
-        writer="하성록"
-        timeStamp="10분전"
-        reviewContent="내용"
-        reviewPicture={['1', '2', '3', '4']}
-      />
-      <ReviewItem
-        reviewScore={3.7}
-        writer="하성록"
-        timeStamp="10분전"
-        reviewContent="내용"
-        reviewPicture={['1', '2', '3']}
-      />
-      <ReviewItem
-        reviewScore={3.7}
-        writer="하성록"
-        timeStamp="10분전"
-        reviewContent="내용"
-        reviewPicture={[]}
-      />
-      <ReviewItem
-        reviewScore={3.7}
-        writer="하성록"
-        timeStamp="10분전"
-        reviewContent="내용"
-        reviewPicture={['1']}
-      />
-    </StoreReviewContainer>
+      {props.reviews.map((value: Reviews, index) => {
+        return (
+          <ReviewItem
+            key={index}
+            reviewScore={value.reviewScore}
+            writer="하성록"
+            timeStamp="10분전"
+            reviewContent={value.reviewDetail}
+            reviewPicture={[]}
+          />
+        );
+      })}
+    </>
   );
-});
+};
 
 export default StoreReviews;
