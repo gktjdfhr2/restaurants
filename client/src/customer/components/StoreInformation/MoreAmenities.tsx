@@ -91,15 +91,18 @@ const AmenityItem = styled.div<{ AmenityItem: number }>`
           `;
       }
     }};
-    display: block;
 
+
+    display: block;
     width: 200px;
     font-weight: bold;
     color: black;
 
     text-align: center;
 
+
     transform: translate(0, 170px);
+
   }
 `;
 

@@ -51,7 +51,9 @@ const Search = () => {
     businessBreakEnd?: string;
     businessBreakTime?: string;
     businessClosedTime?: string;
+
     businessConditions: string;
+
     businessDeleteState?: number;
     businessId: number;
     businessLikes?: number;
@@ -63,6 +65,7 @@ const Search = () => {
     businessPlaceY?: number;
     businessTags: Array<string>;
     reviews: Array<string>;
+
   }
   const [searchResult, setSearchResult] = useState<Array<StoreInformation>>([]);
   //TODO: 배열 인자 타입 인터페이스로 정의해주기,

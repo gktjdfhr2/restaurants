@@ -55,23 +55,28 @@ public class Business {
 //    private LocalDate businessCloseDay;
 
 
-    @JsonManagedReference
+    @JsonManagedReference("BusinessTagReference")
     @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BusinessTag> businessTags = new ArrayList<>();
 
-    @JsonManagedReference
+    @JsonManagedReference("BusinessReviewReference")
     @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
+
+    @JsonManagedReference("BusinessAmenities")
+    @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BusinessAmenities> businessAmenities = new ArrayList<>();
 
     public double getAverageScore() {
         if (reviews.isEmpty()) {
             return 0;
         }
-        BigDecimal sum = new BigDecimal("0.0");
+        BigDecimal sum = BigDecimal.ZERO;
         for (Review review: reviews) {
-            sum.add(review.getReviewScore());
+            BigDecimal b = review.getReviewScore();
+            sum = sum.add(review.getReviewScore());
         }
-        double result = sum.divide(BigDecimal.valueOf(reviews.size()),2, RoundingMode.DOWN).doubleValue();
+        double result = sum.divide(BigDecimal.valueOf(reviews.size()),1, RoundingMode.DOWN).doubleValue();
         return result;
     }
 }

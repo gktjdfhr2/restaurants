@@ -20,7 +20,9 @@ interface StoreInformation {
   businessBreakEnd?: string;
   businessBreakTime?: string;
   businessClosedTime?: string;
+
   businessConditions: string;
+
   businessDeleteState?: number;
   businessId: number;
   businessLikes?: number;
@@ -31,6 +33,7 @@ interface StoreInformation {
   businessPlaceX?: number;
   businessPlaceY?: number;
   businessTags: Array<string>;
+
   reviews: Array<string>;
 }
 interface StayLocation {
