@@ -83,53 +83,55 @@ const SearchResult = (props: {
           onClick={() => setSelectFilter(() => 'LINE')}
         />
       </MenuButtonContainer>
-      {props.searchResult.length === 0 ? (
+      {props.searchResult !== undefined && props.searchResult.length === 0 ? (
         <div>검색 결과가 없습니다.</div>
       ) : (
-        props.searchResult.map((value: StoreInformation, index) => {
-          const address = new kakao.maps.services.Geocoder();
-          let coords = { latitude: 0, longitude: 0 };
-          address.addressSearch(
-            value.businessAddress,
-            (result: any, status: any) => {
-              if (status === kakao.maps.services.Status.OK) {
-                var checkCoords: any = new kakao.maps.LatLng(
-                  result[0].y,
-                  result[0].x
-                );
-                coords = {
-                  latitude: checkCoords.Ma,
-                  longitude: checkCoords.La,
-                };
-                console.log('coords!!! :', coords);
-              }
-            }
-          );
-          return (
-            <Link
-              to={`/customer/StoreInformation/${value.businessId}`}
-              key={index}
-            >
-              <ExhibitionItem
-                title={value.businessName}
-                score={value.averageScore}
-                countReview={value.reviews.length}
-                condition={value.businessConditions}
-                address="사직동"
-                distance={
-                  props.stayLocation.latitude === 0
-                    ? '-'
-                    : getDistanceFromLatLonInKm(
-                        coords,
-                        props.stayLocation
-                      ).toFixed(2)
-                }
-                reservation={true}
-                line={false}
-              />
-            </Link>
-          );
-        })
+        console.log('props', props.searchResult)
+        //TODO: 서버 응답에 average 없애기
+        // props.searchResult.map((value: StoreInformation, index) => {
+        //   const address = new kakao.maps.services.Geocoder();
+        //   let coords = { latitude: 0, longitude: 0 };
+        //   address.addressSearch(
+        //     value.businessAddress,
+        //     (result: any, status: any) => {
+        //       if (status === kakao.maps.services.Status.OK) {
+        //         var checkCoords: any = new kakao.maps.LatLng(
+        //           result[0].y,
+        //           result[0].x
+        //         );
+        //         coords = {
+        //           latitude: checkCoords.Ma,
+        //           longitude: checkCoords.La,
+        //         };
+        //         console.log('coords!!! :', coords);
+        //       }
+        //     }
+        //   );
+        //   return (
+        //     <Link
+        //       to={`/customer/StoreInformation/${value.businessId}`}
+        //       key={index}
+        //     >
+        //       <ExhibitionItem
+        //         title={value.businessName}
+        //         score={value.averageScore}
+        //         countReview={value.reviews.length}
+        //         condition={value.businessConditions}
+        //         address="사직동"
+        //         distance={
+        //           props.stayLocation.latitude === 0
+        //             ? '-'
+        //             : getDistanceFromLatLonInKm(
+        //                 coords,
+        //                 props.stayLocation
+        //               ).toFixed(2)
+        //         }
+        //         reservation={true}
+        //         line={false}
+        //       />
+        //     </Link>
+        //   );
+        // })
       )}
     </>
   );

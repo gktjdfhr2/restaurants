@@ -98,9 +98,8 @@ const Search = () => {
         // headers: { Authorization: `Bearer ${cookies.token}` },
       })
       .then((response) => {
-        //TODO: 응답 인자 타입 정의해주기,
-        console.log('data :', response);
-        setSearchResult(response.data.data);
+        console.log('data :', response.data.data);
+        setSearchResult(() => response.data.data);
 
         inputValue.length === 0
           ? setIsSearch(true)
@@ -128,6 +127,7 @@ const Search = () => {
       .catch((error) => {
         console.log(error);
       });
+    console.log('searchResult', searchResult);
   };
 
   return (
