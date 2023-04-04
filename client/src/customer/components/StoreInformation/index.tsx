@@ -31,6 +31,10 @@ const StoreMoreInformationContainer = styled.div`
   padding: 30px 0;
 `;
 
+const StoreReviewContainer = styled.div`
+  width: 100%;
+  border-bottom: 10px solid gainsboro;
+`;
 const MenuNavigation = styled(ToggleMenuButton)`
   background: none;
   font-size: 20px;
@@ -82,9 +86,36 @@ const StoreInformation = () => {
   let storeName = storeInformation.storeId ? storeInformation.storeId : '';
 
   storeName = storeName.toString();
-  const reviewRef = useRef<HTMLElement>(null);
+  const reviewRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLElement>(null);
-  const [data, setData] = useState({
+  interface StoreInformation {
+    averageScore: number;
+    businessAddress: string;
+    businessAmenities?: Array<number>;
+    businessBreakEnd: string;
+    businessBreakTime: string;
+    businessClosedTime: string;
+    businessConditions: string;
+    businessDeleteState?: number;
+    businessId: number;
+    businessLikes?: number;
+    businessName: string;
+    businessOpenState: number;
+    businessOpenTime: string;
+    businessOwner?: string;
+    businessPlaceX?: number;
+    businessPlaceY?: number;
+    businessTags: Array<string>;
+    reviews: Array<Reviews>;
+  }
+  interface Reviews {
+    reivewBusinessId: number;
+    reviewDetail: string;
+    reviewId: number;
+    reviewMemberEmail: string;
+    reviewScore: number;
+  }
+  const [data, setData] = useState<StoreInformation>({
     averageScore: 0,
     businessAddress: '',
     businessAmenities: [],
@@ -105,56 +136,43 @@ const StoreInformation = () => {
     reviews: [],
   });
 
-  /** 최근 본 가게정보 로컬 스토리지에 추가 */
-  () => {
-    // TODO: 서버 응답 수정하고,response에 값 설정한 다음 useEffect에 넣기
-    // history.filter((value) => {
-    //   return value === data.businessName;
-    // }).length
-    //   ? setHistory((prev) => {
-    //       prev.splice(history.indexOf(data.businessName), 1);
-    //       localStorage.setItem(
-    //         'viewHistory',
-    //         JSON.stringify([data.businessName, ...prev])
-    //       );
-    //       return [data.businessName, ...prev];
-    //     })
-    //   : setHistory((prev) => {
-    //       localStorage.setItem(
-    //         'viewHistory',
-    //         JSON.stringify([data.businessName, ...prev])
-    //       );
-    //       return [data.businessName, ...prev];
-    //     });
-  };
 
   useEffect(() => {
-    console.log('id:', Number(storeInformation.storeId));
+    console.log('id:', storeInformation.storeId);
     axios
       .get(`http://localhost:8080/api/member/store/${storeInformation.storeId}`)
       .then((response) => {
-        // console.log(response);
-        setData(response.data.data);
-        // console.log('data', response.data.data);
+
+        setData(response.data.data.business);
+        return response.data.data.business;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .then((response) => {
+        console.log('response', response);
         history.filter((value) => {
-          return value === data.businessName;
+          return value === response.businessName;
         }).length
           ? setHistory((prev) => {
-              prev.splice(history.indexOf(data.businessName), 1);
+              console.log('data!', response.businessName);
+              prev.splice(history.indexOf(response.businessName), 1);
               localStorage.setItem(
                 'viewHistory',
-                JSON.stringify([data.businessName, ...prev])
+                JSON.stringify([response.businessName, ...prev])
               );
 
-              return [data.businessName, ...prev];
+              return [response.businessName, ...prev];
             })
           : setHistory((prev) => {
+              console.log('data!!', response.businessName);
               localStorage.setItem(
                 'viewHistory',
-                JSON.stringify([data.businessName, ...prev])
+                JSON.stringify([response.businessName, ...prev])
               );
 
-              return [data.businessName, ...prev];
+              return [response.businessName, ...prev];
+
             });
       })
       .catch((err) => {
@@ -162,8 +180,6 @@ const StoreInformation = () => {
       });
   }, []);
 
-  //TODO: storeId로 서버에서 데이터 받아서 뿌려주기
-  console.log('data!:', data);
   return (
     <>
       <MediumContainer>
@@ -194,8 +210,15 @@ const StoreInformation = () => {
             </MenuNavigation>
           </MenuNavigationContainer>
           <StoreMenu />
-          <StoreReviews ref={reviewRef} />
-          <OperatingTime ref={infoRef} />
+          <StoreReviewContainer ref={reviewRef}>
+            <StoreReviews reviews={data.reviews} />
+          </StoreReviewContainer>
+          <OperatingTime
+            businessOpenTime={data.businessOpenTime}
+            businessClosedTime={data.businessClosedTime}
+            businessBreakTime={data.businessBreakTime}
+            ref={infoRef}
+          />
           <Amenities />
           <ButtonContainer>
             <ReservationButton
@@ -203,7 +226,7 @@ const StoreInformation = () => {
             >
               원격 줄서기
             </ReservationButton>
-            <ReservationButton use={false}>예약 미사용</ReservationButton>
+            <ReservationButton use={false}>예약</ReservationButton>
           </ButtonContainer>
         </StoreMoreInformationContainer>
       </MediumContainer>

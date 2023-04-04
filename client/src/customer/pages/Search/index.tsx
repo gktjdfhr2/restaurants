@@ -7,7 +7,7 @@ import RecommendKeywords from './RecommendKeywords';
 import SearchResult from './SearchResult';
 import ResetButton from '@customer/UI/Form/ResetButton';
 import axios from 'axios';
-import { useCookies } from 'react-cookie';
+import SearchResultContainer from '@customer/UI/Form/SearchResultContainer';
 
 const SearchForm = styled.form`
   position: relative;
@@ -35,6 +35,14 @@ const Search = () => {
     ? JSON.parse(`${localStorage.getItem('searchHistory')}`)
     : [];
   const [history, setHistory] = useState(historyDefault);
+  const [stayLocation, setStayLocation] = useState<StayLocation>({
+    latitude: 0,
+    longitude: 0,
+  });
+  interface StayLocation {
+    latitude: number;
+    longitude: number;
+  }
   // const [cookies] = useCookies(['token']);
   interface StoreInformation {
     averageScore: number;
@@ -43,7 +51,9 @@ const Search = () => {
     businessBreakEnd?: string;
     businessBreakTime?: string;
     businessClosedTime?: string;
-    businessConditions?: string;
+
+    businessConditions: string;
+
     businessDeleteState?: number;
     businessId: number;
     businessLikes?: number;
@@ -54,7 +64,8 @@ const Search = () => {
     businessPlaceX?: number;
     businessPlaceY?: number;
     businessTags: Array<string>;
-    reviews?: Array<string>;
+    reviews: Array<string>;
+
   }
   const [searchResult, setSearchResult] = useState<Array<StoreInformation>>([]);
   //TODO: 배열 인자 타입 인터페이스로 정의해주기,
@@ -68,67 +79,59 @@ const Search = () => {
     [keyword]
   );
   useEffect(() => {
-    const address = new kakao.maps.services.Geocoder();
-    address.addressSearch(
-      '부산 동래구 석사북로 5 1층',
-      (result: any, status: any) => {
-        if (status === kakao.maps.services.Status.OK) {
-          var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-          console.log('coords :', coords);
-          navigator.geolocation.getCurrentPosition((position) => {
-            console.log('position', position);
-          });
-        }
-      }
-    );
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log('position', position);
+      setStayLocation((prev) => ({
+        ...prev,
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      }));
+    });
   }, []);
 
-  const searchEvent = useCallback(
-    async (event: FormEvent, inputValue: string) => {
-      setKeyword(inputValue);
-      event.preventDefault();
+  const searchEvent = async (event: FormEvent, inputValue: string) => {
+    setKeyword(inputValue);
+    event.preventDefault();
 
-      await axios
-        .get(`http://localhost:8080/api/member/store`, {
-          params: {
-            keyword: inputValue,
-          },
-          // headers: { Authorization: `Bearer ${cookies.token}` },
-        })
-        .then((response) => {
-          //TODO: 응답 인자 타입 정의해주기,
-          console.log('data :', response);
-          setSearchResult(response.data.data);
+    await axios
+      .get(`http://localhost:8080/api/member/store`, {
+        params: {
+          keyword: inputValue,
+        },
+        // headers: { Authorization: `Bearer ${cookies.token}` },
+      })
+      .then((response) => {
+        console.log('data :', response.data.data);
+        setSearchResult(() => response.data.data);
 
-          inputValue.length === 0
-            ? setIsSearch(false)
-            : history.filter((value) => {
-                return value === inputValue;
-              }).length
-            ? setHistory((prev) => {
-                prev.splice(history.indexOf(inputValue), 1);
-                localStorage.setItem(
-                  'searchHistory',
-                  JSON.stringify([inputValue, ...prev])
-                );
-                setIsSearch(true);
-                return [inputValue, ...prev];
-              })
-            : setHistory((prev) => {
-                localStorage.setItem(
-                  'searchHistory',
-                  JSON.stringify([inputValue, ...prev])
-                );
-                setIsSearch(true);
-                return [inputValue, ...prev];
-              });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    [keyword]
-  );
+        inputValue.length === 0
+          ? setIsSearch(true)
+          : history.filter((value) => {
+              return value === inputValue;
+            }).length
+          ? setHistory((prev) => {
+              prev.splice(history.indexOf(inputValue), 1);
+              localStorage.setItem(
+                'searchHistory',
+                JSON.stringify([inputValue, ...prev])
+              );
+              setIsSearch(true);
+              return [inputValue, ...prev];
+            })
+          : setHistory((prev) => {
+              localStorage.setItem(
+                'searchHistory',
+                JSON.stringify([inputValue, ...prev])
+              );
+              setIsSearch(true);
+              return [inputValue, ...prev];
+            });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log('searchResult', searchResult);
+  };
 
   return (
     <SearchContainer>
@@ -161,7 +164,12 @@ const Search = () => {
       />
 
       {isSearch ? (
-        <SearchResult searchResult={searchResult} />
+        <SearchResultContainer>
+          <SearchResult
+            searchResult={searchResult}
+            stayLocation={stayLocation}
+          />
+        </SearchResultContainer>
       ) : (
         <RecommendKeywords searchEvent={searchEvent} />
       )}

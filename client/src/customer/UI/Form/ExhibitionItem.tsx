@@ -82,7 +82,7 @@ const ExhibitionItem = (props: {
   countReview: number;
   condition: string;
   address: string;
-  distance: number;
+  distance: number | string;
   reservation?: boolean;
   line?: boolean;
 }) => {

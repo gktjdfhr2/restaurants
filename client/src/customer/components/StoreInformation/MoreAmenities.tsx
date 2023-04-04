@@ -10,7 +10,6 @@ const StoreAmenitiesContainer = styled.div`
 `;
 
 const AmenityItem = styled.div<{ AmenityItem: number }>`
-  //TODO: 이미지 타이틀에 맞게 지정
   width: 200px;
   height: 200px;
   ${(props) => {
@@ -93,6 +92,7 @@ const AmenityItem = styled.div<{ AmenityItem: number }>`
       }
     }};
 
+
     display: block;
     width: 200px;
     font-weight: bold;
@@ -100,7 +100,9 @@ const AmenityItem = styled.div<{ AmenityItem: number }>`
 
     text-align: center;
 
-    transform: translate(0, 160px);
+
+    transform: translate(0, 170px);
+
   }
 `;
 
