@@ -136,15 +136,14 @@ const StoreInformation = () => {
     reviews: [],
   });
 
-
   useEffect(() => {
     console.log('id:', storeInformation.storeId);
     axios
       .get(`http://localhost:8080/api/member/store/${storeInformation.storeId}`)
       .then((response) => {
-
-        setData(response.data.data.business);
-        return response.data.data.business;
+        console.log('newResponse:', response.data.data);
+        setData(response.data.data);
+        return response.data.data;
       })
       .catch((err) => {
         console.log(err);
@@ -172,7 +171,6 @@ const StoreInformation = () => {
               );
 
               return [response.businessName, ...prev];
-
             });
       })
       .catch((err) => {
